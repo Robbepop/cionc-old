@@ -34,13 +34,11 @@ namespace cion {
 
 			// Types
 			type_void,
-			type_byte,
 			type_bool,
 			type_char,
 			type_int, type_int8, type_int16, type_int32, type_int64,
 			type_uint, type_uint8, type_uint16, type_uint32, type_uint64,
 			type_float, type_float16, type_float32, type_float64,
-			type_size,
 
 			// Variables
 			cmd_var, cmd_val,
@@ -66,12 +64,13 @@ namespace cion {
 			op_pipe, op_ampersand, op_caret, op_tilde, op_left_left, op_right_right,
 			op_pipe_pipe, op_ampersand_ampersand,
 			op_less_than, op_less_equals, op_greater_than, op_greater_equals,
-			op_equals_equals, op_not_equals, op_question_mark,
+			op_equals_equals, op_not_equals,
 			op_equals, op_plus_equals, op_minus_equals, op_star_equals, op_slash_equals, op_percent_equals,
 			op_tilde_equals, op_ampersand_equals, op_pipe_equals, op_caret_equals,
 			op_left_left_equals, op_right_right_equals,
 			op_plus_plus, op_minus_minus,
-			op_exclam_mark, op_dot, op_arrow, op_colon, op_colon_colon, op_semi_colon, op_comma,
+			op_exclam_mark, op_question_mark,
+			op_dot, op_arrow, op_colon, op_colon_colon, op_semi_colon, op_comma,
 
 			// Generic Tokens
 			identifier,

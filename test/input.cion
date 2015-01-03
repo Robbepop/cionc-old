@@ -1,4 +1,4 @@
-var my_global_integer   = 50;@@@@
+var my_global_integer   = 50;
 var my_global_fun_call  = bar(foo, 'c', 50, .1234, false, "baz");
 var my_global_fun_call2 = baz();
 var my_global_number    = .1234;

@@ -1,4 +1,5 @@
 #include "parser/cion_parser.hpp"
+
 #include "token/cion_token_types.hpp"
 #include "error/parser_error.hpp"
 
@@ -101,7 +102,6 @@ namespace cion {
 
 		expressions.push_back(parse_expression());
 
-		//using ctts = CionTokenTypes;
 		while (optional(ctts.op_comma)) {
 			expressions.push_back(parse_expression());
 		}
@@ -133,7 +133,6 @@ namespace cion {
 	std::unique_ptr<ast::Expression> CionParser::parse_conditional_expression() {
 		auto condition = parse_logical_or_expression();
 
-		//using ctts = CionTokenTypes;
 		if (optional(ctts.op_question_mark)) {
 			auto then_expr = parse_expression();
 
@@ -152,7 +151,6 @@ namespace cion {
 	std::unique_ptr<ast::Expression> CionParser::parse_logical_or_expression() {
 		auto lhs = parse_logical_and_expression();
 
-		//using ctts = CionTokenTypes;
 		using op = ast::BinaryExpression::Operator;
 
 		while (optional(ctts.op_pipe_pipe)) {
@@ -168,7 +166,6 @@ namespace cion {
 	std::unique_ptr<ast::Expression> CionParser::parse_logical_and_expression() {
 		auto lhs = parse_inclusive_or_expression();
 
-		//using ctts = CionTokenTypes;
 		using op = ast::BinaryExpression::Operator;
 
 		while (optional(ctts.op_ampersand_ampersand)) {
@@ -184,7 +181,6 @@ namespace cion {
 	std::unique_ptr<ast::Expression> CionParser::parse_inclusive_or_expression() {
 		auto lhs = parse_exclusive_or_expression();
 
-		//using ctts = CionTokenTypes;
 		using op = ast::BinaryExpression::Operator;
 
 		while (optional(ctts.op_pipe)) {
@@ -200,7 +196,6 @@ namespace cion {
 	std::unique_ptr<ast::Expression> CionParser::parse_exclusive_or_expression() {
 		auto lhs = parse_bitwise_and_expression();
 
-		//using ctts = CionTokenTypes;
 		using op = ast::BinaryExpression::Operator;
 
 		while (optional(ctts.op_caret)) {
@@ -216,7 +211,6 @@ namespace cion {
 	std::unique_ptr<ast::Expression> CionParser::parse_bitwise_and_expression() {
 		auto lhs = parse_equality_expression();
 
-		//using ctts = CionTokenTypes;
 		using op = ast::BinaryExpression::Operator;
 
 		while (optional(ctts.op_ampersand)) {
@@ -232,7 +226,6 @@ namespace cion {
 	std::unique_ptr<ast::Expression> CionParser::parse_equality_expression() {
 		auto lhs = parse_relational_expression();
 
-		//using ctts = CionTokenTypes;
 		using op = ast::BinaryExpression::Operator;
 
 		while (true) {
@@ -256,7 +249,6 @@ namespace cion {
 	std::unique_ptr<ast::Expression> CionParser::parse_relational_expression() {
 		auto lhs = parse_bitshift_expression();
 
-		//using ctts = CionTokenTypes;
 		using op = ast::BinaryExpression::Operator;
 
 		while (true) {
@@ -290,7 +282,6 @@ namespace cion {
 	std::unique_ptr<ast::Expression> CionParser::parse_bitshift_expression() {
 		auto lhs = parse_additive_expression();
 
-		//using ctts = CionTokenTypes;
 		using op = ast::BinaryExpression::Operator;
 
 		while (true) {
@@ -314,7 +305,6 @@ namespace cion {
 	std::unique_ptr<ast::Expression> CionParser::parse_additive_expression() {
 		auto lhs = parse_multiplicative_expression();
 
-		//using ctts = CionTokenTypes;
 		using op = ast::BinaryExpression::Operator;
 
 		while (true) {
@@ -338,7 +328,6 @@ namespace cion {
 	std::unique_ptr<ast::Expression> CionParser::parse_multiplicative_expression() {
 		auto lhs = parse_unary_expression();
 
-		//using ctts = CionTokenTypes;
 		using op = ast::BinaryExpression::Operator;
 
 		while (true) {
@@ -380,8 +369,6 @@ namespace cion {
 	std::unique_ptr<ast::Expression> CionParser::parse_postfix_expression() {
 		auto lhs = parse_primary_expression();
 
-		//using ctts = CionTokenTypes;
-
 		while (true) {
 			if        (optional(ctts.opening_brack)) {
 				DEBUG_STDERR("parsed: index_expression\n");
@@ -420,7 +407,6 @@ namespace cion {
 	}
 
 	std::unique_ptr<ast::Expression> CionParser::parse_primary_expression() {
-		//using ctts = CionTokenTypes;
 		const auto tt = current_token().get_type();
 
 		// parse parenthesed expressions: '(' expr ')'
@@ -476,7 +462,6 @@ namespace cion {
 //////////////////////////////////////////////////////////////////////////////////////////
 
 	std::unique_ptr<ast::PrimitiveTypeInt> CionParser::parse_primitive_type_int() {
-		//using ctts = CionTokenTypes;
 		using ptiw = ast::PrimitiveTypeInt::Width;
 		const auto tt = current_token().get_type();
 		const auto bit_width =
@@ -497,7 +482,6 @@ namespace cion {
 	}
 
 	std::unique_ptr<ast::PrimitiveTypeFloat> CionParser::parse_primitive_type_float() {
-		//using ctts = CionTokenTypes;
 		using ptiw = ast::PrimitiveTypeFloat::Width;
 		const auto tt = current_token().get_type();
 		const auto bit_width =
@@ -511,7 +495,6 @@ namespace cion {
 	}
 
 	std::unique_ptr<ast::TypeSpecifier> CionParser::parse_type_specifier() {
-		//using ctts = CionTokenTypes;
 		const auto tt = current_token().get_type();
 		if        (tt == ctts.type_bool) {
 			next_token();
@@ -549,8 +532,6 @@ namespace cion {
 //////////////////////////////////////////////////////////////////////////////////////////
 
 	std::unique_ptr<ast::VariableDeclarationStatement> CionParser::parse_variable_declaration() {
-		//using ctts = CionTokenTypes;
-
 		expect(ctts.cmd_var);
 
 		auto var_name = expect(ctts.identifier).get_string();
@@ -589,8 +570,6 @@ namespace cion {
 	}
 
 	std::unique_ptr<ast::LogicalParameterPack> CionParser::parse_logical_parameter_pack() {
-		//using ctts = CionTokenTypes;
-
 		std::vector<std::unique_ptr<ast::LogicalParameter>> args;
 
 		if (current_token().get_type() == ctts.identifier
@@ -607,8 +586,6 @@ namespace cion {
 	}
 
 	std::unique_ptr<ast::CompoundStatement> CionParser::parse_compound_statement() {
-		//using ctts = CionTokenTypes;
-
 		expect(ctts.opening_brace);
 
 		std::vector<std::unique_ptr<ast::Statement>> statements;
@@ -656,8 +633,6 @@ namespace cion {
 	std::unique_ptr<ast::Statement> CionParser::parse_top_level_statement() {
 		DEBUG_STDERR("parsed: top_level_statement\n");
 
-		//using ctts = CionTokenTypes;
-
 		const auto tt = current_token().get_type();
 
 		// Global Variable Declaration
@@ -687,8 +662,6 @@ namespace cion {
 //////////////////////////////////////////////////////////////////////////////////////////
 
 	std::unique_ptr<ast::WhileStatement> CionParser::parse_while_statement() {
-		//using ctts = CionTokenTypes;
-
 		expect(ctts.cmd_while);
 
 		auto condition = parse_expression();
@@ -700,8 +673,6 @@ namespace cion {
 	}
 
 	std::unique_ptr<ast::IfStatement> CionParser::parse_if_statement() {
-		//using ctts = CionTokenTypes;
-
 		expect(ctts.cmd_if);
 
 		auto condition = parse_expression();
@@ -722,7 +693,6 @@ namespace cion {
 	}
 
 	std::unique_ptr<ast::ReturnStatement> CionParser::parse_return_statement() {
-		//using ctts = CionTokenTypes;
 		expect(ctts.cmd_return);
 		auto return_expr = current_token().get_type() != ctts.op_semi_colon
 			? parse_expression()
@@ -748,7 +718,6 @@ namespace cion {
 	}
 
 	std::unique_ptr<ast::Statement> CionParser::parse_statement() {
-		//using ctts = CionTokenTypes;
 		using stmnt = std::unique_ptr<ast::Statement>;
 
 		auto tt = current_token().get_type();
@@ -762,7 +731,7 @@ namespace cion {
 			tt == ctts.cmd_break     ? stmnt{parse_break_statement()}:
 			tt == ctts.cmd_continue  ? stmnt{parse_continue_statement()}:
 			tt == ctts.opening_brace ? stmnt{parse_compound_statement()}:
-			                            stmnt{parse_expression_statement()};
+			                           stmnt{parse_expression_statement()};
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////

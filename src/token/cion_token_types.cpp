@@ -45,23 +45,22 @@ namespace cion {
 		m_all_token_types{},
 		m_skipped_token_types{},
 
-		//whitespace{init_tt({
-		//	"whitespace", "\\s+",
-		//	TokenTypeStore::empty,
-		//	TokenType::MatchType::greedy},
-		//	true)};
+		whitespace{init_tt({
+			"whitespace", "\\s+",
+			TokenTypeStore::empty,
+			TokenType::MatchType::greedy},
+			true)},
 
-		//line_comment{init_tt({
-		//	"line comment", "//[^\\r\\n]*(\\r?\\n)?",
-		//	TokenTypeStore::string_t, TokenType::MatchType::greedy},
-		//	true)};
+		line_comment{init_tt({
+			"line comment", "//[^\\r\\n]*(\\r?\\n)?",
+			TokenTypeStore::string_t, TokenType::MatchType::greedy},
+			true)},
 
-		//comment{init_tt({
-		//	"comment", "/\\*([^*]|[\\r\\n]|(\\*+([^*/]|[\\r\\n])))*\\*+/",
-		//	TokenTypeStore::string_t, TokenType::MatchType::greedy},
-		//	true)};
+		comment{init_tt({
+			"comment", "/\\*([^*]|[\\r\\n]|(\\*+([^*/]|[\\r\\n])))*\\*+/",
+			TokenTypeStore::string_t, TokenType::MatchType::greedy},
+			true)},
 
-		/*
 		type_void   {init_tt({"primitive type: void", "void"})},
 		type_bool   {init_tt({"primitive type: bool", "bool"})},
 		type_char   {init_tt({"primitive type: char", "char"})},
@@ -124,8 +123,8 @@ namespace cion {
 		op_ampersand_ampersand{init_tt({"operator: ampersand-ampersand (&&)", "&&"})},
 
 		op_less_than     {init_tt({"operator: less than (<)"              , "<"})},
-		op_greater_than  {init_tt({"operator: greater than (>)"           , ">"})},
 		op_less_equals   {init_tt({"operator: less than or equals (<=)"   , "<="})},
+		op_greater_than  {init_tt({"operator: greater than (>)"           , ">"})},
 		op_greater_equals{init_tt({"operator: greater than or equals (>=)", ">="})},
 		op_equals_equals {init_tt({"operator: equals equals (==)"         , "=="})},
 		op_not_equals    {init_tt({"operator: not equals (!=)"            , "!="})},
@@ -137,11 +136,11 @@ namespace cion {
 		op_slash_equals      {init_tt({"operator: slash equals (/=)"        , "/="})},
 		op_percent_equals    {init_tt({"operator: percent equals (%=)"      , "%="})},
 		op_tilde_equals      {init_tt({"operator: tilde equals (~=)"        , "~="})},
-		op_left_left_equals  {init_tt({"operator: left left equals (<<=)"   , "<<="})},
-		op_right_right_equals{init_tt({"operator: right right equals (>>=)" , ">>="})},
 		op_ampersand_equals  {init_tt({"operator: ampersand equals (&=)"    , "&="})},
 		op_pipe_equals       {init_tt({"operator: pipe equals (|=)"         , "\\|="})},
 		op_caret_equals      {init_tt({"operator: caret equals (^=)"        , "\\^="})},
+		op_left_left_equals  {init_tt({"operator: left left equals (<<=)"   , "<<="})},
+		op_right_right_equals{init_tt({"operator: right right equals (>>=)" , ">>="})},
 
 		op_plus_plus    {init_tt({"operator: plus plus (++)"       , "\\+\\+"})},
 		op_minus_minus  {init_tt({"operator: minus minus (--)"     , "--"})},
@@ -204,9 +203,7 @@ namespace cion {
 		opening_paren  {init_tt({"bracket: opening parenthesis (", "\\("})},
 		opening_brack  {init_tt({"bracket: opening bracket ["    , "\\["})},
 		closing_brace  {init_tt({"bracket: closing brace }"      , "}"})},
-		closing_paren  {init_tt({"bracket: closing parenthesis )", "\\)"})},*/
-
+		closing_paren  {init_tt({"bracket: closing parenthesis )", "\\)"})},
 		closing_brack  {init_tt({"bracket: closing bracket ]"    , "\\]"})}
-		//closing_brack{"bracket: closing bracket ]", "\\]"}
 	{}
 } // namespace cion
