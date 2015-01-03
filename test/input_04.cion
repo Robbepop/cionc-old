@@ -1,0 +1,326 @@
+module lexer;
+
+import cion.token;
+import cion.token_stream;
+import cion.exception.error_token_read;
+import cion.exception.ambiguous_token_read;
+
+import boost.regex;
+
+import std.iostream;
+import std.type_traits;
+import std.cstdint;
+
+//type Lexer [class] extends TokenStream {
+
+class Lexer extends TokenStream {
+public:
+	constructor(
+		inputstream : mref<std.istream>.mutable.ref,
+		token_types : std.vector<TokenType>.ref
+	):
+		m_input            = inputstream;
+		m_matchable_tokens = matchable_tokens;
+	{
+		m_cur  = addressof m_it_data[0];
+		m_last = addressof m_it_data[1];
+	}
+
+	constructor(
+		inputstream : std.istream.mutable.ref,
+		token_types : std.vector<TokenType>.rval
+	):
+		m_input            = inputstream;
+		m_matchable_tokens = matchable_tokens;
+	{
+		m_cur  = addressof m_it_data[0];
+		m_last = addressof m_it_data[1];
+	}
+
+	[override, mutable]
+	method next_token() -> std.unique_ptr<Token> {
+		// always return eof token if parser wants next_token while
+		// this input stream is known to be fully read already.
+		if m_input.eof() {
+			return TokenFabric.make_token(TokenType::eof);
+		}
+
+		// empty all match buffers
+		clear_buffers();
+
+		// read new characters from input stream and check them against
+		// the token type's regexes for partial and full match.
+		while m_input.get(m_cur_symbol) {
+			// count line and column numbers
+			update_lc_numbers();
+
+			// update buffer, swap match buffers and clear current match buffers
+			m_buffer += m_cur_symbol;
+			swap_buffers();
+			clear_cur_buffers();
+
+			// check for matches with updated buffer
+			check_matches();
+
+			// if current partial match is not empty, then
+			// go on as current partial matches may still statisfy.
+			if !(m_cur->get_partial_matches().empty()) { continue; }
+
+			// if both current match buffers are empty
+			// there must be a match from the last iteration.
+			if m_cur->get_full_matches().empty() {
+				// unget last character to debug inputstream
+				// as well as the line- and column numbers.
+				m_input.unget();
+				m_cur->set_column_num(m_last->get_column_num());
+				m_cur->set_line_num(m_last->get_line_num());
+				// if there are no full matches from the last
+				// iteration, then there was an error token.
+				if m_last->get_full_matches().size() == 0 {
+					throw error_token_read(m_last->get_line_num(), m_last->get_column_num(), "", m_buffer);
+				}
+				// if there is only one last full match
+				// it must have been that element to match.
+				if m_last->get_full_matches().size() == 1 {
+					return TokenFabric::make_token(m_last->get_full_matches()[0], m_buffer);
+				}
+				// there were multiple full matches in the last iteration.
+				// however, it could be that only one of them is a non-greedy token type
+				// then it is safe to take that one.
+				var last_ng_token_type = TokenType.undefined;
+				val count_non_greedy   = m_last->count_non_greedy_matches(last_ng_token_type);
+				// there was exactly one non-greedy full match in the last iteration
+				// so it is safe to pick that one.
+				if count_non_greedy == 1 {
+					return TokenFabric::make_token(last_ng_token_type, m_buffer);
+				// there were multiple non-greedy full matches on the last iteration
+				// which means that the specified grammar is ambiguous and should be fixed.
+				} else {
+					throw ambiguous_token_read(m_cur->get_line_num(), m_cur->get_column_num(), "", m_buffer);
+				}
+
+			// there are one or more full matches in the current iteration.
+			} else {
+				// count greedy and non-greedy current full matches
+				var last_greedy      = TokenType.undefined;
+				var last_non_greedy  = TokenType.undefined;
+				val count_greedy     = m_cur->count_greedy_matches(last_greedy);
+				val count_non_greedy = m_cur->count_non_greedy_matches(last_non_greedy);
+				// there are still greedy current full matches which could
+				// also statisfy the buffer of the next iteration.
+				// continue in order to test if they statisfy constrains next iteration.
+				if count_greedy > 0 {
+					continue;
+				}
+				// there is exactly one non-greedy full match in the current
+				// iteration so it is safe to pick that one.
+				if count_non_greedy == 1 {
+					return TokenFabric.make_token(last_non_greedy, m_buffer);
+				// there are more than one non-greedy full matches in the current
+				// iteration which means that specified grammar is ambiguous and should be fixed.
+				} else {
+					throw ambiguous_token_read(m_cur->get_line_num(), m_cur->get_column_num(), "", m_buffer);
+				}
+			}
+		}
+
+		if m_input.eof() {
+			// count greedy and non-greedy current full matches
+			if !(m_cur->get_full_matches().empty()) {
+				var last_greedy      = TokenType.undefined;
+				var last_non_greedy  = TokenType.undefined;
+				val count_greedy     = m_cur->count_greedy_matches(last_greedy);
+				val count_non_greedy = m_cur->count_non_greedy_matches(last_non_greedy);
+				// there is exactly one non-greedy full match in the current
+				// iteration and since it is known to be at the end of frame it is
+				// safe to take it while there could be also other greedy full matches.
+				if count_non_greedy == 1 {
+					return TokenFabric.make_token(last_non_greedy, m_buffer);
+				}
+				// there are multiple full matches of any match type in the current
+				// iteration which is a grammar ambiguousity and should be fixed.
+				if count_non_greedy >= 2 || count_greedy >= 2 {
+					throw ambiguous_token_read(m_cur->get_line_num(), m_cur->get_column_num(), "", m_buffer);
+				}
+				// previous check ensure that there is exactly one full match in the current iteration
+				// so it is safe to pick.
+				if count_greedy == 1 {
+					return TokenFabric.make_token(last_greedy, m_buffer);
+				}
+
+			// full matches of the current iteration are empty.
+			// throw error token if partial matches are not empty
+			} else if !(m_cur->get_partial_matches().empty()) {
+				throw error_token_read(m_cur->get_line_num(), m_cur->get_column_num(), "", m_buffer);
+
+			// since there was an end of frame detection and all buffers are empty
+			// it is secure to release the end of frame token.
+			} else {
+				return TokenFabric.make_token(TokenType::eof);
+			}
+		}
+
+		// since no constraint has fit to any buffer set-up above
+		// it is safe to assume that the read token was errornous.
+		throw error_token_read(m_cur->get_line_num(), m_cur->get_column_num(), "", m_buffer);
+	}
+
+private:
+
+	struct IterationData {
+	public:
+		alias num_type = uint64;
+
+		constructor() {};
+
+		method buffers_empty() -> bool {
+			return m_partial_matches.empty() && m_full_matches.empty();
+		}
+
+		method get_line_num() -> num_type {
+			return m_line_num;
+		}
+
+		method get_column_num_num() -> num_type {
+			return m_col_num;
+		}
+
+		method count_greedy_matches(out_param : TokenType.mutable.ref) {
+			var count_greedy = 0;
+			for (val tt : m_full_matches) {
+				if tt.get_match_type() == TokenType::MatchType::greedy {
+					++count_greedy;
+					out_param = tt;
+				}
+			}
+			return count_greedy;
+		}
+
+		method count_non_greedy_matches(out_param : TokenType.mutable.ref) {
+			var count_non_greedy = 0;
+			for (val tt : m_full_matches) {
+				if tt.get_match_type() == TokenType::MatchType::non_greedy {
+					++count_non_greedy;
+					out_param = tt;
+				}
+			}
+			return count_non_greedy;
+		}
+
+		[mutable]
+		method clear_buffers() {
+			m_partial_matches.clear();
+			m_full_matches.clear();
+		}
+
+		[mutable]
+		method get_partial_matches() -> std.vector<TokenType>.mutable.ref {
+			return m_partial_matches;
+		}
+
+		[mutable]
+		method get_full_matches() -> std.vector<TokenType>.mutable.ref {
+			return m_full_matches;
+		}
+
+		[mutable]
+		method set_line_num(new_line_num : num_type) {
+			return m_line_num = new_line_num;
+		}
+
+		[mutable]
+		method set_column_num(new_col_num : num_type) {
+			return m_col_num = new_col_num;
+		}
+
+		[mutable]
+		method inc_line_num() {
+			return m_line_num++;
+		}
+
+		[mutable]
+		method inc_col_num() {
+			return m_col_num++;
+		}
+
+	private:
+		var m_partial_matches : std.vector<TokenType>;
+		var m_full_matches    : std.vector<TokenType>;
+		var m_line_num        : num_type = 0;
+		var m_col_num         : num_type = 0;
+	}
+
+	method buffers_empty() -> bool {
+		return m_cur->buffers_empty() && m_last->buffers_empty();
+	}
+
+	[mutable]
+	method check_match(token_type : TokenType.ref) {
+		val tt_reg = token_type.get_regex();
+		if boost.regex_match(m_buffer, tt_reg, boost.match_partial) {
+			if boost.regex_match(m_buffer, tt_reg) {
+				m_cur->get_full_matches().push_back(token_type);
+			} else {
+				m_cur->get_partial_matches().push_back(token_type);
+			}
+		}
+	}
+
+	[mutable]
+	method check_matches() {
+		if (buffers_empty()) {
+			for (val token_type : m_matchable_tokens) {
+				check_match(token_type);
+			}
+		} else {
+			for (val token_type : m_last->get_partial_matches()) {
+				check_match(token_type);
+			}
+			for (val token_type : m_last->get_full_matches()) {
+				check_match(token_type);
+			}
+		}
+	}
+
+	[mutable]
+	method clear_buffers() {
+		m_buffer.clear();
+		m_cur->clear_buffers();
+		m_last->clear_buffers();
+	}
+
+	[mutable]
+	method clear_cur_buffers() {
+		m_cur->clear_buffers();
+	}
+
+	[mutable]
+	method swap_buffers() {
+		std.swap(m_cur, m_last);
+		m_cur->set_line_num(m_last->get_line_num());
+		m_cur->set_column_num(m_last->get_column_num());
+		var foo = new complex<int>(5, 4);
+		var bar = complex.create<int>(5, 4);
+		var baz = complex.create(othercomplex);
+		var bal = baz;
+	}
+
+	[mutable]
+	method update_lc_numbers() {
+		if m_cur_symbol == '\n' {
+			m_cur->inc_line_num();
+			m_cur->set_column_num(1);
+		} else {
+			m_cur->inc_col_num();
+		}
+	}
+
+	var m_input      : std.istream.ref;
+	var m_buffer     : std.string;
+	var m_cur_symbol : char;
+	var m_it_data    : IterationData[2];
+	var m_cur        : IterationData.ptr;
+	var m_last       : IterationData.ptr;
+
+	var m_matchable_tokens : std.vector<TokenType>;
+}

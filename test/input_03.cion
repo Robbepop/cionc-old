@@ -1,0 +1,52 @@
+var my_global_integer   = 50;
+var my_global_number    = .1234;
+var my_global_boolean   = false;
+var my_global_character = 'i';
+
+var my_global_custom_01 : uint = 5;
+var my_global_custom_02 : bool = 0; // error
+
+uint my_global_custom_03 = 5;
+
+var my_global_custom_01 = uint32(5);
+my_global_custom_02 : uint32 = 5;
+
+set my_global_variable_01 = blub;
+call my_global_func();
+
+function first(first : int, second : int) -> int {
+	i : var = 1;
+	i += 5;
+	do_my_func(i, i + 1);
+	return first;
+}
+
+function minimum(first: int, second: int) -> int {
+	return (first <= second) /*?*/ first : second;
+}
+
+function fibonacci(n : uint) -> uint {
+	return (n <= 1) /*?*/ n : fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+function to_upper(input : char) -> char {
+	switch (input) {
+		case 'a': return 'A';
+		case 'b': return 'B';
+		...
+		case 'z': return 'Z';
+		default :           ; // do nothing
+	}
+	return input;
+}
+
+function main() {
+	var my_local_integer   = 100;
+	var my_local_number    = .4321;
+	var my_local_boolean   = true;
+	var my_local_character = 'm';
+	my_local_integer = 200 - my_local_integer;
+	my_local_number += 4321.1;
+	my_local_boolean = !my_global_boolean;
+	my_local_character = my_global_character;
+}

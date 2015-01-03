@@ -1,0 +1,13 @@
+ToDo list for Cion Compiler
+
+- put source files in associated folders as their include header files
+	- add error token type and output it in the lexer whenever an error appeared
+	- make existing code use the new ErrorHandler in order to output
+	  and handle errors and warning while lexing or parsing
+	- add type information to all AST expression nodes
+	- implement symbol table for Cion Compiler
+	- create semantic check passes:
+		1. fill SymbolTable
+		2. check declared before defined
+		3. set types
+		4. check type matching

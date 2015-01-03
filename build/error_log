@@ -1,0 +1,52 @@
+Scanning dependencies of target cion_compiler
+[  2%] Building CXX object src/CMakeFiles/cion_compiler.dir/cion_parser.cpp.o
+In file included from /usr/include/c++/4.9.2/memory:81:0,
+                 from /home/robbepop/coding/c++/projects/cion/include/token_type.hpp:9,
+                 from /home/robbepop/coding/c++/projects/cion/include/token.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/lexer.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/cion_parser.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/src/cion_parser.cpp:1:
+/usr/include/c++/4.9.2/bits/unique_ptr.h: In instantiation of ‘typename std::_MakeUniq<_Tp>::__single_object std::make_unique(_Args&& ...) [with _Tp = cion::ast::FunctionCallExpression; _Args = {std::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::unique_ptr<cion::ast::ExpressionList, std::default_delete<cion::ast::ExpressionList> >&}; typename std::_MakeUniq<_Tp>::__single_object = std::unique_ptr<cion::ast::FunctionCallExpression>]’:
+/home/robbepop/coding/c++/projects/cion/src/cion_parser.cpp:98:68:   required from here
+/usr/include/c++/4.9.2/bits/unique_ptr.h:765:69: error: use of deleted function ‘std::unique_ptr<_Tp, _Dp>::unique_ptr(const std::unique_ptr<_Tp, _Dp>&) [with _Tp = cion::ast::ExpressionList; _Dp = std::default_delete<cion::ast::ExpressionList>]’
+     { return unique_ptr<_Tp>(new _Tp(std::forward<_Args>(__args)...)); }
+                                                                     ^
+/usr/include/c++/4.9.2/bits/unique_ptr.h:356:7: note: declared here
+       unique_ptr(const unique_ptr&) = delete;
+       ^
+In file included from /home/robbepop/coding/c++/projects/cion/include/cion_parser.hpp:14:0,
+                 from /home/robbepop/coding/c++/projects/cion/src/cion_parser.cpp:1:
+/home/robbepop/coding/c++/projects/cion/include/ast/function_call.hpp:13:3: error:   initializing argument 2 of ‘cion::ast::FunctionCallExpression::FunctionCallExpression(const string&, std::unique_ptr<cion::ast::ExpressionList>)’
+   FunctionCallExpression(
+   ^
+In file included from /usr/include/c++/4.9.2/memory:64:0,
+                 from /home/robbepop/coding/c++/projects/cion/include/token_type.hpp:9,
+                 from /home/robbepop/coding/c++/projects/cion/include/token.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/lexer.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/cion_parser.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/src/cion_parser.cpp:1:
+/usr/include/c++/4.9.2/bits/stl_construct.h: In instantiation of ‘void std::_Construct(_T1*, _Args&& ...) [with _T1 = std::unique_ptr<cion::ast::Expression>; _Args = {const std::unique_ptr<cion::ast::Expression, std::default_delete<cion::ast::Expression> >&}]’:
+/usr/include/c++/4.9.2/bits/stl_uninitialized.h:75:53:   required from ‘static _ForwardIterator std::__uninitialized_copy<_TrivialValueTypes>::__uninit_copy(_InputIterator, _InputIterator, _ForwardIterator) [with _InputIterator = __gnu_cxx::__normal_iterator<const std::unique_ptr<cion::ast::Expression>*, std::vector<std::unique_ptr<cion::ast::Expression> > >; _ForwardIterator = std::unique_ptr<cion::ast::Expression>*; bool _TrivialValueTypes = false]’
+/usr/include/c++/4.9.2/bits/stl_uninitialized.h:125:41:   required from ‘_ForwardIterator std::uninitialized_copy(_InputIterator, _InputIterator, _ForwardIterator) [with _InputIterator = __gnu_cxx::__normal_iterator<const std::unique_ptr<cion::ast::Expression>*, std::vector<std::unique_ptr<cion::ast::Expression> > >; _ForwardIterator = std::unique_ptr<cion::ast::Expression>*]’
+/usr/include/c++/4.9.2/bits/stl_uninitialized.h:278:63:   required from ‘_ForwardIterator std::__uninitialized_copy_a(_InputIterator, _InputIterator, _ForwardIterator, std::allocator<_Tp>&) [with _InputIterator = __gnu_cxx::__normal_iterator<const std::unique_ptr<cion::ast::Expression>*, std::vector<std::unique_ptr<cion::ast::Expression> > >; _ForwardIterator = std::unique_ptr<cion::ast::Expression>*; _Tp = std::unique_ptr<cion::ast::Expression>]’
+/usr/include/c++/4.9.2/bits/stl_vector.h:324:32:   required from ‘std::vector<_Tp, _Alloc>::vector(const std::vector<_Tp, _Alloc>&) [with _Tp = std::unique_ptr<cion::ast::Expression>; _Alloc = std::allocator<std::unique_ptr<cion::ast::Expression> >]’
+/usr/include/c++/4.9.2/bits/unique_ptr.h:765:69:   required from ‘typename std::_MakeUniq<_Tp>::__single_object std::make_unique(_Args&& ...) [with _Tp = cion::ast::ExpressionList; _Args = {std::vector<std::unique_ptr<cion::ast::Expression, std::default_delete<cion::ast::Expression> >, std::allocator<std::unique_ptr<cion::ast::Expression, std::default_delete<cion::ast::Expression> > > >&}; typename std::_MakeUniq<_Tp>::__single_object = std::unique_ptr<cion::ast::ExpressionList>]’
+/home/robbepop/coding/c++/projects/cion/src/cion_parser.cpp:111:59:   required from here
+/usr/include/c++/4.9.2/bits/stl_construct.h:75:7: error: use of deleted function ‘std::unique_ptr<_Tp, _Dp>::unique_ptr(const std::unique_ptr<_Tp, _Dp>&) [with _Tp = cion::ast::Expression; _Dp = std::default_delete<cion::ast::Expression>]’
+     { ::new(static_cast<void*>(__p)) _T1(std::forward<_Args>(__args)...); }
+       ^
+In file included from /usr/include/c++/4.9.2/memory:81:0,
+                 from /home/robbepop/coding/c++/projects/cion/include/token_type.hpp:9,
+                 from /home/robbepop/coding/c++/projects/cion/include/token.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/lexer.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/cion_parser.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/src/cion_parser.cpp:1:
+/usr/include/c++/4.9.2/bits/unique_ptr.h:356:7: note: declared here
+       unique_ptr(const unique_ptr&) = delete;
+       ^
+src/CMakeFiles/cion_compiler.dir/build.make:261: recipe for target 'src/CMakeFiles/cion_compiler.dir/cion_parser.cpp.o' failed
+make[2]: *** [src/CMakeFiles/cion_compiler.dir/cion_parser.cpp.o] Error 1
+CMakeFiles/Makefile2:75: recipe for target 'src/CMakeFiles/cion_compiler.dir/all' failed
+make[1]: *** [src/CMakeFiles/cion_compiler.dir/all] Error 2
+Makefile:76: recipe for target 'all' failed
+make: *** [all] Error 2
