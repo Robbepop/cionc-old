@@ -15,8 +15,20 @@ namespace ast {
 			std::unique_ptr<Expression> then_expression,
 			std::unique_ptr<Expression> else_expression);
 
+		Expression & condition();
+		Expression const& condition() const;
+
+		Expression & then_expression();
+		Expression const& then_expression() const;
+
+		Expression & else_expression();
+		Expression const& else_expression() const;
+
+		virtual void accept(MutatingCompilerPass & pass) override;
+		virtual void accept(CompilerPass & pass) const override;
+
 	private:
-		std::unique_ptr<Expression> m_conditional;
+		std::unique_ptr<Expression> m_condition;
 		std::unique_ptr<Expression> m_then_expression;
 		std::unique_ptr<Expression> m_else_expression;
 	};

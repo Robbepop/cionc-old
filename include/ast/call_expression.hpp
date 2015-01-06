@@ -18,6 +18,15 @@ namespace ast {
 		CallExpression(
 			std::unique_ptr<Expression> callee);
 
+		Expression & callee();
+		Expression const& callee() const;
+
+		ExpressionList & arguments();
+		ExpressionList const& arguments() const;
+
+		virtual void accept(MutatingCompilerPass & pass) override;
+		virtual void accept(CompilerPass & pass) const override;
+
 	private:
 		std::unique_ptr<Expression> m_callee;
 		std::unique_ptr<ExpressionList> m_args;

@@ -44,5 +44,13 @@ namespace ast {
 		PostfixExpression{get_operator(tt), std::move(expr)}
 	{}
 
+	void PostfixExpression::accept(MutatingCompilerPass & pass) {
+		pass.visit(*this);
+	}
+
+	void PostfixExpression::accept(CompilerPass & pass) const {
+		pass.visit(*this);
+	}
+
 } // namespace ast
 } // namespace cion

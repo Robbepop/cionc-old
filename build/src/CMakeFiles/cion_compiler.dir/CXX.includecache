@@ -11,6 +11,8 @@ ast/assignment_expression.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/ast/assignment_expression.hpp
 cion_token_types.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/cion_token_types.hpp
+cassert
+-
 stdexcept
 -
 utility
@@ -30,9 +32,15 @@ utility
 ast/boolean_literal.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/ast/boolean_literal.hpp
 
+/home/robbepop/coding/c++/projects/cion/src/ast/break_statement.cpp
+ast/break_statement.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/ast/break_statement.hpp
+
 /home/robbepop/coding/c++/projects/cion/src/ast/call_expression.cpp
 ast/call_expression.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/ast/call_expression.hpp
+cassert
+-
 
 /home/robbepop/coding/c++/projects/cion/src/ast/char_literal.cpp
 ast/char_literal.hpp
@@ -55,6 +63,16 @@ conditional_expression.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/conditional_expression.hpp
 utility
 -
+cassert
+-
+
+/home/robbepop/coding/c++/projects/cion/src/ast/continue_statement.cpp
+ast/continue_statement.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/ast/continue_statement.hpp
+
+/home/robbepop/coding/c++/projects/cion/src/ast/empty_statement.cpp
+ast/empty_statement.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/ast/empty_statement.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/ast/expression_list.cpp
 ast/expression_list.hpp
@@ -67,6 +85,8 @@ ast/expression_statement.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/ast/expression_statement.hpp
 utility
 -
+cassert
+-
 
 /home/robbepop/coding/c++/projects/cion/src/ast/float_literal.cpp
 ast/float_literal.hpp
@@ -77,16 +97,22 @@ ast/function_definition_statement.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/ast/function_definition_statement.hpp
 utility
 -
+cassert
+-
 
 /home/robbepop/coding/c++/projects/cion/src/ast/if_statement.cpp
 ast/if_statement.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/ast/if_statement.hpp
 utility
 -
+cassert
+-
 
 /home/robbepop/coding/c++/projects/cion/src/ast/index_expression.cpp
 ast/index_expression.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/ast/index_expression.hpp
+cassert
+-
 
 /home/robbepop/coding/c++/projects/cion/src/ast/integer_literal.cpp
 ast/integer_literal.hpp
@@ -104,6 +130,14 @@ ast/logical_parameter_pack.hpp
 utility
 -
 
+/home/robbepop/coding/c++/projects/cion/src/ast/nothing_expression.cpp
+ast/nothing_expression.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/ast/nothing_expression.hpp
+
+/home/robbepop/coding/c++/projects/cion/src/ast/nothing_type.cpp
+ast/nothing_type.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/ast/nothing_type.hpp
+
 /home/robbepop/coding/c++/projects/cion/src/ast/postfix_expression.cpp
 ast/postfix_expression.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/ast/postfix_expression.hpp
@@ -113,6 +147,14 @@ stdexcept
 -
 utility
 -
+
+/home/robbepop/coding/c++/projects/cion/src/ast/primitive_type_bool.cpp
+ast/primitive_type_bool.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/ast/primitive_type_bool.hpp
+
+/home/robbepop/coding/c++/projects/cion/src/ast/primitive_type_char.cpp
+ast/primitive_type_char.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/ast/primitive_type_char.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/ast/primitive_type_float.cpp
 ast/primitive_type_float.hpp
@@ -160,12 +202,6 @@ ast/while_statement.hpp
 utility
 -
 
-/home/robbepop/coding/c++/projects/cion/src/error/ambiguous_token_read.cpp
-error/ambiguous_token_read.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/error/ambiguous_token_read.hpp
-sstream
--
-
 /home/robbepop/coding/c++/projects/cion/src/error/cion_error_handler.cpp
 error/cion_error_handler.hpp
 /home/robbepop/coding/c++/projects/cion/src/error/error/cion_error_handler.hpp
@@ -174,35 +210,53 @@ iostream
 tuple
 -
 
+/home/robbepop/coding/c++/projects/cion/src/error/cion_error_types.cpp
+error/cion_error_types.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/error/cion_error_types.hpp
+utility
+-
+
+/home/robbepop/coding/c++/projects/cion/src/error/cion_exception.cpp
+error/cion_exception.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/error/cion_exception.hpp
+sstream
+-
+
+/home/robbepop/coding/c++/projects/cion/src/error/cion_warning_types.cpp
+error/cion_warning_types.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/error/cion_warning_types.hpp
+utility
+-
+
+/home/robbepop/coding/c++/projects/cion/src/error/debug_info_type.cpp
+error/debug_info_type.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/error/debug_info_type.hpp
+
 /home/robbepop/coding/c++/projects/cion/src/error/error_handler.cpp
 error/error_handler.hpp
 /home/robbepop/coding/c++/projects/cion/src/error/error/error_handler.hpp
 
-/home/robbepop/coding/c++/projects/cion/src/error/error_token_read.cpp
-error/error_token_read.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/error/error_token_read.hpp
-sstream
--
-
-/home/robbepop/coding/c++/projects/cion/src/error/lexer_error.cpp
-error/lexer_error.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/error/lexer_error.hpp
-
-/home/robbepop/coding/c++/projects/cion/src/error/parser_error.cpp
-error/parser_error.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/error/parser_error.hpp
-sstream
--
+/home/robbepop/coding/c++/projects/cion/src/error/error_type.cpp
+error/error_type.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/error/error_type.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/error/source_location.cpp
 error/source_location.hpp
 /home/robbepop/coding/c++/projects/cion/src/error/error/source_location.hpp
+
+/home/robbepop/coding/c++/projects/cion/src/error/warning_type.cpp
+error/warning_type.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/error/warning_type.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/lexer/lexer.cpp
 lexer/lexer.hpp
 /home/robbepop/coding/c++/projects/cion/src/lexer/lexer/lexer.hpp
 token/token_fabric.hpp
 /home/robbepop/coding/c++/projects/cion/src/lexer/token/token_fabric.hpp
+error/cion_error_types.hpp
+/home/robbepop/coding/c++/projects/cion/src/lexer/error/cion_error_types.hpp
+error/lexer_exception.hpp
+/home/robbepop/coding/c++/projects/cion/src/lexer/error/lexer_exception.hpp
 exception
 -
 memory
@@ -229,6 +283,8 @@ token/cion_token_types.hpp
 /home/robbepop/coding/c++/projects/cion/src/token/cion_token_types.hpp
 error/cion_error_handler.hpp
 /home/robbepop/coding/c++/projects/cion/src/error/cion_error_handler.hpp
+parser/print_ast_pass.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/print_ast_pass.hpp
 iostream
 -
 fstream
@@ -247,8 +303,12 @@ parser/cion_parser.hpp
 /home/robbepop/coding/c++/projects/cion/src/parser/parser/cion_parser.hpp
 token/cion_token_types.hpp
 /home/robbepop/coding/c++/projects/cion/src/parser/token/cion_token_types.hpp
-error/parser_error.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/error/parser_error.hpp
+error/error_handler.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/error/error_handler.hpp
+error/lexer_exception.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/error/lexer_exception.hpp
+error/parser_exception.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/error/parser_exception.hpp
 ast/statement.hpp
 /home/robbepop/coding/c++/projects/cion/src/parser/ast/statement.hpp
 ast/primitive_type_bool.hpp
@@ -287,7 +347,19 @@ ast/index_expression.hpp
 /home/robbepop/coding/c++/projects/cion/src/parser/ast/index_expression.hpp
 ast/call_expression.hpp
 /home/robbepop/coding/c++/projects/cion/src/parser/ast/call_expression.hpp
+ast/nothing_expression.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/ast/nothing_expression.hpp
+ast/nothing_type.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/ast/nothing_type.hpp
 iostream
+-
+
+/home/robbepop/coding/c++/projects/cion/src/parser/print_ast_pass.cpp
+parser/print_ast_pass.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/parser/print_ast_pass.hpp
+algorithm
+-
+limits
 -
 
 /home/robbepop/coding/c++/projects/cion/src/token/bool_token.cpp

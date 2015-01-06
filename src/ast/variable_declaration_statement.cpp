@@ -26,5 +26,13 @@ namespace ast {
 		m_expr{std::move(expr)}
 	{}
 
+	void VariableDeclarationStatement::accept(MutatingCompilerPass & pass) {
+		pass.visit(*this);
+	}
+
+	void VariableDeclarationStatement::accept(CompilerPass & pass) const {
+		pass.visit(*this);
+	}
+
 } // namespace ast
 } // namespace cion

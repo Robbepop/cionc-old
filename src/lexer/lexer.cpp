@@ -1,5 +1,7 @@
 #include "lexer/lexer.hpp"
 #include "token/token_fabric.hpp"
+#include "error/cion_error_types.hpp"
+#include "error/lexer_exception.hpp"
 
 #include <exception>
 #include <memory>
@@ -140,12 +142,12 @@ namespace cion {
 	void Lexer::update_lc_numbers() {
 		//DEBUG_STDERR("update_lc_numbers: start\n");
 		if (m_cur_symbol == '\n') {
-			m_cur->get_source_location().set_line(
-				m_last->get_source_location().get_line() + 1);
-			m_cur->get_source_location().set_col(1);
+			m_cur->get_source_location().line() =
+				m_last->get_source_location().line() + 1;
+			m_cur->get_source_location().col() = 1;
 		} else {
-			m_cur->get_source_location().set_col(
-				m_last->get_source_location().get_col() + 1);
+			m_cur->get_source_location().col() =
+				m_last->get_source_location().col() + 1;
 		}
 		//DEBUG_STDERR("update_lc_numbers: end\n);
 	}
@@ -170,6 +172,8 @@ namespace cion {
 	//    - m_input will read in the last non-comsumed character
 	//    - all other buffers are empty
 	std::unique_ptr<Token> Lexer::next_token() {
+		auto const& errors = CionErrorTypes::get_instance();
+
 		// always return eof token if parser wants next_token while
 		// this input stream is known to be fully read already.
 		if (m_input.eof()) {
@@ -233,7 +237,7 @@ namespace cion {
 				}
 				if (count_last_greedy == 0 || count_last_non_greedy == 0) {
 					DEBUG_STDERR("throw error_token_read since no matching token was found. (1)\n");
-					return make_error_token(ErrorType::unknown_token_type);
+					return make_error_token(errors.unknown_token_type);
 					//return TokenFabric::make_token(
 					//	TokenType::error, m_cur->get_source_location());
 					//throw error_token_read(
@@ -241,8 +245,10 @@ namespace cion {
 				}
 				if (count_last_non_greedy >= 2) {
 					DEBUG_STDERR("throw ambigous_token_read since multiple same-priority matches were found. (1)\n");
-					throw ambiguous_token_read(
-						m_last->get_source_location(), "", m_buffer);
+					throw lexer_exception(
+						m_error_handler.file_name(),
+						m_last->get_source_location(),
+						m_buffer);
 				}
 			}
 		}
@@ -265,12 +271,14 @@ namespace cion {
 			}
 			if (count_greedy >= 2 || count_non_greedy >= 2) {
 				DEBUG_STDERR("throw ambigous_token_read since multiple same-priority matches were found. (2)\n");
-				throw ambiguous_token_read(
-					m_cur->get_source_location(), "", m_buffer);
+				throw lexer_exception(
+					m_error_handler.file_name(),
+					m_cur->get_source_location(),
+					m_buffer);
 			}
 			if (count_partial > 0) {
 				DEBUG_STDERR("throw error_token_read since no matching token was found. (2)\n");
-				return make_error_token(ErrorType::unknown_token_type);
+				return make_error_token(errors.unknown_token_type);
 				//return TokenFabric::make_token(
 				//	TokenType::error, m_cur->get_source_location());
 				//throw error_token_read(
@@ -282,7 +290,7 @@ namespace cion {
 		// since no constraint has fit to any buffer set-up above
 		// it is safe to assume that the read token was errornous.
 		DEBUG_STDERR("throw error_token_read since no matching token was found. (3)\n");
-		return make_error_token(ErrorType::unknown_token_type);
+		return make_error_token(errors.unknown_token_type);
 		//return TokenFabric::make_token(
 		//	TokenType::error, m_cur->get_source_location());
 		//throw error_token_read(

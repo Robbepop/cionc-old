@@ -1,5 +1,7 @@
 #include "ast/call_expression.hpp"
 
+#include <cassert>
+
 namespace cion {
 namespace ast {
 
@@ -16,6 +18,34 @@ namespace ast {
 	):
 		CallExpression{std::move(callee), nullptr}
 	{}
+
+	Expression & CallExpression::callee() {
+		assert(m_callee != nullptr);
+		return *m_callee;
+	}
+
+	Expression const& CallExpression::callee() const {
+		assert(m_callee != nullptr);
+		return *m_callee;
+	}
+
+	ExpressionList & CallExpression::arguments() {
+		assert(m_args != nullptr);
+		return *m_args;
+	}
+
+	ExpressionList const& CallExpression::arguments() const {
+		assert(m_args != nullptr);
+		return *m_args;
+	}
+
+	void CallExpression::accept(MutatingCompilerPass & pass) {
+		pass.visit(*this);
+	}
+
+	void CallExpression::accept(CompilerPass & pass) const {
+		pass.visit(*this);
+	}
 
 } // namespace ast
 } // namespace cion

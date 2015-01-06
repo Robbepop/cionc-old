@@ -6,6 +6,8 @@
 
 #include "error/cion_error_handler.hpp"
 
+#include "parser/print_ast_pass.hpp"
+
 #include <iostream>
 #include <fstream>
 #include <chrono>
@@ -52,17 +54,22 @@ int main() {
 
 	DEBUG_STDERR("Initializing parser ...\n");
 
-	auto parser = cion::CionParser(lexer_filter);
+	auto parser = cion::CionParser(lexer_filter, error_handler);
 
 	DEBUG_STDERR("\nParsing " << file_name << " ...\n");
 
 	auto start = std::chrono::steady_clock::now();
-	parser.parse();
+	auto root = parser.parse();
 	auto end = std::chrono::steady_clock::now();
 	auto diff = end - start;
 
 	const auto req_time = std::chrono::duration<double, std::milli>(diff).count();
 	DEBUG_STDERR("\ttime required = " << req_time << " ms\n");
+
+	DEBUG_STDERR("\nPrinting generated AST ...\n\n");
+
+	auto printer = cion::PrintASTPass{};
+	printer.visit(*root);
 
 	return 0;
 }

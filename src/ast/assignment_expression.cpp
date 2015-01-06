@@ -2,6 +2,7 @@
 
 #include "cion_token_types.hpp"
 
+#include <cassert>
 #include <stdexcept>
 #include <utility>
 
@@ -64,6 +65,42 @@ namespace ast {
 	):
 		AssignmentExpression{get_operator(tt), std::move(lhs), std::move(rhs)}
 	{}
+
+	AssignmentExpression::Operator & AssignmentExpression::op() {
+		return m_op;
+	}
+
+	Expression & AssignmentExpression::lhs() {
+		assert(m_lhs != nullptr);
+		return *m_lhs.get();
+	}
+
+	Expression & AssignmentExpression::rhs() {
+		assert(m_rhs != nullptr);
+		return *m_rhs.get();
+	}
+
+	AssignmentExpression::Operator const& AssignmentExpression::op() const {
+		return m_op;
+	}
+
+	Expression const& AssignmentExpression::lhs() const {
+		assert(m_lhs != nullptr);
+		return *m_lhs;
+	}
+
+	Expression const& AssignmentExpression::rhs() const {
+		assert(m_rhs != nullptr);
+		return *m_rhs.get();
+	}
+
+	void AssignmentExpression::accept(MutatingCompilerPass & pass) {
+		pass.visit(*this);
+	}
+
+	void AssignmentExpression::accept(CompilerPass & pass) const {
+		pass.visit(*this);
+	}
 
 } // namespace ast
 } // namespace cion

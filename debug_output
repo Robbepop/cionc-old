@@ -1,0 +1,12 @@
+CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o: In function `cion::ast::PrimitiveTypeBool::PrimitiveTypeBool()':
+/home/robbepop/coding/c++/projects/cion/include/ast/primitive_type_bool.hpp:11: undefined reference to `vtable for cion::ast::PrimitiveTypeBool'
+CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o: In function `cion::ast::PrimitiveTypeChar::PrimitiveTypeChar()':
+/home/robbepop/coding/c++/projects/cion/include/ast/primitive_type_char.hpp:11: undefined reference to `vtable for cion::ast::PrimitiveTypeChar'
+CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o: In function `cion::ast::BreakStatement::BreakStatement()':
+/home/robbepop/coding/c++/projects/cion/include/ast/break_statement.hpp:11: undefined reference to `vtable for cion::ast::BreakStatement'
+CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o: In function `cion::ast::ContinueStatement::ContinueStatement()':
+/home/robbepop/coding/c++/projects/cion/include/ast/continue_statement.hpp:11: undefined reference to `vtable for cion::ast::ContinueStatement'
+collect2: error: ld returned 1 exit status
+make[2]: *** [src/cion_compiler] Error 1
+make[1]: *** [src/CMakeFiles/cion_compiler.dir/all] Error 2
+make: *** [all] Error 2

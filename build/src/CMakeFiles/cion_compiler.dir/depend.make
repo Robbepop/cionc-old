@@ -7,6 +7,8 @@ src/CMakeFiles/cion_compiler.dir/ast/binary_expression.cpp.o: ../src/ast/binary_
 
 src/CMakeFiles/cion_compiler.dir/ast/boolean_literal.cpp.o: ../src/ast/boolean_literal.cpp
 
+src/CMakeFiles/cion_compiler.dir/ast/break_statement.cpp.o: ../src/ast/break_statement.cpp
+
 src/CMakeFiles/cion_compiler.dir/ast/call_expression.cpp.o: ../src/ast/call_expression.cpp
 
 src/CMakeFiles/cion_compiler.dir/ast/char_literal.cpp.o: ../src/ast/char_literal.cpp
@@ -16,6 +18,10 @@ src/CMakeFiles/cion_compiler.dir/ast/compilation_unit.cpp.o: ../src/ast/compilat
 src/CMakeFiles/cion_compiler.dir/ast/compound_statement.cpp.o: ../src/ast/compound_statement.cpp
 
 src/CMakeFiles/cion_compiler.dir/ast/conditional_expression.cpp.o: ../src/ast/conditional_expression.cpp
+
+src/CMakeFiles/cion_compiler.dir/ast/continue_statement.cpp.o: ../src/ast/continue_statement.cpp
+
+src/CMakeFiles/cion_compiler.dir/ast/empty_statement.cpp.o: ../src/ast/empty_statement.cpp
 
 src/CMakeFiles/cion_compiler.dir/ast/expression_list.cpp.o: ../src/ast/expression_list.cpp
 
@@ -35,7 +41,15 @@ src/CMakeFiles/cion_compiler.dir/ast/logical_parameter.cpp.o: ../src/ast/logical
 
 src/CMakeFiles/cion_compiler.dir/ast/logical_parameter_pack.cpp.o: ../src/ast/logical_parameter_pack.cpp
 
+src/CMakeFiles/cion_compiler.dir/ast/nothing_expression.cpp.o: ../src/ast/nothing_expression.cpp
+
+src/CMakeFiles/cion_compiler.dir/ast/nothing_type.cpp.o: ../src/ast/nothing_type.cpp
+
 src/CMakeFiles/cion_compiler.dir/ast/postfix_expression.cpp.o: ../src/ast/postfix_expression.cpp
+
+src/CMakeFiles/cion_compiler.dir/ast/primitive_type_bool.cpp.o: ../src/ast/primitive_type_bool.cpp
+
+src/CMakeFiles/cion_compiler.dir/ast/primitive_type_char.cpp.o: ../src/ast/primitive_type_char.cpp
 
 src/CMakeFiles/cion_compiler.dir/ast/primitive_type_float.cpp.o: ../src/ast/primitive_type_float.cpp
 
@@ -53,19 +67,23 @@ src/CMakeFiles/cion_compiler.dir/ast/variable_expression.cpp.o: ../src/ast/varia
 
 src/CMakeFiles/cion_compiler.dir/ast/while_statement.cpp.o: ../src/ast/while_statement.cpp
 
-src/CMakeFiles/cion_compiler.dir/error/ambiguous_token_read.cpp.o: ../src/error/ambiguous_token_read.cpp
-
 src/CMakeFiles/cion_compiler.dir/error/cion_error_handler.cpp.o: ../src/error/cion_error_handler.cpp
+
+src/CMakeFiles/cion_compiler.dir/error/cion_error_types.cpp.o: ../src/error/cion_error_types.cpp
+
+src/CMakeFiles/cion_compiler.dir/error/cion_exception.cpp.o: ../src/error/cion_exception.cpp
+
+src/CMakeFiles/cion_compiler.dir/error/cion_warning_types.cpp.o: ../src/error/cion_warning_types.cpp
+
+src/CMakeFiles/cion_compiler.dir/error/debug_info_type.cpp.o: ../src/error/debug_info_type.cpp
 
 src/CMakeFiles/cion_compiler.dir/error/error_handler.cpp.o: ../src/error/error_handler.cpp
 
-src/CMakeFiles/cion_compiler.dir/error/error_token_read.cpp.o: ../src/error/error_token_read.cpp
-
-src/CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.o: ../src/error/lexer_error.cpp
-
-src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.o: ../src/error/parser_error.cpp
+src/CMakeFiles/cion_compiler.dir/error/error_type.cpp.o: ../src/error/error_type.cpp
 
 src/CMakeFiles/cion_compiler.dir/error/source_location.cpp.o: ../src/error/source_location.cpp
+
+src/CMakeFiles/cion_compiler.dir/error/warning_type.cpp.o: ../src/error/warning_type.cpp
 
 src/CMakeFiles/cion_compiler.dir/lexer/lexer.cpp.o: ../src/lexer/lexer.cpp
 
@@ -74,6 +92,8 @@ src/CMakeFiles/cion_compiler.dir/lexer/lexer_filter.cpp.o: ../src/lexer/lexer_fi
 src/CMakeFiles/cion_compiler.dir/main.cpp.o: ../src/main.cpp
 
 src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o: ../src/parser/cion_parser.cpp
+
+src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o: ../src/parser/print_ast_pass.cpp
 
 src/CMakeFiles/cion_compiler.dir/token/bool_token.cpp.o: ../src/token/bool_token.cpp
 

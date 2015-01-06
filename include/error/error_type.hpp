@@ -1,15 +1,21 @@
-#ifndef CION_ERROR_TYPE_HEADER
-#define CION_ERROR_TYPE_HEADER
+#ifndef CION_ERROR_ERROR_TYPE_HEADER
+#define CION_ERROR_ERROR_TYPE_HEADER
 
-#include <cstdint>
+#include "debug_info_type.hpp"
+
+#include <string>
 
 namespace cion {
 
-	enum class ErrorType : uint8_t {
-		unknown_token_type,
-		expected_token_type_failure
+	class ErrorType final : public DebugInfoType {
+	public:
+		ErrorType(std::string const& name);
+
+		bool is_error() const override;
+		bool is_warning() const override;
+		bool is_activ() const override;
 	};
 
 } // namespace cion
 
-#endif // CION_ERROR_TYPE_HEADER
+#endif // CION_ERROR_ERROR_TYPE_HEADER

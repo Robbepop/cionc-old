@@ -11,3 +11,36 @@ ToDo list for Cion Compiler
 		2. check declared before defined
 		3. set types
 		4. check type matching
+
+DebugInfoType
+
+// Represents an ErrorType with a name, id and a bool indicating if
+// it should be printed or not.
+ErrorType : public DebugInfoType
+	uint32_t id      // to compare error types
+	std::string name // to output names
+	bool active      // to access availability (especially for warnings)
+
+// Represents a WarningType with a name, id and a bool indicating if
+// it should be printed or not.
+WarningType : public DebugInfoType
+	uint32_t id      // to compare warning types
+	std::string name // to output name
+	bool active      // to access availability
+
+// Error- and WarningType collection for the Cion programming language.
+// Contains all possible errors and warnings.
+// Control over the error output of the program for errors and warnings.
+// Control over what errors and warnings are to be output.
+CionErrorHandler // singleton managing different error- and warning types
+	error_member_{0,...n}   // different const error type members for direct access
+	warning_member_{0,...n} // different const warning type members for direct access
+
+// Represents an actual Error or Warning instance.
+DebugInfo
+
+// Represents an actual Error with an ErrorType, a TranslationUnit and a SourceLocation
+Error : DebugInfo
+
+// Represents an actual Warning with a WarningType, a TranslationUnit and a SourceLocation
+Warning : DebugInfo

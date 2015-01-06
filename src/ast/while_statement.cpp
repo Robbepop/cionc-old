@@ -13,5 +13,13 @@ namespace ast {
 		m_body{std::move(body)}
 	{}
 
+	void WhileStatement::accept(MutatingCompilerPass & pass) {
+		pass.visit(*this);
+	}
+
+	void WhileStatement::accept(CompilerPass & pass) const {
+		pass.visit(*this);
+	}
+
 } // namespace ast
 } // namespace cion

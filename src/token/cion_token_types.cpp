@@ -16,8 +16,6 @@
 #endif
 
 namespace cion {
-	const CionTokenTypes CionTokenTypes::c_instance = {};
-
 	TokenType CionTokenTypes::init_tt(
 		TokenType token_type,
 		bool skipped
@@ -30,6 +28,7 @@ namespace cion {
 	}
 
 	CionTokenTypes const& CionTokenTypes::get_instance() {
+		static const CionTokenTypes c_instance;
 		return c_instance;
 	}
 

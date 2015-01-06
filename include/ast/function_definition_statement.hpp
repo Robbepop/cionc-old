@@ -16,14 +16,27 @@ namespace ast {
 		FunctionDefinitionStatement(
 			std::string const& name,
 			std::unique_ptr<LogicalParameterPack> args,
-			//std::vector<std::unique_ptr<LogicalParameter>> args,
 			std::unique_ptr<TypeSpecifier> return_type,
 			std::unique_ptr<CompoundStatement> body);
+
+		std::string & name();
+		std::string const& name() const;
+
+		LogicalParameterPack & args();
+		LogicalParameterPack const& args() const;
+
+		TypeSpecifier & specified_type();
+		TypeSpecifier const& specified_type() const;
+
+		CompoundStatement & body();
+		CompoundStatement const& body() const;
+
+		virtual void accept(MutatingCompilerPass & pass) override;
+		virtual void accept(CompilerPass & pass) const override;
 
 	private:
 		std::string m_name;
 		std::unique_ptr<LogicalParameterPack> m_args;
-		//std::vector<std::unique_ptr<LogicalParameter>> m_args;
 		std::unique_ptr<TypeSpecifier> m_return_type;
 		std::unique_ptr<CompoundStatement> m_body;
 	};

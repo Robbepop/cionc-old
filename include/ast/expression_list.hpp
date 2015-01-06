@@ -14,6 +14,12 @@ namespace ast {
 		ExpressionList();
 		ExpressionList(std::vector<std::unique_ptr<Expression>> expressions);
 
+		std::vector<std::unique_ptr<Expression>> & expressions();
+		std::vector<std::unique_ptr<Expression>> const& expressions() const;
+
+		virtual void accept(MutatingCompilerPass & pass) override;
+		virtual void accept(CompilerPass & pass) const override;
+
 	private:
 		std::vector<std::unique_ptr<Expression>> m_expressions;
 	};

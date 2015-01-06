@@ -14,6 +14,9 @@ namespace ast {
 	public:
 		StatementList(std::vector<std::unique_ptr<Statement>> statements);
 
+		virtual void accept(MutatingCompilerPass & pass) override;
+		virtual void accept(CompilerPass & pass) const override;
+
 	private:
 		std::vector<std::unique_ptr<Statement>> m_statements;
 	};

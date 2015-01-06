@@ -13,5 +13,13 @@ namespace ast {
 		m_type_specifier{std::move(type_specifier)}
 	{}
 
+	void LogicalParameter::accept(MutatingCompilerPass & pass) {
+		pass.visit(*this);
+	}
+
+	void LogicalParameter::accept(CompilerPass & pass) const {
+		pass.visit(*this);
+	}
+
 } // namespace ast
 } // namespace cion

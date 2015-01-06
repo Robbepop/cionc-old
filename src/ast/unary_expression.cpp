@@ -52,5 +52,13 @@ namespace ast {
 		UnaryExpression{get_operator(tt), std::move(expr)}
 	{}
 
+	void UnaryExpression::accept(MutatingCompilerPass & pass) {
+		pass.visit(*this);
+	}
+
+	void UnaryExpression::accept(CompilerPass & pass) const {
+		pass.visit(*this);
+	}
+
 } // namespace ast
 } // namespace cion

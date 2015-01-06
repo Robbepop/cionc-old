@@ -84,7 +84,7 @@ namespace cion {
 		std::unique_ptr<ast::CompilationUnit>              parse_compilation_unit();
 
 	public:
-		explicit CionParser(TokenStream & token_stream);
+		explicit CionParser(TokenStream & token_stream, ErrorHandler const& error_handler);
 
 		std::unique_ptr<ast::CompilationUnit> parse();
 
@@ -95,6 +95,7 @@ namespace cion {
 		std::queue<std::unique_ptr<Token>> m_peeked_tokens;
 
 		CionTokenTypes const& ctts;
+		ErrorHandler const& m_error_handler;
 	};
 }
 

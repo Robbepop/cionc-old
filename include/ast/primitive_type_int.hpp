@@ -20,6 +20,9 @@ namespace ast {
 
 		PrimitiveTypeInt(bool is_signed = true, Width bit_width = Width::unspecified);
 
+		virtual void accept(MutatingCompilerPass & pass) override;
+		virtual void accept(CompilerPass & pass) const override;
+
 	private:
 		bool m_signed;
 		Width m_width;

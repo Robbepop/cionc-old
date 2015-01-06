@@ -9,6 +9,9 @@ namespace ast {
 	class ContinueStatement : public Statement {
 	public:
 		ContinueStatement() = default;
+
+		virtual void accept(MutatingCompilerPass & pass) override;
+		virtual void accept(CompilerPass & pass) const override;
 	};
 
 } // namespace ast

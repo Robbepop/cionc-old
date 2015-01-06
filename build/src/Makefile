@@ -188,6 +188,30 @@ ast/boolean_literal.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/boolean_literal.cpp.s
 .PHONY : ast/boolean_literal.cpp.s
 
+ast/break_statement.o: ast/break_statement.cpp.o
+.PHONY : ast/break_statement.o
+
+# target to build an object file
+ast/break_statement.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/break_statement.cpp.o
+.PHONY : ast/break_statement.cpp.o
+
+ast/break_statement.i: ast/break_statement.cpp.i
+.PHONY : ast/break_statement.i
+
+# target to preprocess a source file
+ast/break_statement.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/break_statement.cpp.i
+.PHONY : ast/break_statement.cpp.i
+
+ast/break_statement.s: ast/break_statement.cpp.s
+.PHONY : ast/break_statement.s
+
+# target to generate assembly for a file
+ast/break_statement.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/break_statement.cpp.s
+.PHONY : ast/break_statement.cpp.s
+
 ast/call_expression.o: ast/call_expression.cpp.o
 .PHONY : ast/call_expression.o
 
@@ -307,6 +331,54 @@ ast/conditional_expression.s: ast/conditional_expression.cpp.s
 ast/conditional_expression.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/conditional_expression.cpp.s
 .PHONY : ast/conditional_expression.cpp.s
+
+ast/continue_statement.o: ast/continue_statement.cpp.o
+.PHONY : ast/continue_statement.o
+
+# target to build an object file
+ast/continue_statement.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/continue_statement.cpp.o
+.PHONY : ast/continue_statement.cpp.o
+
+ast/continue_statement.i: ast/continue_statement.cpp.i
+.PHONY : ast/continue_statement.i
+
+# target to preprocess a source file
+ast/continue_statement.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/continue_statement.cpp.i
+.PHONY : ast/continue_statement.cpp.i
+
+ast/continue_statement.s: ast/continue_statement.cpp.s
+.PHONY : ast/continue_statement.s
+
+# target to generate assembly for a file
+ast/continue_statement.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/continue_statement.cpp.s
+.PHONY : ast/continue_statement.cpp.s
+
+ast/empty_statement.o: ast/empty_statement.cpp.o
+.PHONY : ast/empty_statement.o
+
+# target to build an object file
+ast/empty_statement.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/empty_statement.cpp.o
+.PHONY : ast/empty_statement.cpp.o
+
+ast/empty_statement.i: ast/empty_statement.cpp.i
+.PHONY : ast/empty_statement.i
+
+# target to preprocess a source file
+ast/empty_statement.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/empty_statement.cpp.i
+.PHONY : ast/empty_statement.cpp.i
+
+ast/empty_statement.s: ast/empty_statement.cpp.s
+.PHONY : ast/empty_statement.s
+
+# target to generate assembly for a file
+ast/empty_statement.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/empty_statement.cpp.s
+.PHONY : ast/empty_statement.cpp.s
 
 ast/expression_list.o: ast/expression_list.cpp.o
 .PHONY : ast/expression_list.o
@@ -524,6 +596,54 @@ ast/logical_parameter_pack.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/logical_parameter_pack.cpp.s
 .PHONY : ast/logical_parameter_pack.cpp.s
 
+ast/nothing_expression.o: ast/nothing_expression.cpp.o
+.PHONY : ast/nothing_expression.o
+
+# target to build an object file
+ast/nothing_expression.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/nothing_expression.cpp.o
+.PHONY : ast/nothing_expression.cpp.o
+
+ast/nothing_expression.i: ast/nothing_expression.cpp.i
+.PHONY : ast/nothing_expression.i
+
+# target to preprocess a source file
+ast/nothing_expression.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/nothing_expression.cpp.i
+.PHONY : ast/nothing_expression.cpp.i
+
+ast/nothing_expression.s: ast/nothing_expression.cpp.s
+.PHONY : ast/nothing_expression.s
+
+# target to generate assembly for a file
+ast/nothing_expression.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/nothing_expression.cpp.s
+.PHONY : ast/nothing_expression.cpp.s
+
+ast/nothing_type.o: ast/nothing_type.cpp.o
+.PHONY : ast/nothing_type.o
+
+# target to build an object file
+ast/nothing_type.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/nothing_type.cpp.o
+.PHONY : ast/nothing_type.cpp.o
+
+ast/nothing_type.i: ast/nothing_type.cpp.i
+.PHONY : ast/nothing_type.i
+
+# target to preprocess a source file
+ast/nothing_type.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/nothing_type.cpp.i
+.PHONY : ast/nothing_type.cpp.i
+
+ast/nothing_type.s: ast/nothing_type.cpp.s
+.PHONY : ast/nothing_type.s
+
+# target to generate assembly for a file
+ast/nothing_type.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/nothing_type.cpp.s
+.PHONY : ast/nothing_type.cpp.s
+
 ast/postfix_expression.o: ast/postfix_expression.cpp.o
 .PHONY : ast/postfix_expression.o
 
@@ -547,6 +667,54 @@ ast/postfix_expression.s: ast/postfix_expression.cpp.s
 ast/postfix_expression.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/postfix_expression.cpp.s
 .PHONY : ast/postfix_expression.cpp.s
+
+ast/primitive_type_bool.o: ast/primitive_type_bool.cpp.o
+.PHONY : ast/primitive_type_bool.o
+
+# target to build an object file
+ast/primitive_type_bool.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_bool.cpp.o
+.PHONY : ast/primitive_type_bool.cpp.o
+
+ast/primitive_type_bool.i: ast/primitive_type_bool.cpp.i
+.PHONY : ast/primitive_type_bool.i
+
+# target to preprocess a source file
+ast/primitive_type_bool.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_bool.cpp.i
+.PHONY : ast/primitive_type_bool.cpp.i
+
+ast/primitive_type_bool.s: ast/primitive_type_bool.cpp.s
+.PHONY : ast/primitive_type_bool.s
+
+# target to generate assembly for a file
+ast/primitive_type_bool.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_bool.cpp.s
+.PHONY : ast/primitive_type_bool.cpp.s
+
+ast/primitive_type_char.o: ast/primitive_type_char.cpp.o
+.PHONY : ast/primitive_type_char.o
+
+# target to build an object file
+ast/primitive_type_char.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_char.cpp.o
+.PHONY : ast/primitive_type_char.cpp.o
+
+ast/primitive_type_char.i: ast/primitive_type_char.cpp.i
+.PHONY : ast/primitive_type_char.i
+
+# target to preprocess a source file
+ast/primitive_type_char.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_char.cpp.i
+.PHONY : ast/primitive_type_char.cpp.i
+
+ast/primitive_type_char.s: ast/primitive_type_char.cpp.s
+.PHONY : ast/primitive_type_char.s
+
+# target to generate assembly for a file
+ast/primitive_type_char.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_char.cpp.s
+.PHONY : ast/primitive_type_char.cpp.s
 
 ast/primitive_type_float.o: ast/primitive_type_float.cpp.o
 .PHONY : ast/primitive_type_float.o
@@ -740,30 +908,6 @@ ast/while_statement.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/while_statement.cpp.s
 .PHONY : ast/while_statement.cpp.s
 
-error/ambiguous_token_read.o: error/ambiguous_token_read.cpp.o
-.PHONY : error/ambiguous_token_read.o
-
-# target to build an object file
-error/ambiguous_token_read.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/ambiguous_token_read.cpp.o
-.PHONY : error/ambiguous_token_read.cpp.o
-
-error/ambiguous_token_read.i: error/ambiguous_token_read.cpp.i
-.PHONY : error/ambiguous_token_read.i
-
-# target to preprocess a source file
-error/ambiguous_token_read.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/ambiguous_token_read.cpp.i
-.PHONY : error/ambiguous_token_read.cpp.i
-
-error/ambiguous_token_read.s: error/ambiguous_token_read.cpp.s
-.PHONY : error/ambiguous_token_read.s
-
-# target to generate assembly for a file
-error/ambiguous_token_read.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/ambiguous_token_read.cpp.s
-.PHONY : error/ambiguous_token_read.cpp.s
-
 error/cion_error_handler.o: error/cion_error_handler.cpp.o
 .PHONY : error/cion_error_handler.o
 
@@ -787,6 +931,102 @@ error/cion_error_handler.s: error/cion_error_handler.cpp.s
 error/cion_error_handler.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_error_handler.cpp.s
 .PHONY : error/cion_error_handler.cpp.s
+
+error/cion_error_types.o: error/cion_error_types.cpp.o
+.PHONY : error/cion_error_types.o
+
+# target to build an object file
+error/cion_error_types.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_error_types.cpp.o
+.PHONY : error/cion_error_types.cpp.o
+
+error/cion_error_types.i: error/cion_error_types.cpp.i
+.PHONY : error/cion_error_types.i
+
+# target to preprocess a source file
+error/cion_error_types.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_error_types.cpp.i
+.PHONY : error/cion_error_types.cpp.i
+
+error/cion_error_types.s: error/cion_error_types.cpp.s
+.PHONY : error/cion_error_types.s
+
+# target to generate assembly for a file
+error/cion_error_types.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_error_types.cpp.s
+.PHONY : error/cion_error_types.cpp.s
+
+error/cion_exception.o: error/cion_exception.cpp.o
+.PHONY : error/cion_exception.o
+
+# target to build an object file
+error/cion_exception.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_exception.cpp.o
+.PHONY : error/cion_exception.cpp.o
+
+error/cion_exception.i: error/cion_exception.cpp.i
+.PHONY : error/cion_exception.i
+
+# target to preprocess a source file
+error/cion_exception.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_exception.cpp.i
+.PHONY : error/cion_exception.cpp.i
+
+error/cion_exception.s: error/cion_exception.cpp.s
+.PHONY : error/cion_exception.s
+
+# target to generate assembly for a file
+error/cion_exception.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_exception.cpp.s
+.PHONY : error/cion_exception.cpp.s
+
+error/cion_warning_types.o: error/cion_warning_types.cpp.o
+.PHONY : error/cion_warning_types.o
+
+# target to build an object file
+error/cion_warning_types.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_warning_types.cpp.o
+.PHONY : error/cion_warning_types.cpp.o
+
+error/cion_warning_types.i: error/cion_warning_types.cpp.i
+.PHONY : error/cion_warning_types.i
+
+# target to preprocess a source file
+error/cion_warning_types.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_warning_types.cpp.i
+.PHONY : error/cion_warning_types.cpp.i
+
+error/cion_warning_types.s: error/cion_warning_types.cpp.s
+.PHONY : error/cion_warning_types.s
+
+# target to generate assembly for a file
+error/cion_warning_types.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_warning_types.cpp.s
+.PHONY : error/cion_warning_types.cpp.s
+
+error/debug_info_type.o: error/debug_info_type.cpp.o
+.PHONY : error/debug_info_type.o
+
+# target to build an object file
+error/debug_info_type.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/debug_info_type.cpp.o
+.PHONY : error/debug_info_type.cpp.o
+
+error/debug_info_type.i: error/debug_info_type.cpp.i
+.PHONY : error/debug_info_type.i
+
+# target to preprocess a source file
+error/debug_info_type.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/debug_info_type.cpp.i
+.PHONY : error/debug_info_type.cpp.i
+
+error/debug_info_type.s: error/debug_info_type.cpp.s
+.PHONY : error/debug_info_type.s
+
+# target to generate assembly for a file
+error/debug_info_type.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/debug_info_type.cpp.s
+.PHONY : error/debug_info_type.cpp.s
 
 error/error_handler.o: error/error_handler.cpp.o
 .PHONY : error/error_handler.o
@@ -812,77 +1052,29 @@ error/error_handler.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/error_handler.cpp.s
 .PHONY : error/error_handler.cpp.s
 
-error/error_token_read.o: error/error_token_read.cpp.o
-.PHONY : error/error_token_read.o
+error/error_type.o: error/error_type.cpp.o
+.PHONY : error/error_type.o
 
 # target to build an object file
-error/error_token_read.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/error_token_read.cpp.o
-.PHONY : error/error_token_read.cpp.o
+error/error_type.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/error_type.cpp.o
+.PHONY : error/error_type.cpp.o
 
-error/error_token_read.i: error/error_token_read.cpp.i
-.PHONY : error/error_token_read.i
-
-# target to preprocess a source file
-error/error_token_read.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/error_token_read.cpp.i
-.PHONY : error/error_token_read.cpp.i
-
-error/error_token_read.s: error/error_token_read.cpp.s
-.PHONY : error/error_token_read.s
-
-# target to generate assembly for a file
-error/error_token_read.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/error_token_read.cpp.s
-.PHONY : error/error_token_read.cpp.s
-
-error/lexer_error.o: error/lexer_error.cpp.o
-.PHONY : error/lexer_error.o
-
-# target to build an object file
-error/lexer_error.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.o
-.PHONY : error/lexer_error.cpp.o
-
-error/lexer_error.i: error/lexer_error.cpp.i
-.PHONY : error/lexer_error.i
+error/error_type.i: error/error_type.cpp.i
+.PHONY : error/error_type.i
 
 # target to preprocess a source file
-error/lexer_error.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.i
-.PHONY : error/lexer_error.cpp.i
+error/error_type.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/error_type.cpp.i
+.PHONY : error/error_type.cpp.i
 
-error/lexer_error.s: error/lexer_error.cpp.s
-.PHONY : error/lexer_error.s
-
-# target to generate assembly for a file
-error/lexer_error.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.s
-.PHONY : error/lexer_error.cpp.s
-
-error/parser_error.o: error/parser_error.cpp.o
-.PHONY : error/parser_error.o
-
-# target to build an object file
-error/parser_error.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.o
-.PHONY : error/parser_error.cpp.o
-
-error/parser_error.i: error/parser_error.cpp.i
-.PHONY : error/parser_error.i
-
-# target to preprocess a source file
-error/parser_error.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.i
-.PHONY : error/parser_error.cpp.i
-
-error/parser_error.s: error/parser_error.cpp.s
-.PHONY : error/parser_error.s
+error/error_type.s: error/error_type.cpp.s
+.PHONY : error/error_type.s
 
 # target to generate assembly for a file
-error/parser_error.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.s
-.PHONY : error/parser_error.cpp.s
+error/error_type.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/error_type.cpp.s
+.PHONY : error/error_type.cpp.s
 
 error/source_location.o: error/source_location.cpp.o
 .PHONY : error/source_location.o
@@ -907,6 +1099,30 @@ error/source_location.s: error/source_location.cpp.s
 error/source_location.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/source_location.cpp.s
 .PHONY : error/source_location.cpp.s
+
+error/warning_type.o: error/warning_type.cpp.o
+.PHONY : error/warning_type.o
+
+# target to build an object file
+error/warning_type.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/warning_type.cpp.o
+.PHONY : error/warning_type.cpp.o
+
+error/warning_type.i: error/warning_type.cpp.i
+.PHONY : error/warning_type.i
+
+# target to preprocess a source file
+error/warning_type.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/warning_type.cpp.i
+.PHONY : error/warning_type.cpp.i
+
+error/warning_type.s: error/warning_type.cpp.s
+.PHONY : error/warning_type.s
+
+# target to generate assembly for a file
+error/warning_type.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/warning_type.cpp.s
+.PHONY : error/warning_type.cpp.s
 
 lexer/lexer.o: lexer/lexer.cpp.o
 .PHONY : lexer/lexer.o
@@ -1003,6 +1219,30 @@ parser/cion_parser.s: parser/cion_parser.cpp.s
 parser/cion_parser.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.s
 .PHONY : parser/cion_parser.cpp.s
+
+parser/print_ast_pass.o: parser/print_ast_pass.cpp.o
+.PHONY : parser/print_ast_pass.o
+
+# target to build an object file
+parser/print_ast_pass.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o
+.PHONY : parser/print_ast_pass.cpp.o
+
+parser/print_ast_pass.i: parser/print_ast_pass.cpp.i
+.PHONY : parser/print_ast_pass.i
+
+# target to preprocess a source file
+parser/print_ast_pass.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.i
+.PHONY : parser/print_ast_pass.cpp.i
+
+parser/print_ast_pass.s: parser/print_ast_pass.cpp.s
+.PHONY : parser/print_ast_pass.s
+
+# target to generate assembly for a file
+parser/print_ast_pass.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.s
+.PHONY : parser/print_ast_pass.cpp.s
 
 token/bool_token.o: token/bool_token.cpp.o
 .PHONY : token/bool_token.o
@@ -1238,6 +1478,9 @@ help:
 	@echo "... ast/boolean_literal.o"
 	@echo "... ast/boolean_literal.i"
 	@echo "... ast/boolean_literal.s"
+	@echo "... ast/break_statement.o"
+	@echo "... ast/break_statement.i"
+	@echo "... ast/break_statement.s"
 	@echo "... ast/call_expression.o"
 	@echo "... ast/call_expression.i"
 	@echo "... ast/call_expression.s"
@@ -1253,6 +1496,12 @@ help:
 	@echo "... ast/conditional_expression.o"
 	@echo "... ast/conditional_expression.i"
 	@echo "... ast/conditional_expression.s"
+	@echo "... ast/continue_statement.o"
+	@echo "... ast/continue_statement.i"
+	@echo "... ast/continue_statement.s"
+	@echo "... ast/empty_statement.o"
+	@echo "... ast/empty_statement.i"
+	@echo "... ast/empty_statement.s"
 	@echo "... ast/expression_list.o"
 	@echo "... ast/expression_list.i"
 	@echo "... ast/expression_list.s"
@@ -1280,9 +1529,21 @@ help:
 	@echo "... ast/logical_parameter_pack.o"
 	@echo "... ast/logical_parameter_pack.i"
 	@echo "... ast/logical_parameter_pack.s"
+	@echo "... ast/nothing_expression.o"
+	@echo "... ast/nothing_expression.i"
+	@echo "... ast/nothing_expression.s"
+	@echo "... ast/nothing_type.o"
+	@echo "... ast/nothing_type.i"
+	@echo "... ast/nothing_type.s"
 	@echo "... ast/postfix_expression.o"
 	@echo "... ast/postfix_expression.i"
 	@echo "... ast/postfix_expression.s"
+	@echo "... ast/primitive_type_bool.o"
+	@echo "... ast/primitive_type_bool.i"
+	@echo "... ast/primitive_type_bool.s"
+	@echo "... ast/primitive_type_char.o"
+	@echo "... ast/primitive_type_char.i"
+	@echo "... ast/primitive_type_char.s"
 	@echo "... ast/primitive_type_float.o"
 	@echo "... ast/primitive_type_float.i"
 	@echo "... ast/primitive_type_float.s"
@@ -1307,27 +1568,33 @@ help:
 	@echo "... ast/while_statement.o"
 	@echo "... ast/while_statement.i"
 	@echo "... ast/while_statement.s"
-	@echo "... error/ambiguous_token_read.o"
-	@echo "... error/ambiguous_token_read.i"
-	@echo "... error/ambiguous_token_read.s"
 	@echo "... error/cion_error_handler.o"
 	@echo "... error/cion_error_handler.i"
 	@echo "... error/cion_error_handler.s"
+	@echo "... error/cion_error_types.o"
+	@echo "... error/cion_error_types.i"
+	@echo "... error/cion_error_types.s"
+	@echo "... error/cion_exception.o"
+	@echo "... error/cion_exception.i"
+	@echo "... error/cion_exception.s"
+	@echo "... error/cion_warning_types.o"
+	@echo "... error/cion_warning_types.i"
+	@echo "... error/cion_warning_types.s"
+	@echo "... error/debug_info_type.o"
+	@echo "... error/debug_info_type.i"
+	@echo "... error/debug_info_type.s"
 	@echo "... error/error_handler.o"
 	@echo "... error/error_handler.i"
 	@echo "... error/error_handler.s"
-	@echo "... error/error_token_read.o"
-	@echo "... error/error_token_read.i"
-	@echo "... error/error_token_read.s"
-	@echo "... error/lexer_error.o"
-	@echo "... error/lexer_error.i"
-	@echo "... error/lexer_error.s"
-	@echo "... error/parser_error.o"
-	@echo "... error/parser_error.i"
-	@echo "... error/parser_error.s"
+	@echo "... error/error_type.o"
+	@echo "... error/error_type.i"
+	@echo "... error/error_type.s"
 	@echo "... error/source_location.o"
 	@echo "... error/source_location.i"
 	@echo "... error/source_location.s"
+	@echo "... error/warning_type.o"
+	@echo "... error/warning_type.i"
+	@echo "... error/warning_type.s"
 	@echo "... lexer/lexer.o"
 	@echo "... lexer/lexer.i"
 	@echo "... lexer/lexer.s"
@@ -1340,6 +1607,9 @@ help:
 	@echo "... parser/cion_parser.o"
 	@echo "... parser/cion_parser.i"
 	@echo "... parser/cion_parser.s"
+	@echo "... parser/print_ast_pass.o"
+	@echo "... parser/print_ast_pass.i"
+	@echo "... parser/print_ast_pass.s"
 	@echo "... token/bool_token.o"
 	@echo "... token/bool_token.i"
 	@echo "... token/bool_token.s"

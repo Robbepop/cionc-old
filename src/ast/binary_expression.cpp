@@ -79,5 +79,41 @@ namespace ast {
 		BinaryExpression{get_operator(tt), std::move(lhs), std::move(rhs)}
 	{}
 
+	BinaryExpression::Operator & BinaryExpression::op() {
+		return m_op;
+	}
+
+	Expression & BinaryExpression::lhs() {
+		assert(m_lhs != nullptr);
+		return *m_lhs.get();
+	}
+
+	Expression & BinaryExpression::rhs() {
+		assert(m_rhs != nullptr);
+		return *m_rhs.get();
+	}
+
+	BinaryExpression::Operator const& BinaryExpression::op() const {
+		return m_op;
+	}
+
+	Expression const& BinaryExpression::lhs() const {
+		assert(m_lhs != nullptr);
+		return *m_lhs;
+	}
+
+	Expression const& BinaryExpression::rhs() const {
+		assert(m_rhs != nullptr);
+		return *m_rhs.get();
+	}
+
+	void BinaryExpression::accept(MutatingCompilerPass & pass) {
+		pass.visit(*this);
+	}
+
+	void BinaryExpression::accept(CompilerPass & pass) const {
+		pass.visit(*this);
+	}
+
 } // namespace ast
 } // namespace cion

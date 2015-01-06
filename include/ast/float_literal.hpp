@@ -10,6 +10,13 @@ namespace ast {
 		using storage_type = double;
 
 		FloatLiteral(storage_type value);
+
+		storage_type & value();
+		storage_type const& value() const;
+
+		virtual void accept(MutatingCompilerPass & pass) override;
+		virtual void accept(CompilerPass & pass) const override;
+
 	private:
 		storage_type m_value;
 	};

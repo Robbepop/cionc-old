@@ -1,7 +1,9 @@
 #include "parser/cion_parser.hpp"
 
 #include "token/cion_token_types.hpp"
-#include "error/parser_error.hpp"
+#include "error/error_handler.hpp"
+#include "error/lexer_exception.hpp"
+#include "error/parser_exception.hpp"
 
 #include "ast/statement.hpp"
 #include "ast/primitive_type_bool.hpp"
@@ -22,6 +24,8 @@
 #include "ast/postfix_expression.hpp"
 #include "ast/index_expression.hpp"
 #include "ast/call_expression.hpp"
+#include "ast/nothing_expression.hpp"
+#include "ast/nothing_type.hpp"
 
 //#define DEBUG
 #ifdef DEBUG
@@ -40,9 +44,13 @@ namespace cion {
 //// Constructor
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	CionParser::CionParser(TokenStream & token_stream) :
+	CionParser::CionParser(
+		TokenStream & token_stream,
+		ErrorHandler const& error_handler
+	) :
 		m_token_stream{token_stream},
-		ctts{CionTokenTypes::get_instance()}
+		ctts{CionTokenTypes::get_instance()},
+		m_error_handler{error_handler}
 	{}
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -75,7 +83,10 @@ namespace cion {
 
 	Token const& CionParser::expect(TokenType const& token_type) {
 		if (current_token().get_type() != token_type) {
-			throw parser_error(current_token(), "", "expected token type: " + token_type.get_name() + "\n");
+			throw parser_exception(
+				m_error_handler.file_name(),
+				current_token().get_source_location(),
+				"expected token type: " + token_type.get_name() + "\n");
 		}
 		next_token(); // consume token with the expected type
 		return previous_token();
@@ -454,7 +465,10 @@ namespace cion {
 			return std::make_unique<ast::VariableExpression>(name);
 		}
 
-		throw parser_error(current_token(), "", "no matching expression was found.\n");
+		throw parser_exception(
+			m_error_handler.file_name(),
+			current_token().get_source_location(),
+			"no matching expression was found.\n");
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -470,8 +484,11 @@ namespace cion {
 			: tt == ctts.type_int16 || tt == ctts.type_uint16 ? ptiw::two_bytes
 			: tt == ctts.type_int32 || tt == ctts.type_uint32 ? ptiw::four_bytes
 			: tt == ctts.type_int64 || tt == ctts.type_uint64 ? ptiw::eight_bytes
-			: throw parser_error(current_token(), "", "invalid bit width of int type");
-		const auto is_signed = 
+			: throw parser_exception(
+				m_error_handler.file_name(),
+				current_token().get_source_location(),
+				"invalid bit width specifier of int type\n");
+		const auto is_signed =
 			   tt == ctts.type_int
 			|| tt == ctts.type_int8
 			|| tt == ctts.type_int16
@@ -489,7 +506,10 @@ namespace cion {
 			: tt == ctts.type_float16 ? ptiw::two_bytes
 			: tt == ctts.type_float32 ? ptiw::four_bytes
 			: tt == ctts.type_float64 ? ptiw::eight_bytes
-			: throw parser_error(current_token(), "", "invalid bit width of float type");
+			: throw parser_exception(
+				m_error_handler.file_name(),
+				current_token().get_source_location(),
+				"invalid bit width specifier of float type\n");
 		next_token(); // consume this float type token
 		return std::make_unique<ast::PrimitiveTypeFloat>(bit_width);
 	}
@@ -524,7 +544,10 @@ namespace cion {
 			return parse_primitive_type_float();
 		}
 
-		throw parser_error(current_token(), "", "no matching type specifier was found.\n");
+		throw parser_exception(
+			m_error_handler.file_name(),
+			current_token().get_source_location(),
+			"no matching type specifier was found.\n");
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -542,12 +565,12 @@ namespace cion {
 		if (optional(ctts.op_colon)) {
 			type = parse_type_specifier();
 
-			if (current_token().get_type() != ctts.op_equals) {
-				throw parser_error(current_token(), "", "expected equals operator\n");
+			if (optional(ctts.op_equals)) {
+				expr = parse_expression();
 			}
-		}
 
-		if (optional(ctts.op_equals)) {
+		} else {
+			expect(ctts.op_equals);
 			expr = parse_expression();
 		}
 
@@ -618,7 +641,7 @@ namespace cion {
 
 		auto return_type = (return_type_required)
 			? parse_type_specifier()
-			: nullptr;
+			: std::unique_ptr<ast::TypeSpecifier>{std::make_unique<ast::NothingType>()};
 
 		auto function_body = parse_compound_statement();
 
@@ -644,7 +667,10 @@ namespace cion {
 			return parse_function_definition();
 		}
 
-		throw parser_error(current_token(), "", "expected top-level statement\n");
+		throw parser_exception(
+			m_error_handler.file_name(),
+			current_token().get_source_location(),
+			"expected top-level statement\n");
 	}
 
 	std::unique_ptr<ast::CompilationUnit> CionParser::parse_compilation_unit() {
@@ -696,7 +722,7 @@ namespace cion {
 		expect(ctts.cmd_return);
 		auto return_expr = current_token().get_type() != ctts.op_semi_colon
 			? parse_expression()
-			: nullptr;
+			: std::unique_ptr<ast::Expression>{std::make_unique<ast::NothingExpression>()};
 		expect(ctts.op_semi_colon);
 		return std::make_unique<ast::ReturnStatement>(std::move(return_expr));
 	}
@@ -743,13 +769,11 @@ namespace cion {
 		try {
 			next_token();
 			return parse_compilation_unit();
-		} catch (parser_error const& e) {
-			std::cerr << e.what() << "\n";
-		} catch (error_token_read const& e) {
-			std::cerr << e.what() << "\n";
-		} catch (ambiguous_token_read const& e) {
-			std::cerr << e.what() << "\n";
+		} catch (lexer_exception const& e) {
+			std::cerr << "lexer exception thrown: " << e.message() << "\n";
+		} catch (parser_exception const& e) {
+			std::cerr << "parser exception thrown in " << e.message() << "\n";
 		}
-		return std::unique_ptr<ast::CompilationUnit>{nullptr};
+		std::exit(EXIT_FAILURE);
 	}
 }

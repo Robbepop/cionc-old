@@ -9,18 +9,18 @@ namespace cion {
 	class CionTokenTypes final {
 	private:
 		CionTokenTypes();
+		CionTokenTypes(CionTokenTypes const&) = delete;
+		CionTokenTypes(CionTokenTypes &&) = delete;
+
+		CionTokenTypes & operator=(CionTokenTypes const&) = delete;
+		CionTokenTypes & operator=(CionTokenTypes &&) = delete;
 
 		TokenType init_tt(TokenType token_type, bool skipped = false);
 
 		std::vector<TokenType> m_all_token_types;
 		std::vector<TokenType> m_skipped_token_types;
 
-		static const CionTokenTypes c_instance;
-
 	public:
-		CionTokenTypes(CionTokenTypes const&) = delete;
-		CionTokenTypes(CionTokenTypes &&) = delete;
-
 		static CionTokenTypes const& get_instance();
 
 		std::vector<TokenType> const& get_all() const;

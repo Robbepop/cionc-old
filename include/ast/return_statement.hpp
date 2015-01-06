@@ -14,6 +14,9 @@ namespace ast {
 		ReturnStatement(std::unique_ptr<Expression> expr);
 		ReturnStatement();
 
+		virtual void accept(MutatingCompilerPass & pass) override;
+		virtual void accept(CompilerPass & pass) const override;
+
 	private:
 		std::unique_ptr<Expression> m_expr;
 	};

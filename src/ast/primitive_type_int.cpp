@@ -11,5 +11,13 @@ namespace ast {
 		m_width{bit_width}
 	{}
 
+	void PrimitiveTypeInt::accept(MutatingCompilerPass & pass) {
+		pass.visit(*this);
+	}
+
+	void PrimitiveTypeInt::accept(CompilerPass & pass) const {
+		pass.visit(*this);
+	}
+
 } // namespace ast
 } // namespace cion

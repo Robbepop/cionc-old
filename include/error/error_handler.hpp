@@ -11,9 +11,9 @@ namespace cion {
 
 	class ErrorHandler {
 	public:
-		ErrorHandler(std::string const& translation_unit);
+		ErrorHandler(std::string const& file_name);
 
-		std::string get_translation_unit() const;
+		std::string const& file_name() const;
 
 		virtual void error(
 			ErrorType const& type,
@@ -26,7 +26,7 @@ namespace cion {
 			std::string const& message = "") const = 0;
 
 	private:
-		std::string m_translation_unit;
+		std::string m_file_name;
 	};
 
 } // namespace cion

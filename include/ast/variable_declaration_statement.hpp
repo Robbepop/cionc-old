@@ -21,6 +21,9 @@ namespace ast {
 			std::unique_ptr<TypeSpecifier> type_specifier,
 			std::unique_ptr<Expression> expr);
 
+		virtual void accept(MutatingCompilerPass & pass) override;
+		virtual void accept(CompilerPass & pass) const override;
+
 	private:
 		std::string m_name;
 		std::unique_ptr<TypeSpecifier> m_type_specifier;

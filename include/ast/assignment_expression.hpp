@@ -39,6 +39,18 @@ namespace ast {
 			std::unique_ptr<Expression> lhs,
 			std::unique_ptr<Expression> rhs);
 
+		Operator & op();
+		Operator const& op() const;
+
+		Expression & lhs();
+		Expression const& lhs() const;
+
+		Expression & rhs();
+		Expression const& rhs() const;
+
+		virtual void accept(MutatingCompilerPass & pass) override;
+		virtual void accept(CompilerPass & pass) const override;
+
 	private:
 		Operator m_op;
 		std::unique_ptr<Expression> m_lhs;

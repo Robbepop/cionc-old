@@ -9,6 +9,9 @@ namespace ast {
 	class PrimitiveTypeBool : public TypeSpecifier {
 	public:
 		PrimitiveTypeBool() = default;
+
+		virtual void accept(MutatingCompilerPass & pass) override;
+		virtual void accept(CompilerPass & pass) const override;
 	};
 
 } // namespace ast

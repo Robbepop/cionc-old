@@ -6,6 +6,9 @@
 namespace cion {
 namespace ast {
 	class Statement : public Node {
+	public:
+		virtual void accept(MutatingCompilerPass & pass) = 0;
+		virtual void accept(CompilerPass & pass) const = 0;
 	};
 } // namespace ast
 } // namespace cion

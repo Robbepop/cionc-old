@@ -9,6 +9,9 @@ namespace ast {
 	class BreakStatement : public Statement {
 	public:
 		BreakStatement() = default;
+
+		virtual void accept(MutatingCompilerPass & pass) override;
+		virtual void accept(CompilerPass & pass) const override;
 	};
 
 } // namespace ast

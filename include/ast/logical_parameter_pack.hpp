@@ -14,6 +14,9 @@ namespace ast {
 	public:
 		LogicalParameterPack(std::vector<std::unique_ptr<LogicalParameter>> args);
 
+		virtual void accept(MutatingCompilerPass & pass) override;
+		virtual void accept(CompilerPass & pass) const override;
+
 	private:
 		std::vector<std::unique_ptr<LogicalParameter>> m_args;
 	};

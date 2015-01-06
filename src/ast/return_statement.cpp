@@ -15,5 +15,13 @@ namespace ast {
 		ReturnStatement{nullptr}
 	{}
 
+	void ReturnStatement::accept(MutatingCompilerPass & pass) {
+		pass.visit(*this);
+	}
+
+	void ReturnStatement::accept(CompilerPass & pass) const {
+		pass.visit(*this);
+	}
+
 } // namespace ast
 } // namespace cion

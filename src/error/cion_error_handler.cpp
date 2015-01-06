@@ -6,9 +6,9 @@
 namespace cion {
 
 	CionErrorHandler::CionErrorHandler(
-		std::string const& translation_unit
+		std::string const& file_name
 	):
-		ErrorHandler{translation_unit}
+		ErrorHandler{file_name}
 	{}
 
 	void CionErrorHandler::error(
@@ -19,8 +19,8 @@ namespace cion {
 		std::ignore = type;
 		std::cerr
 			<< "error in "
-			<< get_translation_unit()
-			<< ':' << loc.get_line() << ':' << loc.get_col() << ": "
+			<< file_name()
+			<< ':' << loc.line() << ':' << loc.col() << ": "
 			<< message << "\n";
 	}
 
@@ -32,8 +32,8 @@ namespace cion {
 		std::ignore = type;
 		std::cerr
 			<< "warning in "
-			<< get_translation_unit()
-			<< ':' << loc.get_line() << ':' << loc.get_col() << ": "
+			<< file_name()
+			<< ':' << loc.line() << ':' << loc.col() << ": "
 			<< message << "\n";
 	}
 

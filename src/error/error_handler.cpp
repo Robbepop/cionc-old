@@ -3,13 +3,13 @@
 namespace cion {
 
 	ErrorHandler::ErrorHandler(
-		std::string const& translation_unit
+		std::string const& file_name
 	):
-		m_translation_unit{translation_unit}
+		m_file_name{file_name}
 	{}
 
-	std::string ErrorHandler::get_translation_unit() const {
-		return m_translation_unit;
+	std::string const& ErrorHandler::file_name() const {
+		return m_file_name;
 	}
 
 } // namespace cion

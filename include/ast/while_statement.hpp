@@ -16,6 +16,9 @@ namespace ast {
 			std::unique_ptr<Expression> condition,
 			std::unique_ptr<CompoundStatement> body);
 
+		virtual void accept(MutatingCompilerPass & pass) override;
+		virtual void accept(CompilerPass & pass) const override;
+
 	private:
 		std::unique_ptr<Expression> m_condition;
 		std::unique_ptr<CompoundStatement> m_body;

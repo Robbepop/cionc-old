@@ -7,29 +7,20 @@ namespace cion {
 		m_col{col}
 	{}
 
-	SourceLocation::loc_type SourceLocation::set_line(
-		SourceLocation::loc_type new_value)
-	{
-		return m_line = new_value;
-	}
-
-	SourceLocation::loc_type SourceLocation::set_col(
-		SourceLocation::loc_type new_value
-	) {
-		return m_col = new_value;
-	}
-
-	SourceLocation::loc_type SourceLocation::get_line() const {
+	SourceLocation::loc_type const& SourceLocation::line() const {
 		return m_line;
 	}
 
-	SourceLocation::loc_type SourceLocation::get_col() const {
+	SourceLocation::loc_type const& SourceLocation::col() const {
 		return m_col;
 	}
 
-	std::pair<SourceLocation::loc_type, SourceLocation::loc_type>
-	SourceLocation::get_loc() const {
-		return std::make_pair(get_line(), get_col());
+	SourceLocation::loc_type & SourceLocation::line() {
+		return m_line;
+	}
+
+	SourceLocation::loc_type & SourceLocation::col() {
+		return m_col;
 	}
 
 } // namespace cion

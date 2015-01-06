@@ -3,11 +3,8 @@
 
 #include "token/token.hpp"
 #include "lexer/token_stream.hpp"
-#include "error/error_token_read.hpp"
-#include "error/ambiguous_token_read.hpp"
 #include "error/error_handler.hpp"
 #include "error/source_location.hpp"
-#include "error/error_type.hpp"
 
 #include <boost/regex.hpp>
 

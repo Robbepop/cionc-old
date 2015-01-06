@@ -14,8 +14,20 @@ namespace ast {
 	public:
 		IfStatement(
 			std::unique_ptr<Expression> condition,
-			std::unique_ptr<CompoundStatement> then_stmnt,
+			std::unique_ptr<Statement> then_stmnt,
 			std::unique_ptr<Statement> else_stmnt = nullptr);
+
+		Expression & condition();
+		Expression const& condition() const;
+
+		Statement & then_stmnt();
+		Statement const& then_stmnt() const;
+
+		Statement & else_stmnt();
+		Statement const& else_stmnt() const;
+
+		virtual void accept(MutatingCompilerPass & pass) override;
+		virtual void accept(CompilerPass & pass) const override;
 
 	private:
 		std::unique_ptr<Expression> m_condition;

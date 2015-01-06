@@ -11,6 +11,10 @@ namespace ast {
 	class VariableExpression : public Expression {
 	public:
 		VariableExpression(std::string const& name);
+
+		virtual void accept(MutatingCompilerPass & pass) override;
+		virtual void accept(CompilerPass & pass) const override;
+
 	private:
 		std::string m_name;
 	};

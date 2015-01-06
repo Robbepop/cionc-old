@@ -8,6 +8,9 @@ var my_global_string    = "Hello, World!";
 
 var my_global_custom_01 : uint = 5;
 var my_global_custom_02 : bool = 0 + 5 - 10; // error
+var my_auto_ref_01 = my_global_custom_01;
+var my_auto_ref_01 = my_global_custom_01;
+var my_auto_ptr_01 = my_global_custom_02;
 
 function min(lhs : int64, rhs : int64) -> int64 {
 	// some stuff

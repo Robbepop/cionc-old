@@ -13,6 +13,12 @@ namespace ast {
 	public:
 		ExpressionStatement(std::unique_ptr<Expression> expr);
 
+		Expression & expr();
+		Expression const& expr() const;
+
+		virtual void accept(MutatingCompilerPass & pass) override;
+		virtual void accept(CompilerPass & pass) const override;
+
 	private:
 		std::unique_ptr<Expression> m_expr;
 	};
