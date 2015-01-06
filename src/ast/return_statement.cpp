@@ -1,4 +1,5 @@
 #include "ast/return_statement.hpp"
+#include "ast/nothing_expression.hpp"
 
 #include <utility>
 #include <cassert>
@@ -13,7 +14,7 @@ namespace ast {
 	{}
 
 	ReturnStatement::ReturnStatement() :
-		ReturnStatement{nullptr}
+		ReturnStatement{std::unique_ptr<Expression>{std::make_unique<NothingExpression>()}}
 	{}
 
 	Expression & ReturnStatement::expr() {

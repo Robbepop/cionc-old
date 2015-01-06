@@ -1,7 +1,9 @@
 #include "ast/if_statement.hpp"
+#include "ast/empty_statement.hpp"
 
 #include <utility>
 #include <cassert>
+#include <memory>
 
 namespace cion {
 namespace ast {
@@ -14,6 +16,14 @@ namespace ast {
 		m_condition{std::move(condition)},
 		m_then_stmnt{std::move(then_stmnt)},
 		m_else_stmnt{std::move(else_stmnt)}
+	{}
+
+	IfStatement::IfStatement(
+		std::unique_ptr<Expression> condition,
+		std::unique_ptr<Statement> then_stmnt
+	):
+		IfStatement{std::move(condition), std::move(then_stmnt),
+			std::unique_ptr<Statement>{std::make_unique<EmptyStatement>()}}
 	{}
 
 	Expression & IfStatement::condition() {

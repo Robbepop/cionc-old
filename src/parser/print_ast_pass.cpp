@@ -44,7 +44,7 @@ namespace cion {
 	}
 
 	std::string PrintASTPass::gen_line(std::string const& s) {
-		static const auto c_depth_figure = "--";
+		static const auto c_depth_figure = "----";
 		std::stringstream ss;
 		for (uint32_t i = 0; i < m_depth; ++i) {
 			ss << c_depth_figure;
@@ -90,6 +90,7 @@ namespace cion {
 
 	void PrintASTPass::visit(ast::BreakStatement const& break_statement) {
 		print_line("break statement");
+		std::ignore = break_statement;
 	}
 
 	void PrintASTPass::visit(ast::CallExpression const& call_expression) {
@@ -137,14 +138,17 @@ namespace cion {
 
 	void PrintASTPass::visit(ast::ContinueStatement const& continue_statement) {
 		print_line("continue statement");
+		std::ignore = continue_statement;
 	}
 
 	void PrintASTPass::visit(ast::EmptyStatement const& empty_statement) {
 		print_line("empty statement");
+		std::ignore = empty_statement;
 	}
 
 	void PrintASTPass::visit(ast::Expression const& expression) {
 		print_line("expression");
+		std::ignore = expression;
 	}
 
 	void PrintASTPass::visit(ast::ExpressionList const& expression_list) {
@@ -166,7 +170,7 @@ namespace cion {
 	}
 
 	void PrintASTPass::visit(ast::FloatLiteral const& float_literal) {
-		print_line("float literal: " + std::string{float_literal.value()});
+		print_line("float literal: " + std::to_string(float_literal.value()));
 	}
 
 	void PrintASTPass::visit(ast::FunctionDefinitionStatement const& function_definition_statement) {
@@ -199,7 +203,7 @@ namespace cion {
 	}
 
 	void PrintASTPass::visit(ast::IntegerLiteral const& integer_literal) {
-		print_line("integer literal: " + std::string{integer_literal.value()});
+		print_line("integer literal: " + std::to_string(integer_literal.value()));
 	}
 
 	void PrintASTPass::visit(ast::LogicalParameter const& logical_parameter) {
@@ -222,14 +226,17 @@ namespace cion {
 
 	void PrintASTPass::visit(ast::Node const& node) {
 		print_line("node");
+		std::ignore = node;
 	}
 
 	void PrintASTPass::visit(ast::NothingExpression const& nothing_expression) {
 		print_line("nothing expression");
+		std::ignore = nothing_expression;
 	}
 
 	void PrintASTPass::visit(ast::NothingType const& nothing_type) {
 		print_line("nothing type");
+		std::ignore = nothing_type;
 	}
 
 	void PrintASTPass::visit(ast::PostfixExpression const& postfix_expression) {
@@ -242,20 +249,24 @@ namespace cion {
 
 	void PrintASTPass::visit(ast::PrimitiveTypeBool const& primitive_type_bool) {
 		print_line("primitive type bool");
+		std::ignore = primitive_type_bool;
 	}
 
 	void PrintASTPass::visit(ast::PrimitiveTypeChar const& primitive_type_char) {
 		print_line("primitive type char");
+		std::ignore = primitive_type_char;
 	}
 
 	void PrintASTPass::visit(ast::PrimitiveTypeFloat const& primitive_type_float) {
 		print_line("primitive type float");
 		// TODO print float width
+		std::ignore = primitive_type_float;
 	}
 
 	void PrintASTPass::visit(ast::PrimitiveTypeInt const& primitive_type_int) {
 		print_line("primitive type int");
 		// TODO print int width and signed flag
+		std::ignore = primitive_type_int;
 	}
 
 	void PrintASTPass::visit(ast::ReturnStatement const& return_statement) {
@@ -268,34 +279,52 @@ namespace cion {
 
 	void PrintASTPass::visit(ast::Statement const& statement) {
 		print_line("statement");
+		std::ignore = statement;
 	}
 
 	void PrintASTPass::visit(ast::StatementList const& statement_list) {
 		print_line("statement list");
+		// TODO implement if required
+		std::ignore = statement_list;
 	}
 
 	void PrintASTPass::visit(ast::StringLiteral const& string_literal) {
-		print_line("string literal");
+		print_line("string literal: " + string_literal.value());
 	}
 
 	void PrintASTPass::visit(ast::TypeSpecifier const& type_specifier) {
 		print_line("type specifier");
+		std::ignore = type_specifier;
 	}
 
 	void PrintASTPass::visit(ast::UnaryExpression const& unary_expression) {
-		print_line("unary expression");
+		print_line("unary expression"); // TODO print operator
+		{
+			auto block = create_block();
+			unary_expression.expr().accept(*this);
+		}
 	}
 
 	void PrintASTPass::visit(ast::VariableDeclarationStatement const& variable_declaration_statement) {
-		print_line("variable declaration statement");
+		print_line("variable declaration statement: " + variable_declaration_statement.name());
+		{
+			auto block = create_block();
+			variable_declaration_statement.specified_type().accept(*this);
+			variable_declaration_statement.expr().accept(*this);
+		}
 	}
 
 	void PrintASTPass::visit(ast::VariableExpression const& variable_expression) {
-		print_line("variable expression");
+		print_line("variable expression: " + variable_expression.name());
 	}
 
 	void PrintASTPass::visit(ast::WhileStatement const& while_statement) {
 		print_line("while statement");
+		{
+			auto block = create_block();
+			while_statement.condition().accept(*this);
+			while_statement.body().accept(*this);
+		}
 	}
 
 } // namespace cion

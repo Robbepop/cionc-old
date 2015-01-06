@@ -15,7 +15,11 @@ namespace ast {
 		IfStatement(
 			std::unique_ptr<Expression> condition,
 			std::unique_ptr<Statement> then_stmnt,
-			std::unique_ptr<Statement> else_stmnt = nullptr);
+			std::unique_ptr<Statement> else_stmnt);
+
+		IfStatement(
+			std::unique_ptr<Expression> condition,
+			std::unique_ptr<Statement> then_stmnt);
 
 		Expression & condition();
 		Expression const& condition() const;

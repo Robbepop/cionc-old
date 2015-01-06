@@ -103,9 +103,13 @@ cassert
 /home/robbepop/coding/c++/projects/cion/src/ast/if_statement.cpp
 ast/if_statement.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/ast/if_statement.hpp
+ast/empty_statement.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/ast/empty_statement.hpp
 utility
 -
 cassert
+-
+memory
 -
 
 /home/robbepop/coding/c++/projects/cion/src/ast/index_expression.cpp
@@ -171,6 +175,8 @@ ast/primitive_type_int.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/return_statement.cpp
 ast/return_statement.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/ast/return_statement.hpp
+ast/nothing_expression.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/ast/nothing_expression.hpp
 utility
 -
 cassert

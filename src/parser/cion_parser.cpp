@@ -565,11 +565,13 @@ namespace cion {
 		if (optional(ctts.op_colon)) {
 			type = parse_type_specifier();
 
-			if (optional(ctts.op_equals)) {
-				expr = parse_expression();
-			}
+			expr = optional(ctts.op_equals)
+				? parse_expression()
+				: std::unique_ptr<ast::Expression>{std::make_unique<ast::NothingExpression>()};
 
 		} else {
+			type = std::unique_ptr<ast::TypeSpecifier>{
+				std::make_unique<ast::NothingType>()};
 			expect(ctts.op_equals);
 			expr = parse_expression();
 		}

@@ -16,7 +16,7 @@ namespace ast {
 	CallExpression::CallExpression(
 		std::unique_ptr<Expression> callee
 	):
-		CallExpression{std::move(callee), nullptr}
+		CallExpression{std::move(callee), std::make_unique<ExpressionList>()}
 	{}
 
 	Expression & CallExpression::callee() {
