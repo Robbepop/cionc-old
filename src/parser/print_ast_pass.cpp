@@ -49,7 +49,7 @@ namespace cion {
 		for (uint32_t i = 0; i < m_depth; ++i) {
 			ss << c_depth_figure;
 		}
-		ss << s;
+		ss << '|' << s;
 		return ss.str();
 	}
 

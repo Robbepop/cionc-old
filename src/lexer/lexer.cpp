@@ -155,6 +155,7 @@ namespace cion {
 	void Lexer::step_back() {
 		m_input.unget();
 		m_cur->get_source_location() = m_last->get_source_location();
+		m_buffer.pop_back();
 	}
 
 	std::unique_ptr<Token> Lexer::make_error_token(ErrorType type) {
