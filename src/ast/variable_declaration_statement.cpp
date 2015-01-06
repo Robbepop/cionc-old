@@ -1,6 +1,7 @@
 #include "ast/variable_declaration_statement.hpp"
 
 #include <utility>
+#include <cassert>
 
 #define DEBUG
 #ifdef DEBUG
@@ -25,6 +26,34 @@ namespace ast {
 		m_type_specifier{std::move(type_specifier)},
 		m_expr{std::move(expr)}
 	{}
+
+	std::string & VariableDeclarationStatement::name() {
+		return m_name;
+	}
+
+	std::string const& VariableDeclarationStatement::name() const {
+		return m_name;
+	}
+
+	TypeSpecifier & VariableDeclarationStatement::specified_type() {
+		assert(m_type_specifier != nullptr);
+		return *m_type_specifier;
+	}
+
+	TypeSpecifier const& VariableDeclarationStatement::specified_type() const {
+		assert(m_type_specifier != nullptr);
+		return *m_type_specifier;
+	}
+
+	Expression & VariableDeclarationStatement::expr() {
+		assert(m_expr != nullptr);
+		return *m_expr;
+	}
+
+	Expression const& VariableDeclarationStatement::expr() const {
+		assert(m_expr != nullptr);
+		return *m_expr;
+	}
 
 	void VariableDeclarationStatement::accept(MutatingCompilerPass & pass) {
 		pass.visit(*this);

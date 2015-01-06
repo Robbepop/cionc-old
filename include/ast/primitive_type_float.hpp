@@ -19,6 +19,9 @@ namespace ast {
 
 		PrimitiveTypeFloat(Width bit_width = Width::unspecified);
 
+		Width & width();
+		Width const& width() const;
+
 		virtual void accept(MutatingCompilerPass & pass) override;
 		virtual void accept(CompilerPass & pass) const override;
 

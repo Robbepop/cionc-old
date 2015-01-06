@@ -29,12 +29,12 @@ namespace ast {
 		return *m_callee;
 	}
 
-	ExpressionList & CallExpression::arguments() {
+	ExpressionList & CallExpression::args() {
 		assert(m_args != nullptr);
 		return *m_args;
 	}
 
-	ExpressionList const& CallExpression::arguments() const {
+	ExpressionList const& CallExpression::args() const {
 		assert(m_args != nullptr);
 		return *m_args;
 	}

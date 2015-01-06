@@ -26,22 +26,22 @@ namespace ast {
 		return *m_condition;
 	}
 
-	Expression & ConditionalExpression::then_expression() {
+	Expression & ConditionalExpression::then_expr() {
 		assert(m_then_expression != nullptr);
 		return *m_then_expression;
 	}
 
-	Expression const& ConditionalExpression::then_expression() const {
+	Expression const& ConditionalExpression::then_expr() const {
 		assert(m_then_expression != nullptr);
 		return *m_then_expression;
 	}
 
-	Expression & ConditionalExpression::else_expression() {
+	Expression & ConditionalExpression::else_expr() {
 		assert(m_else_expression != nullptr);
 		return *m_else_expression;
 	}
 
-	Expression const& ConditionalExpression::else_expression() const {
+	Expression const& ConditionalExpression::else_expr() const {
 		assert(m_else_expression != nullptr);
 		return *m_else_expression;
 	}

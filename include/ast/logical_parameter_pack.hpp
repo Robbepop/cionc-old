@@ -14,11 +14,14 @@ namespace ast {
 	public:
 		LogicalParameterPack(std::vector<std::unique_ptr<LogicalParameter>> args);
 
+		std::vector<std::unique_ptr<LogicalParameter>> & params();
+		std::vector<std::unique_ptr<LogicalParameter>> const& params() const;
+
 		virtual void accept(MutatingCompilerPass & pass) override;
 		virtual void accept(CompilerPass & pass) const override;
 
 	private:
-		std::vector<std::unique_ptr<LogicalParameter>> m_args;
+		std::vector<std::unique_ptr<LogicalParameter>> m_params;
 	};
 
 } // namespace ast

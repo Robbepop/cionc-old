@@ -11,6 +11,22 @@ namespace ast {
 		m_width{bit_width}
 	{}
 
+	bool & PrimitiveTypeInt::sig() {
+		return m_signed;
+	}
+
+	bool const& PrimitiveTypeInt::sig() const {
+		return m_signed;
+	}
+
+	PrimitiveTypeInt::Width & PrimitiveTypeInt::width() {
+		return m_width;
+	}
+
+	PrimitiveTypeInt::Width const& PrimitiveTypeInt::width() const {
+		return m_width;
+	}
+
 	void PrimitiveTypeInt::accept(MutatingCompilerPass & pass) {
 		pass.visit(*this);
 	}

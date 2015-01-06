@@ -4,6 +4,7 @@
 
 #include <stdexcept>
 #include <utility>
+#include <cassert>
 
 namespace cion {
 namespace ast {
@@ -51,6 +52,24 @@ namespace ast {
 	):
 		UnaryExpression{get_operator(tt), std::move(expr)}
 	{}
+
+	UnaryExpression::Operator & UnaryExpression::op() {
+		return m_op;
+	}
+
+	UnaryExpression::Operator const& UnaryExpression::op() const {
+		return m_op;
+	}
+
+	Expression & UnaryExpression::expr() {
+		assert(m_expr != nullptr);
+		return *m_expr;
+	}
+
+	Expression const& UnaryExpression::expr() const {
+		assert(m_expr != nullptr);
+		return *m_expr;
+	}
 
 	void UnaryExpression::accept(MutatingCompilerPass & pass) {
 		pass.visit(*this);

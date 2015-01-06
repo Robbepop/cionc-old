@@ -13,6 +13,12 @@ namespace ast {
 	public:
 		LogicalParameter(std::string const& name, std::unique_ptr<TypeSpecifier> type_specifier);
 
+		std::string & name();
+		std::string const& name() const;
+
+		TypeSpecifier & specified_type();
+		TypeSpecifier const& specified_type() const;
+
 		virtual void accept(MutatingCompilerPass & pass) override;
 		virtual void accept(CompilerPass & pass) const override;
 

@@ -28,6 +28,12 @@ namespace ast {
 			TokenType const& tt,
 			std::unique_ptr<Expression> expr);
 
+		Operator & op();
+		Operator const& op() const;
+
+		Expression & expr();
+		Expression const& expr() const;
+
 		virtual void accept(MutatingCompilerPass & pass) override;
 		virtual void accept(CompilerPass & pass) const override;
 

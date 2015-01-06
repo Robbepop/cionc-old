@@ -21,8 +21,8 @@ namespace ast {
 		Expression & callee();
 		Expression const& callee() const;
 
-		ExpressionList & arguments();
-		ExpressionList const& arguments() const;
+		ExpressionList & args();
+		ExpressionList const& args() const;
 
 		virtual void accept(MutatingCompilerPass & pass) override;
 		virtual void accept(CompilerPass & pass) const override;

@@ -7,6 +7,14 @@ namespace ast {
 		m_name{name}
 	{}
 
+	std::string & VariableExpression::name() {
+		return m_name;
+	}
+
+	std::string const& VariableExpression::name() const {
+		return m_name;
+	}
+
 	void VariableExpression::accept(MutatingCompilerPass & pass) {
 		pass.visit(*this);
 	}

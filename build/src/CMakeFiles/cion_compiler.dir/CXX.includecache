@@ -123,6 +123,8 @@ ast/logical_parameter.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/ast/logical_parameter.hpp
 utility
 -
+cassert
+-
 
 /home/robbepop/coding/c++/projects/cion/src/ast/logical_parameter_pack.cpp
 ast/logical_parameter_pack.hpp
@@ -147,6 +149,8 @@ stdexcept
 -
 utility
 -
+cassert
+-
 
 /home/robbepop/coding/c++/projects/cion/src/ast/primitive_type_bool.cpp
 ast/primitive_type_bool.hpp
@@ -169,6 +173,8 @@ ast/return_statement.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/ast/return_statement.hpp
 utility
 -
+cassert
+-
 
 /home/robbepop/coding/c++/projects/cion/src/ast/string_literal.cpp
 ast/string_literal.hpp
@@ -183,11 +189,15 @@ stdexcept
 -
 utility
 -
+cassert
+-
 
 /home/robbepop/coding/c++/projects/cion/src/ast/variable_declaration_statement.cpp
 ast/variable_declaration_statement.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/ast/variable_declaration_statement.hpp
 utility
+-
+cassert
 -
 iostream
 -
@@ -200,6 +210,8 @@ ast/variable_expression.hpp
 ast/while_statement.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/ast/while_statement.hpp
 utility
+-
+cassert
 -
 
 /home/robbepop/coding/c++/projects/cion/src/error/cion_error_handler.cpp

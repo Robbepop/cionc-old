@@ -1,6 +1,7 @@
 #include "ast/return_statement.hpp"
 
 #include <utility>
+#include <cassert>
 
 namespace cion {
 namespace ast {
@@ -14,6 +15,16 @@ namespace ast {
 	ReturnStatement::ReturnStatement() :
 		ReturnStatement{nullptr}
 	{}
+
+	Expression & ReturnStatement::expr() {
+		assert(m_expr != nullptr);
+		return *m_expr;
+	}
+
+	Expression const& ReturnStatement::expr() const {
+		assert(m_expr != nullptr);
+		return *m_expr;
+	}
 
 	void ReturnStatement::accept(MutatingCompilerPass & pass) {
 		pass.visit(*this);

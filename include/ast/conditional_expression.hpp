@@ -18,11 +18,11 @@ namespace ast {
 		Expression & condition();
 		Expression const& condition() const;
 
-		Expression & then_expression();
-		Expression const& then_expression() const;
+		Expression & then_expr();
+		Expression const& then_expr() const;
 
-		Expression & else_expression();
-		Expression const& else_expression() const;
+		Expression & else_expr();
+		Expression const& else_expr() const;
 
 		virtual void accept(MutatingCompilerPass & pass) override;
 		virtual void accept(CompilerPass & pass) const override;

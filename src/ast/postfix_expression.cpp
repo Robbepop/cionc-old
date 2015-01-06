@@ -4,6 +4,7 @@
 
 #include <stdexcept>
 #include <utility>
+#include <cassert>
 
 namespace cion {
 namespace ast {
@@ -43,6 +44,24 @@ namespace ast {
 	):
 		PostfixExpression{get_operator(tt), std::move(expr)}
 	{}
+
+	PostfixExpression::Operator & PostfixExpression::op() {
+		return m_op;
+	}
+
+	PostfixExpression::Operator const& PostfixExpression::op() const {
+		return m_op;
+	}
+
+	Expression & PostfixExpression::expr() {
+		assert(m_expr != nullptr);
+		return *m_expr;
+	}
+
+	Expression const& PostfixExpression::expr() const {
+		assert(m_expr != nullptr);
+		return *m_expr;
+	}
 
 	void PostfixExpression::accept(MutatingCompilerPass & pass) {
 		pass.visit(*this);

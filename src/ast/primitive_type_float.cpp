@@ -9,6 +9,14 @@ namespace ast {
 		m_width{bit_width}
 	{}
 
+	PrimitiveTypeFloat::Width & PrimitiveTypeFloat::width() {
+		return m_width;
+	}
+
+	PrimitiveTypeFloat::Width const& PrimitiveTypeFloat::width() const {
+		return m_width;
+	}
+
 	void PrimitiveTypeFloat::accept(MutatingCompilerPass & pass) {
 		pass.visit(*this);
 	}
