@@ -8,21 +8,21 @@ namespace cion {
 namespace ast {
 
 	ReturnStatement::ReturnStatement(
-		std::unique_ptr<Expression> expr
+		std::unique_ptr<Expr> expr
 	):
 		m_expr{std::move(expr)}
 	{}
 
 	ReturnStatement::ReturnStatement() :
-		ReturnStatement{std::unique_ptr<Expression>{std::make_unique<NothingExpression>()}}
+		ReturnStatement{std::unique_ptr<Expr>{std::make_unique<NothingExpression>()}}
 	{}
 
-	Expression & ReturnStatement::expr() {
+	Expr & ReturnStatement::expr() {
 		assert(m_expr != nullptr);
 		return *m_expr;
 	}
 
-	Expression const& ReturnStatement::expr() const {
+	Expr const& ReturnStatement::expr() const {
 		assert(m_expr != nullptr);
 		return *m_expr;
 	}

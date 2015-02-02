@@ -20,7 +20,7 @@ namespace ast {
 	VariableDeclarationStatement::VariableDeclarationStatement(
 		std::string const& name,
 		std::unique_ptr<TypeSpecifier> type_specifier,
-		std::unique_ptr<Expression> expr
+		std::unique_ptr<Expr> expr
 	):
 		m_name{name},
 		m_type_specifier{std::move(type_specifier)},
@@ -45,12 +45,12 @@ namespace ast {
 		return *m_type_specifier;
 	}
 
-	Expression & VariableDeclarationStatement::expr() {
+	Expr & VariableDeclarationStatement::expr() {
 		assert(m_expr != nullptr);
 		return *m_expr;
 	}
 
-	Expression const& VariableDeclarationStatement::expr() const {
+	Expr const& VariableDeclarationStatement::expr() const {
 		assert(m_expr != nullptr);
 		return *m_expr;
 	}

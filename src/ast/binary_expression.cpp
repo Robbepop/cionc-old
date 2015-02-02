@@ -63,8 +63,8 @@ namespace ast {
 
 	BinaryExpression::BinaryExpression(
 		BinaryExpression::Operator op,
-		std::unique_ptr<Expression> lhs,
-		std::unique_ptr<Expression> rhs
+		std::unique_ptr<Expr> lhs,
+		std::unique_ptr<Expr> rhs
 	):
 		m_op{op},
 		m_lhs{std::move(lhs)},
@@ -73,8 +73,8 @@ namespace ast {
 
 	BinaryExpression::BinaryExpression(
 		TokenType const& tt,
-		std::unique_ptr<Expression> lhs,
-		std::unique_ptr<Expression> rhs
+		std::unique_ptr<Expr> lhs,
+		std::unique_ptr<Expr> rhs
 	):
 		BinaryExpression{get_operator(tt), std::move(lhs), std::move(rhs)}
 	{}
@@ -83,12 +83,12 @@ namespace ast {
 		return m_op;
 	}
 
-	Expression & BinaryExpression::lhs() {
+	Expr & BinaryExpression::lhs() {
 		assert(m_lhs != nullptr);
 		return *m_lhs.get();
 	}
 
-	Expression & BinaryExpression::rhs() {
+	Expr & BinaryExpression::rhs() {
 		assert(m_rhs != nullptr);
 		return *m_rhs.get();
 	}
@@ -97,12 +97,12 @@ namespace ast {
 		return m_op;
 	}
 
-	Expression const& BinaryExpression::lhs() const {
+	Expr const& BinaryExpression::lhs() const {
 		assert(m_lhs != nullptr);
 		return *m_lhs;
 	}
 
-	Expression const& BinaryExpression::rhs() const {
+	Expr const& BinaryExpression::rhs() const {
 		assert(m_rhs != nullptr);
 		return *m_rhs.get();
 	}

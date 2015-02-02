@@ -3,7 +3,7 @@
 
 #include "ast/statement.hpp"
 #include "ast/compound_statement.hpp"
-#include "ast/expression.hpp"
+#include "ast/expr.hpp"
 
 #include <memory>
 
@@ -13,11 +13,11 @@ namespace ast {
 	class WhileStatement : public Statement {
 	public:
 		WhileStatement(
-			std::unique_ptr<Expression> condition,
+			std::unique_ptr<Expr> condition,
 			std::unique_ptr<CompoundStatement> body);
 
-		Expression & condition();
-		Expression const& condition() const;
+		Expr & condition();
+		Expr const& condition() const;
 
 		CompoundStatement & body();
 		CompoundStatement const& body() const;
@@ -26,7 +26,7 @@ namespace ast {
 		virtual void accept(CompilerPass & pass) const override;
 
 	private:
-		std::unique_ptr<Expression> m_condition;
+		std::unique_ptr<Expr> m_condition;
 		std::unique_ptr<CompoundStatement> m_body;
 	};
 

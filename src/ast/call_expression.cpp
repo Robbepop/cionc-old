@@ -6,7 +6,7 @@ namespace cion {
 namespace ast {
 
 	CallExpression::CallExpression(
-		std::unique_ptr<Expression> callee,
+		std::unique_ptr<Expr> callee,
 		std::unique_ptr<ExpressionList> args
 	):
 		m_callee{std::move(callee)},
@@ -14,17 +14,17 @@ namespace ast {
 	{}
 
 	CallExpression::CallExpression(
-		std::unique_ptr<Expression> callee
+		std::unique_ptr<Expr> callee
 	):
 		CallExpression{std::move(callee), std::make_unique<ExpressionList>()}
 	{}
 
-	Expression & CallExpression::callee() {
+	Expr & CallExpression::callee() {
 		assert(m_callee != nullptr);
 		return *m_callee;
 	}
 
-	Expression const& CallExpression::callee() const {
+	Expr const& CallExpression::callee() const {
 		assert(m_callee != nullptr);
 		return *m_callee;
 	}

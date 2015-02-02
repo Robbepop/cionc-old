@@ -1,294 +1,317 @@
-|compilation unit
-----|variable declaration statement: y_global_intege
---------|nothing type
---------|integer literal: 50
-----|variable declaration statement: y_global_fun_cal
---------|nothing type
---------|call expression
-------------|variable expression: a
-------------|expression list
-----------------|variable expression: o
-----------------|char literal: '
-----------------|integer literal: 50
-----------------|float literal: 0.123400
-----------------|boolean literal: false
-----------------|string literal: baz
-----|variable declaration statement: y_global_fun_call
---------|nothing type
---------|call expression
-------------|variable expression: a
-------------|expression list
-----|variable declaration statement: y_global_numbe
---------|nothing type
---------|float literal: 0.123400
-----|variable declaration statement: y_global_boolea
---------|nothing type
---------|boolean literal: false
-----|variable declaration statement: y_global_characte
---------|nothing type
---------|char literal: '
-----|variable declaration statement: y_global_strin
---------|nothing type
---------|string literal: Hello, World!
-----|variable declaration statement: y_global_custom_0
---------|primitive type int
---------|integer literal: 5
-----|variable declaration statement: y_global_custom_0
---------|primitive type bool
---------|binary expression
-------------|binary expression
-----------------|integer literal: 0
-----------------|integer literal: 5
-------------|integer literal: 10
-----|variable declaration statement: y_auto_ref_0
---------|nothing type
---------|variable expression: y_global_custom_0
-----|variable declaration statement: y_auto_ref_0
---------|nothing type
---------|variable expression: y_global_custom_0
-----|variable declaration statement: y_auto_ptr_0
---------|nothing type
---------|variable expression: y_global_custom_0
-----|function definition statement: i
---------|logical parameter pack
-------------|logical parameter: h
-----------------|primitive type int
-------------|logical parameter: h
-----------------|primitive type int
---------|primitive type int
---------|compound statement
-----|function definition statement: ai
---------|logical parameter pack
-------------|logical parameter: aram
-----------------|primitive type int
-------------|logical parameter: aram
-----------------|primitive type bool
---------|nothing type
---------|compound statement
-------------|expression statement
-----------------|call expression
---------------------|variable expression: rintl
---------------------|expression list
-------------------------|string literal: yolo
-------------|variable declaration statement: 
-----------------|nothing type
-----------------|integer literal: 500
-------------|expression statement
-----------------|postfix expression
---------------------|variable expression: 
-------------|expression statement
-----------------|assignment expression
---------------------|variable expression: 
---------------------|conditional expression
-------------------------|binary expression
-----------------------------|variable expression: o
-----------------------------|variable expression: a
-------------------------|integer literal: 1337
-------------------------|integer literal: 42
-------------|expression statement
-----------------|unary expression
---------------------|postfix expression
-------------------------|postfix expression
-----------------------------|postfix expression
---------------------------------|variable expression: 
-----|function definition statement: e
---------|logical parameter pack
-------------|logical parameter: ounte
-----------------|primitive type int
---------|primitive type int
---------|compound statement
-------------|return statement
-----------------|conditional expression
---------------------|binary expression
-------------------------|variable expression: ounte
-------------------------|integer literal: 100
---------------------|variable expression: ounte
---------------------|call expression
-------------------------|variable expression: e
-------------------------|expression list
-----------------------------|binary expression
---------------------------------|variable expression: ounte
---------------------------------|integer literal: 1
-----|function definition statement: i
---------|logical parameter pack
-------------|logical parameter: irs
-----------------|primitive type int
-------------|logical parameter: econ
-----------------|primitive type int
---------|primitive type int
---------|compound statement
-------------|return statement
-----------------|conditional expression
---------------------|binary expression
-------------------------|variable expression: irs
-------------------------|variable expression: econ
---------------------|variable expression: irs
---------------------|variable expression: econ
-----|variable declaration statement: y_global_calc_0
---------|nothing type
---------|binary expression
-------------|binary expression
-----------------|binary expression
---------------------|integer literal: 50
---------------------|binary expression
-------------------------|integer literal: 15
-------------------------|integer literal: 5
-----------------|binary expression
---------------------|binary expression
-------------------------|binary expression
-----------------------------|integer literal: 100
-----------------------------|variable expression: o
-------------------------|variable expression: a
---------------------|call expression
-------------------------|variable expression: o
-------------------------|expression list
-------------|index expression
-----------------|index expression
---------------------|variable expression: a
---------------------|expression list
-------------------------|variable expression: 
-----------------|expression list
---------------------|variable expression: 
---------------------|variable expression: 
---------------------|variable expression: 
-----|variable declaration statement: y_condition_0
---------|nothing type
---------|conditional expression
-------------|binary expression
-----------------|variable expression: 
-----------------|integer literal: 5
-------------|variable expression: a
-------------|binary expression
-----------------|variable expression: a
-----------------|integer literal: 1337
-----|variable declaration statement: aren_func_tes
---------|nothing type
---------|call expression
-------------|variable expression: o
-------------|expression list
-----------------|call expression
---------------------|variable expression: a
---------------------|expression list
-------------------------|call expression
-----------------------------|variable expression: a
-----------------------------|expression list
---------------------------------|call expression
-------------------------------------|variable expression: o
-------------------------------------|expression list
-----------------------------------------|call expression
---------------------------------------------|variable expression: a
---------------------------------------------|expression list
-----|function definition statement: ompound_block_tes
---------|logical parameter pack
---------|nothing type
---------|compound statement
-------------|compound statement
-----------------|compound statement
---------------------|expression statement
-------------------------|call expression
-----------------------------|variable expression: o_nothin
-----------------------------|expression list
-----|variable declaration statement: nary_tes
---------|nothing type
---------|unary expression
-------------|unary expression
-----------------|unary expression
---------------------|unary expression
-------------------------|integer literal: 5
-----|function definition statement: f_tes
---------|logical parameter pack
---------|nothing type
---------|compound statement
-------------|if statement
-----------------|variable expression: nly_if_branc
-----------------|compound statement
---------------------|expression statement
-------------------------|call expression
-----------------------------|variable expression: o_something_funn
-----------------------------|expression list
-----------------|empty statement
-------------|if statement
-----------------|call expression
---------------------|variable expression: o_default_else_branc
---------------------|expression list
-----------------|compound statement
---------------------|expression statement
-------------------------|call expression
-----------------------------|variable expression: o
-----------------------------|expression list
-----------------|if statement
---------------------|binary expression
-------------------------|variable expression: of
-------------------------|variable expression: a
---------------------|compound statement
-------------------------|expression statement
-----------------------------|call expression
---------------------------------|variable expression: 
---------------------------------|expression list
---------------------|empty statement
-------------|if statement
-----------------|binary expression
---------------------|call expression
-------------------------|variable expression: lablablu
-------------------------|expression list
---------------------|variable expression: oldrafuc
-----------------|compound statement
---------------------|return statement
-------------------------|string literal: hello
-----------------|if statement
---------------------|binary expression
-------------------------|variable expression: 
-------------------------|variable expression: ah
---------------------|compound statement
-------------------------|return statement
-----------------------------|string literal: , 
---------------------|if statement
-------------------------|binary expression
-----------------------------|variable expression: o
-----------------------------|variable expression: a
-------------------------|compound statement
-----------------------------|return statement
---------------------------------|string literal: world!
-------------------------|compound statement
-----------------------------|return statement
---------------------------------|string literal: \n
-----|function definition statement: losure_tes
---------|logical parameter pack
-------------|logical parameter: o
-----------------|primitive type int
-------------|logical parameter: 
-----------------|primitive type float
---------|nothing type
---------|compound statement
-------------|function definition statement: rivate_fun
-----------------|logical parameter pack
---------------------|logical parameter: y_arg
-------------------------|primitive type int
---------------------|logical parameter: y_other_arg
-------------------------|primitive type float
-----------------|primitive type int
-----------------|compound statement
---------------------|return statement
-------------------------|binary expression
-----------------------------|variable expression: y_arg
-----------------------------|variable expression: y_other_arg
-------------|return statement
-----------------|call expression
---------------------|variable expression: rivate_fun
---------------------|expression list
-------------------------|variable expression: o
-------------------------|variable expression: 
-----|function definition statement: hile_loop_tes
---------|logical parameter pack
---------|nothing type
---------|compound statement
-------------|while statement
-----------------|call expression
---------------------|variable expression: y_condition_fun
---------------------|expression list
-------------------------|variable expression: o
-----------------|compound statement
---------------------|expression statement
-------------------------|call expression
-----------------------------|variable expression: o_something_within_this_while_loo
-----------------------------|expression list
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp: In member function ‘std::unique_ptr<cion::ast::ExpressionList> cion::CionParser::parse_expression_list()’:
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:117:43: error: no matching function for call to ‘std::vector<std::unique_ptr<cion::ast::Expr> >::push_back(std::unique_ptr<cion::ast::Expression>)’
+   expressions.push_back(parse_expression());
+                                           ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:117:43: note: candidates are:
+In file included from /usr/include/c++/4.9.2/vector:64:0,
+                 from /usr/include/c++/4.9.2/bits/random.h:34,
+                 from /usr/include/c++/4.9.2/random:49,
+                 from /usr/include/c++/4.9.2/bits/stl_algo.h:66,
+                 from /usr/include/c++/4.9.2/algorithm:62,
+                 from /usr/include/boost/regex/v4/regex_workaround.hpp:33,
+                 from /usr/include/boost/regex/v4/regex.hpp:32,
+                 from /usr/include/boost/regex.hpp:31,
+                 from /home/robbepop/coding/c++/projects/cion/include/token/token_type.hpp:11,
+                 from /home/robbepop/coding/c++/projects/cion/include/token/token.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/lexer/lexer.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:
+/usr/include/c++/4.9.2/bits/stl_vector.h:913:7: note: void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = std::unique_ptr<cion::ast::Expr>; _Alloc = std::allocator<std::unique_ptr<cion::ast::Expr> >; std::vector<_Tp, _Alloc>::value_type = std::unique_ptr<cion::ast::Expr>]
+       push_back(const value_type& __x)
+       ^
+/usr/include/c++/4.9.2/bits/stl_vector.h:913:7: note:   no known conversion for argument 1 from ‘std::unique_ptr<cion::ast::Expression>’ to ‘const value_type& {aka const std::unique_ptr<cion::ast::Expr>&}’
+/usr/include/c++/4.9.2/bits/stl_vector.h:931:7: note: void std::vector<_Tp, _Alloc>::push_back(std::vector<_Tp, _Alloc>::value_type&&) [with _Tp = std::unique_ptr<cion::ast::Expr>; _Alloc = std::allocator<std::unique_ptr<cion::ast::Expr> >; std::vector<_Tp, _Alloc>::value_type = std::unique_ptr<cion::ast::Expr>]
+       push_back(value_type&& __x)
+       ^
+/usr/include/c++/4.9.2/bits/stl_vector.h:931:7: note:   no known conversion for argument 1 from ‘std::unique_ptr<cion::ast::Expression>’ to ‘std::vector<std::unique_ptr<cion::ast::Expr> >::value_type&& {aka std::unique_ptr<cion::ast::Expr>&&}’
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:120:44: error: no matching function for call to ‘std::vector<std::unique_ptr<cion::ast::Expr> >::push_back(std::unique_ptr<cion::ast::Expression>)’
+    expressions.push_back(parse_expression());
+                                            ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:120:44: note: candidates are:
+In file included from /usr/include/c++/4.9.2/vector:64:0,
+                 from /usr/include/c++/4.9.2/bits/random.h:34,
+                 from /usr/include/c++/4.9.2/random:49,
+                 from /usr/include/c++/4.9.2/bits/stl_algo.h:66,
+                 from /usr/include/c++/4.9.2/algorithm:62,
+                 from /usr/include/boost/regex/v4/regex_workaround.hpp:33,
+                 from /usr/include/boost/regex/v4/regex.hpp:32,
+                 from /usr/include/boost/regex.hpp:31,
+                 from /home/robbepop/coding/c++/projects/cion/include/token/token_type.hpp:11,
+                 from /home/robbepop/coding/c++/projects/cion/include/token/token.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/lexer/lexer.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:
+/usr/include/c++/4.9.2/bits/stl_vector.h:913:7: note: void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = std::unique_ptr<cion::ast::Expr>; _Alloc = std::allocator<std::unique_ptr<cion::ast::Expr> >; std::vector<_Tp, _Alloc>::value_type = std::unique_ptr<cion::ast::Expr>]
+       push_back(const value_type& __x)
+       ^
+/usr/include/c++/4.9.2/bits/stl_vector.h:913:7: note:   no known conversion for argument 1 from ‘std::unique_ptr<cion::ast::Expression>’ to ‘const value_type& {aka const std::unique_ptr<cion::ast::Expr>&}’
+/usr/include/c++/4.9.2/bits/stl_vector.h:931:7: note: void std::vector<_Tp, _Alloc>::push_back(std::vector<_Tp, _Alloc>::value_type&&) [with _Tp = std::unique_ptr<cion::ast::Expr>; _Alloc = std::allocator<std::unique_ptr<cion::ast::Expr> >; std::vector<_Tp, _Alloc>::value_type = std::unique_ptr<cion::ast::Expr>]
+       push_back(value_type&& __x)
+       ^
+/usr/include/c++/4.9.2/bits/stl_vector.h:931:7: note:   no known conversion for argument 1 from ‘std::unique_ptr<cion::ast::Expression>’ to ‘std::vector<std::unique_ptr<cion::ast::Expr> >::value_type&& {aka std::unique_ptr<cion::ast::Expr>&&}’
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp: At global scope:
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:126:29: error: prototype for ‘std::unique_ptr<cion::ast::Expr> cion::CionParser::parse_expression()’ does not match any in class ‘cion::CionParser’
+  std::unique_ptr<ast::Expr> CionParser::parse_expression() {
+                             ^
+In file included from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:0:
+/home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:42:54: error: candidate is: std::unique_ptr<cion::ast::Expression> cion::CionParser::parse_expression()
+   std::unique_ptr<ast::Expression>                   parse_expression();
+                                                      ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:130:29: error: prototype for ‘std::unique_ptr<cion::ast::Expr> cion::CionParser::parse_assignment_expression()’ does not match any in class ‘cion::CionParser’
+  std::unique_ptr<ast::Expr> CionParser::parse_assignment_expression() {
+                             ^
+In file included from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:0:
+/home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:44:54: error: candidate is: std::unique_ptr<cion::ast::Expression> cion::CionParser::parse_assignment_expression()
+   std::unique_ptr<ast::Expression>                   parse_assignment_expression();
+                                                      ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:147:29: error: prototype for ‘std::unique_ptr<cion::ast::Expr> cion::CionParser::parse_conditional_expression()’ does not match any in class ‘cion::CionParser’
+  std::unique_ptr<ast::Expr> CionParser::parse_conditional_expression() {
+                             ^
+In file included from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:0:
+/home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:45:54: error: candidate is: std::unique_ptr<cion::ast::Expression> cion::CionParser::parse_conditional_expression()
+   std::unique_ptr<ast::Expression>                   parse_conditional_expression();
+                                                      ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:165:29: error: prototype for ‘std::unique_ptr<cion::ast::Expr> cion::CionParser::parse_logical_or_expression()’ does not match any in class ‘cion::CionParser’
+  std::unique_ptr<ast::Expr> CionParser::parse_logical_or_expression() {
+                             ^
+In file included from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:0:
+/home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:46:54: error: candidate is: std::unique_ptr<cion::ast::Expression> cion::CionParser::parse_logical_or_expression()
+   std::unique_ptr<ast::Expression>                   parse_logical_or_expression();
+                                                      ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:180:29: error: prototype for ‘std::unique_ptr<cion::ast::Expr> cion::CionParser::parse_logical_and_expression()’ does not match any in class ‘cion::CionParser’
+  std::unique_ptr<ast::Expr> CionParser::parse_logical_and_expression() {
+                             ^
+In file included from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:0:
+/home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:47:54: error: candidate is: std::unique_ptr<cion::ast::Expression> cion::CionParser::parse_logical_and_expression()
+   std::unique_ptr<ast::Expression>                   parse_logical_and_expression();
+                                                      ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:195:29: error: prototype for ‘std::unique_ptr<cion::ast::Expr> cion::CionParser::parse_inclusive_or_expression()’ does not match any in class ‘cion::CionParser’
+  std::unique_ptr<ast::Expr> CionParser::parse_inclusive_or_expression() {
+                             ^
+In file included from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:0:
+/home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:48:54: error: candidate is: std::unique_ptr<cion::ast::Expression> cion::CionParser::parse_inclusive_or_expression()
+   std::unique_ptr<ast::Expression>                   parse_inclusive_or_expression();
+                                                      ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:210:29: error: prototype for ‘std::unique_ptr<cion::ast::Expr> cion::CionParser::parse_exclusive_or_expression()’ does not match any in class ‘cion::CionParser’
+  std::unique_ptr<ast::Expr> CionParser::parse_exclusive_or_expression() {
+                             ^
+In file included from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:0:
+/home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:49:54: error: candidate is: std::unique_ptr<cion::ast::Expression> cion::CionParser::parse_exclusive_or_expression()
+   std::unique_ptr<ast::Expression>                   parse_exclusive_or_expression();
+                                                      ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:225:29: error: prototype for ‘std::unique_ptr<cion::ast::Expr> cion::CionParser::parse_bitwise_and_expression()’ does not match any in class ‘cion::CionParser’
+  std::unique_ptr<ast::Expr> CionParser::parse_bitwise_and_expression() {
+                             ^
+In file included from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:0:
+/home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:50:54: error: candidate is: std::unique_ptr<cion::ast::Expression> cion::CionParser::parse_bitwise_and_expression()
+   std::unique_ptr<ast::Expression>                   parse_bitwise_and_expression();
+                                                      ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:240:29: error: prototype for ‘std::unique_ptr<cion::ast::Expr> cion::CionParser::parse_equality_expression()’ does not match any in class ‘cion::CionParser’
+  std::unique_ptr<ast::Expr> CionParser::parse_equality_expression() {
+                             ^
+In file included from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:0:
+/home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:51:54: error: candidate is: std::unique_ptr<cion::ast::Expression> cion::CionParser::parse_equality_expression()
+   std::unique_ptr<ast::Expression>                   parse_equality_expression();
+                                                      ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:263:29: error: prototype for ‘std::unique_ptr<cion::ast::Expr> cion::CionParser::parse_relational_expression()’ does not match any in class ‘cion::CionParser’
+  std::unique_ptr<ast::Expr> CionParser::parse_relational_expression() {
+                             ^
+In file included from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:0:
+/home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:52:54: error: candidate is: std::unique_ptr<cion::ast::Expression> cion::CionParser::parse_relational_expression()
+   std::unique_ptr<ast::Expression>                   parse_relational_expression();
+                                                      ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:296:29: error: prototype for ‘std::unique_ptr<cion::ast::Expr> cion::CionParser::parse_bitshift_expression()’ does not match any in class ‘cion::CionParser’
+  std::unique_ptr<ast::Expr> CionParser::parse_bitshift_expression() {
+                             ^
+In file included from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:0:
+/home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:53:54: error: candidate is: std::unique_ptr<cion::ast::Expression> cion::CionParser::parse_bitshift_expression()
+   std::unique_ptr<ast::Expression>                   parse_bitshift_expression();
+                                                      ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:319:29: error: prototype for ‘std::unique_ptr<cion::ast::Expr> cion::CionParser::parse_additive_expression()’ does not match any in class ‘cion::CionParser’
+  std::unique_ptr<ast::Expr> CionParser::parse_additive_expression() {
+                             ^
+In file included from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:0:
+/home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:54:54: error: candidate is: std::unique_ptr<cion::ast::Expression> cion::CionParser::parse_additive_expression()
+   std::unique_ptr<ast::Expression>                   parse_additive_expression();
+                                                      ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:342:29: error: prototype for ‘std::unique_ptr<cion::ast::Expr> cion::CionParser::parse_multiplicative_expression()’ does not match any in class ‘cion::CionParser’
+  std::unique_ptr<ast::Expr> CionParser::parse_multiplicative_expression() {
+                             ^
+In file included from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:0:
+/home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:55:54: error: candidate is: std::unique_ptr<cion::ast::Expression> cion::CionParser::parse_multiplicative_expression()
+   std::unique_ptr<ast::Expression>                   parse_multiplicative_expression();
+                                                      ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:370:29: error: prototype for ‘std::unique_ptr<cion::ast::Expr> cion::CionParser::parse_unary_expression()’ does not match any in class ‘cion::CionParser’
+  std::unique_ptr<ast::Expr> CionParser::parse_unary_expression() {
+                             ^
+In file included from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:0:
+/home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:56:54: error: candidate is: std::unique_ptr<cion::ast::Expression> cion::CionParser::parse_unary_expression()
+   std::unique_ptr<ast::Expression>                   parse_unary_expression();
+                                                      ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:383:29: error: prototype for ‘std::unique_ptr<cion::ast::Expr> cion::CionParser::parse_postfix_expression()’ does not match any in class ‘cion::CionParser’
+  std::unique_ptr<ast::Expr> CionParser::parse_postfix_expression() {
+                             ^
+In file included from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:0:
+/home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:57:54: error: candidate is: std::unique_ptr<cion::ast::Expression> cion::CionParser::parse_postfix_expression()
+   std::unique_ptr<ast::Expression>                   parse_postfix_expression();
+                                                      ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:423:29: error: prototype for ‘std::unique_ptr<cion::ast::Expr> cion::CionParser::parse_primary_expression()’ does not match any in class ‘cion::CionParser’
+  std::unique_ptr<ast::Expr> CionParser::parse_primary_expression() {
+                             ^
+In file included from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:0:
+/home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:58:54: error: candidate is: std::unique_ptr<cion::ast::Expression> cion::CionParser::parse_primary_expression()
+   std::unique_ptr<ast::Expression>                   parse_primary_expression();
+                                                      ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp: In member function ‘std::unique_ptr<cion::ast::VariableDeclarationStatement> cion::CionParser::parse_variable_declaration()’:
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:572:5: error: no match for ternary ‘operator?:’ (operand types are ‘bool’, ‘std::unique_ptr<cion::ast::Expression>’, and ‘std::unique_ptr<cion::ast::Expr>’)
+     ? parse_expression()
+     ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:572:5: note: candidate is:
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:572:5: note: operator?:(bool, int, int) <built-in>
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:572:5: note:   no known conversion for argument 2 from ‘std::unique_ptr<cion::ast::Expr>’ to ‘int’
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:579:9: error: no match for ‘operator=’ (operand types are ‘std::unique_ptr<cion::ast::Expr>’ and ‘std::unique_ptr<cion::ast::Expression>’)
+    expr = parse_expression();
+         ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:579:9: note: candidates are:
+In file included from /usr/include/c++/4.9.2/memory:81:0,
+                 from /home/robbepop/coding/c++/projects/cion/include/token/token_type.hpp:9,
+                 from /home/robbepop/coding/c++/projects/cion/include/token/token.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/lexer/lexer.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:
+/usr/include/c++/4.9.2/bits/unique_ptr.h:249:7: note: std::unique_ptr<_Tp, _Dp>& std::unique_ptr<_Tp, _Dp>::operator=(std::unique_ptr<_Tp, _Dp>&&) [with _Tp = cion::ast::Expr; _Dp = std::default_delete<cion::ast::Expr>]
+       operator=(unique_ptr&& __u) noexcept
+       ^
+/usr/include/c++/4.9.2/bits/unique_ptr.h:249:7: note:   no known conversion for argument 1 from ‘std::unique_ptr<cion::ast::Expression>’ to ‘std::unique_ptr<cion::ast::Expr>&&’
+/usr/include/c++/4.9.2/bits/unique_ptr.h:269:2: note: template<class _Up, class _Ep> typename std::enable_if<std::__and_<std::is_convertible<typename std::unique_ptr<_Up, _Ep>::pointer, typename std::unique_ptr<_Tp, _Dp>::_Pointer::type>, std::__not_<std::is_array<_Up> > >::value, std::unique_ptr<_Tp, _Dp>&>::type std::unique_ptr<_Tp, _Dp>::operator=(std::unique_ptr<_Up, _Ep>&&) [with _Up = _Up; _Ep = _Ep; _Tp = cion::ast::Expr; _Dp = std::default_delete<cion::ast::Expr>]
+  operator=(unique_ptr<_Up, _Ep>&& __u) noexcept
+  ^
+/usr/include/c++/4.9.2/bits/unique_ptr.h:269:2: note:   template argument deduction/substitution failed:
+/usr/include/c++/4.9.2/bits/unique_ptr.h: In substitution of ‘template<class _Up, class _Ep> typename std::enable_if<std::__and_<std::is_convertible<typename std::unique_ptr<_Up, _Ep>::pointer, typename std::unique_ptr<_Tp, _Dp>::_Pointer::type>, std::__not_<std::is_array<_Up> > >::value, std::unique_ptr<_Tp, _Dp>&>::type std::unique_ptr<_Tp, _Dp>::operator=(std::unique_ptr<_Up, _Ep>&&) [with _Up = cion::ast::Expression; _Ep = std::default_delete<cion::ast::Expression>]’:
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:579:9:   required from here
+/usr/include/c++/4.9.2/bits/unique_ptr.h:269:2: error: no type named ‘type’ in ‘struct std::enable_if<false, std::unique_ptr<cion::ast::Expr>&>’
+/usr/include/c++/4.9.2/bits/unique_ptr.h:278:7: note: std::unique_ptr<_Tp, _Dp>& std::unique_ptr<_Tp, _Dp>::operator=(std::nullptr_t) [with _Tp = cion::ast::Expr; _Dp = std::default_delete<cion::ast::Expr>; std::nullptr_t = std::nullptr_t]
+       operator=(nullptr_t) noexcept
+       ^
+/usr/include/c++/4.9.2/bits/unique_ptr.h:278:7: note:   no known conversion for argument 1 from ‘std::unique_ptr<cion::ast::Expression>’ to ‘std::nullptr_t’
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp: In member function ‘std::unique_ptr<cion::ast::ReturnStatement> cion::CionParser::parse_return_statement()’:
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:729:4: error: no match for ternary ‘operator?:’ (operand types are ‘bool’, ‘std::unique_ptr<cion::ast::Expression>’, and ‘std::unique_ptr<cion::ast::Expr>’)
+    ? parse_expression()
+    ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:729:4: note: candidate is:
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:729:4: note: operator?:(bool, int, int) <built-in>
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:729:4: note:   no known conversion for argument 2 from ‘std::unique_ptr<cion::ast::Expr>’ to ‘int’
+In file included from /usr/include/c++/4.9.2/memory:81:0,
+                 from /home/robbepop/coding/c++/projects/cion/include/token/token_type.hpp:9,
+                 from /home/robbepop/coding/c++/projects/cion/include/token/token.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/lexer/lexer.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:
+/usr/include/c++/4.9.2/bits/unique_ptr.h: In instantiation of ‘typename std::_MakeUniq<_Tp>::__single_object std::make_unique(_Args&& ...) [with _Tp = cion::ast::WhileStatement; _Args = {std::unique_ptr<cion::ast::Expression, std::default_delete<cion::ast::Expression> >, std::unique_ptr<cion::ast::CompoundStatement, std::default_delete<cion::ast::CompoundStatement> >}; typename std::_MakeUniq<_Tp>::__single_object = std::unique_ptr<cion::ast::WhileStatement>]’:
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:703:41:   required from here
+/usr/include/c++/4.9.2/bits/unique_ptr.h:765:69: error: no matching function for call to ‘cion::ast::WhileStatement::WhileStatement(std::unique_ptr<cion::ast::Expression>, std::unique_ptr<cion::ast::CompoundStatement>)’
+     { return unique_ptr<_Tp>(new _Tp(std::forward<_Args>(__args)...)); }
+                                                                     ^
+/usr/include/c++/4.9.2/bits/unique_ptr.h:765:69: note: candidates are:
+In file included from /home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:23:0,
+                 from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:
+/home/robbepop/coding/c++/projects/cion/include/ast/while_statement.hpp:15:3: note: cion::ast::WhileStatement::WhileStatement(std::unique_ptr<cion::ast::Expr>, std::unique_ptr<cion::ast::CompoundStatement>)
+   WhileStatement(
+   ^
+/home/robbepop/coding/c++/projects/cion/include/ast/while_statement.hpp:15:3: note:   no known conversion for argument 1 from ‘std::unique_ptr<cion::ast::Expression>’ to ‘std::unique_ptr<cion::ast::Expr>’
+/home/robbepop/coding/c++/projects/cion/include/ast/while_statement.hpp:13:8: note: cion::ast::WhileStatement::WhileStatement(cion::ast::WhileStatement&&)
+  class WhileStatement : public Statement {
+        ^
+/home/robbepop/coding/c++/projects/cion/include/ast/while_statement.hpp:13:8: note:   candidate expects 1 argument, 2 provided
+In file included from /usr/include/c++/4.9.2/memory:81:0,
+                 from /home/robbepop/coding/c++/projects/cion/include/token/token_type.hpp:9,
+                 from /home/robbepop/coding/c++/projects/cion/include/token/token.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/lexer/lexer.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:
+/usr/include/c++/4.9.2/bits/unique_ptr.h: In instantiation of ‘typename std::_MakeUniq<_Tp>::__single_object std::make_unique(_Args&& ...) [with _Tp = cion::ast::IfStatement; _Args = {std::unique_ptr<cion::ast::Expression, std::default_delete<cion::ast::Expression> >, std::unique_ptr<cion::ast::CompoundStatement, std::default_delete<cion::ast::CompoundStatement> >, std::unique_ptr<cion::ast::Statement, std::default_delete<cion::ast::Statement> >}; typename std::_MakeUniq<_Tp>::__single_object = std::unique_ptr<cion::ast::IfStatement>]’:
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:719:71:   required from here
+/usr/include/c++/4.9.2/bits/unique_ptr.h:765:69: error: no matching function for call to ‘cion::ast::IfStatement::IfStatement(std::unique_ptr<cion::ast::Expression>, std::unique_ptr<cion::ast::CompoundStatement>, std::unique_ptr<cion::ast::Statement>)’
+     { return unique_ptr<_Tp>(new _Tp(std::forward<_Args>(__args)...)); }
+                                                                     ^
+/usr/include/c++/4.9.2/bits/unique_ptr.h:765:69: note: candidates are:
+In file included from /home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:22:0,
+                 from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:
+/home/robbepop/coding/c++/projects/cion/include/ast/if_statement.hpp:20:3: note: cion::ast::IfStatement::IfStatement(std::unique_ptr<cion::ast::Expr>, std::unique_ptr<cion::ast::Statement>)
+   IfStatement(
+   ^
+/home/robbepop/coding/c++/projects/cion/include/ast/if_statement.hpp:20:3: note:   candidate expects 2 arguments, 3 provided
+/home/robbepop/coding/c++/projects/cion/include/ast/if_statement.hpp:15:3: note: cion::ast::IfStatement::IfStatement(std::unique_ptr<cion::ast::Expr>, std::unique_ptr<cion::ast::Statement>, std::unique_ptr<cion::ast::Statement>)
+   IfStatement(
+   ^
+/home/robbepop/coding/c++/projects/cion/include/ast/if_statement.hpp:15:3: note:   no known conversion for argument 1 from ‘std::unique_ptr<cion::ast::Expression>’ to ‘std::unique_ptr<cion::ast::Expr>’
+/home/robbepop/coding/c++/projects/cion/include/ast/if_statement.hpp:13:8: note: cion::ast::IfStatement::IfStatement(cion::ast::IfStatement&&)
+  class IfStatement : public Statement {
+        ^
+/home/robbepop/coding/c++/projects/cion/include/ast/if_statement.hpp:13:8: note:   candidate expects 1 argument, 3 provided
+In file included from /usr/include/c++/4.9.2/memory:81:0,
+                 from /home/robbepop/coding/c++/projects/cion/include/token/token_type.hpp:9,
+                 from /home/robbepop/coding/c++/projects/cion/include/token/token.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/lexer/lexer.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:
+/usr/include/c++/4.9.2/bits/unique_ptr.h: In instantiation of ‘typename std::_MakeUniq<_Tp>::__single_object std::make_unique(_Args&& ...) [with _Tp = cion::ast::IfStatement; _Args = {std::unique_ptr<cion::ast::Expression, std::default_delete<cion::ast::Expression> >, std::unique_ptr<cion::ast::CompoundStatement, std::default_delete<cion::ast::CompoundStatement> >}; typename std::_MakeUniq<_Tp>::__single_object = std::unique_ptr<cion::ast::IfStatement>]’:
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:723:47:   required from here
+/usr/include/c++/4.9.2/bits/unique_ptr.h:765:69: error: no matching function for call to ‘cion::ast::IfStatement::IfStatement(std::unique_ptr<cion::ast::Expression>, std::unique_ptr<cion::ast::CompoundStatement>)’
+     { return unique_ptr<_Tp>(new _Tp(std::forward<_Args>(__args)...)); }
+                                                                     ^
+/usr/include/c++/4.9.2/bits/unique_ptr.h:765:69: note: candidates are:
+In file included from /home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:22:0,
+                 from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:
+/home/robbepop/coding/c++/projects/cion/include/ast/if_statement.hpp:20:3: note: cion::ast::IfStatement::IfStatement(std::unique_ptr<cion::ast::Expr>, std::unique_ptr<cion::ast::Statement>)
+   IfStatement(
+   ^
+/home/robbepop/coding/c++/projects/cion/include/ast/if_statement.hpp:20:3: note:   no known conversion for argument 1 from ‘std::unique_ptr<cion::ast::Expression>’ to ‘std::unique_ptr<cion::ast::Expr>’
+/home/robbepop/coding/c++/projects/cion/include/ast/if_statement.hpp:15:3: note: cion::ast::IfStatement::IfStatement(std::unique_ptr<cion::ast::Expr>, std::unique_ptr<cion::ast::Statement>, std::unique_ptr<cion::ast::Statement>)
+   IfStatement(
+   ^
+/home/robbepop/coding/c++/projects/cion/include/ast/if_statement.hpp:15:3: note:   candidate expects 3 arguments, 2 provided
+/home/robbepop/coding/c++/projects/cion/include/ast/if_statement.hpp:13:8: note: cion::ast::IfStatement::IfStatement(cion::ast::IfStatement&&)
+  class IfStatement : public Statement {
+        ^
+/home/robbepop/coding/c++/projects/cion/include/ast/if_statement.hpp:13:8: note:   candidate expects 1 argument, 2 provided
+In file included from /usr/include/c++/4.9.2/memory:81:0,
+                 from /home/robbepop/coding/c++/projects/cion/include/token/token_type.hpp:9,
+                 from /home/robbepop/coding/c++/projects/cion/include/token/token.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/lexer/lexer.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:
+/usr/include/c++/4.9.2/bits/unique_ptr.h: In instantiation of ‘typename std::_MakeUniq<_Tp>::__single_object std::make_unique(_Args&& ...) [with _Tp = cion::ast::ExpressionStatement; _Args = {std::unique_ptr<cion::ast::Expression, std::default_delete<cion::ast::Expression> >}; typename std::_MakeUniq<_Tp>::__single_object = std::unique_ptr<cion::ast::ExpressionStatement>]’:
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:748:68:   required from here
+/usr/include/c++/4.9.2/bits/unique_ptr.h:765:69: error: no matching function for call to ‘cion::ast::ExpressionStatement::ExpressionStatement(std::unique_ptr<cion::ast::Expression>)’
+     { return unique_ptr<_Tp>(new _Tp(std::forward<_Args>(__args)...)); }
+                                                                     ^
+/usr/include/c++/4.9.2/bits/unique_ptr.h:765:69: note: candidates are:
+In file included from /home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:24:0,
+                 from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:
+/home/robbepop/coding/c++/projects/cion/include/ast/expression_statement.hpp:14:3: note: cion::ast::ExpressionStatement::ExpressionStatement(std::unique_ptr<cion::ast::Expr>)
+   ExpressionStatement(std::unique_ptr<Expr> expr);
+   ^
+/home/robbepop/coding/c++/projects/cion/include/ast/expression_statement.hpp:14:3: note:   no known conversion for argument 1 from ‘std::unique_ptr<cion::ast::Expression>’ to ‘std::unique_ptr<cion::ast::Expr>’
+/home/robbepop/coding/c++/projects/cion/include/ast/expression_statement.hpp:12:8: note: cion::ast::ExpressionStatement::ExpressionStatement(cion::ast::ExpressionStatement&&)
+  class ExpressionStatement : public Statement {
+        ^
+/home/robbepop/coding/c++/projects/cion/include/ast/expression_statement.hpp:12:8: note:   no known conversion for argument 1 from ‘std::unique_ptr<cion::ast::Expression>’ to ‘cion::ast::ExpressionStatement&&’
+In file included from /usr/include/c++/4.9.2/memory:81:0,
+                 from /home/robbepop/coding/c++/projects/cion/include/token/token_type.hpp:9,
+                 from /home/robbepop/coding/c++/projects/cion/include/token/token.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/lexer/lexer.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/include/parser/cion_parser.hpp:4,
+                 from /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:1:
+/usr/include/c++/4.9.2/bits/unique_ptr.h: In instantiation of ‘void std::default_delete<_Tp>::operator()(_Tp*) const [with _Tp = cion::ast::Expression]’:
+/usr/include/c++/4.9.2/bits/unique_ptr.h:236:16:   required from ‘std::unique_ptr<_Tp, _Dp>::~unique_ptr() [with _Tp = cion::ast::Expression; _Dp = std::default_delete<cion::ast::Expression>]’
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:117:42:   required from here
+/usr/include/c++/4.9.2/bits/unique_ptr.h:74:22: error: invalid application of ‘sizeof’ to incomplete type ‘cion::ast::Expression’
+  static_assert(sizeof(_Tp)>0,
+                      ^
+/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp:733:2: warning: control reaches end of non-void function [-Wreturn-type]
+  }
+  ^
+make[2]: *** [src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o] Error 1
+make[1]: *** [src/CMakeFiles/cion_compiler.dir/all] Error 2
+make: *** [all] Error 2

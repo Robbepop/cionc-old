@@ -5,7 +5,7 @@
 #include "token/cion_token_types.hpp"
 
 #include "ast/statement.hpp"
-#include "ast/expression.hpp"
+#include "ast/expr.hpp"
 #include "ast/expression_list.hpp"
 #include "ast/type_specifier.hpp"
 #include "ast/primitive_type_int.hpp"
@@ -39,23 +39,23 @@ namespace cion {
 		bool         optional(TokenType const& token_type);
 
 		std::unique_ptr<ast::ExpressionList>               parse_expression_list();
-		std::unique_ptr<ast::Expression>                   parse_expression();
+		std::unique_ptr<ast::Expr>                         parse_expression();
 
-		std::unique_ptr<ast::Expression>                   parse_assignment_expression();
-		std::unique_ptr<ast::Expression>                   parse_conditional_expression();
-		std::unique_ptr<ast::Expression>                   parse_logical_or_expression();
-		std::unique_ptr<ast::Expression>                   parse_logical_and_expression();
-		std::unique_ptr<ast::Expression>                   parse_inclusive_or_expression();
-		std::unique_ptr<ast::Expression>                   parse_exclusive_or_expression();
-		std::unique_ptr<ast::Expression>                   parse_bitwise_and_expression();
-		std::unique_ptr<ast::Expression>                   parse_equality_expression();
-		std::unique_ptr<ast::Expression>                   parse_relational_expression();
-		std::unique_ptr<ast::Expression>                   parse_bitshift_expression();
-		std::unique_ptr<ast::Expression>                   parse_additive_expression();
-		std::unique_ptr<ast::Expression>                   parse_multiplicative_expression();
-		std::unique_ptr<ast::Expression>                   parse_unary_expression();
-		std::unique_ptr<ast::Expression>                   parse_postfix_expression();
-		std::unique_ptr<ast::Expression>                   parse_primary_expression();
+		std::unique_ptr<ast::Expr>                         parse_assignment_expression();
+		std::unique_ptr<ast::Expr>                         parse_conditional_expression();
+		std::unique_ptr<ast::Expr>                         parse_logical_or_expression();
+		std::unique_ptr<ast::Expr>                         parse_logical_and_expression();
+		std::unique_ptr<ast::Expr>                         parse_inclusive_or_expression();
+		std::unique_ptr<ast::Expr>                         parse_exclusive_or_expression();
+		std::unique_ptr<ast::Expr>                         parse_bitwise_and_expression();
+		std::unique_ptr<ast::Expr>                         parse_equality_expression();
+		std::unique_ptr<ast::Expr>                         parse_relational_expression();
+		std::unique_ptr<ast::Expr>                         parse_bitshift_expression();
+		std::unique_ptr<ast::Expr>                         parse_additive_expression();
+		std::unique_ptr<ast::Expr>                         parse_multiplicative_expression();
+		std::unique_ptr<ast::Expr>                         parse_unary_expression();
+		std::unique_ptr<ast::Expr>                         parse_postfix_expression();
+		std::unique_ptr<ast::Expr>                         parse_primary_expression();
 
 		std::unique_ptr<ast::PrimitiveTypeInt>             parse_primitive_type_int();
 		std::unique_ptr<ast::PrimitiveTypeFloat>           parse_primitive_type_float();

@@ -5,7 +5,7 @@
 
 #include "ast/assignment_expression.hpp"
 #include "ast/binary_expression.hpp"
-#include "ast/boolean_literal.hpp"
+#include "ast/boolean_expr.hpp"
 #include "ast/break_statement.hpp"
 #include "ast/call_expression.hpp"
 #include "ast/char_literal.hpp"
@@ -14,7 +14,7 @@
 #include "ast/conditional_expression.hpp"
 #include "ast/continue_statement.hpp"
 #include "ast/empty_statement.hpp"
-#include "ast/expression.hpp"
+#include "ast/expr.hpp"
 #include "ast/expression_list.hpp"
 #include "ast/expression_statement.hpp"
 #include "ast/float_literal.hpp"
@@ -68,7 +68,7 @@ namespace cion {
 
 		void visit(ast::AssignmentExpression const&) override;
 		void visit(ast::BinaryExpression const&) override;
-		void visit(ast::BooleanLiteral const&) override;
+		void visit(ast::BooleanExpr const&) override;
 		void visit(ast::BreakStatement const&) override;
 		void visit(ast::CallExpression const&) override;
 		void visit(ast::CharLiteral const&) override;

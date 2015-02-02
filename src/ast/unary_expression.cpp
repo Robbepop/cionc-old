@@ -40,7 +40,7 @@ namespace ast {
 
 	UnaryExpression::UnaryExpression(
 		UnaryExpression::Operator op,
-		std::unique_ptr<Expression> expr
+		std::unique_ptr<Expr> expr
 	):
 		m_op{op},
 		m_expr{std::move(expr)}
@@ -48,7 +48,7 @@ namespace ast {
 
 	UnaryExpression::UnaryExpression(
 		TokenType const& tt,
-		std::unique_ptr<Expression> expr
+		std::unique_ptr<Expr> expr
 	):
 		UnaryExpression{get_operator(tt), std::move(expr)}
 	{}
@@ -61,12 +61,12 @@ namespace ast {
 		return m_op;
 	}
 
-	Expression & UnaryExpression::expr() {
+	Expr & UnaryExpression::expr() {
 		assert(m_expr != nullptr);
 		return *m_expr;
 	}
 
-	Expression const& UnaryExpression::expr() const {
+	Expr const& UnaryExpression::expr() const {
 		assert(m_expr != nullptr);
 		return *m_expr;
 	}

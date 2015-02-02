@@ -2,7 +2,7 @@
 #define CION_AST_VARIABLE_DECLARATION_STATEMENT_HEADER
 
 #include "ast/statement.hpp"
-#include "ast/expression.hpp"
+#include "ast/expr.hpp"
 #include "ast/type_specifier.hpp"
 
 #include <string>
@@ -19,7 +19,7 @@ namespace ast {
 		VariableDeclarationStatement(
 			std::string const& name,
 			std::unique_ptr<TypeSpecifier> type_specifier,
-			std::unique_ptr<Expression> expr);
+			std::unique_ptr<Expr> expr);
 
 		std::string & name();
 		std::string const& name() const;
@@ -27,8 +27,8 @@ namespace ast {
 		TypeSpecifier & specified_type();
 		TypeSpecifier const& specified_type() const;
 
-		Expression & expr();
-		Expression const& expr() const;
+		Expr & expr();
+		Expr const& expr() const;
 
 		virtual void accept(MutatingCompilerPass & pass) override;
 		virtual void accept(CompilerPass & pass) const override;
@@ -36,7 +36,7 @@ namespace ast {
 	private:
 		std::string m_name;
 		std::unique_ptr<TypeSpecifier> m_type_specifier;
-		std::unique_ptr<Expression> m_expr;
+		std::unique_ptr<Expr> m_expr;
 	};
 
 } // namespace ast

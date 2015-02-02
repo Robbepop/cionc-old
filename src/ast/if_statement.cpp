@@ -9,7 +9,7 @@ namespace cion {
 namespace ast {
 
 	IfStatement::IfStatement(
-		std::unique_ptr<Expression> condition,
+		std::unique_ptr<Expr> condition,
 		std::unique_ptr<Statement> then_stmnt,
 		std::unique_ptr<Statement> else_stmnt
 	):
@@ -19,19 +19,19 @@ namespace ast {
 	{}
 
 	IfStatement::IfStatement(
-		std::unique_ptr<Expression> condition,
+		std::unique_ptr<Expr> condition,
 		std::unique_ptr<Statement> then_stmnt
 	):
 		IfStatement{std::move(condition), std::move(then_stmnt),
 			std::unique_ptr<Statement>{std::make_unique<EmptyStatement>()}}
 	{}
 
-	Expression & IfStatement::condition() {
+	Expr & IfStatement::condition() {
 		assert(m_condition != nullptr);
 		return *m_condition;
 	}
 
-	Expression const& IfStatement::condition() const {
+	Expr const& IfStatement::condition() const {
 		assert(m_condition != nullptr);
 		return *m_condition;
 	}

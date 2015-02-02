@@ -1,13 +1,13 @@
 #ifndef CION_AST_INTEGER_LITERAL_HEADER
 #define CION_AST_INTEGER_LITERAL_HEADER
 
-#include "ast/expression.hpp"
+#include "ast/expr.hpp"
 
 #include <cstdint>
 
 namespace cion {
 namespace ast {
-	class IntegerLiteral : public Expression {
+	class IntegerLiteral : public Expr {
 	public:
 		using storage_type = int64_t;
 

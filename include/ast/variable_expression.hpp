@@ -1,14 +1,14 @@
 #ifndef CION_AST_VARIABLE_EXPRESSION_HEADER
 #define CION_AST_VARIABLE_EXPRESSION_HEADER
 
-#include "ast/expression.hpp"
+#include "ast/expr.hpp"
 
 #include <string>
 
 namespace cion {
 namespace ast {
 
-	class VariableExpression : public Expression {
+	class VariableExpression : public Expr {
 	public:
 		VariableExpression(std::string const& name);
 

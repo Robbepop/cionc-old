@@ -1,7 +1,7 @@
 #ifndef CION_AST_EXPRESSION_LIST_HEADER
 #define CION_AST_EXPRESSION_LIST_HEADER
 
-#include "ast/expression.hpp"
+#include "ast/expr.hpp"
 
 #include <vector>
 #include <memory>
@@ -9,19 +9,19 @@
 namespace cion {
 namespace ast {
 
-	class ExpressionList : public Expression {
+	class ExpressionList : public Expr {
 	public:
 		ExpressionList();
-		ExpressionList(std::vector<std::unique_ptr<Expression>> expressions);
+		ExpressionList(std::vector<std::unique_ptr<Expr>> expressions);
 
-		std::vector<std::unique_ptr<Expression>> & expressions();
-		std::vector<std::unique_ptr<Expression>> const& expressions() const;
+		std::vector<std::unique_ptr<Expr>> & expressions();
+		std::vector<std::unique_ptr<Expr>> const& expressions() const;
 
 		virtual void accept(MutatingCompilerPass & pass) override;
 		virtual void accept(CompilerPass & pass) const override;
 
 	private:
-		std::vector<std::unique_ptr<Expression>> m_expressions;
+		std::vector<std::unique_ptr<Expr>> m_expressions;
 	};
 
 } // namespace ast

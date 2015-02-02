@@ -1,7 +1,7 @@
 #ifndef CION_AST_POSTFIX_EXPRESSION_HEADER
 #define CION_AST_POSTFIX_EXPRESSION_HEADER
 
-#include "ast/expression.hpp"
+#include "ast/expr.hpp"
 #include "token/token_type.hpp"
 
 #include <cstdint>
@@ -9,7 +9,7 @@
 
 namespace cion {
 namespace ast {
-	class PostfixExpression : public Expression {
+	class PostfixExpression : public Expr {
 	public:
 		enum class Operator : int8_t {
 			increment,
@@ -22,24 +22,24 @@ namespace ast {
 
 		PostfixExpression(
 			Operator op,
-			std::unique_ptr<Expression> expr);
+			std::unique_ptr<Expr> expr);
 
 		PostfixExpression(
 			TokenType const& tt,
-			std::unique_ptr<Expression> expr);
+			std::unique_ptr<Expr> expr);
 
 		Operator & op();
 		Operator const& op() const;
 
-		Expression & expr();
-		Expression const& expr() const;
+		Expr & expr();
+		Expr const& expr() const;
 
 		virtual void accept(MutatingCompilerPass & pass) override;
 		virtual void accept(CompilerPass & pass) const override;
 
 	private:
 		Operator m_op;
-		std::unique_ptr<Expression> m_expr;
+		std::unique_ptr<Expr> m_expr;
 	};
 } // namespace ast
 } // namespace cion

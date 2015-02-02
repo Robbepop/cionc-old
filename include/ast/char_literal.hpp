@@ -1,11 +1,11 @@
 #ifndef CION_AST_CHAR_LITERAL_HEADER
 #define CION_AST_CHAR_LITERAL_HEADER
 
-#include "ast/expression.hpp"
+#include "ast/expr.hpp"
 
 namespace cion {
 namespace ast {
-	class CharLiteral : public Expression {
+	class CharLiteral : public Expr {
 	public:
 		using storage_type = char;
 

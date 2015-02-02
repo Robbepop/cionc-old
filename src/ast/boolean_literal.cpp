@@ -1,25 +1,25 @@
-#include "ast/boolean_literal.hpp"
+#include "ast/boolean_expr.hpp"
 
 namespace cion {
 namespace ast {
 
-	BooleanLiteral::BooleanLiteral(BooleanLiteral::storage_type value) :
+	BooleanExpr::BooleanExpr(BooleanExpr::storage_type value) :
 		m_value{value}
 	{}
 
-	BooleanLiteral::storage_type & BooleanLiteral::value() {
+	BooleanExpr::storage_type & BooleanExpr::value() {
 		return m_value;
 	}
 
-	BooleanLiteral::storage_type const& BooleanLiteral::value() const {
+	BooleanExpr::storage_type const& BooleanExpr::value() const {
 		return m_value;
 	}
 
-	void BooleanLiteral::accept(MutatingCompilerPass & pass) {
+	void BooleanExpr::accept(MutatingCompilerPass & pass) {
 		pass.visit(*this);
 	}
 
-	void BooleanLiteral::accept(CompilerPass & pass) const {
+	void BooleanExpr::accept(CompilerPass & pass) const {
 		pass.visit(*this);
 	}
 

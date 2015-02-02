@@ -50,8 +50,8 @@ namespace ast {
 
 	AssignmentExpression::AssignmentExpression(
 		AssignmentExpression::Operator op,
-		std::unique_ptr<Expression> lhs,
-		std::unique_ptr<Expression> rhs
+		std::unique_ptr<Expr> lhs,
+		std::unique_ptr<Expr> rhs
 	):
 		m_op{op},
 		m_lhs{std::move(lhs)},
@@ -60,8 +60,8 @@ namespace ast {
 
 	AssignmentExpression::AssignmentExpression(
 		TokenType const& tt,
-		std::unique_ptr<Expression> lhs,
-		std::unique_ptr<Expression> rhs
+		std::unique_ptr<Expr> lhs,
+		std::unique_ptr<Expr> rhs
 	):
 		AssignmentExpression{get_operator(tt), std::move(lhs), std::move(rhs)}
 	{}
@@ -70,12 +70,12 @@ namespace ast {
 		return m_op;
 	}
 
-	Expression & AssignmentExpression::lhs() {
+	Expr & AssignmentExpression::lhs() {
 		assert(m_lhs != nullptr);
 		return *m_lhs.get();
 	}
 
-	Expression & AssignmentExpression::rhs() {
+	Expr & AssignmentExpression::rhs() {
 		assert(m_rhs != nullptr);
 		return *m_rhs.get();
 	}
@@ -84,12 +84,12 @@ namespace ast {
 		return m_op;
 	}
 
-	Expression const& AssignmentExpression::lhs() const {
+	Expr const& AssignmentExpression::lhs() const {
 		assert(m_lhs != nullptr);
 		return *m_lhs;
 	}
 
-	Expression const& AssignmentExpression::rhs() const {
+	Expr const& AssignmentExpression::rhs() const {
 		assert(m_rhs != nullptr);
 		return *m_rhs.get();
 	}

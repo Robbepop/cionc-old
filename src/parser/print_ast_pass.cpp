@@ -83,8 +83,8 @@ namespace cion {
 		}
 	}
 
-	void PrintASTPass::visit(ast::BooleanLiteral const& boolean_literal) {
-		std::string bool_str = boolean_literal.value() ? "true" : "false";
+	void PrintASTPass::visit(ast::BooleanExpr const& boolean_expr) {
+		std::string bool_str = boolean_expr.value() ? "true" : "false";
 		print_line("boolean literal: " + bool_str);
 	}
 

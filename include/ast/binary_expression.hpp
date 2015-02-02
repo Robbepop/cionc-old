@@ -1,7 +1,7 @@
 #ifndef CION_AST_BINARY_EXPRESSION_HEADER
 #define CION_AST_BINARY_EXPRESSION_HEADER
 
-#include "ast/expression.hpp"
+#include "ast/expr.hpp"
 #include "token/token_type.hpp"
 
 #include <cstdint>
@@ -9,7 +9,7 @@
 
 namespace cion {
 namespace ast {
-	class BinaryExpression : public Expression {
+	class BinaryExpression : public Expr {
 	public:
 		enum class Operator : int8_t {
 			logical_or,
@@ -38,30 +38,30 @@ namespace ast {
 
 		BinaryExpression(
 			Operator op,
-			std::unique_ptr<Expression> lhs,
-			std::unique_ptr<Expression> rhs);
+			std::unique_ptr<Expr> lhs,
+			std::unique_ptr<Expr> rhs);
 
 		BinaryExpression(
 			TokenType const& tt,
-			std::unique_ptr<Expression> lhs,
-			std::unique_ptr<Expression> rhs);
+			std::unique_ptr<Expr> lhs,
+			std::unique_ptr<Expr> rhs);
 
 		Operator & op();
 		Operator const& op() const;
 
-		Expression & lhs();
-		Expression const& lhs() const;
+		Expr & lhs();
+		Expr const& lhs() const;
 
-		Expression & rhs();
-		Expression const& rhs() const;
+		Expr & rhs();
+		Expr const& rhs() const;
 
 		virtual void accept(MutatingCompilerPass & pass) override;
 		virtual void accept(CompilerPass & pass) const override;
 
 	private:
 		Operator m_op;
-		std::unique_ptr<Expression> m_lhs;
-		std::unique_ptr<Expression> m_rhs;
+		std::unique_ptr<Expr> m_lhs;
+		std::unique_ptr<Expr> m_rhs;
 	};
 } // namespace ast
 } // namespace cion

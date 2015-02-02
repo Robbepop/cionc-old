@@ -1,7 +1,7 @@
-#ifndef CION_AST_CALL_EXPRESSION_HEADER
-#define CION_AST_CALL_EXPRESSION_HEADER
+#ifndef CION_AST_CALL_EXPR_HEADER
+#define CION_AST_CALL_EXPR_HEADER
 
-#include "ast/expression.hpp"
+#include "ast/expr.hpp"
 #include "ast/expression_list.hpp"
 
 #include <string>
@@ -9,17 +9,17 @@
 
 namespace cion {
 namespace ast {
-	class CallExpression : public Expression {
+	class CallExpression : public Expr {
 	public:
 		CallExpression(
-			std::unique_ptr<Expression> callee,
+			std::unique_ptr<Expr> callee,
 			std::unique_ptr<ExpressionList> args);
 
 		CallExpression(
-			std::unique_ptr<Expression> callee);
+			std::unique_ptr<Expr> callee);
 
-		Expression & callee();
-		Expression const& callee() const;
+		Expr & callee();
+		Expr const& callee() const;
 
 		ExpressionList & args();
 		ExpressionList const& args() const;
@@ -28,10 +28,10 @@ namespace ast {
 		virtual void accept(CompilerPass & pass) const override;
 
 	private:
-		std::unique_ptr<Expression> m_callee;
+		std::unique_ptr<Expr> m_callee;
 		std::unique_ptr<ExpressionList> m_args;
 	};
 } // namespace ast
 } // namespace cion
 
-#endif // CION_AST_CALL_EXPRESSION_HEADER
+#endif // CION_AST_CALL_EXPR_HEADER

@@ -11,7 +11,7 @@
 #include "ast/primitive_type_int.hpp"
 #include "ast/primitive_type_float.hpp"
 #include "ast/variable_declaration_statement.hpp"
-#include "ast/boolean_literal.hpp"
+#include "ast/boolean_expr.hpp"
 #include "ast/char_literal.hpp"
 #include "ast/string_literal.hpp"
 #include "ast/integer_literal.hpp"
@@ -112,7 +112,7 @@ namespace cion {
 //////////////////////////////////////////////////////////////////////////////////////////
 
 	std::unique_ptr<ast::ExpressionList> CionParser::parse_expression_list() {
-		std::vector<std::unique_ptr<ast::Expression>> expressions;
+		std::vector<std::unique_ptr<ast::Expr>> expressions;
 
 		expressions.push_back(parse_expression());
 
@@ -123,11 +123,11 @@ namespace cion {
 		return std::make_unique<ast::ExpressionList>(std::move(expressions));
 	}
 
-	std::unique_ptr<ast::Expression> CionParser::parse_expression() {
+	std::unique_ptr<ast::Expr> CionParser::parse_expression() {
 		return parse_assignment_expression();
 	}
 
-	std::unique_ptr<ast::Expression> CionParser::parse_assignment_expression() {
+	std::unique_ptr<ast::Expr> CionParser::parse_assignment_expression() {
 		auto lhs = parse_conditional_expression();
 
 		using assignment = ast::AssignmentExpression;
@@ -144,7 +144,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expression> CionParser::parse_conditional_expression() {
+	std::unique_ptr<ast::Expr> CionParser::parse_conditional_expression() {
 		auto condition = parse_logical_or_expression();
 
 		if (optional(ctts.op_question_mark)) {
@@ -162,7 +162,7 @@ namespace cion {
 		return condition;
 	}
 
-	std::unique_ptr<ast::Expression> CionParser::parse_logical_or_expression() {
+	std::unique_ptr<ast::Expr> CionParser::parse_logical_or_expression() {
 		auto lhs = parse_logical_and_expression();
 
 		using op = ast::BinaryExpression::Operator;
@@ -177,7 +177,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expression> CionParser::parse_logical_and_expression() {
+	std::unique_ptr<ast::Expr> CionParser::parse_logical_and_expression() {
 		auto lhs = parse_inclusive_or_expression();
 
 		using op = ast::BinaryExpression::Operator;
@@ -192,7 +192,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expression> CionParser::parse_inclusive_or_expression() {
+	std::unique_ptr<ast::Expr> CionParser::parse_inclusive_or_expression() {
 		auto lhs = parse_exclusive_or_expression();
 
 		using op = ast::BinaryExpression::Operator;
@@ -207,7 +207,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expression> CionParser::parse_exclusive_or_expression() {
+	std::unique_ptr<ast::Expr> CionParser::parse_exclusive_or_expression() {
 		auto lhs = parse_bitwise_and_expression();
 
 		using op = ast::BinaryExpression::Operator;
@@ -222,7 +222,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expression> CionParser::parse_bitwise_and_expression() {
+	std::unique_ptr<ast::Expr> CionParser::parse_bitwise_and_expression() {
 		auto lhs = parse_equality_expression();
 
 		using op = ast::BinaryExpression::Operator;
@@ -237,7 +237,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expression> CionParser::parse_equality_expression() {
+	std::unique_ptr<ast::Expr> CionParser::parse_equality_expression() {
 		auto lhs = parse_relational_expression();
 
 		using op = ast::BinaryExpression::Operator;
@@ -260,7 +260,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expression> CionParser::parse_relational_expression() {
+	std::unique_ptr<ast::Expr> CionParser::parse_relational_expression() {
 		auto lhs = parse_bitshift_expression();
 
 		using op = ast::BinaryExpression::Operator;
@@ -293,7 +293,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expression> CionParser::parse_bitshift_expression() {
+	std::unique_ptr<ast::Expr> CionParser::parse_bitshift_expression() {
 		auto lhs = parse_additive_expression();
 
 		using op = ast::BinaryExpression::Operator;
@@ -316,7 +316,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expression> CionParser::parse_additive_expression() {
+	std::unique_ptr<ast::Expr> CionParser::parse_additive_expression() {
 		auto lhs = parse_multiplicative_expression();
 
 		using op = ast::BinaryExpression::Operator;
@@ -339,7 +339,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expression> CionParser::parse_multiplicative_expression() {
+	std::unique_ptr<ast::Expr> CionParser::parse_multiplicative_expression() {
 		auto lhs = parse_unary_expression();
 
 		using op = ast::BinaryExpression::Operator;
@@ -367,7 +367,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expression> CionParser::parse_unary_expression() {
+	std::unique_ptr<ast::Expr> CionParser::parse_unary_expression() {
 		using unary = ast::UnaryExpression;
 
 		if (unary::is_operator(current_token().get_type())) {
@@ -380,7 +380,7 @@ namespace cion {
 		return parse_postfix_expression();
 	}
 
-	std::unique_ptr<ast::Expression> CionParser::parse_postfix_expression() {
+	std::unique_ptr<ast::Expr> CionParser::parse_postfix_expression() {
 		auto lhs = parse_primary_expression();
 
 		while (true) {
@@ -420,7 +420,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expression> CionParser::parse_primary_expression() {
+	std::unique_ptr<ast::Expr> CionParser::parse_primary_expression() {
 		const auto tt = current_token().get_type();
 
 		// parse parenthesed expressions: '(' expr ')'
@@ -433,7 +433,7 @@ namespace cion {
 		// parse boolean literals: 'true' or 'false'
 		} else if (optional(ctts.lit_bool)) {
 			DEBUG_STDERR("parsed: boolean_literal\n");
-			return std::make_unique<ast::BooleanLiteral>(
+			return std::make_unique<ast::BooleanExpr>(
 				previous_token().get_bool());
 
 		// parse character literals: 'x'
@@ -563,14 +563,14 @@ namespace cion {
 		auto var_name = expect(ctts.identifier).get_string();
 
 		std::unique_ptr<ast::TypeSpecifier> type;
-		std::unique_ptr<ast::Expression> expr;
+		std::unique_ptr<ast::Expr> expr;
 
 		if (optional(ctts.op_colon)) {
 			type = parse_type_specifier();
 
 			expr = optional(ctts.op_equals)
 				? parse_expression()
-				: std::unique_ptr<ast::Expression>{std::make_unique<ast::NothingExpression>()};
+				: std::unique_ptr<ast::Expr>{std::make_unique<ast::NothingExpression>()};
 
 		} else {
 			type = std::unique_ptr<ast::TypeSpecifier>{
@@ -727,7 +727,7 @@ namespace cion {
 		expect(ctts.cmd_return);
 		auto return_expr = current_token().get_type() != ctts.op_semi_colon
 			? parse_expression()
-			: std::unique_ptr<ast::Expression>{std::make_unique<ast::NothingExpression>()};
+			: std::unique_ptr<ast::Expr>{std::make_unique<ast::NothingExpression>()};
 		expect(ctts.op_semi_colon);
 		return std::make_unique<ast::ReturnStatement>(std::move(return_expr));
 	}

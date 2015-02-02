@@ -1,11 +1,11 @@
 #ifndef CION_AST_FLOAT_LITERAL_HEADER
 #define CION_AST_FLOAT_LITERAL_HEADER
 
-#include "ast/expression.hpp"
+#include "ast/expr.hpp"
 
 namespace cion {
 namespace ast {
-	class FloatLiteral : public Expression {
+	class FloatLiteral : public Expr {
 	public:
 		using storage_type = double;
 

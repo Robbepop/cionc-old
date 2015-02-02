@@ -6,7 +6,7 @@ namespace cion {
 namespace ast {
 
 	ExpressionList::ExpressionList(
-		std::vector<std::unique_ptr<Expression>> expressions
+		std::vector<std::unique_ptr<Expr>> expressions
 	):
 		m_expressions{std::move(expressions)}
 	{}
@@ -15,11 +15,11 @@ namespace ast {
 		m_expressions{}
 	{}
 
-	std::vector<std::unique_ptr<Expression>> & ExpressionList::expressions() {
+	std::vector<std::unique_ptr<Expr>> & ExpressionList::expressions() {
 		return m_expressions;
 	}
 
-	std::vector<std::unique_ptr<Expression>> const& ExpressionList::expressions() const {
+	std::vector<std::unique_ptr<Expr>> const& ExpressionList::expressions() const {
 		return m_expressions;
 	}
 

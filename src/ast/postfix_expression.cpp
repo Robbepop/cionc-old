@@ -32,7 +32,7 @@ namespace ast {
 
 	PostfixExpression::PostfixExpression(
 		PostfixExpression::Operator op,
-		std::unique_ptr<Expression> expr
+		std::unique_ptr<Expr> expr
 	):
 		m_op{op},
 		m_expr{std::move(expr)}
@@ -40,7 +40,7 @@ namespace ast {
 
 	PostfixExpression::PostfixExpression(
 		TokenType const& tt,
-		std::unique_ptr<Expression> expr
+		std::unique_ptr<Expr> expr
 	):
 		PostfixExpression{get_operator(tt), std::move(expr)}
 	{}
@@ -53,12 +53,12 @@ namespace ast {
 		return m_op;
 	}
 
-	Expression & PostfixExpression::expr() {
+	Expr & PostfixExpression::expr() {
 		assert(m_expr != nullptr);
 		return *m_expr;
 	}
 
-	Expression const& PostfixExpression::expr() const {
+	Expr const& PostfixExpression::expr() const {
 		assert(m_expr != nullptr);
 		return *m_expr;
 	}

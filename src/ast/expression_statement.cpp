@@ -7,17 +7,17 @@ namespace cion {
 namespace ast {
 
 	ExpressionStatement::ExpressionStatement(
-		std::unique_ptr<Expression> expr
+		std::unique_ptr<Expr> expr
 	):
 		m_expr{std::move(expr)}
 	{}
 
-	Expression & ExpressionStatement::expr() {
+	Expr & ExpressionStatement::expr() {
 		assert(m_expr != nullptr);
 		return *m_expr;
 	}
 
-	Expression const& ExpressionStatement::expr() const {
+	Expr const& ExpressionStatement::expr() const {
 		assert(m_expr != nullptr);
 		return *m_expr;
 	}

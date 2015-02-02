@@ -7,7 +7,7 @@ namespace cion {
 	namespace ast {
 		class AssignmentExpression;
 		class BinaryExpression;
-		class BooleanLiteral;
+		class BooleanExpr;
 		class BreakStatement;
 		class CallExpression;
 		class CharLiteral;
@@ -52,7 +52,7 @@ namespace cion {
 	public:
 		virtual void visit(opt_mutable<ast::AssignmentExpression>) {}
 		virtual void visit(opt_mutable<ast::BinaryExpression>) {}
-		virtual void visit(opt_mutable<ast::BooleanLiteral>) {}
+		virtual void visit(opt_mutable<ast::BooleanExpr>) {}
 		virtual void visit(opt_mutable<ast::BreakStatement>) {}
 		virtual void visit(opt_mutable<ast::CallExpression>) {}
 		virtual void visit(opt_mutable<ast::CharLiteral>) {}

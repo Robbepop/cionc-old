@@ -3,7 +3,7 @@
 
 #include "ast/statement.hpp"
 #include "ast/compound_statement.hpp"
-#include "ast/expression.hpp"
+#include "ast/expr.hpp"
 
 #include <memory>
 
@@ -13,16 +13,16 @@ namespace ast {
 	class IfStatement : public Statement {
 	public:
 		IfStatement(
-			std::unique_ptr<Expression> condition,
+			std::unique_ptr<Expr> condition,
 			std::unique_ptr<Statement> then_stmnt,
 			std::unique_ptr<Statement> else_stmnt);
 
 		IfStatement(
-			std::unique_ptr<Expression> condition,
+			std::unique_ptr<Expr> condition,
 			std::unique_ptr<Statement> then_stmnt);
 
-		Expression & condition();
-		Expression const& condition() const;
+		Expr & condition();
+		Expr const& condition() const;
 
 		Statement & then_stmnt();
 		Statement const& then_stmnt() const;
@@ -34,7 +34,7 @@ namespace ast {
 		virtual void accept(CompilerPass & pass) const override;
 
 	private:
-		std::unique_ptr<Expression> m_condition;
+		std::unique_ptr<Expr> m_condition;
 		std::unique_ptr<Statement> m_then_stmnt;
 		std::unique_ptr<Statement> m_else_stmnt;
 	};

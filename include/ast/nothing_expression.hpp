@@ -1,11 +1,11 @@
 #ifndef CION_AST_NOTHING_EXPRESSION_HEADER
 #define CION_AST_NOTHING_EXPRESSION_HEADER
 
-#include "ast/expression.hpp"
+#include "ast/expr.hpp"
 
 namespace cion {
 namespace ast {
-	class NothingExpression : public Expression {
+	class NothingExpression : public Expr {
 	public:
 		NothingExpression() = default;
 

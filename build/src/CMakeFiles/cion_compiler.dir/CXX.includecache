@@ -29,8 +29,8 @@ utility
 -
 
 /home/robbepop/coding/c++/projects/cion/src/ast/boolean_literal.cpp
-ast/boolean_literal.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/boolean_literal.hpp
+ast/boolean_expr.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/ast/boolean_expr.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/ast/break_statement.cpp
 ast/break_statement.hpp
@@ -355,8 +355,8 @@ ast/primitive_type_float.hpp
 /home/robbepop/coding/c++/projects/cion/src/parser/ast/primitive_type_float.hpp
 ast/variable_declaration_statement.hpp
 /home/robbepop/coding/c++/projects/cion/src/parser/ast/variable_declaration_statement.hpp
-ast/boolean_literal.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/ast/boolean_literal.hpp
+ast/boolean_expr.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/ast/boolean_expr.hpp
 ast/char_literal.hpp
 /home/robbepop/coding/c++/projects/cion/src/parser/ast/char_literal.hpp
 ast/string_literal.hpp

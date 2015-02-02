@@ -1,13 +1,13 @@
 #ifndef CION_AST_STRING_LITERAL_HEADER
 #define CION_AST_STRING_LITERAL_HEADER
 
-#include "ast/expression.hpp"
+#include "ast/expr.hpp"
 
 #include <string>
 
 namespace cion {
 namespace ast {
-	class StringLiteral : public Expression {
+	class StringLiteral : public Expr {
 	public:
 		using storage_type = std::string;
 

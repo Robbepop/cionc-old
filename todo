@@ -12,6 +12,8 @@ ToDo list for Cion Compiler
 	- add SourceLocation to all AST nodes for all important locations (e.g. start, end) within an node
 	- add type information to all AST expression nodes
 	- implement a fully working symbol table for Cion Compiler
+	- remove ast/node as root AST node class type. (no root type afterwards)
+	- remove ast/expression_list class and adapt classees depending on it to use vectors of expression instead since expression_lists are no expressions in Cion.
 	- create semantic check passes:
 		1. fill SymbolTable
 		2. check declared before defined

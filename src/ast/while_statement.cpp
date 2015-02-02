@@ -7,19 +7,19 @@ namespace cion {
 namespace ast {
 
 	WhileStatement::WhileStatement(
-		std::unique_ptr<Expression> condition,
+		std::unique_ptr<Expr> condition,
 		std::unique_ptr<CompoundStatement> body
 	):
 		m_condition{std::move(condition)},
 		m_body{std::move(body)}
 	{}
 
-	Expression & WhileStatement::condition() {
+	Expr & WhileStatement::condition() {
 		assert(m_condition != nullptr);
 		return *m_condition;
 	}
 
-	Expression const& WhileStatement::condition() const {
+	Expr const& WhileStatement::condition() const {
 		assert(m_condition != nullptr);
 		return *m_condition;
 	}
