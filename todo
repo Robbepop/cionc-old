@@ -1,17 +1,25 @@
 ToDo list for Cion Compiler
 
 - put source files in associated folders as their include header files
-	- add error token type and output it in the lexer whenever an error appeared
+- add error token type and output it in the lexer whenever an error appeared
+	- make lexer output Tokens with start- and end SourceLocation (adapt Tokens for this change)
 	- make existing code use the new ErrorHandler in order to output
 	  and handle errors and warning while lexing or parsing
+	- add Identifier AST component with a reference to a string and to its entry within the SymbolTable
+	- add a TokenStorageManager to store all processed tokens. AST nodes should reference to their tokens.
+	- add startLocation() and endLocation() method to all AST nodes.
+	- add new Node subclasses Type and Declaration and adapt existing AST subclasses to them.
+	- add SourceLocation to all AST nodes for all important locations (e.g. start, end) within an node
 	- add type information to all AST expression nodes
-	- implement symbol table for Cion Compiler
+	- implement a fully working symbol table for Cion Compiler
 	- create semantic check passes:
 		1. fill SymbolTable
 		2. check declared before defined
 		3. set types
 		4. check type matching
 
+// Represents an ErrorType or WarningType.
+// Can be used to polymorphely store them within a single data structure.
 DebugInfoType
 
 // Represents an ErrorType with a name, id and a bool indicating if
@@ -44,3 +52,271 @@ Error : DebugInfo
 
 // Represents an actual Warning with a WarningType, a TranslationUnit and a SourceLocation
 Warning : DebugInfo
+
+
+
+
+
+// Manages access to the current scope, scope stack
+// as well as several helper methods and handles the ownership
+// of existing scopes.
+SymbolTable
+	// the root Scope where all global definitions are stored
+	Scope global_scope;
+
+	// method to access the global Scope (getter)
+	+global_scope();
+
+	// method to access the current Scope (getter/setter)
+	+current_scope();
+
+// Represents a scope of e.g. a function, module or even a compound_statement.
+// Manages ownership of all of its ScopeEntries.
+// Should have fast insertion of ScopeEntries and even faster ScopeEntry lookup.
+Scope
+	// map from identifiers (std::string) to ScopeEntries.
+	// insertion and especially lookup should be fast.
+	unordered_map<std::string, ScopeEntry>
+
+	// method to add a new entry to this Scope
+	// throws exception if entry already exists.
+	+add_entry(std::string s, ScopeEntry entry);
+
+	// method to lookup if this Scope already has got
+	// a certain ScopeEntry. This method should work very fast.
+	+has_entry(std::string s);
+
+// Represents a ScopeEntry which can be inserted into a scope.
+// This is an abstract class. Subclasses of this class stand for different types
+// of ScopeEntries.
+ScopeEntry
+
+
+
+Cion Type System:
+
+builtin-types:
+	bool
+	utf8, utf16, utf32
+	int16, int32, int64
+	float16, float32, float64
+
+custom-types:
+	<custom-type-list>
+
+qualified-type:
+	qualified-type '.' type-qualifier | builtin-type | custom-type
+
+type-qualifier:
+	ptr | ref | mutable | [n]
+
+
+
+Syntax for Types, Type Qualifiers etc.
+
+Example Syntaxes:
+
+==========================================================================================
+Syntax 1 - method-like attributing
+==========================================================================================
+
+int                     // an int
+int.ptr                 // a pointer to an int
+int.ref                 // a reference to an int
+int.mut                 // a mutable int
+int[10]                 // an array of 10 ints
+int.mut.ptr             // a pointer to a mutable int
+int.mut.ref             // a reference to a mutable int
+int.ptr.mut             // a mutable pointer to an int
+int.ref.mut             // error: forbidden: references can't be mutable
+int.mut.ref[10]         // an array of 10 references to mutable ints
+int.mut.ptr[10]         // an array of 10 pointers to mutable ints
+int.mut.ptr.mut         // a mutable pointer to a mutable int
+int.ref[10].ptr         // a pointer to an array of 10 references to ints
+int.mut.ref[10].ptr     // a pointer to an array of 10 references to mutable ints
+int.mut.ref[10].ptr.mut // a mutable pointer to an array of 10 references to mutable ints
+int[10][10][10].ptr.ptr // a pointer to a pointer of an array of 10 arrays of arrays of 10 arrays of array of 10 ints
+int.mut.ptr.mut.ptr.mut // a mutable pointer to a mutable pointer to a mutable int
+
+==========================================================================================
+Syntax 2 - function-like attributing
+==========================================================================================
+
+int                          // an int
+ptr(int)                     // a pointer to an int
+ref(int)                     // a reference to an int
+mut(int)                     // a mutable int
+int[10]                      // an array of 10 ints
+ptr(mut(int))                // a pointer to a mutable int
+ref(mut(int))                // a reference to a mutable int
+mut(ptr(int))                // a mutable pointer to an int
+mut(ref(int))                // error: forbidden: references can't be mutable
+ref(mut(int))[10]            // an array of 10 references to mutable ints
+ptr(mut(int))[10]            // an array of 10 pointers to mutable ints
+mut(ptr(mut(int)))           // a mutable pointer to a mutable int
+ptr(ref(int)[10])            // a pointer to an array of 10 references to ints
+ptr(ref(mut(int))[10])       // a pointer to an array of 10 references to mutable ints
+mut(ptr(ref(mut(int))[10]))  // a mutable pointer to an array of 10 references to mutable ints
+ptr(ptr(int[10][10][10]))    // a pointer to a pointer of an array of 10 arrays of arrays of 10 arrays of arrays of 10 ints
+mut(ptr(mut(ptr(mut(int))))) // a mutable pointer to a mutable pointer to a mutable int
+
+==========================================================================================
+Syntax 3 - paired method- and function-like attributing
+==========================================================================================
+
+int                       // an int
+ptr(int)                  // a pointer to an int
+ref(int)                  // a reference to an int
+mut.int                   // a mutable int
+int[10]                   // an array of 10 ints
+ptr(mut.int)              // a pointer to a mutable int
+ref(mut.int)              // a reference to a mutable int
+mut.ptr(int)              // a mutable pointer to an int
+mut.ref(int)              // error: forbidden: references can't be mutable
+ref(mut.int)[10]          // an array of 10 references to mutable ints
+ptr(mut.int)[10]          // an array of 10 pointers to mutable ints
+mut.ptr(mut.int)          // a mutable pointer to a mutable int
+ptr(ref(int)[10])         // a pointer to an array of 10 references to ints
+ptr(ref(mut.int)[10])     // a pointer to an array of 10 references to mutable ints
+mut.ptr(ref(mut.int)[10]) // a mutable pointer to an array of 10 references to mutable ints
+ptr(ptr(int[10][10][10])) // a pointer to a pointer of an array of 10 arrays of arrays of 10 arrays of arrays of 10 ints
+mut.ptr(mut.ptr(mut.int)) // a mutable pointer to a mutable pointer to a mutable int
+
+==========================================================================================
+Syntax 4 - paired method-like spaced attributing
+==========================================================================================
+
+int                       // an int
+ptr(int)                  // a pointer to an int
+ref(int)                  // a reference to an int
+mut int                   // a mutable int
+int[10]                   // an array of 10 ints
+ptr(mut int)              // a pointer to a mutable int
+ref(mut int)              // a reference to a mutable int
+mut ptr(int)              // a mutable pointer to an int
+mut ref(int)              // error: forbidden: references can't be mutable
+ref(mut int)[10]          // an array of 10 references to mutable ints
+ptr(mut int)[10]          // an array of 10 pointers to mutable ints
+mut ptr(mut int)          // a mutable pointer to a mutable int
+ptr(ref(int)[10])         // a pointer to an array of 10 references to ints
+ptr(ref(mut int)[10])     // a pointer to an array of 10 references to mutable ints
+mut ptr(ref(mut int)[10]) // a mutable pointer to an array of 10 references to mutable ints
+ptr(ptr(int[10][10][10])) // a pointer to a pointer of an array of 10 arrays of arrays of 10 arrays of arrays of 10 ints
+mut ptr(mut ptr(mut int)) // a mutable pointer to a mutable pointer to a mutable int
+
+==========================================================================================
+Syntax 5 - reverse method-like attributing
+==========================================================================================
+
+int                     // an int
+ptr.int                 // a pointer to an int
+ref.int                 // a reference to an int
+mut.int                 // a mutable int
+int[10]                 // an array of 10 ints
+ptr.mut.int             // a pointer to a mutable int
+ref.mut.int             // a reference to a mutable int
+mut.ptr.int             // a mutable pointer to an int
+mut.ref.int             // error: forbidden: references can't be mutable
+ref[10].mut.int         // an array of 10 references to mutable ints
+ptr[10].mut.int         // an array of 10 pointers to mutable ints
+mut.ptr.mut.int         // a mutable pointer to a mutable int
+ptr.ref[10].int         // a pointer to an array of 10 references to ints
+ptr.ref[10].mut.int     // a pointer to an array of 10 references to mutable ints
+mut.ptr.ref[10].mut.int // a mutable pointer to an array of 10 references to mutable ints
+ptr.ptr.int[10][10][10] // a pointer to a pointer of an array of 10 arrays of arrays of 10 arrays of array of 10 ints
+mut.ptr.mut.ptr.mut.int // a mutable pointer to a mutable pointer to a mutable int
+
+==========================================================================================
+Syntax 6 - pointy-paired method-like spaced attributing
+==========================================================================================
+
+int                                   // an int
+ptr<int>                              // a pointer to an int
+ref<int>                              // a reference to an int
+mutable int                           // a mutable int
+int[10]                               // an array of 10 ints
+ptr<mutable int>                      // a pointer to a mutable int
+ref<mutable int>                      // a reference to a mutable int
+mutable ptr<int>                      // a mutable pointer to an int
+mutable ref<int>                      // error: forbidden: references can't be mutable
+ref<mutable int>[10]                  // an array of 10 references to mutable ints
+ptr<mutable int>[10]                  // an array of 10 pointers to mutable ints
+mutable ptr<mutable int>              // a mutable pointer to a mutable int
+ptr<ref<int>[10]>                     // a pointer to an array of 10 references to ints
+ptr<ref<mutable int>[10]>             // a pointer to an array of 10 references to mutable ints
+mutable ptr<ref<mutable int>[10]>     // a mutable pointer to an array of 10 references to mutable ints
+ptr<ptr<int[10][10][10]>>             // a pointer to a pointer of an array of 10 arrays of arrays of 10 arrays of arrays of 10 ints
+mutable ptr<mutable ptr<mutable int>> // a mutable pointer to a mutable pointer to a mutable int
+
+==========================================================================================
+Syntax 7 - pointy-paired method-like attributing
+==========================================================================================
+
+int                       // an int
+ptr<int>                  // a pointer to an int
+ref<int>                  // a reference to an int
+mut<int>                  // a mutable int
+int[10]                   // an array of 10 ints
+ptr.mut<int>              // a pointer to a mutable int
+ref.mut<int>              // a reference to a mutable int
+mut.ptr<int>              // a mutable pointer to an int
+mut.ref<int>              // error: forbidden: references can't be mutable
+ref.mut<int>[10]          // an array of 10 references to mutable ints
+ptr.mut<int>[10]          // an array of 10 pointers to mutable ints
+mut.ptr.mut<int>          // a mutable pointer to a mutable int
+ptr<ref<int>[10]>         // a pointer to an array of 10 references to ints
+ptr<ref.mut<int>[10]>     // a pointer to an array of 10 references to mutable ints
+mut.ptr<ref.mut<int>[10]> // a mutable pointer to an array of 10 references to mutable ints
+ptr.ptr<int[10][10][10]>  // a pointer to a pointer of an array of 10 arrays of arrays of 10 arrays of arrays of 10 ints
+mut.ptr<mut.ptr<mut<int>> // a mutable pointer to a mutable pointer to a mutable int
+
+========================
+Type Specifier Keywords:
+========================
+
+Type Modifiers:
+================
+uref // universal reference
+ref  // l-value type reference
+rref // r-value type reference
+ptr  // pointer
+
+Quantity Modifiers:
+===================
+[x] // array of x elements
+
+State Modifiers:
+================
+mut | mutab | mutable | mutable // mutable modifier
+imm | immut | immutab | immutable // immutable modifier
+
+Grammar:
+========
+
+QualifiedType :=
+	  PrimaryType
+	| TypeModifier '(' QualifiedType ')'
+	| QualifiedType QuantityModifier
+	| StateModifier QualifiedType
+
+PrimaryType := BuiltinType | CustomType
+
+BuiltinType :=
+	  bool
+	        |   utf8   |   utf16  |   utf32
+	| int   |   int8   |   int16  |   int32  |   int64 |   int128
+	| uint  |  uint8   |  uint16  |  uint32  |  uint64 |  uint128
+	| float            | float16  | float32  | float64 | float128
+
+CustomType := identifier | identifier '.' CustomType
+
+TypeModifier := uref | ref | rref | ptr
+
+StateModifier :=
+	  mutable
+	| immutable
+	| const
+	| fixed
+	| readonly
+	| static
+	| steady

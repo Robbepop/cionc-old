@@ -5,8 +5,9 @@
 
 #include <exception>
 #include <memory>
+#include <cassert>
 
-//#define DEBUG
+#define DEBUG
 #ifdef DEBUG
 #include <iostream>
 #define DEBUG_STDOUT(x) (std::cout << x)
@@ -74,30 +75,26 @@ namespace cion {
 /// LEXER PRIVATE METHODS
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	bool Lexer::buffers_empty() {
-		return m_cur->buffers_empty() && m_last->buffers_empty();
-	}
-
 	void Lexer::check_match(TokenType const& token_type) {
 		static boost::match_results<std::string::const_iterator> what;
 		if (boost::regex_match(m_buffer, what, token_type.get_regex(), boost::match_default | boost::match_partial)) {
 			if (what[0].matched) {
 				if (token_type.get_match_type() == TokenType::MatchType::greedy) {
-					DEBUG_STDERR("\tcheck_match: " << token_type.get_name() << " (full, greedy)\n");
+					//DEBUG_STDERR("\tcheck_match: " << token_type.get_name() << " (full, greedy)\n");
 					m_cur->get_full_matches_greedy().push_back(token_type);
 				} else {
-					DEBUG_STDERR("\tcheck_match: " << token_type.get_name() << " (full, non-greedy)\n");
+					//DEBUG_STDERR("\tcheck_match: " << token_type.get_name() << " (full, non-greedy)\n");
 					m_cur->get_full_matches_non_greedy().push_back(token_type);
 				}
 			} else {
-				DEBUG_STDERR("\tcheck_match: " << token_type.get_name() << " (partial)\n");
+				//DEBUG_STDERR("\tcheck_match: " << token_type.get_name() << " (partial)\n");
 				m_cur->get_partial_matches().push_back(token_type);
 			}
 		}
 	}
 
 	void Lexer::check_matches() {
-		DEBUG_STDERR("check_matches: ");
+		//DEBUG_STDERR("check_matches: ");
 		if (buffers_empty()) {
 			//DEBUG_STDERR("check_matches: full check.");
 			for (auto&& token_type : m_matchable_tokens) {
@@ -111,11 +108,15 @@ namespace cion {
 			for (auto&& token_type : m_last->get_full_matches_greedy()) {
 				//check_match(token_type);
 				if (boost::regex_match(m_buffer, token_type.get_regex())) {
-					DEBUG_STDERR("\tcheck_match: " << token_type.get_name() << " (full, greedy)\n");
+					//DEBUG_STDERR("\tcheck_match: " << token_type.get_name() << " (full, greedy)\n");
 					m_cur->get_full_matches_greedy().push_back(token_type);
 				}
 			}
 		}
+	}
+
+	bool Lexer::buffers_empty() {
+		return m_cur->buffers_empty() && m_last->buffers_empty();
 	}
 
 	void Lexer::swap_buffers() {
@@ -158,29 +159,33 @@ namespace cion {
 		m_buffer.pop_back();
 	}
 
-	std::unique_ptr<Token> Lexer::make_error_token(ErrorType type) {
+	std::unique_ptr<Token> Lexer::make_error_token(
+		ErrorType type,
+		SourceLocation const& start_loc
+	) {
 		const auto loc = m_cur->get_source_location();
 		m_error_handler.error(type, loc, m_buffer);
-		return TokenFabric::make_token(TokenType::error, loc);
+		return TokenFabric::make_token(TokenType::error, start_loc, loc);
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////
 /// LEXER PUBLIC METHODS
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	// When this function is called it can assume the following states:
-	//    - m_buffer is empty
-	//    - m_input will read in the last non-comsumed character
-	//    - all other buffers are empty
 	std::unique_ptr<Token> Lexer::next_token() {
-		auto const& errors = CionErrorTypes::get_instance();
+		//assert(m_buffer.size() == 0);
+		//assert(m_cur->buffers_empty());
+		//assert(m_last->buffers_empty());
 
-		// always return eof token if parser wants next_token while
-		// this input stream is known to be fully read already.
+		auto const& errors = CionErrorTypes::get_instance();
+		auto start_loc = SourceLocation{0, 0};
+		auto start_loc_initialized = false;
+
+		// return eof token if inputstream is empty.
 		if (m_input.eof()) {
 			DEBUG_STDERR("next_token: reached eof -> return eof token\n");
 			return TokenFabric::make_token(
-				TokenType::eof, m_cur->get_source_location());
+				TokenType::eof, start_loc, m_cur->get_source_location());
 		}
 
 		// empty all match buffers
@@ -193,10 +198,13 @@ namespace cion {
 			m_buffer += m_cur_symbol;
 			swap_buffers();
 			clear_cur_buffers();
-			DEBUG_STDERR("\tnext_token - buffer = \"" << m_buffer << "\"\n");
+			//DEBUG_STDERR("\tnext_token - buffer = \"" << m_buffer << "\"\n");
 
 			// count line and column numbers
 			update_lc_numbers();
+			if (!start_loc_initialized) {
+				start_loc = m_cur->get_source_location();
+			}
 
 			// check for matches with updated buffer
 			check_matches();
@@ -205,16 +213,16 @@ namespace cion {
 			const auto count_greedy = m_cur->get_full_matches_greedy().size();
 			const auto count_non_greedy = m_cur->get_full_matches_non_greedy().size();
 
-			DEBUG_STDERR("\tnext_token: count_partial = " << count_partial << "\n");
-			DEBUG_STDERR("\tnext_token: count_greedy = " << count_greedy << "\n");
-			DEBUG_STDERR("\tnext_token: count_non_greedy = " << count_non_greedy << "\n");
+			//DEBUG_STDERR("\tnext_token: count_partial = " << count_partial << "\n");
+			//DEBUG_STDERR("\tnext_token: count_greedy = " << count_greedy << "\n");
+			//DEBUG_STDERR("\tnext_token: count_non_greedy = " << count_non_greedy << "\n");
 
 			if (count_partial > 0 || count_greedy > 0) continue;
 
 			if (count_non_greedy == 1) {
 				return TokenFabric::make_token(
 					m_cur->get_full_matches_non_greedy()[0],
-					m_cur->get_source_location(),
+					start_loc, m_cur->get_source_location(),
 					m_buffer);
 			}
 			if (count_non_greedy == 0) {
@@ -226,23 +234,19 @@ namespace cion {
 					step_back();
 					return TokenFabric::make_token(
 						m_last->get_full_matches_non_greedy()[0],
-						m_last->get_source_location(),
+						start_loc, m_last->get_source_location(),
 						m_buffer);
 				}
 				if (count_last_greedy == 1) {
 					step_back();
 					return TokenFabric::make_token(
 						m_last->get_full_matches_greedy()[0],
-						m_last->get_source_location(),
+						start_loc, m_last->get_source_location(),
 						m_buffer);
 				}
 				if (count_last_greedy == 0 || count_last_non_greedy == 0) {
 					DEBUG_STDERR("throw error_token_read since no matching token was found. (1)\n");
-					return make_error_token(errors.unknown_token_type);
-					//return TokenFabric::make_token(
-					//	TokenType::error, m_cur->get_source_location());
-					//throw error_token_read(
-					//	m_last->get_source_location(), "asd", m_buffer);
+					return make_error_token(errors.unknown_token_type, start_loc);
 				}
 				if (count_last_non_greedy >= 2) {
 					DEBUG_STDERR("throw ambigous_token_read since multiple same-priority matches were found. (1)\n");
@@ -261,13 +265,13 @@ namespace cion {
 			if (count_non_greedy == 1) {
 				return TokenFabric::make_token(
 					m_cur->get_full_matches_non_greedy()[0],
-					m_cur->get_source_location(),
+					start_loc, m_cur->get_source_location(),
 					m_buffer);
 			}
 			if (count_greedy == 1) {
 				return TokenFabric::make_token(
 					m_cur->get_full_matches_greedy()[0],
-					m_cur->get_source_location(),
+					start_loc, m_cur->get_source_location(),
 					m_buffer);
 			}
 			if (count_greedy >= 2 || count_non_greedy >= 2) {
@@ -279,22 +283,14 @@ namespace cion {
 			}
 			if (count_partial > 0) {
 				DEBUG_STDERR("throw error_token_read since no matching token was found. (2)\n");
-				return make_error_token(errors.unknown_token_type);
-				//return TokenFabric::make_token(
-				//	TokenType::error, m_cur->get_source_location());
-				//throw error_token_read(
-				//	m_cur->get_source_location(), "123", m_buffer);
+				return make_error_token(errors.unknown_token_type, start_loc);
 			}
-			return TokenFabric::make_token(TokenType::eof, m_cur->get_source_location());
+			return TokenFabric::make_token(TokenType::eof, start_loc, m_cur->get_source_location());
 		}
 
 		// since no constraint has fit to any buffer set-up above
 		// it is safe to assume that the read token was errornous.
 		DEBUG_STDERR("throw error_token_read since no matching token was found. (3)\n");
-		return make_error_token(errors.unknown_token_type);
-		//return TokenFabric::make_token(
-		//	TokenType::error, m_cur->get_source_location());
-		//throw error_token_read(
-		//	m_cur->get_source_location(), "yxc", m_buffer);
+		return make_error_token(errors.unknown_token_type, start_loc);
 	}
 }

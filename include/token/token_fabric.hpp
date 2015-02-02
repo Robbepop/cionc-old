@@ -16,7 +16,8 @@ namespace cion {
 	public:
 		static std::unique_ptr<Token> make_token(
 			TokenType const& token_type,
-			SourceLocation const& source_location,
+			SourceLocation const& start_loc,
+			SourceLocation const& end_loc,
 			std::string const& value = "");
 	};
 } // namespace cion

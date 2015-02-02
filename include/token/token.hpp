@@ -15,7 +15,11 @@ namespace cion {
 	// a token instance if available.
 	class Token {
 	public:
-		Token(TokenType const& type, SourceLocation const& source_location);
+		Token(
+			TokenType const& type,
+			SourceLocation const& start_loc,
+			SourceLocation const& end_loc);
+
 		Token(Token const& token) = default;
 		Token(Token && token) = default;
 
@@ -34,6 +38,9 @@ namespace cion {
 		// to improve error and debug information during parsing.
 		SourceLocation const& get_source_location() const;
 
+		SourceLocation const& start_loc() const;
+		SourceLocation const& end_loc() const;
+
 		// Retrieves optional information for a boolean value.
 		virtual bool get_bool() const;
 
@@ -51,7 +58,8 @@ namespace cion {
 
 	private:
 		TokenType m_type;
-		SourceLocation m_source_location;
+		SourceLocation m_start_loc;
+		SourceLocation m_end_loc;
 	};
 } // namespace cion
 

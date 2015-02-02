@@ -14,12 +14,14 @@ namespace cion {
 		// Can provide an optional token type specifier.
 		IntegralToken(
 			TokenType const& token_type,
-			SourceLocation const& source_location,
+			SourceLocation const& start_loc,
+			SourceLocation const& end_loc,
 			value_type value);
 
 		IntegralToken(
 			TokenType const& token_type,
-			SourceLocation const& source_location,
+			SourceLocation const& start_loc,
+			SourceLocation const& end_loc,
 			std::string value);
 
 		IntegralToken(IntegralToken const& token) = default;

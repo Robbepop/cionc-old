@@ -6,10 +6,12 @@
 namespace cion {
 	Token::Token(
 		TokenType const& token_type,
-		SourceLocation const& source_location
+		SourceLocation const& start_loc,
+		SourceLocation const& end_loc
 	) :
 		m_type{token_type},
-		m_source_location{source_location}
+		m_start_loc{start_loc},
+		m_end_loc{end_loc}
 	{}
 
 	bool Token::operator==(Token const& rhs) const {
@@ -25,7 +27,15 @@ namespace cion {
 	}
 
 	SourceLocation const& Token::get_source_location() const {
-		return m_source_location;
+		return m_start_loc;
+	}
+
+	SourceLocation const& Token::start_loc() const {
+		return m_start_loc;
+	}
+
+	SourceLocation const& Token::end_loc() const {
+		return m_end_loc;
 	}
 
 	bool Token::get_bool() const {

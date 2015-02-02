@@ -6,19 +6,21 @@
 namespace cion {
 	NumberToken::NumberToken(
 		TokenType const& token_type,
-		SourceLocation const& source_location,
+		SourceLocation const& start_loc,
+		SourceLocation const& end_loc,
 		NumberToken::value_type value
 	) :
-		Token{token_type, source_location},
+		Token{token_type, start_loc, end_loc},
 		m_value{value}
 	{}
 
 	NumberToken::NumberToken(
 		TokenType const& token_type,
-		SourceLocation const& source_location,
+		SourceLocation const& start_loc,
+		SourceLocation const& end_loc,
 		std::string value
 	) try :
-		Token{token_type, source_location},
+		Token{token_type, start_loc, end_loc},
 		m_value{std::stod(value)}
 	{} catch (std::invalid_argument const& e) {
 		std::cerr << "read NumberToken with invalid value format: " << e.what() << "\n";

@@ -14,7 +14,8 @@ namespace cion {
 		// Can provide an optional token type specifier.
 		StringToken(
 			TokenType const& token_type,
-			SourceLocation const& source_location,
+			SourceLocation const& start_loc,
+			SourceLocation const& end_loc,
 			value_type value);
 
 		StringToken(StringToken const& token) = default;

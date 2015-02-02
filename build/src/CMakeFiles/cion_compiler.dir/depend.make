@@ -55,6 +55,8 @@ src/CMakeFiles/cion_compiler.dir/ast/primitive_type_float.cpp.o: ../src/ast/prim
 
 src/CMakeFiles/cion_compiler.dir/ast/primitive_type_int.cpp.o: ../src/ast/primitive_type_int.cpp
 
+src/CMakeFiles/cion_compiler.dir/ast/primitive_type_string.cpp.o: ../src/ast/primitive_type_string.cpp
+
 src/CMakeFiles/cion_compiler.dir/ast/return_statement.cpp.o: ../src/ast/return_statement.cpp
 
 src/CMakeFiles/cion_compiler.dir/ast/string_literal.cpp.o: ../src/ast/string_literal.cpp
@@ -80,6 +82,10 @@ src/CMakeFiles/cion_compiler.dir/error/debug_info_type.cpp.o: ../src/error/debug
 src/CMakeFiles/cion_compiler.dir/error/error_handler.cpp.o: ../src/error/error_handler.cpp
 
 src/CMakeFiles/cion_compiler.dir/error/error_type.cpp.o: ../src/error/error_type.cpp
+
+src/CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.o: ../src/error/lexer_error.cpp
+
+src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.o: ../src/error/parser_error.cpp
 
 src/CMakeFiles/cion_compiler.dir/error/source_location.cpp.o: ../src/error/source_location.cpp
 

@@ -55,6 +55,8 @@ src/CMakeFiles/cion_compiler.dir/ast/primitive_type_float.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/ast/primitive_type_float.cpp
 src/CMakeFiles/cion_compiler.dir/ast/primitive_type_int.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/ast/primitive_type_int.cpp
+src/CMakeFiles/cion_compiler.dir/ast/primitive_type_string.cpp.o
+ /home/robbepop/coding/c++/projects/cion/src/ast/primitive_type_string.cpp
 src/CMakeFiles/cion_compiler.dir/ast/return_statement.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/ast/return_statement.cpp
 src/CMakeFiles/cion_compiler.dir/ast/string_literal.cpp.o
@@ -81,6 +83,10 @@ src/CMakeFiles/cion_compiler.dir/error/error_handler.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/error/error_handler.cpp
 src/CMakeFiles/cion_compiler.dir/error/error_type.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/error/error_type.cpp
+src/CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.o
+ /home/robbepop/coding/c++/projects/cion/src/error/lexer_error.cpp
+src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.o
+ /home/robbepop/coding/c++/projects/cion/src/error/parser_error.cpp
 src/CMakeFiles/cion_compiler.dir/error/source_location.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/error/source_location.cpp
 src/CMakeFiles/cion_compiler.dir/error/warning_type.cpp.o

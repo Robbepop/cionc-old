@@ -172,6 +172,8 @@ ast/primitive_type_float.hpp
 ast/primitive_type_int.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/ast/primitive_type_int.hpp
 
+/home/robbepop/coding/c++/projects/cion/src/ast/primitive_type_string.cpp
+
 /home/robbepop/coding/c++/projects/cion/src/ast/return_statement.cpp
 ast/return_statement.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/ast/return_statement.hpp
@@ -258,6 +260,18 @@ error/error_handler.hpp
 error/error_type.hpp
 /home/robbepop/coding/c++/projects/cion/src/error/error/error_type.hpp
 
+/home/robbepop/coding/c++/projects/cion/src/error/lexer_error.cpp
+error/lexer_error.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/error/lexer_error.hpp
+sstream
+-
+
+/home/robbepop/coding/c++/projects/cion/src/error/parser_error.cpp
+error/parser_error.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/error/parser_error.hpp
+sstream
+-
+
 /home/robbepop/coding/c++/projects/cion/src/error/source_location.cpp
 error/source_location.hpp
 /home/robbepop/coding/c++/projects/cion/src/error/error/source_location.hpp
@@ -278,6 +292,8 @@ error/lexer_exception.hpp
 exception
 -
 memory
+-
+cassert
 -
 iostream
 -
@@ -369,6 +385,8 @@ ast/nothing_expression.hpp
 /home/robbepop/coding/c++/projects/cion/src/parser/ast/nothing_expression.hpp
 ast/nothing_type.hpp
 /home/robbepop/coding/c++/projects/cion/src/parser/ast/nothing_type.hpp
+chrono
+-
 iostream
 -
 

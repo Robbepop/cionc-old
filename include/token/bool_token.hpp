@@ -14,12 +14,14 @@ namespace cion {
 		// Can provide an optional token type specifier.
 		BoolToken(
 			TokenType const& token_type,
-			SourceLocation const& source_location,
+			SourceLocation const& start_loc,
+			SourceLocation const& end_loc,
 			value_type value);
 
 		BoolToken(
 			TokenType const& token_type,
-			SourceLocation const& source_location,
+			SourceLocation const& start_loc,
+			SourceLocation const& end_loc,
 			std::string value);
 
 		BoolToken(BoolToken const& token_type) = default;

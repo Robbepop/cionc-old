@@ -6,7 +6,9 @@ namespace cion {
 	LexerFilter::LexerFilter(Lexer & input, std::vector<TokenType> const& invalid_tokens) :
 		m_input{input},
 		m_invalid_tokens{invalid_tokens}
-	{}
+	{
+		m_invalid_tokens.push_back(TokenType::error);
+	}
 
 	bool LexerFilter::is_valid(TokenType token_type) {
 		const auto end = m_invalid_tokens.end();

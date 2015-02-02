@@ -27,6 +27,9 @@
 #include "ast/nothing_expression.hpp"
 #include "ast/nothing_type.hpp"
 
+
+#include <chrono>
+
 //#define DEBUG
 #ifdef DEBUG
 #include <iostream>
@@ -748,7 +751,7 @@ namespace cion {
 	std::unique_ptr<ast::Statement> CionParser::parse_statement() {
 		using stmnt = std::unique_ptr<ast::Statement>;
 
-		auto tt = current_token().get_type();
+		const auto tt = current_token().get_type();
 
 		return
 			tt == ctts.cmd_var       ? stmnt{parse_variable_declaration()}:

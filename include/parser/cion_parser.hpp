@@ -26,6 +26,8 @@
 #include <memory>
 #include <queue>
 
+#include <chrono>
+
 namespace cion {
 	class CionParser final {
 	private:

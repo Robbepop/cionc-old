@@ -3,19 +3,21 @@
 namespace cion {
 	BoolToken::BoolToken(
 		TokenType const& token_type,
-		SourceLocation const& source_location,
+		SourceLocation const& start_loc,
+		SourceLocation const& end_loc,
 		BoolToken::value_type value
 	) :
-		Token{token_type, source_location},
+		Token{token_type, start_loc, end_loc},
 		m_value{value}
 	{}
 
 	BoolToken::BoolToken(
 		TokenType const& token_type,
-		SourceLocation const& source_location,
+		SourceLocation const& start_loc,
+		SourceLocation const& end_loc,
 		std::string value
 	) :
-		Token{token_type, source_location},
+		Token{token_type, start_loc, end_loc},
 		m_value{(value == "true") ? true : false}
 	{}
 

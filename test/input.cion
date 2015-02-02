@@ -27,7 +27,7 @@ function main(paramA : int, paramB : bool) {
 }
 
 function rec(counter : uint64) -> uint64 {
-	return (counter <= 100) ? counter : rec(counter - 1);
+	return counter <= 100 ? counter : rec(counter - 1);
 }
 
 function min(first : int, second : int) -> int {

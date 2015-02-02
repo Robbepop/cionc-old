@@ -1,88 +1,88 @@
 |compilation unit
-----|variable declaration statement: my_global_integer
+----|variable declaration statement: y_global_intege
 --------|nothing type
 --------|integer literal: 50
-----|variable declaration statement: my_global_fun_call
+----|variable declaration statement: y_global_fun_cal
 --------|nothing type
 --------|call expression
-------------|variable expression: bar
+------------|variable expression: a
 ------------|expression list
-----------------|variable expression: foo
-----------------|d statement
+----------------|variable expression: o
+----------------|char literal: '
 ----------------|integer literal: 50
 ----------------|float literal: 0.123400
 ----------------|boolean literal: false
-----------------|string literal: "baz"
-----|variable declaration statement: my_global_fun_call2
+----------------|string literal: baz
+----|variable declaration statement: y_global_fun_call
 --------|nothing type
 --------|call expression
-------------|variable expression: baz
+------------|variable expression: a
 ------------|expression list
-----|variable declaration statement: my_global_number
+----|variable declaration statement: y_global_numbe
 --------|nothing type
 --------|float literal: 0.123400
-----|variable declaration statement: my_global_boolean
+----|variable declaration statement: y_global_boolea
 --------|nothing type
 --------|boolean literal: false
-----|variable declaration statement: my_global_character
+----|variable declaration statement: y_global_characte
 --------|nothing type
---------|d statement
-----|variable declaration statement: my_global_string
+--------|char literal: '
+----|variable declaration statement: y_global_strin
 --------|nothing type
---------|string literal: "Hello, World!"
-----|variable declaration statement: my_global_custom_01
+--------|string literal: Hello, World!
+----|variable declaration statement: y_global_custom_0
 --------|primitive type int
 --------|integer literal: 5
-----|variable declaration statement: my_global_custom_02
+----|variable declaration statement: y_global_custom_0
 --------|primitive type bool
 --------|binary expression
 ------------|binary expression
 ----------------|integer literal: 0
 ----------------|integer literal: 5
 ------------|integer literal: 10
-----|variable declaration statement: my_auto_ref_01
+----|variable declaration statement: y_auto_ref_0
 --------|nothing type
---------|variable expression: my_global_custom_01
-----|variable declaration statement: my_auto_ref_01
+--------|variable expression: y_global_custom_0
+----|variable declaration statement: y_auto_ref_0
 --------|nothing type
---------|variable expression: my_global_custom_01
-----|variable declaration statement: my_auto_ptr_01
+--------|variable expression: y_global_custom_0
+----|variable declaration statement: y_auto_ptr_0
 --------|nothing type
---------|variable expression: my_global_custom_02
-----|function definition statement: min
+--------|variable expression: y_global_custom_0
+----|function definition statement: i
 --------|logical parameter pack
-------------|logical parameter: lhs
+------------|logical parameter: h
 ----------------|primitive type int
-------------|logical parameter: rhs
+------------|logical parameter: h
 ----------------|primitive type int
 --------|primitive type int
 --------|compound statement
-----|function definition statement: main
+----|function definition statement: ai
 --------|logical parameter pack
-------------|logical parameter: paramA
+------------|logical parameter: aram
 ----------------|primitive type int
-------------|logical parameter: paramB
+------------|logical parameter: aram
 ----------------|primitive type bool
 --------|nothing type
 --------|compound statement
 ------------|expression statement
 ----------------|call expression
---------------------|variable expression: println
+--------------------|variable expression: rintl
 --------------------|expression list
-------------------------|string literal: "yolo"
-------------|variable declaration statement: i
+------------------------|string literal: yolo
+------------|variable declaration statement: 
 ----------------|nothing type
 ----------------|integer literal: 500
 ------------|expression statement
 ----------------|postfix expression
---------------------|variable expression: i
+--------------------|variable expression: 
 ------------|expression statement
 ----------------|assignment expression
---------------------|variable expression: i
+--------------------|variable expression: 
 --------------------|conditional expression
 ------------------------|binary expression
-----------------------------|variable expression: foo
-----------------------------|variable expression: bar
+----------------------------|variable expression: o
+----------------------------|variable expression: a
 ------------------------|integer literal: 1337
 ------------------------|integer literal: 42
 ------------|expression statement
@@ -90,41 +90,41 @@
 --------------------|postfix expression
 ------------------------|postfix expression
 ----------------------------|postfix expression
---------------------------------|variable expression: i
-----|function definition statement: rec
+--------------------------------|variable expression: 
+----|function definition statement: e
 --------|logical parameter pack
-------------|logical parameter: counter
+------------|logical parameter: ounte
 ----------------|primitive type int
 --------|primitive type int
 --------|compound statement
 ------------|return statement
 ----------------|conditional expression
 --------------------|binary expression
-------------------------|variable expression: counter
+------------------------|variable expression: ounte
 ------------------------|integer literal: 100
---------------------|variable expression: counter
+--------------------|variable expression: ounte
 --------------------|call expression
-------------------------|variable expression: rec
+------------------------|variable expression: e
 ------------------------|expression list
 ----------------------------|binary expression
---------------------------------|variable expression: counter
+--------------------------------|variable expression: ounte
 --------------------------------|integer literal: 1
-----|function definition statement: min
+----|function definition statement: i
 --------|logical parameter pack
-------------|logical parameter: first
+------------|logical parameter: irs
 ----------------|primitive type int
-------------|logical parameter: second
+------------|logical parameter: econ
 ----------------|primitive type int
 --------|primitive type int
 --------|compound statement
 ------------|return statement
 ----------------|conditional expression
 --------------------|binary expression
-------------------------|variable expression: first
-------------------------|variable expression: second
---------------------|variable expression: first
---------------------|variable expression: second
-----|variable declaration statement: my_global_calc_01
+------------------------|variable expression: irs
+------------------------|variable expression: econ
+--------------------|variable expression: irs
+--------------------|variable expression: econ
+----|variable declaration statement: y_global_calc_0
 --------|nothing type
 --------|binary expression
 ------------|binary expression
@@ -137,48 +137,48 @@
 --------------------|binary expression
 ------------------------|binary expression
 ----------------------------|integer literal: 100
-----------------------------|variable expression: foo
-------------------------|variable expression: bar
+----------------------------|variable expression: o
+------------------------|variable expression: a
 --------------------|call expression
-------------------------|variable expression: foo
+------------------------|variable expression: o
 ------------------------|expression list
 ------------|index expression
 ----------------|index expression
---------------------|variable expression: baz
---------------------|expression list
-------------------------|variable expression: i
-----------------|expression list
 --------------------|variable expression: a
---------------------|variable expression: b
---------------------|variable expression: c
-----|variable declaration statement: my_condition_01
+--------------------|expression list
+------------------------|variable expression: 
+----------------|expression list
+--------------------|variable expression: 
+--------------------|variable expression: 
+--------------------|variable expression: 
+----|variable declaration statement: y_condition_0
 --------|nothing type
 --------|conditional expression
 ------------|binary expression
-----------------|variable expression: i
+----------------|variable expression: 
 ----------------|integer literal: 5
-------------|variable expression: bar
+------------|variable expression: a
 ------------|binary expression
-----------------|variable expression: baz
+----------------|variable expression: a
 ----------------|integer literal: 1337
-----|variable declaration statement: paren_func_test
+----|variable declaration statement: aren_func_tes
 --------|nothing type
 --------|call expression
-------------|variable expression: foo
+------------|variable expression: o
 ------------|expression list
 ----------------|call expression
---------------------|variable expression: bar
+--------------------|variable expression: a
 --------------------|expression list
 ------------------------|call expression
-----------------------------|variable expression: baz
+----------------------------|variable expression: a
 ----------------------------|expression list
 --------------------------------|call expression
-------------------------------------|variable expression: foo
+------------------------------------|variable expression: o
 ------------------------------------|expression list
 ----------------------------------------|call expression
---------------------------------------------|variable expression: bar
+--------------------------------------------|variable expression: a
 --------------------------------------------|expression list
-----|function definition statement: compound_block_test
+----|function definition statement: ompound_block_tes
 --------|logical parameter pack
 --------|nothing type
 --------|compound statement
@@ -186,109 +186,109 @@
 ----------------|compound statement
 --------------------|expression statement
 ------------------------|call expression
-----------------------------|variable expression: do_nothing
+----------------------------|variable expression: o_nothin
 ----------------------------|expression list
-----|variable declaration statement: unary_test
+----|variable declaration statement: nary_tes
 --------|nothing type
 --------|unary expression
 ------------|unary expression
 ----------------|unary expression
 --------------------|unary expression
 ------------------------|integer literal: 5
-----|function definition statement: if_test
+----|function definition statement: f_tes
 --------|logical parameter pack
 --------|nothing type
 --------|compound statement
 ------------|if statement
-----------------|variable expression: only_if_branch
+----------------|variable expression: nly_if_branc
 ----------------|compound statement
 --------------------|expression statement
 ------------------------|call expression
-----------------------------|variable expression: do_something_funny
+----------------------------|variable expression: o_something_funn
 ----------------------------|expression list
 ----------------|empty statement
 ------------|if statement
 ----------------|call expression
---------------------|variable expression: no_default_else_branch
+--------------------|variable expression: o_default_else_branc
 --------------------|expression list
 ----------------|compound statement
 --------------------|expression statement
 ------------------------|call expression
-----------------------------|variable expression: lol
+----------------------------|variable expression: o
 ----------------------------|expression list
 ----------------|if statement
 --------------------|binary expression
-------------------------|variable expression: rofl
-------------------------|variable expression: mao
+------------------------|variable expression: of
+------------------------|variable expression: a
 --------------------|compound statement
 ------------------------|expression statement
 ----------------------------|call expression
---------------------------------|variable expression: xD
+--------------------------------|variable expression: 
 --------------------------------|expression list
 --------------------|empty statement
 ------------|if statement
 ----------------|binary expression
 --------------------|call expression
-------------------------|variable expression: blablablub
+------------------------|variable expression: lablablu
 ------------------------|expression list
---------------------|variable expression: loldrafuck
+--------------------|variable expression: oldrafuc
 ----------------|compound statement
 --------------------|return statement
-------------------------|string literal: "hello"
+------------------------|string literal: hello
 ----------------|if statement
 --------------------|binary expression
-------------------------|variable expression: xD
-------------------------|variable expression: haha
+------------------------|variable expression: 
+------------------------|variable expression: ah
 --------------------|compound statement
 ------------------------|return statement
-----------------------------|string literal: ", "
+----------------------------|string literal: , 
 --------------------|if statement
 ------------------------|binary expression
-----------------------------|variable expression: foo
-----------------------------|variable expression: baz
+----------------------------|variable expression: o
+----------------------------|variable expression: a
 ------------------------|compound statement
 ----------------------------|return statement
---------------------------------|string literal: "world!"
+--------------------------------|string literal: world!
 ------------------------|compound statement
 ----------------------------|return statement
---------------------------------|string literal: "\n"
-----|function definition statement: closure_test
+--------------------------------|string literal: \n
+----|function definition statement: losure_tes
 --------|logical parameter pack
-------------|logical parameter: lol
+------------|logical parameter: o
 ----------------|primitive type int
-------------|logical parameter: xD
+------------|logical parameter: 
 ----------------|primitive type float
 --------|nothing type
 --------|compound statement
-------------|function definition statement: private_func
+------------|function definition statement: rivate_fun
 ----------------|logical parameter pack
---------------------|logical parameter: my_args
+--------------------|logical parameter: y_arg
 ------------------------|primitive type int
---------------------|logical parameter: my_other_args
+--------------------|logical parameter: y_other_arg
 ------------------------|primitive type float
 ----------------|primitive type int
 ----------------|compound statement
 --------------------|return statement
 ------------------------|binary expression
-----------------------------|variable expression: my_args
-----------------------------|variable expression: my_other_args
+----------------------------|variable expression: y_arg
+----------------------------|variable expression: y_other_arg
 ------------|return statement
 ----------------|call expression
---------------------|variable expression: private_func
+--------------------|variable expression: rivate_fun
 --------------------|expression list
-------------------------|variable expression: lol
-------------------------|variable expression: xD
-----|function definition statement: while_loop_test
+------------------------|variable expression: o
+------------------------|variable expression: 
+----|function definition statement: hile_loop_tes
 --------|logical parameter pack
 --------|nothing type
 --------|compound statement
 ------------|while statement
 ----------------|call expression
---------------------|variable expression: my_condition_func
+--------------------|variable expression: y_condition_fun
 --------------------|expression list
-------------------------|variable expression: foo
+------------------------|variable expression: o
 ----------------|compound statement
 --------------------|expression statement
 ------------------------|call expression
-----------------------------|variable expression: do_something_within_this_while_loop
+----------------------------|variable expression: o_something_within_this_while_loo
 ----------------------------|expression list

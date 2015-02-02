@@ -1,0 +1,33 @@
+module vec3;
+
+import std.math;
+
+struct vec3 {
+	[public]
+	method length() -> float64 {
+		return std.math.sqrt(x*x + y*y + z*z);
+	}
+
+	[public, mutable]
+	method normalize() {
+		val l = length();
+		if l == 0 { return; }
+		this->x /= l;
+		this->y /= l;
+		this->z /= l;
+	}
+
+	[public]
+	method normalize() -> thistype {
+		val l = length();
+		if l == 0 { return; }
+		return vec3(x / l, y / l, z / l);
+	}
+
+	[public]
+	var x, y, z : float64;
+}
+
+function main() {
+	var v = vec3(1f64, 2f64, 3f64);
+}

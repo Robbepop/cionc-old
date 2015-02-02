@@ -14,12 +14,14 @@ namespace cion {
 		// Can provide an optional token type specifier.
 		NumberToken(
 			TokenType const& token_type,
-			SourceLocation const& source_location,
+			SourceLocation const& start_loc,
+			SourceLocation const& end_loc,
 			value_type value);
 
 		NumberToken(
 			TokenType const& token_type,
-			SourceLocation const& source_location,
+			SourceLocation const& start_loc,
+			SourceLocation const& end_loc,
 			std::string value);
 
 		NumberToken(NumberToken const& token) = default;

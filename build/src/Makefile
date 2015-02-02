@@ -764,6 +764,30 @@ ast/primitive_type_int.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_int.cpp.s
 .PHONY : ast/primitive_type_int.cpp.s
 
+ast/primitive_type_string.o: ast/primitive_type_string.cpp.o
+.PHONY : ast/primitive_type_string.o
+
+# target to build an object file
+ast/primitive_type_string.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_string.cpp.o
+.PHONY : ast/primitive_type_string.cpp.o
+
+ast/primitive_type_string.i: ast/primitive_type_string.cpp.i
+.PHONY : ast/primitive_type_string.i
+
+# target to preprocess a source file
+ast/primitive_type_string.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_string.cpp.i
+.PHONY : ast/primitive_type_string.cpp.i
+
+ast/primitive_type_string.s: ast/primitive_type_string.cpp.s
+.PHONY : ast/primitive_type_string.s
+
+# target to generate assembly for a file
+ast/primitive_type_string.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_string.cpp.s
+.PHONY : ast/primitive_type_string.cpp.s
+
 ast/return_statement.o: ast/return_statement.cpp.o
 .PHONY : ast/return_statement.o
 
@@ -1075,6 +1099,54 @@ error/error_type.s: error/error_type.cpp.s
 error/error_type.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/error_type.cpp.s
 .PHONY : error/error_type.cpp.s
+
+error/lexer_error.o: error/lexer_error.cpp.o
+.PHONY : error/lexer_error.o
+
+# target to build an object file
+error/lexer_error.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.o
+.PHONY : error/lexer_error.cpp.o
+
+error/lexer_error.i: error/lexer_error.cpp.i
+.PHONY : error/lexer_error.i
+
+# target to preprocess a source file
+error/lexer_error.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.i
+.PHONY : error/lexer_error.cpp.i
+
+error/lexer_error.s: error/lexer_error.cpp.s
+.PHONY : error/lexer_error.s
+
+# target to generate assembly for a file
+error/lexer_error.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.s
+.PHONY : error/lexer_error.cpp.s
+
+error/parser_error.o: error/parser_error.cpp.o
+.PHONY : error/parser_error.o
+
+# target to build an object file
+error/parser_error.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.o
+.PHONY : error/parser_error.cpp.o
+
+error/parser_error.i: error/parser_error.cpp.i
+.PHONY : error/parser_error.i
+
+# target to preprocess a source file
+error/parser_error.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.i
+.PHONY : error/parser_error.cpp.i
+
+error/parser_error.s: error/parser_error.cpp.s
+.PHONY : error/parser_error.s
+
+# target to generate assembly for a file
+error/parser_error.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.s
+.PHONY : error/parser_error.cpp.s
 
 error/source_location.o: error/source_location.cpp.o
 .PHONY : error/source_location.o
@@ -1550,6 +1622,9 @@ help:
 	@echo "... ast/primitive_type_int.o"
 	@echo "... ast/primitive_type_int.i"
 	@echo "... ast/primitive_type_int.s"
+	@echo "... ast/primitive_type_string.o"
+	@echo "... ast/primitive_type_string.i"
+	@echo "... ast/primitive_type_string.s"
 	@echo "... ast/return_statement.o"
 	@echo "... ast/return_statement.i"
 	@echo "... ast/return_statement.s"
@@ -1589,6 +1664,12 @@ help:
 	@echo "... error/error_type.o"
 	@echo "... error/error_type.i"
 	@echo "... error/error_type.s"
+	@echo "... error/lexer_error.o"
+	@echo "... error/lexer_error.i"
+	@echo "... error/lexer_error.s"
+	@echo "... error/parser_error.o"
+	@echo "... error/parser_error.i"
+	@echo "... error/parser_error.s"
 	@echo "... error/source_location.o"
 	@echo "... error/source_location.i"
 	@echo "... error/source_location.s"

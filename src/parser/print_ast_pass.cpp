@@ -15,7 +15,7 @@ namespace cion {
 		inc_depth();
 	}
 
-	PrintASTPass::PrintBlock::~PrintBlock() {
+	PrintASTPass::PrintBlock::~PrintBlock() noexcept {
 		dec_depth();
 	}
 
@@ -103,7 +103,7 @@ namespace cion {
 	}
 
 	void PrintASTPass::visit(ast::CharLiteral const& char_literal) {
-		print_line("char literal: " + char_literal.value());
+		print_line(std::string("char literal: ") + char_literal.value());
 	}
 
 	void PrintASTPass::visit(ast::CompilationUnit const& compilation_unit) {

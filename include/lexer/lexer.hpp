@@ -82,7 +82,7 @@ namespace cion {
 
 		// Return an error token on an invalid input sequence and
 		// execute the associated error handler to handle this error.
-		std::unique_ptr<Token> make_error_token(ErrorType type);
+		std::unique_ptr<Token> make_error_token(ErrorType type, SourceLocation const& start_loc);
 
 		std::istream & m_input;
 		std::string m_buffer;
