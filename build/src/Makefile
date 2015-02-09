@@ -116,509 +116,461 @@ cion_compiler/fast:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/build
 .PHONY : cion_compiler/fast
 
-ast/assignment_expression.o: ast/assignment_expression.cpp.o
-.PHONY : ast/assignment_expression.o
+ast/binary_assign_expr.o: ast/binary_assign_expr.cpp.o
+.PHONY : ast/binary_assign_expr.o
 
 # target to build an object file
-ast/assignment_expression.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/assignment_expression.cpp.o
-.PHONY : ast/assignment_expression.cpp.o
+ast/binary_assign_expr.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/binary_assign_expr.cpp.o
+.PHONY : ast/binary_assign_expr.cpp.o
 
-ast/assignment_expression.i: ast/assignment_expression.cpp.i
-.PHONY : ast/assignment_expression.i
+ast/binary_assign_expr.i: ast/binary_assign_expr.cpp.i
+.PHONY : ast/binary_assign_expr.i
 
 # target to preprocess a source file
-ast/assignment_expression.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/assignment_expression.cpp.i
-.PHONY : ast/assignment_expression.cpp.i
+ast/binary_assign_expr.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/binary_assign_expr.cpp.i
+.PHONY : ast/binary_assign_expr.cpp.i
 
-ast/assignment_expression.s: ast/assignment_expression.cpp.s
-.PHONY : ast/assignment_expression.s
+ast/binary_assign_expr.s: ast/binary_assign_expr.cpp.s
+.PHONY : ast/binary_assign_expr.s
 
 # target to generate assembly for a file
-ast/assignment_expression.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/assignment_expression.cpp.s
-.PHONY : ast/assignment_expression.cpp.s
+ast/binary_assign_expr.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/binary_assign_expr.cpp.s
+.PHONY : ast/binary_assign_expr.cpp.s
 
-ast/binary_expression.o: ast/binary_expression.cpp.o
-.PHONY : ast/binary_expression.o
+ast/binary_expr.o: ast/binary_expr.cpp.o
+.PHONY : ast/binary_expr.o
 
 # target to build an object file
-ast/binary_expression.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/binary_expression.cpp.o
-.PHONY : ast/binary_expression.cpp.o
+ast/binary_expr.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/binary_expr.cpp.o
+.PHONY : ast/binary_expr.cpp.o
 
-ast/binary_expression.i: ast/binary_expression.cpp.i
-.PHONY : ast/binary_expression.i
+ast/binary_expr.i: ast/binary_expr.cpp.i
+.PHONY : ast/binary_expr.i
 
 # target to preprocess a source file
-ast/binary_expression.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/binary_expression.cpp.i
-.PHONY : ast/binary_expression.cpp.i
+ast/binary_expr.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/binary_expr.cpp.i
+.PHONY : ast/binary_expr.cpp.i
 
-ast/binary_expression.s: ast/binary_expression.cpp.s
-.PHONY : ast/binary_expression.s
+ast/binary_expr.s: ast/binary_expr.cpp.s
+.PHONY : ast/binary_expr.s
 
 # target to generate assembly for a file
-ast/binary_expression.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/binary_expression.cpp.s
-.PHONY : ast/binary_expression.cpp.s
+ast/binary_expr.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/binary_expr.cpp.s
+.PHONY : ast/binary_expr.cpp.s
 
-ast/boolean_literal.o: ast/boolean_literal.cpp.o
-.PHONY : ast/boolean_literal.o
+ast/boolean_expr.o: ast/boolean_expr.cpp.o
+.PHONY : ast/boolean_expr.o
 
 # target to build an object file
-ast/boolean_literal.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/boolean_literal.cpp.o
-.PHONY : ast/boolean_literal.cpp.o
+ast/boolean_expr.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/boolean_expr.cpp.o
+.PHONY : ast/boolean_expr.cpp.o
 
-ast/boolean_literal.i: ast/boolean_literal.cpp.i
-.PHONY : ast/boolean_literal.i
+ast/boolean_expr.i: ast/boolean_expr.cpp.i
+.PHONY : ast/boolean_expr.i
 
 # target to preprocess a source file
-ast/boolean_literal.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/boolean_literal.cpp.i
-.PHONY : ast/boolean_literal.cpp.i
+ast/boolean_expr.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/boolean_expr.cpp.i
+.PHONY : ast/boolean_expr.cpp.i
 
-ast/boolean_literal.s: ast/boolean_literal.cpp.s
-.PHONY : ast/boolean_literal.s
+ast/boolean_expr.s: ast/boolean_expr.cpp.s
+.PHONY : ast/boolean_expr.s
 
 # target to generate assembly for a file
-ast/boolean_literal.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/boolean_literal.cpp.s
-.PHONY : ast/boolean_literal.cpp.s
+ast/boolean_expr.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/boolean_expr.cpp.s
+.PHONY : ast/boolean_expr.cpp.s
 
-ast/break_statement.o: ast/break_statement.cpp.o
-.PHONY : ast/break_statement.o
+ast/break_stmnt.o: ast/break_stmnt.cpp.o
+.PHONY : ast/break_stmnt.o
 
 # target to build an object file
-ast/break_statement.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/break_statement.cpp.o
-.PHONY : ast/break_statement.cpp.o
+ast/break_stmnt.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/break_stmnt.cpp.o
+.PHONY : ast/break_stmnt.cpp.o
 
-ast/break_statement.i: ast/break_statement.cpp.i
-.PHONY : ast/break_statement.i
+ast/break_stmnt.i: ast/break_stmnt.cpp.i
+.PHONY : ast/break_stmnt.i
 
 # target to preprocess a source file
-ast/break_statement.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/break_statement.cpp.i
-.PHONY : ast/break_statement.cpp.i
+ast/break_stmnt.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/break_stmnt.cpp.i
+.PHONY : ast/break_stmnt.cpp.i
 
-ast/break_statement.s: ast/break_statement.cpp.s
-.PHONY : ast/break_statement.s
+ast/break_stmnt.s: ast/break_stmnt.cpp.s
+.PHONY : ast/break_stmnt.s
 
 # target to generate assembly for a file
-ast/break_statement.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/break_statement.cpp.s
-.PHONY : ast/break_statement.cpp.s
+ast/break_stmnt.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/break_stmnt.cpp.s
+.PHONY : ast/break_stmnt.cpp.s
 
-ast/call_expression.o: ast/call_expression.cpp.o
-.PHONY : ast/call_expression.o
+ast/builtin_type.o: ast/builtin_type.cpp.o
+.PHONY : ast/builtin_type.o
 
 # target to build an object file
-ast/call_expression.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/call_expression.cpp.o
-.PHONY : ast/call_expression.cpp.o
+ast/builtin_type.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/builtin_type.cpp.o
+.PHONY : ast/builtin_type.cpp.o
 
-ast/call_expression.i: ast/call_expression.cpp.i
-.PHONY : ast/call_expression.i
+ast/builtin_type.i: ast/builtin_type.cpp.i
+.PHONY : ast/builtin_type.i
 
 # target to preprocess a source file
-ast/call_expression.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/call_expression.cpp.i
-.PHONY : ast/call_expression.cpp.i
+ast/builtin_type.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/builtin_type.cpp.i
+.PHONY : ast/builtin_type.cpp.i
 
-ast/call_expression.s: ast/call_expression.cpp.s
-.PHONY : ast/call_expression.s
+ast/builtin_type.s: ast/builtin_type.cpp.s
+.PHONY : ast/builtin_type.s
 
 # target to generate assembly for a file
-ast/call_expression.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/call_expression.cpp.s
-.PHONY : ast/call_expression.cpp.s
+ast/builtin_type.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/builtin_type.cpp.s
+.PHONY : ast/builtin_type.cpp.s
 
-ast/char_literal.o: ast/char_literal.cpp.o
-.PHONY : ast/char_literal.o
+ast/call_expr.o: ast/call_expr.cpp.o
+.PHONY : ast/call_expr.o
 
 # target to build an object file
-ast/char_literal.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/char_literal.cpp.o
-.PHONY : ast/char_literal.cpp.o
+ast/call_expr.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/call_expr.cpp.o
+.PHONY : ast/call_expr.cpp.o
 
-ast/char_literal.i: ast/char_literal.cpp.i
-.PHONY : ast/char_literal.i
+ast/call_expr.i: ast/call_expr.cpp.i
+.PHONY : ast/call_expr.i
 
 # target to preprocess a source file
-ast/char_literal.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/char_literal.cpp.i
-.PHONY : ast/char_literal.cpp.i
+ast/call_expr.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/call_expr.cpp.i
+.PHONY : ast/call_expr.cpp.i
 
-ast/char_literal.s: ast/char_literal.cpp.s
-.PHONY : ast/char_literal.s
+ast/call_expr.s: ast/call_expr.cpp.s
+.PHONY : ast/call_expr.s
 
 # target to generate assembly for a file
-ast/char_literal.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/char_literal.cpp.s
-.PHONY : ast/char_literal.cpp.s
+ast/call_expr.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/call_expr.cpp.s
+.PHONY : ast/call_expr.cpp.s
 
-ast/compilation_unit.o: ast/compilation_unit.cpp.o
-.PHONY : ast/compilation_unit.o
+ast/char_expr.o: ast/char_expr.cpp.o
+.PHONY : ast/char_expr.o
 
 # target to build an object file
-ast/compilation_unit.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/compilation_unit.cpp.o
-.PHONY : ast/compilation_unit.cpp.o
+ast/char_expr.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/char_expr.cpp.o
+.PHONY : ast/char_expr.cpp.o
 
-ast/compilation_unit.i: ast/compilation_unit.cpp.i
-.PHONY : ast/compilation_unit.i
+ast/char_expr.i: ast/char_expr.cpp.i
+.PHONY : ast/char_expr.i
 
 # target to preprocess a source file
-ast/compilation_unit.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/compilation_unit.cpp.i
-.PHONY : ast/compilation_unit.cpp.i
+ast/char_expr.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/char_expr.cpp.i
+.PHONY : ast/char_expr.cpp.i
 
-ast/compilation_unit.s: ast/compilation_unit.cpp.s
-.PHONY : ast/compilation_unit.s
+ast/char_expr.s: ast/char_expr.cpp.s
+.PHONY : ast/char_expr.s
 
 # target to generate assembly for a file
-ast/compilation_unit.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/compilation_unit.cpp.s
-.PHONY : ast/compilation_unit.cpp.s
+ast/char_expr.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/char_expr.cpp.s
+.PHONY : ast/char_expr.cpp.s
 
-ast/compound_statement.o: ast/compound_statement.cpp.o
-.PHONY : ast/compound_statement.o
+ast/compilation_unit_decl.o: ast/compilation_unit_decl.cpp.o
+.PHONY : ast/compilation_unit_decl.o
 
 # target to build an object file
-ast/compound_statement.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/compound_statement.cpp.o
-.PHONY : ast/compound_statement.cpp.o
+ast/compilation_unit_decl.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/compilation_unit_decl.cpp.o
+.PHONY : ast/compilation_unit_decl.cpp.o
 
-ast/compound_statement.i: ast/compound_statement.cpp.i
-.PHONY : ast/compound_statement.i
+ast/compilation_unit_decl.i: ast/compilation_unit_decl.cpp.i
+.PHONY : ast/compilation_unit_decl.i
 
 # target to preprocess a source file
-ast/compound_statement.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/compound_statement.cpp.i
-.PHONY : ast/compound_statement.cpp.i
+ast/compilation_unit_decl.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/compilation_unit_decl.cpp.i
+.PHONY : ast/compilation_unit_decl.cpp.i
 
-ast/compound_statement.s: ast/compound_statement.cpp.s
-.PHONY : ast/compound_statement.s
+ast/compilation_unit_decl.s: ast/compilation_unit_decl.cpp.s
+.PHONY : ast/compilation_unit_decl.s
 
 # target to generate assembly for a file
-ast/compound_statement.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/compound_statement.cpp.s
-.PHONY : ast/compound_statement.cpp.s
+ast/compilation_unit_decl.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/compilation_unit_decl.cpp.s
+.PHONY : ast/compilation_unit_decl.cpp.s
 
-ast/conditional_expression.o: ast/conditional_expression.cpp.o
-.PHONY : ast/conditional_expression.o
+ast/compound_stmnt.o: ast/compound_stmnt.cpp.o
+.PHONY : ast/compound_stmnt.o
 
 # target to build an object file
-ast/conditional_expression.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/conditional_expression.cpp.o
-.PHONY : ast/conditional_expression.cpp.o
+ast/compound_stmnt.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/compound_stmnt.cpp.o
+.PHONY : ast/compound_stmnt.cpp.o
 
-ast/conditional_expression.i: ast/conditional_expression.cpp.i
-.PHONY : ast/conditional_expression.i
+ast/compound_stmnt.i: ast/compound_stmnt.cpp.i
+.PHONY : ast/compound_stmnt.i
 
 # target to preprocess a source file
-ast/conditional_expression.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/conditional_expression.cpp.i
-.PHONY : ast/conditional_expression.cpp.i
+ast/compound_stmnt.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/compound_stmnt.cpp.i
+.PHONY : ast/compound_stmnt.cpp.i
 
-ast/conditional_expression.s: ast/conditional_expression.cpp.s
-.PHONY : ast/conditional_expression.s
+ast/compound_stmnt.s: ast/compound_stmnt.cpp.s
+.PHONY : ast/compound_stmnt.s
 
 # target to generate assembly for a file
-ast/conditional_expression.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/conditional_expression.cpp.s
-.PHONY : ast/conditional_expression.cpp.s
+ast/compound_stmnt.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/compound_stmnt.cpp.s
+.PHONY : ast/compound_stmnt.cpp.s
 
-ast/continue_statement.o: ast/continue_statement.cpp.o
-.PHONY : ast/continue_statement.o
+ast/conditional_expr.o: ast/conditional_expr.cpp.o
+.PHONY : ast/conditional_expr.o
 
 # target to build an object file
-ast/continue_statement.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/continue_statement.cpp.o
-.PHONY : ast/continue_statement.cpp.o
+ast/conditional_expr.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/conditional_expr.cpp.o
+.PHONY : ast/conditional_expr.cpp.o
 
-ast/continue_statement.i: ast/continue_statement.cpp.i
-.PHONY : ast/continue_statement.i
+ast/conditional_expr.i: ast/conditional_expr.cpp.i
+.PHONY : ast/conditional_expr.i
 
 # target to preprocess a source file
-ast/continue_statement.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/continue_statement.cpp.i
-.PHONY : ast/continue_statement.cpp.i
+ast/conditional_expr.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/conditional_expr.cpp.i
+.PHONY : ast/conditional_expr.cpp.i
 
-ast/continue_statement.s: ast/continue_statement.cpp.s
-.PHONY : ast/continue_statement.s
+ast/conditional_expr.s: ast/conditional_expr.cpp.s
+.PHONY : ast/conditional_expr.s
 
 # target to generate assembly for a file
-ast/continue_statement.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/continue_statement.cpp.s
-.PHONY : ast/continue_statement.cpp.s
+ast/conditional_expr.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/conditional_expr.cpp.s
+.PHONY : ast/conditional_expr.cpp.s
 
-ast/empty_statement.o: ast/empty_statement.cpp.o
-.PHONY : ast/empty_statement.o
+ast/continue_stmnt.o: ast/continue_stmnt.cpp.o
+.PHONY : ast/continue_stmnt.o
 
 # target to build an object file
-ast/empty_statement.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/empty_statement.cpp.o
-.PHONY : ast/empty_statement.cpp.o
+ast/continue_stmnt.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/continue_stmnt.cpp.o
+.PHONY : ast/continue_stmnt.cpp.o
 
-ast/empty_statement.i: ast/empty_statement.cpp.i
-.PHONY : ast/empty_statement.i
+ast/continue_stmnt.i: ast/continue_stmnt.cpp.i
+.PHONY : ast/continue_stmnt.i
 
 # target to preprocess a source file
-ast/empty_statement.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/empty_statement.cpp.i
-.PHONY : ast/empty_statement.cpp.i
+ast/continue_stmnt.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/continue_stmnt.cpp.i
+.PHONY : ast/continue_stmnt.cpp.i
 
-ast/empty_statement.s: ast/empty_statement.cpp.s
-.PHONY : ast/empty_statement.s
+ast/continue_stmnt.s: ast/continue_stmnt.cpp.s
+.PHONY : ast/continue_stmnt.s
 
 # target to generate assembly for a file
-ast/empty_statement.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/empty_statement.cpp.s
-.PHONY : ast/empty_statement.cpp.s
+ast/continue_stmnt.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/continue_stmnt.cpp.s
+.PHONY : ast/continue_stmnt.cpp.s
 
-ast/expression_list.o: ast/expression_list.cpp.o
-.PHONY : ast/expression_list.o
+ast/empty_stmnt.o: ast/empty_stmnt.cpp.o
+.PHONY : ast/empty_stmnt.o
 
 # target to build an object file
-ast/expression_list.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/expression_list.cpp.o
-.PHONY : ast/expression_list.cpp.o
+ast/empty_stmnt.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/empty_stmnt.cpp.o
+.PHONY : ast/empty_stmnt.cpp.o
 
-ast/expression_list.i: ast/expression_list.cpp.i
-.PHONY : ast/expression_list.i
+ast/empty_stmnt.i: ast/empty_stmnt.cpp.i
+.PHONY : ast/empty_stmnt.i
 
 # target to preprocess a source file
-ast/expression_list.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/expression_list.cpp.i
-.PHONY : ast/expression_list.cpp.i
+ast/empty_stmnt.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/empty_stmnt.cpp.i
+.PHONY : ast/empty_stmnt.cpp.i
 
-ast/expression_list.s: ast/expression_list.cpp.s
-.PHONY : ast/expression_list.s
+ast/empty_stmnt.s: ast/empty_stmnt.cpp.s
+.PHONY : ast/empty_stmnt.s
 
 # target to generate assembly for a file
-ast/expression_list.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/expression_list.cpp.s
-.PHONY : ast/expression_list.cpp.s
+ast/empty_stmnt.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/empty_stmnt.cpp.s
+.PHONY : ast/empty_stmnt.cpp.s
 
-ast/expression_statement.o: ast/expression_statement.cpp.o
-.PHONY : ast/expression_statement.o
+ast/expr_stmnt.o: ast/expr_stmnt.cpp.o
+.PHONY : ast/expr_stmnt.o
 
 # target to build an object file
-ast/expression_statement.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/expression_statement.cpp.o
-.PHONY : ast/expression_statement.cpp.o
+ast/expr_stmnt.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/expr_stmnt.cpp.o
+.PHONY : ast/expr_stmnt.cpp.o
 
-ast/expression_statement.i: ast/expression_statement.cpp.i
-.PHONY : ast/expression_statement.i
+ast/expr_stmnt.i: ast/expr_stmnt.cpp.i
+.PHONY : ast/expr_stmnt.i
 
 # target to preprocess a source file
-ast/expression_statement.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/expression_statement.cpp.i
-.PHONY : ast/expression_statement.cpp.i
+ast/expr_stmnt.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/expr_stmnt.cpp.i
+.PHONY : ast/expr_stmnt.cpp.i
 
-ast/expression_statement.s: ast/expression_statement.cpp.s
-.PHONY : ast/expression_statement.s
+ast/expr_stmnt.s: ast/expr_stmnt.cpp.s
+.PHONY : ast/expr_stmnt.s
 
 # target to generate assembly for a file
-ast/expression_statement.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/expression_statement.cpp.s
-.PHONY : ast/expression_statement.cpp.s
+ast/expr_stmnt.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/expr_stmnt.cpp.s
+.PHONY : ast/expr_stmnt.cpp.s
 
-ast/float_literal.o: ast/float_literal.cpp.o
-.PHONY : ast/float_literal.o
+ast/float_expr.o: ast/float_expr.cpp.o
+.PHONY : ast/float_expr.o
 
 # target to build an object file
-ast/float_literal.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/float_literal.cpp.o
-.PHONY : ast/float_literal.cpp.o
+ast/float_expr.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/float_expr.cpp.o
+.PHONY : ast/float_expr.cpp.o
 
-ast/float_literal.i: ast/float_literal.cpp.i
-.PHONY : ast/float_literal.i
+ast/float_expr.i: ast/float_expr.cpp.i
+.PHONY : ast/float_expr.i
 
 # target to preprocess a source file
-ast/float_literal.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/float_literal.cpp.i
-.PHONY : ast/float_literal.cpp.i
+ast/float_expr.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/float_expr.cpp.i
+.PHONY : ast/float_expr.cpp.i
 
-ast/float_literal.s: ast/float_literal.cpp.s
-.PHONY : ast/float_literal.s
+ast/float_expr.s: ast/float_expr.cpp.s
+.PHONY : ast/float_expr.s
 
 # target to generate assembly for a file
-ast/float_literal.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/float_literal.cpp.s
-.PHONY : ast/float_literal.cpp.s
+ast/float_expr.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/float_expr.cpp.s
+.PHONY : ast/float_expr.cpp.s
 
-ast/function_definition_statement.o: ast/function_definition_statement.cpp.o
-.PHONY : ast/function_definition_statement.o
+ast/function_decl.o: ast/function_decl.cpp.o
+.PHONY : ast/function_decl.o
 
 # target to build an object file
-ast/function_definition_statement.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/function_definition_statement.cpp.o
-.PHONY : ast/function_definition_statement.cpp.o
+ast/function_decl.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/function_decl.cpp.o
+.PHONY : ast/function_decl.cpp.o
 
-ast/function_definition_statement.i: ast/function_definition_statement.cpp.i
-.PHONY : ast/function_definition_statement.i
+ast/function_decl.i: ast/function_decl.cpp.i
+.PHONY : ast/function_decl.i
 
 # target to preprocess a source file
-ast/function_definition_statement.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/function_definition_statement.cpp.i
-.PHONY : ast/function_definition_statement.cpp.i
+ast/function_decl.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/function_decl.cpp.i
+.PHONY : ast/function_decl.cpp.i
 
-ast/function_definition_statement.s: ast/function_definition_statement.cpp.s
-.PHONY : ast/function_definition_statement.s
+ast/function_decl.s: ast/function_decl.cpp.s
+.PHONY : ast/function_decl.s
 
 # target to generate assembly for a file
-ast/function_definition_statement.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/function_definition_statement.cpp.s
-.PHONY : ast/function_definition_statement.cpp.s
+ast/function_decl.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/function_decl.cpp.s
+.PHONY : ast/function_decl.cpp.s
 
-ast/if_statement.o: ast/if_statement.cpp.o
-.PHONY : ast/if_statement.o
+ast/if_stmnt.o: ast/if_stmnt.cpp.o
+.PHONY : ast/if_stmnt.o
 
 # target to build an object file
-ast/if_statement.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/if_statement.cpp.o
-.PHONY : ast/if_statement.cpp.o
+ast/if_stmnt.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/if_stmnt.cpp.o
+.PHONY : ast/if_stmnt.cpp.o
 
-ast/if_statement.i: ast/if_statement.cpp.i
-.PHONY : ast/if_statement.i
+ast/if_stmnt.i: ast/if_stmnt.cpp.i
+.PHONY : ast/if_stmnt.i
 
 # target to preprocess a source file
-ast/if_statement.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/if_statement.cpp.i
-.PHONY : ast/if_statement.cpp.i
+ast/if_stmnt.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/if_stmnt.cpp.i
+.PHONY : ast/if_stmnt.cpp.i
 
-ast/if_statement.s: ast/if_statement.cpp.s
-.PHONY : ast/if_statement.s
+ast/if_stmnt.s: ast/if_stmnt.cpp.s
+.PHONY : ast/if_stmnt.s
 
 # target to generate assembly for a file
-ast/if_statement.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/if_statement.cpp.s
-.PHONY : ast/if_statement.cpp.s
+ast/if_stmnt.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/if_stmnt.cpp.s
+.PHONY : ast/if_stmnt.cpp.s
 
-ast/index_expression.o: ast/index_expression.cpp.o
-.PHONY : ast/index_expression.o
+ast/index_expr.o: ast/index_expr.cpp.o
+.PHONY : ast/index_expr.o
 
 # target to build an object file
-ast/index_expression.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/index_expression.cpp.o
-.PHONY : ast/index_expression.cpp.o
+ast/index_expr.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/index_expr.cpp.o
+.PHONY : ast/index_expr.cpp.o
 
-ast/index_expression.i: ast/index_expression.cpp.i
-.PHONY : ast/index_expression.i
+ast/index_expr.i: ast/index_expr.cpp.i
+.PHONY : ast/index_expr.i
 
 # target to preprocess a source file
-ast/index_expression.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/index_expression.cpp.i
-.PHONY : ast/index_expression.cpp.i
+ast/index_expr.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/index_expr.cpp.i
+.PHONY : ast/index_expr.cpp.i
 
-ast/index_expression.s: ast/index_expression.cpp.s
-.PHONY : ast/index_expression.s
+ast/index_expr.s: ast/index_expr.cpp.s
+.PHONY : ast/index_expr.s
 
 # target to generate assembly for a file
-ast/index_expression.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/index_expression.cpp.s
-.PHONY : ast/index_expression.cpp.s
+ast/index_expr.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/index_expr.cpp.s
+.PHONY : ast/index_expr.cpp.s
 
-ast/integer_literal.o: ast/integer_literal.cpp.o
-.PHONY : ast/integer_literal.o
+ast/integer_expr.o: ast/integer_expr.cpp.o
+.PHONY : ast/integer_expr.o
 
 # target to build an object file
-ast/integer_literal.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/integer_literal.cpp.o
-.PHONY : ast/integer_literal.cpp.o
+ast/integer_expr.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/integer_expr.cpp.o
+.PHONY : ast/integer_expr.cpp.o
 
-ast/integer_literal.i: ast/integer_literal.cpp.i
-.PHONY : ast/integer_literal.i
+ast/integer_expr.i: ast/integer_expr.cpp.i
+.PHONY : ast/integer_expr.i
 
 # target to preprocess a source file
-ast/integer_literal.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/integer_literal.cpp.i
-.PHONY : ast/integer_literal.cpp.i
+ast/integer_expr.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/integer_expr.cpp.i
+.PHONY : ast/integer_expr.cpp.i
 
-ast/integer_literal.s: ast/integer_literal.cpp.s
-.PHONY : ast/integer_literal.s
+ast/integer_expr.s: ast/integer_expr.cpp.s
+.PHONY : ast/integer_expr.s
 
 # target to generate assembly for a file
-ast/integer_literal.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/integer_literal.cpp.s
-.PHONY : ast/integer_literal.cpp.s
+ast/integer_expr.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/integer_expr.cpp.s
+.PHONY : ast/integer_expr.cpp.s
 
-ast/logical_parameter.o: ast/logical_parameter.cpp.o
-.PHONY : ast/logical_parameter.o
+ast/nothing_expr.o: ast/nothing_expr.cpp.o
+.PHONY : ast/nothing_expr.o
 
 # target to build an object file
-ast/logical_parameter.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/logical_parameter.cpp.o
-.PHONY : ast/logical_parameter.cpp.o
+ast/nothing_expr.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/nothing_expr.cpp.o
+.PHONY : ast/nothing_expr.cpp.o
 
-ast/logical_parameter.i: ast/logical_parameter.cpp.i
-.PHONY : ast/logical_parameter.i
-
-# target to preprocess a source file
-ast/logical_parameter.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/logical_parameter.cpp.i
-.PHONY : ast/logical_parameter.cpp.i
-
-ast/logical_parameter.s: ast/logical_parameter.cpp.s
-.PHONY : ast/logical_parameter.s
-
-# target to generate assembly for a file
-ast/logical_parameter.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/logical_parameter.cpp.s
-.PHONY : ast/logical_parameter.cpp.s
-
-ast/logical_parameter_pack.o: ast/logical_parameter_pack.cpp.o
-.PHONY : ast/logical_parameter_pack.o
-
-# target to build an object file
-ast/logical_parameter_pack.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/logical_parameter_pack.cpp.o
-.PHONY : ast/logical_parameter_pack.cpp.o
-
-ast/logical_parameter_pack.i: ast/logical_parameter_pack.cpp.i
-.PHONY : ast/logical_parameter_pack.i
+ast/nothing_expr.i: ast/nothing_expr.cpp.i
+.PHONY : ast/nothing_expr.i
 
 # target to preprocess a source file
-ast/logical_parameter_pack.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/logical_parameter_pack.cpp.i
-.PHONY : ast/logical_parameter_pack.cpp.i
+ast/nothing_expr.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/nothing_expr.cpp.i
+.PHONY : ast/nothing_expr.cpp.i
 
-ast/logical_parameter_pack.s: ast/logical_parameter_pack.cpp.s
-.PHONY : ast/logical_parameter_pack.s
-
-# target to generate assembly for a file
-ast/logical_parameter_pack.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/logical_parameter_pack.cpp.s
-.PHONY : ast/logical_parameter_pack.cpp.s
-
-ast/nothing_expression.o: ast/nothing_expression.cpp.o
-.PHONY : ast/nothing_expression.o
-
-# target to build an object file
-ast/nothing_expression.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/nothing_expression.cpp.o
-.PHONY : ast/nothing_expression.cpp.o
-
-ast/nothing_expression.i: ast/nothing_expression.cpp.i
-.PHONY : ast/nothing_expression.i
-
-# target to preprocess a source file
-ast/nothing_expression.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/nothing_expression.cpp.i
-.PHONY : ast/nothing_expression.cpp.i
-
-ast/nothing_expression.s: ast/nothing_expression.cpp.s
-.PHONY : ast/nothing_expression.s
+ast/nothing_expr.s: ast/nothing_expr.cpp.s
+.PHONY : ast/nothing_expr.s
 
 # target to generate assembly for a file
-ast/nothing_expression.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/nothing_expression.cpp.s
-.PHONY : ast/nothing_expression.cpp.s
+ast/nothing_expr.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/nothing_expr.cpp.s
+.PHONY : ast/nothing_expr.cpp.s
 
 ast/nothing_type.o: ast/nothing_type.cpp.o
 .PHONY : ast/nothing_type.o
@@ -644,293 +596,173 @@ ast/nothing_type.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/nothing_type.cpp.s
 .PHONY : ast/nothing_type.cpp.s
 
-ast/postfix_expression.o: ast/postfix_expression.cpp.o
-.PHONY : ast/postfix_expression.o
+ast/param_decl.o: ast/param_decl.cpp.o
+.PHONY : ast/param_decl.o
 
 # target to build an object file
-ast/postfix_expression.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/postfix_expression.cpp.o
-.PHONY : ast/postfix_expression.cpp.o
+ast/param_decl.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/param_decl.cpp.o
+.PHONY : ast/param_decl.cpp.o
 
-ast/postfix_expression.i: ast/postfix_expression.cpp.i
-.PHONY : ast/postfix_expression.i
+ast/param_decl.i: ast/param_decl.cpp.i
+.PHONY : ast/param_decl.i
 
 # target to preprocess a source file
-ast/postfix_expression.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/postfix_expression.cpp.i
-.PHONY : ast/postfix_expression.cpp.i
+ast/param_decl.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/param_decl.cpp.i
+.PHONY : ast/param_decl.cpp.i
 
-ast/postfix_expression.s: ast/postfix_expression.cpp.s
-.PHONY : ast/postfix_expression.s
+ast/param_decl.s: ast/param_decl.cpp.s
+.PHONY : ast/param_decl.s
 
 # target to generate assembly for a file
-ast/postfix_expression.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/postfix_expression.cpp.s
-.PHONY : ast/postfix_expression.cpp.s
+ast/param_decl.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/param_decl.cpp.s
+.PHONY : ast/param_decl.cpp.s
 
-ast/primitive_type_bool.o: ast/primitive_type_bool.cpp.o
-.PHONY : ast/primitive_type_bool.o
+ast/return_stmnt.o: ast/return_stmnt.cpp.o
+.PHONY : ast/return_stmnt.o
 
 # target to build an object file
-ast/primitive_type_bool.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_bool.cpp.o
-.PHONY : ast/primitive_type_bool.cpp.o
+ast/return_stmnt.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/return_stmnt.cpp.o
+.PHONY : ast/return_stmnt.cpp.o
 
-ast/primitive_type_bool.i: ast/primitive_type_bool.cpp.i
-.PHONY : ast/primitive_type_bool.i
+ast/return_stmnt.i: ast/return_stmnt.cpp.i
+.PHONY : ast/return_stmnt.i
 
 # target to preprocess a source file
-ast/primitive_type_bool.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_bool.cpp.i
-.PHONY : ast/primitive_type_bool.cpp.i
+ast/return_stmnt.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/return_stmnt.cpp.i
+.PHONY : ast/return_stmnt.cpp.i
 
-ast/primitive_type_bool.s: ast/primitive_type_bool.cpp.s
-.PHONY : ast/primitive_type_bool.s
+ast/return_stmnt.s: ast/return_stmnt.cpp.s
+.PHONY : ast/return_stmnt.s
 
 # target to generate assembly for a file
-ast/primitive_type_bool.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_bool.cpp.s
-.PHONY : ast/primitive_type_bool.cpp.s
+ast/return_stmnt.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/return_stmnt.cpp.s
+.PHONY : ast/return_stmnt.cpp.s
 
-ast/primitive_type_char.o: ast/primitive_type_char.cpp.o
-.PHONY : ast/primitive_type_char.o
+ast/string_expr.o: ast/string_expr.cpp.o
+.PHONY : ast/string_expr.o
 
 # target to build an object file
-ast/primitive_type_char.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_char.cpp.o
-.PHONY : ast/primitive_type_char.cpp.o
+ast/string_expr.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/string_expr.cpp.o
+.PHONY : ast/string_expr.cpp.o
 
-ast/primitive_type_char.i: ast/primitive_type_char.cpp.i
-.PHONY : ast/primitive_type_char.i
+ast/string_expr.i: ast/string_expr.cpp.i
+.PHONY : ast/string_expr.i
 
 # target to preprocess a source file
-ast/primitive_type_char.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_char.cpp.i
-.PHONY : ast/primitive_type_char.cpp.i
+ast/string_expr.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/string_expr.cpp.i
+.PHONY : ast/string_expr.cpp.i
 
-ast/primitive_type_char.s: ast/primitive_type_char.cpp.s
-.PHONY : ast/primitive_type_char.s
+ast/string_expr.s: ast/string_expr.cpp.s
+.PHONY : ast/string_expr.s
 
 # target to generate assembly for a file
-ast/primitive_type_char.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_char.cpp.s
-.PHONY : ast/primitive_type_char.cpp.s
+ast/string_expr.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/string_expr.cpp.s
+.PHONY : ast/string_expr.cpp.s
 
-ast/primitive_type_float.o: ast/primitive_type_float.cpp.o
-.PHONY : ast/primitive_type_float.o
+ast/unary_expr.o: ast/unary_expr.cpp.o
+.PHONY : ast/unary_expr.o
 
 # target to build an object file
-ast/primitive_type_float.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_float.cpp.o
-.PHONY : ast/primitive_type_float.cpp.o
+ast/unary_expr.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/unary_expr.cpp.o
+.PHONY : ast/unary_expr.cpp.o
 
-ast/primitive_type_float.i: ast/primitive_type_float.cpp.i
-.PHONY : ast/primitive_type_float.i
+ast/unary_expr.i: ast/unary_expr.cpp.i
+.PHONY : ast/unary_expr.i
 
 # target to preprocess a source file
-ast/primitive_type_float.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_float.cpp.i
-.PHONY : ast/primitive_type_float.cpp.i
+ast/unary_expr.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/unary_expr.cpp.i
+.PHONY : ast/unary_expr.cpp.i
 
-ast/primitive_type_float.s: ast/primitive_type_float.cpp.s
-.PHONY : ast/primitive_type_float.s
+ast/unary_expr.s: ast/unary_expr.cpp.s
+.PHONY : ast/unary_expr.s
 
 # target to generate assembly for a file
-ast/primitive_type_float.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_float.cpp.s
-.PHONY : ast/primitive_type_float.cpp.s
+ast/unary_expr.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/unary_expr.cpp.s
+.PHONY : ast/unary_expr.cpp.s
 
-ast/primitive_type_int.o: ast/primitive_type_int.cpp.o
-.PHONY : ast/primitive_type_int.o
+ast/var_decl.o: ast/var_decl.cpp.o
+.PHONY : ast/var_decl.o
 
 # target to build an object file
-ast/primitive_type_int.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_int.cpp.o
-.PHONY : ast/primitive_type_int.cpp.o
+ast/var_decl.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/var_decl.cpp.o
+.PHONY : ast/var_decl.cpp.o
 
-ast/primitive_type_int.i: ast/primitive_type_int.cpp.i
-.PHONY : ast/primitive_type_int.i
+ast/var_decl.i: ast/var_decl.cpp.i
+.PHONY : ast/var_decl.i
 
 # target to preprocess a source file
-ast/primitive_type_int.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_int.cpp.i
-.PHONY : ast/primitive_type_int.cpp.i
+ast/var_decl.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/var_decl.cpp.i
+.PHONY : ast/var_decl.cpp.i
 
-ast/primitive_type_int.s: ast/primitive_type_int.cpp.s
-.PHONY : ast/primitive_type_int.s
+ast/var_decl.s: ast/var_decl.cpp.s
+.PHONY : ast/var_decl.s
 
 # target to generate assembly for a file
-ast/primitive_type_int.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_int.cpp.s
-.PHONY : ast/primitive_type_int.cpp.s
+ast/var_decl.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/var_decl.cpp.s
+.PHONY : ast/var_decl.cpp.s
 
-ast/primitive_type_string.o: ast/primitive_type_string.cpp.o
-.PHONY : ast/primitive_type_string.o
+ast/var_expr.o: ast/var_expr.cpp.o
+.PHONY : ast/var_expr.o
 
 # target to build an object file
-ast/primitive_type_string.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_string.cpp.o
-.PHONY : ast/primitive_type_string.cpp.o
+ast/var_expr.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/var_expr.cpp.o
+.PHONY : ast/var_expr.cpp.o
 
-ast/primitive_type_string.i: ast/primitive_type_string.cpp.i
-.PHONY : ast/primitive_type_string.i
+ast/var_expr.i: ast/var_expr.cpp.i
+.PHONY : ast/var_expr.i
 
 # target to preprocess a source file
-ast/primitive_type_string.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_string.cpp.i
-.PHONY : ast/primitive_type_string.cpp.i
+ast/var_expr.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/var_expr.cpp.i
+.PHONY : ast/var_expr.cpp.i
 
-ast/primitive_type_string.s: ast/primitive_type_string.cpp.s
-.PHONY : ast/primitive_type_string.s
+ast/var_expr.s: ast/var_expr.cpp.s
+.PHONY : ast/var_expr.s
 
 # target to generate assembly for a file
-ast/primitive_type_string.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/primitive_type_string.cpp.s
-.PHONY : ast/primitive_type_string.cpp.s
+ast/var_expr.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/var_expr.cpp.s
+.PHONY : ast/var_expr.cpp.s
 
-ast/return_statement.o: ast/return_statement.cpp.o
-.PHONY : ast/return_statement.o
+ast/while_stmnt.o: ast/while_stmnt.cpp.o
+.PHONY : ast/while_stmnt.o
 
 # target to build an object file
-ast/return_statement.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/return_statement.cpp.o
-.PHONY : ast/return_statement.cpp.o
+ast/while_stmnt.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/while_stmnt.cpp.o
+.PHONY : ast/while_stmnt.cpp.o
 
-ast/return_statement.i: ast/return_statement.cpp.i
-.PHONY : ast/return_statement.i
-
-# target to preprocess a source file
-ast/return_statement.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/return_statement.cpp.i
-.PHONY : ast/return_statement.cpp.i
-
-ast/return_statement.s: ast/return_statement.cpp.s
-.PHONY : ast/return_statement.s
-
-# target to generate assembly for a file
-ast/return_statement.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/return_statement.cpp.s
-.PHONY : ast/return_statement.cpp.s
-
-ast/string_literal.o: ast/string_literal.cpp.o
-.PHONY : ast/string_literal.o
-
-# target to build an object file
-ast/string_literal.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/string_literal.cpp.o
-.PHONY : ast/string_literal.cpp.o
-
-ast/string_literal.i: ast/string_literal.cpp.i
-.PHONY : ast/string_literal.i
+ast/while_stmnt.i: ast/while_stmnt.cpp.i
+.PHONY : ast/while_stmnt.i
 
 # target to preprocess a source file
-ast/string_literal.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/string_literal.cpp.i
-.PHONY : ast/string_literal.cpp.i
+ast/while_stmnt.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/while_stmnt.cpp.i
+.PHONY : ast/while_stmnt.cpp.i
 
-ast/string_literal.s: ast/string_literal.cpp.s
-.PHONY : ast/string_literal.s
-
-# target to generate assembly for a file
-ast/string_literal.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/string_literal.cpp.s
-.PHONY : ast/string_literal.cpp.s
-
-ast/unary_expression.o: ast/unary_expression.cpp.o
-.PHONY : ast/unary_expression.o
-
-# target to build an object file
-ast/unary_expression.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/unary_expression.cpp.o
-.PHONY : ast/unary_expression.cpp.o
-
-ast/unary_expression.i: ast/unary_expression.cpp.i
-.PHONY : ast/unary_expression.i
-
-# target to preprocess a source file
-ast/unary_expression.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/unary_expression.cpp.i
-.PHONY : ast/unary_expression.cpp.i
-
-ast/unary_expression.s: ast/unary_expression.cpp.s
-.PHONY : ast/unary_expression.s
+ast/while_stmnt.s: ast/while_stmnt.cpp.s
+.PHONY : ast/while_stmnt.s
 
 # target to generate assembly for a file
-ast/unary_expression.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/unary_expression.cpp.s
-.PHONY : ast/unary_expression.cpp.s
-
-ast/variable_declaration_statement.o: ast/variable_declaration_statement.cpp.o
-.PHONY : ast/variable_declaration_statement.o
-
-# target to build an object file
-ast/variable_declaration_statement.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/variable_declaration_statement.cpp.o
-.PHONY : ast/variable_declaration_statement.cpp.o
-
-ast/variable_declaration_statement.i: ast/variable_declaration_statement.cpp.i
-.PHONY : ast/variable_declaration_statement.i
-
-# target to preprocess a source file
-ast/variable_declaration_statement.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/variable_declaration_statement.cpp.i
-.PHONY : ast/variable_declaration_statement.cpp.i
-
-ast/variable_declaration_statement.s: ast/variable_declaration_statement.cpp.s
-.PHONY : ast/variable_declaration_statement.s
-
-# target to generate assembly for a file
-ast/variable_declaration_statement.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/variable_declaration_statement.cpp.s
-.PHONY : ast/variable_declaration_statement.cpp.s
-
-ast/variable_expression.o: ast/variable_expression.cpp.o
-.PHONY : ast/variable_expression.o
-
-# target to build an object file
-ast/variable_expression.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/variable_expression.cpp.o
-.PHONY : ast/variable_expression.cpp.o
-
-ast/variable_expression.i: ast/variable_expression.cpp.i
-.PHONY : ast/variable_expression.i
-
-# target to preprocess a source file
-ast/variable_expression.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/variable_expression.cpp.i
-.PHONY : ast/variable_expression.cpp.i
-
-ast/variable_expression.s: ast/variable_expression.cpp.s
-.PHONY : ast/variable_expression.s
-
-# target to generate assembly for a file
-ast/variable_expression.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/variable_expression.cpp.s
-.PHONY : ast/variable_expression.cpp.s
-
-ast/while_statement.o: ast/while_statement.cpp.o
-.PHONY : ast/while_statement.o
-
-# target to build an object file
-ast/while_statement.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/while_statement.cpp.o
-.PHONY : ast/while_statement.cpp.o
-
-ast/while_statement.i: ast/while_statement.cpp.i
-.PHONY : ast/while_statement.i
-
-# target to preprocess a source file
-ast/while_statement.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/while_statement.cpp.i
-.PHONY : ast/while_statement.cpp.i
-
-ast/while_statement.s: ast/while_statement.cpp.s
-.PHONY : ast/while_statement.s
-
-# target to generate assembly for a file
-ast/while_statement.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/while_statement.cpp.s
-.PHONY : ast/while_statement.cpp.s
+ast/while_stmnt.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/while_stmnt.cpp.s
+.PHONY : ast/while_stmnt.cpp.s
 
 error/cion_error_handler.o: error/cion_error_handler.cpp.o
 .PHONY : error/cion_error_handler.o
@@ -1292,6 +1124,30 @@ parser/cion_parser.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.s
 .PHONY : parser/cion_parser.cpp.s
 
+parser/compiler_pass.o: parser/compiler_pass.cpp.o
+.PHONY : parser/compiler_pass.o
+
+# target to build an object file
+parser/compiler_pass.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o
+.PHONY : parser/compiler_pass.cpp.o
+
+parser/compiler_pass.i: parser/compiler_pass.cpp.i
+.PHONY : parser/compiler_pass.i
+
+# target to preprocess a source file
+parser/compiler_pass.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.i
+.PHONY : parser/compiler_pass.cpp.i
+
+parser/compiler_pass.s: parser/compiler_pass.cpp.s
+.PHONY : parser/compiler_pass.s
+
+# target to generate assembly for a file
+parser/compiler_pass.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.s
+.PHONY : parser/compiler_pass.cpp.s
+
 parser/print_ast_pass.o: parser/print_ast_pass.cpp.o
 .PHONY : parser/print_ast_pass.o
 
@@ -1541,108 +1397,87 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... cion_compiler"
-	@echo "... ast/assignment_expression.o"
-	@echo "... ast/assignment_expression.i"
-	@echo "... ast/assignment_expression.s"
-	@echo "... ast/binary_expression.o"
-	@echo "... ast/binary_expression.i"
-	@echo "... ast/binary_expression.s"
-	@echo "... ast/boolean_literal.o"
-	@echo "... ast/boolean_literal.i"
-	@echo "... ast/boolean_literal.s"
-	@echo "... ast/break_statement.o"
-	@echo "... ast/break_statement.i"
-	@echo "... ast/break_statement.s"
-	@echo "... ast/call_expression.o"
-	@echo "... ast/call_expression.i"
-	@echo "... ast/call_expression.s"
-	@echo "... ast/char_literal.o"
-	@echo "... ast/char_literal.i"
-	@echo "... ast/char_literal.s"
-	@echo "... ast/compilation_unit.o"
-	@echo "... ast/compilation_unit.i"
-	@echo "... ast/compilation_unit.s"
-	@echo "... ast/compound_statement.o"
-	@echo "... ast/compound_statement.i"
-	@echo "... ast/compound_statement.s"
-	@echo "... ast/conditional_expression.o"
-	@echo "... ast/conditional_expression.i"
-	@echo "... ast/conditional_expression.s"
-	@echo "... ast/continue_statement.o"
-	@echo "... ast/continue_statement.i"
-	@echo "... ast/continue_statement.s"
-	@echo "... ast/empty_statement.o"
-	@echo "... ast/empty_statement.i"
-	@echo "... ast/empty_statement.s"
-	@echo "... ast/expression_list.o"
-	@echo "... ast/expression_list.i"
-	@echo "... ast/expression_list.s"
-	@echo "... ast/expression_statement.o"
-	@echo "... ast/expression_statement.i"
-	@echo "... ast/expression_statement.s"
-	@echo "... ast/float_literal.o"
-	@echo "... ast/float_literal.i"
-	@echo "... ast/float_literal.s"
-	@echo "... ast/function_definition_statement.o"
-	@echo "... ast/function_definition_statement.i"
-	@echo "... ast/function_definition_statement.s"
-	@echo "... ast/if_statement.o"
-	@echo "... ast/if_statement.i"
-	@echo "... ast/if_statement.s"
-	@echo "... ast/index_expression.o"
-	@echo "... ast/index_expression.i"
-	@echo "... ast/index_expression.s"
-	@echo "... ast/integer_literal.o"
-	@echo "... ast/integer_literal.i"
-	@echo "... ast/integer_literal.s"
-	@echo "... ast/logical_parameter.o"
-	@echo "... ast/logical_parameter.i"
-	@echo "... ast/logical_parameter.s"
-	@echo "... ast/logical_parameter_pack.o"
-	@echo "... ast/logical_parameter_pack.i"
-	@echo "... ast/logical_parameter_pack.s"
-	@echo "... ast/nothing_expression.o"
-	@echo "... ast/nothing_expression.i"
-	@echo "... ast/nothing_expression.s"
+	@echo "... ast/binary_assign_expr.o"
+	@echo "... ast/binary_assign_expr.i"
+	@echo "... ast/binary_assign_expr.s"
+	@echo "... ast/binary_expr.o"
+	@echo "... ast/binary_expr.i"
+	@echo "... ast/binary_expr.s"
+	@echo "... ast/boolean_expr.o"
+	@echo "... ast/boolean_expr.i"
+	@echo "... ast/boolean_expr.s"
+	@echo "... ast/break_stmnt.o"
+	@echo "... ast/break_stmnt.i"
+	@echo "... ast/break_stmnt.s"
+	@echo "... ast/builtin_type.o"
+	@echo "... ast/builtin_type.i"
+	@echo "... ast/builtin_type.s"
+	@echo "... ast/call_expr.o"
+	@echo "... ast/call_expr.i"
+	@echo "... ast/call_expr.s"
+	@echo "... ast/char_expr.o"
+	@echo "... ast/char_expr.i"
+	@echo "... ast/char_expr.s"
+	@echo "... ast/compilation_unit_decl.o"
+	@echo "... ast/compilation_unit_decl.i"
+	@echo "... ast/compilation_unit_decl.s"
+	@echo "... ast/compound_stmnt.o"
+	@echo "... ast/compound_stmnt.i"
+	@echo "... ast/compound_stmnt.s"
+	@echo "... ast/conditional_expr.o"
+	@echo "... ast/conditional_expr.i"
+	@echo "... ast/conditional_expr.s"
+	@echo "... ast/continue_stmnt.o"
+	@echo "... ast/continue_stmnt.i"
+	@echo "... ast/continue_stmnt.s"
+	@echo "... ast/empty_stmnt.o"
+	@echo "... ast/empty_stmnt.i"
+	@echo "... ast/empty_stmnt.s"
+	@echo "... ast/expr_stmnt.o"
+	@echo "... ast/expr_stmnt.i"
+	@echo "... ast/expr_stmnt.s"
+	@echo "... ast/float_expr.o"
+	@echo "... ast/float_expr.i"
+	@echo "... ast/float_expr.s"
+	@echo "... ast/function_decl.o"
+	@echo "... ast/function_decl.i"
+	@echo "... ast/function_decl.s"
+	@echo "... ast/if_stmnt.o"
+	@echo "... ast/if_stmnt.i"
+	@echo "... ast/if_stmnt.s"
+	@echo "... ast/index_expr.o"
+	@echo "... ast/index_expr.i"
+	@echo "... ast/index_expr.s"
+	@echo "... ast/integer_expr.o"
+	@echo "... ast/integer_expr.i"
+	@echo "... ast/integer_expr.s"
+	@echo "... ast/nothing_expr.o"
+	@echo "... ast/nothing_expr.i"
+	@echo "... ast/nothing_expr.s"
 	@echo "... ast/nothing_type.o"
 	@echo "... ast/nothing_type.i"
 	@echo "... ast/nothing_type.s"
-	@echo "... ast/postfix_expression.o"
-	@echo "... ast/postfix_expression.i"
-	@echo "... ast/postfix_expression.s"
-	@echo "... ast/primitive_type_bool.o"
-	@echo "... ast/primitive_type_bool.i"
-	@echo "... ast/primitive_type_bool.s"
-	@echo "... ast/primitive_type_char.o"
-	@echo "... ast/primitive_type_char.i"
-	@echo "... ast/primitive_type_char.s"
-	@echo "... ast/primitive_type_float.o"
-	@echo "... ast/primitive_type_float.i"
-	@echo "... ast/primitive_type_float.s"
-	@echo "... ast/primitive_type_int.o"
-	@echo "... ast/primitive_type_int.i"
-	@echo "... ast/primitive_type_int.s"
-	@echo "... ast/primitive_type_string.o"
-	@echo "... ast/primitive_type_string.i"
-	@echo "... ast/primitive_type_string.s"
-	@echo "... ast/return_statement.o"
-	@echo "... ast/return_statement.i"
-	@echo "... ast/return_statement.s"
-	@echo "... ast/string_literal.o"
-	@echo "... ast/string_literal.i"
-	@echo "... ast/string_literal.s"
-	@echo "... ast/unary_expression.o"
-	@echo "... ast/unary_expression.i"
-	@echo "... ast/unary_expression.s"
-	@echo "... ast/variable_declaration_statement.o"
-	@echo "... ast/variable_declaration_statement.i"
-	@echo "... ast/variable_declaration_statement.s"
-	@echo "... ast/variable_expression.o"
-	@echo "... ast/variable_expression.i"
-	@echo "... ast/variable_expression.s"
-	@echo "... ast/while_statement.o"
-	@echo "... ast/while_statement.i"
-	@echo "... ast/while_statement.s"
+	@echo "... ast/param_decl.o"
+	@echo "... ast/param_decl.i"
+	@echo "... ast/param_decl.s"
+	@echo "... ast/return_stmnt.o"
+	@echo "... ast/return_stmnt.i"
+	@echo "... ast/return_stmnt.s"
+	@echo "... ast/string_expr.o"
+	@echo "... ast/string_expr.i"
+	@echo "... ast/string_expr.s"
+	@echo "... ast/unary_expr.o"
+	@echo "... ast/unary_expr.i"
+	@echo "... ast/unary_expr.s"
+	@echo "... ast/var_decl.o"
+	@echo "... ast/var_decl.i"
+	@echo "... ast/var_decl.s"
+	@echo "... ast/var_expr.o"
+	@echo "... ast/var_expr.i"
+	@echo "... ast/var_expr.s"
+	@echo "... ast/while_stmnt.o"
+	@echo "... ast/while_stmnt.i"
+	@echo "... ast/while_stmnt.s"
 	@echo "... error/cion_error_handler.o"
 	@echo "... error/cion_error_handler.i"
 	@echo "... error/cion_error_handler.s"
@@ -1688,6 +1523,9 @@ help:
 	@echo "... parser/cion_parser.o"
 	@echo "... parser/cion_parser.i"
 	@echo "... parser/cion_parser.s"
+	@echo "... parser/compiler_pass.o"
+	@echo "... parser/compiler_pass.i"
+	@echo "... parser/compiler_pass.s"
 	@echo "... parser/print_ast_pass.o"
 	@echo "... parser/print_ast_pass.i"
 	@echo "... parser/print_ast_pass.s"
