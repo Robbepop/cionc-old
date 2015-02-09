@@ -1,17 +1,16 @@
 #ifndef CION_AST_NOTHING_TYPE_HEADER
 #define CION_AST_NOTHING_TYPE_HEADER
 
-#include "ast/type_specifier.hpp"
+#include "ast/type.hpp"
 
 namespace cion {
 namespace ast {
 
-	class NothingType : public TypeSpecifier {
+	class NothingType : public Type {
 	public:
 		NothingType() = default;
 
-		virtual void accept(MutatingCompilerPass & pass) override;
-		virtual void accept(CompilerPass & pass) const override;
+		virtual void accept(CompilerPass & pass) override;
 	};
 
 } // namespace ast

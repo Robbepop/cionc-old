@@ -1,0 +1,85 @@
+#include "ast/builtin_type.hpp"
+
+namespace cion {
+namespace ast {
+
+//////////////////////////////////////////////////////////////////////////////////////////
+/// BuiltinType
+//////////////////////////////////////////////////////////////////////////////////////////
+
+	void BuiltinType::accept(CompilerPass & pass) {
+		pass.visit(*this);
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+/// BuiltinBoolType
+//////////////////////////////////////////////////////////////////////////////////////////
+
+	void BuiltinBoolType::accept(CompilerPass & pass) {
+		pass.visit(*this);
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+/// BuiltinCharType
+//////////////////////////////////////////////////////////////////////////////////////////
+
+	void BuiltinCharType::accept(CompilerPass & pass) {
+		pass.visit(*this);
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+/// BuiltinIntType
+//////////////////////////////////////////////////////////////////////////////////////////
+
+	BuiltinIntType::BuiltinIntType(
+		bool is_signed,
+		BuiltinIntType::Width bit_width
+	):
+		m_signed{is_signed},
+		m_width{bit_width}
+	{}
+
+	bool & BuiltinIntType::sig() {
+		return m_signed;
+	}
+
+	bool const& BuiltinIntType::sig() const {
+		return m_signed;
+	}
+
+	BuiltinIntType::Width & BuiltinIntType::width() {
+		return m_width;
+	}
+
+	BuiltinIntType::Width const& BuiltinIntType::width() const {
+		return m_width;
+	}
+
+	void BuiltinIntType::accept(CompilerPass & pass) {
+		pass.visit(*this);
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+/// BuiltinFloatType
+//////////////////////////////////////////////////////////////////////////////////////////
+
+	BuiltinFloatType::BuiltinFloatType(
+		BuiltinFloatType::Width bit_width
+	):
+		m_width{bit_width}
+	{}
+
+	BuiltinFloatType::Width & BuiltinFloatType::width() {
+		return m_width;
+	}
+
+	BuiltinFloatType::Width const& BuiltinFloatType::width() const {
+		return m_width;
+	}
+
+	void BuiltinFloatType::accept(CompilerPass & pass) {
+		pass.visit(*this);
+	}
+
+} // namespace ast
+} // namespace cion

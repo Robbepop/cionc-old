@@ -4,24 +4,22 @@
 #include "lexer/lexer.hpp"
 #include "token/cion_token_types.hpp"
 
-#include "ast/statement.hpp"
+#include "ast/stmnt.hpp"
 #include "ast/expr.hpp"
-#include "ast/expression_list.hpp"
-#include "ast/type_specifier.hpp"
-#include "ast/primitive_type_int.hpp"
-#include "ast/primitive_type_float.hpp"
-#include "ast/variable_declaration_statement.hpp"
-#include "ast/logical_parameter.hpp"
-#include "ast/function_definition_statement.hpp"
-#include "ast/compilation_unit.hpp"
+#include "ast/type.hpp"
+#include "ast/builtin_type.hpp"
+#include "ast/var_decl.hpp"
+#include "ast/param_decl.hpp"
+#include "ast/function_decl.hpp"
+#include "ast/compilation_unit_decl.hpp"
 
-#include "ast/compound_statement.hpp"
-#include "ast/break_statement.hpp"
-#include "ast/continue_statement.hpp"
-#include "ast/return_statement.hpp"
-#include "ast/if_statement.hpp"
-#include "ast/while_statement.hpp"
-#include "ast/expression_statement.hpp"
+#include "ast/compound_stmnt.hpp"
+#include "ast/break_stmnt.hpp"
+#include "ast/continue_stmnt.hpp"
+#include "ast/return_stmnt.hpp"
+#include "ast/if_stmnt.hpp"
+#include "ast/while_stmnt.hpp"
+#include "ast/expr_stmnt.hpp"
 
 #include <memory>
 #include <queue>
@@ -38,57 +36,110 @@ namespace cion {
 		Token const& expect(TokenType const& token_type);
 		bool         optional(TokenType const& token_type);
 
-		std::unique_ptr<ast::ExpressionList>               parse_expression_list();
-		std::unique_ptr<ast::Expr>                         parse_expression();
+		bool is_binary_op(TokenType const& tt);
+		bool is_assign_op(TokenType const& tt);
+		bool is_unary_op(TokenType const& tt);
 
-		std::unique_ptr<ast::Expr>                         parse_assignment_expression();
-		std::unique_ptr<ast::Expr>                         parse_conditional_expression();
-		std::unique_ptr<ast::Expr>                         parse_logical_or_expression();
-		std::unique_ptr<ast::Expr>                         parse_logical_and_expression();
-		std::unique_ptr<ast::Expr>                         parse_inclusive_or_expression();
-		std::unique_ptr<ast::Expr>                         parse_exclusive_or_expression();
-		std::unique_ptr<ast::Expr>                         parse_bitwise_and_expression();
-		std::unique_ptr<ast::Expr>                         parse_equality_expression();
-		std::unique_ptr<ast::Expr>                         parse_relational_expression();
-		std::unique_ptr<ast::Expr>                         parse_bitshift_expression();
-		std::unique_ptr<ast::Expr>                         parse_additive_expression();
-		std::unique_ptr<ast::Expr>                         parse_multiplicative_expression();
-		std::unique_ptr<ast::Expr>                         parse_unary_expression();
-		std::unique_ptr<ast::Expr>                         parse_postfix_expression();
-		std::unique_ptr<ast::Expr>                         parse_primary_expression();
+		std::vector<std::unique_ptr<ast::Expr>>      parse_argument_list();
+		std::vector<std::unique_ptr<ast::ParamDecl>> parse_param_decl_list();
 
-		std::unique_ptr<ast::PrimitiveTypeInt>             parse_primitive_type_int();
-		std::unique_ptr<ast::PrimitiveTypeFloat>           parse_primitive_type_float();
-		std::unique_ptr<ast::TypeSpecifier>                parse_type_specifier();
+		std::unique_ptr<ast::Expr>                   parse_expr();
+		std::unique_ptr<ast::Expr>                   parse_assignment_expr();
+		std::unique_ptr<ast::Expr>                   parse_conditional_expr();
+		std::unique_ptr<ast::Expr>                   parse_logical_or_expr();
+		std::unique_ptr<ast::Expr>                   parse_logical_and_expr();
+		std::unique_ptr<ast::Expr>                   parse_bit_or_expr();
+		std::unique_ptr<ast::Expr>                   parse_bit_xor_expr();
+		std::unique_ptr<ast::Expr>                   parse_bit_and_expr();
+		std::unique_ptr<ast::Expr>                   parse_equality_expr();
+		std::unique_ptr<ast::Expr>                   parse_relational_expr();
+		std::unique_ptr<ast::Expr>                   parse_bitshift_expr();
+		std::unique_ptr<ast::Expr>                   parse_additive_expr();
+		std::unique_ptr<ast::Expr>                   parse_multiplicative_expr();
+		std::unique_ptr<ast::Expr>                   parse_unary_expr();
+		std::unique_ptr<ast::Expr>                   parse_postfix_expr();
+		std::unique_ptr<ast::Expr>                   parse_primary_expr();
 
-		std::unique_ptr<ast::Statement>                    parse_statement();
+		std::unique_ptr<ast::BuiltinIntType>         parse_builtin_int_type();
+		std::unique_ptr<ast::BuiltinFloatType>       parse_builtin_float_type();
+		std::unique_ptr<ast::Type>                   parse_type();
 
-		std::unique_ptr<ast::VariableDeclarationStatement> parse_variable_declaration();
+		std::unique_ptr<ast::ParamDecl>              parse_param_decl();
+		std::unique_ptr<ast::FunctionDecl>           parse_function_decl();
+		std::unique_ptr<ast::VarDecl>                parse_var_decl();
 
-		std::unique_ptr<ast::LogicalParameter>             parse_logical_parameter();
-		std::unique_ptr<ast::LogicalParameterPack>         parse_logical_parameter_pack();
+		std::unique_ptr<ast::Stmnt>                  parse_stmnt();
+		std::unique_ptr<ast::CompoundStmnt>          parse_compound_stmnt();
+		std::unique_ptr<ast::WhileStmnt>             parse_while_stmnt();
+		std::unique_ptr<ast::IfStmnt>                parse_if_stmnt();
+		std::unique_ptr<ast::ReturnStmnt>            parse_return_stmnt();
+		std::unique_ptr<ast::BreakStmnt>             parse_break_stmnt();
+		std::unique_ptr<ast::ContinueStmnt>          parse_continue_stmnt();
+		std::unique_ptr<ast::ExprStmnt>              parse_expr_stmnt();
 
-		std::unique_ptr<ast::FunctionDefinitionStatement>  parse_function_definition();
+		std::unique_ptr<ast::Decl>                   parse_top_level_decl();
+		std::unique_ptr<ast::CompilationUnitDecl>    parse_compilation_unit_decl();
 
-		std::unique_ptr<ast::CompoundStatement>            parse_compound_statement();
+/*
+		Token const& prevToken() const;
+		Token const& curToken() const;
+		Token const& nextToken();
+		Token const& peekToken();
+		Token const& expect(TokenType const& token_type);
+		bool         optional(TokenType const& token_type);
 
-		std::unique_ptr<ast::WhileStatement>               parse_while_statement();
+		bool isBinaryExpr();
+		bool isAssignExpr();
+		bool isUnaryExpr();
 
-		std::unique_ptr<ast::IfStatement>                  parse_if_statement();
+		std::unique_ptr<ast::ExprList>            parseExprList();
+		std::unique_ptr<ast::Expr>                parseExpr();
 
-		std::unique_ptr<ast::ReturnStatement>              parse_return_statement();
-		std::unique_ptr<ast::BreakStatement>               parse_break_statement();
-		std::unique_ptr<ast::ContinueStatement>            parse_continue_statement();
+		std::unique_ptr<ast::Expr>                parseAssignExpr();
+		std::unique_ptr<ast::Expr>                parseConditionalExpr();
+		std::unique_ptr<ast::Expr>                parseLogicalOrExpr();
+		std::unique_ptr<ast::Expr>                parseLogicalAndExpr();
+		std::unique_ptr<ast::Expr>                parseBitOrExpr();
+		std::unique_ptr<ast::Expr>                parseBitXorExpr();
+		std::unique_ptr<ast::Expr>                parseBitAndExpr();
+		std::unique_ptr<ast::Expr>                parseEqualityExpr();
+		std::unique_ptr<ast::Expr>                parseRelationalExpr();
+		std::unique_ptr<ast::Expr>                parseBitShiftExpr();
+		std::unique_ptr<ast::Expr>                parseAdditiveExpr();
+		std::unique_ptr<ast::Expr>                parseMultiplicativeExpr();
+		std::unique_ptr<ast::Expr>                parseUnaryExpr();
+		std::unique_ptr<ast::Expr>                parsePostfixExpr();
+		std::unique_ptr<ast::Expr>                parsePrimaryExpr();
 
-		std::unique_ptr<ast::ExpressionStatement>          parse_expression_statement();
+		std::unique_ptr<ast::BuiltinIntType>      parseBuiltinIntType();
+		std::unique_ptr<ast::BuiltinFloatType>    parseBuiltinFloatType();
+		std::unique_ptr<ast::Type>                parseType();
 
-		std::unique_ptr<ast::Statement>                    parse_top_level_statement();
-		std::unique_ptr<ast::CompilationUnit>              parse_compilation_unit();
+		std::unique_ptr<ast::Stmnt>               parseStmnt();
+
+		std::unique_ptr<ast::VarDecl>        parseVarDecl();
+
+		std::unique_ptr<ast::ParamDecl>           parseParamDecl();
+		std::vector<std::unique_ptr<ast::ParamDecl>> parseParamDeclList();
+
+		std::unique_ptr<ast::FunctionDecl>        parseFunctionDecl();
+
+		std::unique_ptr<ast::CompoundStmnt>       parseCompoundStmnt();
+		std::unique_ptr<ast::WhileStmnt>          parseWhileStmnt();
+		std::unique_ptr<ast::IfStmnt>             parseIfStmnt();
+		std::unique_ptr<ast::ReturnStmnt>         parseReturnStmnt();
+		std::unique_ptr<ast::BreakStmnt>          parseBreakStmnt();
+		std::unique_ptr<ast::ContinueStmnt>       parseContinueStmnt();
+		std::unique_ptr<ast::ExprStmnt>           parseExprStmnt();
+
+		std::unique_ptr<ast::Decl>                parseTopLevelDecl();
+		std::unique_ptr<ast::CompilationUnitDecl> parseCompilationUnitDecl();
+*/
 
 	public:
 		explicit CionParser(TokenStream & token_stream, ErrorHandler const& error_handler);
 
-		std::unique_ptr<ast::CompilationUnit> parse();
+		std::unique_ptr<ast::CompilationUnitDecl> parse();
 
 	private:
 		TokenStream & m_token_stream;

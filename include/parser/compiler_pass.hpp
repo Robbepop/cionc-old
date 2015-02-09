@@ -5,93 +5,86 @@
 
 namespace cion {
 	namespace ast {
-		class AssignmentExpression;
-		class BinaryExpression;
+		class BinaryAssignExpr;
+		class BinaryExpr;
 		class BooleanExpr;
-		class BreakStatement;
-		class CallExpression;
-		class CharLiteral;
-		class CompilationUnit;
-		class CompoundStatement;
-		class ConditionalExpression;
-		class ContinueStatement;
-		class EmptyStatement;
-		class Expression;
-		class ExpressionList;
-		class ExpressionStatement;
-		class FloatLiteral;
-		class FunctionDefinitionStatement;
-		class IfStatement;
-		class IndexExpression;
-		class IntegerLiteral;
-		class LogicalParameter;
-		class LogicalParameterPack;
-		class Node;
-		class NothingExpression;
+		class BreakStmnt;
+		class CallExpr;
+		class CharExpr;
+		class CompilationUnitDecl;
+		class CompoundStmnt;
+		class ConditionalExpr;
+		class ContinueStmnt;
+		class Decl;
+		class EmptyStmnt;
+		class Expr;
+		class ExprStmnt;
+		class FloatExpr;
+		class FunctionDecl;
+		class IfStmnt;
+		class IndexExpr;
+		class IntegerExpr;
+		class ParamDecl;
+		class NothingExpr;
 		class NothingType;
-		class PostfixExpression;
-		class PrimitiveTypeBool;
-		class PrimitiveTypeChar;
-		class PrimitiveTypeFloat;
-		class PrimitiveTypeInt;
-		class ReturnStatement;
-		class Statement;
-		class StatementList;
-		class StringLiteral;
-		class TypeSpecifier;
-		class UnaryExpression;
-		class VariableDeclarationStatement;
-		class VariableExpression;
-		class WhileStatement;
-	}
+		class BuiltinBoolType;
+		class BuiltinCharType;
+		class BuiltinFloatType;
+		class BuiltinIntType;
+		class ReturnStmnt;
+		class Stmnt;
+		class StringExpr;
+		class Type;
+		class UnaryExpr;
+		class VarDecl;
+		class VarExpr;
+		class WhileStmnt;
+	} // namespace ast
 
-	template <bool isMutating>
-	class TCompilerPass {
-		template <typename T>
-		using opt_mutable = typename std::conditional<isMutating, T&, T const&>::type;
+	class CompilerPass {
 	public:
-		virtual void visit(opt_mutable<ast::AssignmentExpression>) {}
-		virtual void visit(opt_mutable<ast::BinaryExpression>) {}
-		virtual void visit(opt_mutable<ast::BooleanExpr>) {}
-		virtual void visit(opt_mutable<ast::BreakStatement>) {}
-		virtual void visit(opt_mutable<ast::CallExpression>) {}
-		virtual void visit(opt_mutable<ast::CharLiteral>) {}
-		virtual void visit(opt_mutable<ast::CompilationUnit>) {}
-		virtual void visit(opt_mutable<ast::CompoundStatement>) {}
-		virtual void visit(opt_mutable<ast::ConditionalExpression>) {}
-		virtual void visit(opt_mutable<ast::ContinueStatement>) {}
-		virtual void visit(opt_mutable<ast::EmptyStatement>) {}
-		virtual void visit(opt_mutable<ast::Expression>) {}
-		virtual void visit(opt_mutable<ast::ExpressionList>) {}
-		virtual void visit(opt_mutable<ast::ExpressionStatement>) {}
-		virtual void visit(opt_mutable<ast::FloatLiteral>) {}
-		virtual void visit(opt_mutable<ast::FunctionDefinitionStatement>) {}
-		virtual void visit(opt_mutable<ast::IfStatement>) {}
-		virtual void visit(opt_mutable<ast::IndexExpression>) {}
-		virtual void visit(opt_mutable<ast::IntegerLiteral>) {}
-		virtual void visit(opt_mutable<ast::LogicalParameter>) {}
-		virtual void visit(opt_mutable<ast::LogicalParameterPack>) {}
-		virtual void visit(opt_mutable<ast::Node>) {}
-		virtual void visit(opt_mutable<ast::NothingExpression>) {}
-		virtual void visit(opt_mutable<ast::NothingType>) {}
-		virtual void visit(opt_mutable<ast::PostfixExpression>) {}
-		virtual void visit(opt_mutable<ast::PrimitiveTypeBool>) {}
-		virtual void visit(opt_mutable<ast::PrimitiveTypeChar>) {}
-		virtual void visit(opt_mutable<ast::PrimitiveTypeFloat>) {}
-		virtual void visit(opt_mutable<ast::PrimitiveTypeInt>) {}
-		virtual void visit(opt_mutable<ast::ReturnStatement>) {}
-		virtual void visit(opt_mutable<ast::Statement>) {}
-		virtual void visit(opt_mutable<ast::StatementList>) {}
-		virtual void visit(opt_mutable<ast::StringLiteral>) {}
-		virtual void visit(opt_mutable<ast::TypeSpecifier>) {}
-		virtual void visit(opt_mutable<ast::UnaryExpression>) {}
-		virtual void visit(opt_mutable<ast::VariableDeclarationStatement>) {}
-		virtual void visit(opt_mutable<ast::VariableExpression>) {}
-		virtual void visit(opt_mutable<ast::WhileStatement>) {}
-	};
+		// Statements
+		virtual void visit(ast::Stmnt &);
+		virtual void visit(ast::CompoundStmnt &);
+		virtual void visit(ast::EmptyStmnt &);
+		virtual void visit(ast::ExprStmnt &);
+		virtual void visit(ast::IfStmnt &);
+		virtual void visit(ast::WhileStmnt &);
+		virtual void visit(ast::BreakStmnt &);
+		virtual void visit(ast::ContinueStmnt &);
+		virtual void visit(ast::ReturnStmnt &);
 
-	using MutatingCompilerPass = TCompilerPass<true>;
-	using CompilerPass = TCompilerPass<false>;
+		// Declarations
+		virtual void visit(ast::Decl &);
+		virtual void visit(ast::CompilationUnitDecl &);
+		virtual void visit(ast::ParamDecl &);
+		virtual void visit(ast::FunctionDecl &);
+		virtual void visit(ast::VarDecl &);
+
+		// Expressions
+		virtual void visit(ast::Expr &);
+		virtual void visit(ast::ConditionalExpr &);
+		virtual void visit(ast::BinaryExpr &);
+		virtual void visit(ast::BinaryAssignExpr &);
+		virtual void visit(ast::BooleanExpr &);
+		virtual void visit(ast::CallExpr &);
+		virtual void visit(ast::CharExpr &);
+		virtual void visit(ast::FloatExpr &);
+		virtual void visit(ast::IndexExpr &);
+		virtual void visit(ast::IntegerExpr &);
+		virtual void visit(ast::NothingExpr &);
+		virtual void visit(ast::StringExpr &);
+		virtual void visit(ast::UnaryExpr &);
+		virtual void visit(ast::VarExpr &);
+
+		// Types
+		virtual void visit(ast::Type &);
+		virtual void visit(ast::NothingType &);
+		virtual void visit(ast::BuiltinBoolType &);
+		virtual void visit(ast::BuiltinCharType &);
+		virtual void visit(ast::BuiltinFloatType &);
+		virtual void visit(ast::BuiltinIntType &);
+	};
 } // namespace cion
 
 #endif // CION_PARSER_COMPILER_PASS_HEADER

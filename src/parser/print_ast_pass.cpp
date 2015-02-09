@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <limits>
+#include <sstream>
 
 namespace cion {
 
@@ -65,265 +66,238 @@ namespace cion {
 /// Visitor Methods
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	void PrintASTPass::visit(ast::AssignmentExpression const& assignment_expression) {
-		print_line("assignment expression");
+	void PrintASTPass::visit(ast::BinaryAssignExpr & assignment_expr) {
+		print_line("assignment expr");
 		{
 			auto block = create_block();
-			assignment_expression.lhs().accept(*this);
-			assignment_expression.rhs().accept(*this);
+			assignment_expr.lhs().accept(*this);
+			assignment_expr.rhs().accept(*this);
 		}
 	}
 
-	void PrintASTPass::visit(ast::BinaryExpression const& binary_expression) {
-		print_line("binary expression");
+	void PrintASTPass::visit(ast::BinaryExpr & binary_expr) {
+		print_line("binary expr");
 		{
 			auto block = create_block();
-			binary_expression.lhs().accept(*this);
-			binary_expression.rhs().accept(*this);
+			binary_expr.lhs().accept(*this);
+			binary_expr.rhs().accept(*this);
 		}
 	}
 
-	void PrintASTPass::visit(ast::BooleanExpr const& boolean_expr) {
+	void PrintASTPass::visit(ast::BooleanExpr & boolean_expr) {
 		std::string bool_str = boolean_expr.value() ? "true" : "false";
-		print_line("boolean literal: " + bool_str);
+		print_line("boolean expr: " + bool_str);
 	}
 
-	void PrintASTPass::visit(ast::BreakStatement const& break_statement) {
-		print_line("break statement");
-		std::ignore = break_statement;
+	void PrintASTPass::visit(ast::BreakStmnt & break_stmnt) {
+		print_line("break stmnt");
+		std::ignore = break_stmnt;
 	}
 
-	void PrintASTPass::visit(ast::CallExpression const& call_expression) {
-		print_line("call expression");
+	void PrintASTPass::visit(ast::CallExpr & call_expr) {
+		print_line("call expr");
 		{
 			auto block = create_block();
-			call_expression.callee().accept(*this);
-			call_expression.args().accept(*this);
+			call_expr.callee().accept(*this);
+			for (auto&& arg : call_expr.args()) {
+				arg->accept(*this);
+			}
+			//call_expr.args().accept(*this);
 		}
 	}
 
-	void PrintASTPass::visit(ast::CharLiteral const& char_literal) {
-		print_line(std::string("char literal: ") + char_literal.value());
+	void PrintASTPass::visit(ast::CharExpr & char_expr) {
+		print_line(std::string("char expr: ") + char_expr.value());
 	}
 
-	void PrintASTPass::visit(ast::CompilationUnit const& compilation_unit) {
-		print_line("compilation unit");
+	void PrintASTPass::visit(ast::CompilationUnitDecl & compilation_unit) {
+		print_line("compilation unit decl");
 		{
 			auto block = create_block();
-			for (auto&& node : compilation_unit.statements()) {
+			for (auto&& node : compilation_unit.decls()) {
 				node->accept(*this);
 			}
 		}
 	}
 
-	void PrintASTPass::visit(ast::CompoundStatement const& compound_statement) {
-		print_line("compound statement");
+	void PrintASTPass::visit(ast::CompoundStmnt & compound_stmnt) {
+		print_line("compound stmnt");
 		{
 			auto block = create_block();
-			for (auto&& stmnt : compound_statement.statements()) {
+			for (auto&& stmnt : compound_stmnt.statements()) {
 				stmnt->accept(*this);
 			}
 		}
 	}
 
-	void PrintASTPass::visit(ast::ConditionalExpression const& conditional_expression) {
-		print_line("conditional expression");
+	void PrintASTPass::visit(ast::ConditionalExpr & conditional_expr) {
+		print_line("conditional expr");
 		{
 			auto block = create_block();
-			conditional_expression.condition().accept(*this);
-			conditional_expression.then_expr().accept(*this);
-			conditional_expression.else_expr().accept(*this);
+			conditional_expr.condition().accept(*this);
+			conditional_expr.then_expr().accept(*this);
+			conditional_expr.else_expr().accept(*this);
 		}
 	}
 
-	void PrintASTPass::visit(ast::ContinueStatement const& continue_statement) {
-		print_line("continue statement");
-		std::ignore = continue_statement;
+	void PrintASTPass::visit(ast::ContinueStmnt & continue_stmnt) {
+		print_line("continue stmnt");
+		std::ignore = continue_stmnt;
 	}
 
-	void PrintASTPass::visit(ast::EmptyStatement const& empty_statement) {
-		print_line("empty statement");
-		std::ignore = empty_statement;
+	void PrintASTPass::visit(ast::Decl & decl) {
+		print_line("decl");
+		std::ignore = decl;
 	}
 
-	void PrintASTPass::visit(ast::Expression const& expression) {
-		print_line("expression");
-		std::ignore = expression;
+	void PrintASTPass::visit(ast::EmptyStmnt & empty_stmnt) {
+		print_line("empty stmnt");
+		std::ignore = empty_stmnt;
 	}
 
-	void PrintASTPass::visit(ast::ExpressionList const& expression_list) {
-		print_line("expression list");
+	void PrintASTPass::visit(ast::Expr & expr) {
+		print_line("expr");
+		std::ignore = expr;
+	}
+
+	void PrintASTPass::visit(ast::ExprStmnt & expr_stmnt) {
+		print_line("expr stmnt");
 		{
 			auto block = create_block();
-			for (auto&& expr : expression_list.expressions()) {
-				expr->accept(*this);
-			}
+			expr_stmnt.expr().accept(*this);
 		}
 	}
 
-	void PrintASTPass::visit(ast::ExpressionStatement const& expression_statement) {
-		print_line("expression statement");
+	void PrintASTPass::visit(ast::FloatExpr & float_expr) {
+		print_line("float expr: " + std::to_string(float_expr.value()));
+	}
+
+	void PrintASTPass::visit(ast::FunctionDecl & function_decl) {
+		print_line("function decl: " + function_decl.name());
 		{
 			auto block = create_block();
-			expression_statement.expr().accept(*this);
-		}
-	}
-
-	void PrintASTPass::visit(ast::FloatLiteral const& float_literal) {
-		print_line("float literal: " + std::to_string(float_literal.value()));
-	}
-
-	void PrintASTPass::visit(ast::FunctionDefinitionStatement const& function_definition_statement) {
-		print_line("function definition statement: " + function_definition_statement.name());
-		{
-			auto block = create_block();
-			function_definition_statement.args().accept(*this);
-			function_definition_statement.specified_type().accept(*this);
-			function_definition_statement.body().accept(*this);
-		}
-	}
-
-	void PrintASTPass::visit(ast::IfStatement const& if_statement) {
-		print_line("if statement");
-		{
-			auto block = create_block();
-			if_statement.condition().accept(*this);
-			if_statement.then_stmnt().accept(*this);
-			if_statement.else_stmnt().accept(*this);
-		}
-	}
-
-	void PrintASTPass::visit(ast::IndexExpression const& index_expression) {
-		print_line("index expression");
-		{
-			auto block = create_block();
-			index_expression.expr().accept(*this);
-			index_expression.indices().accept(*this);
-		}
-	}
-
-	void PrintASTPass::visit(ast::IntegerLiteral const& integer_literal) {
-		print_line("integer literal: " + std::to_string(integer_literal.value()));
-	}
-
-	void PrintASTPass::visit(ast::LogicalParameter const& logical_parameter) {
-		print_line("logical parameter: " + logical_parameter.name());
-		{
-			auto block = create_block();
-			logical_parameter.specified_type().accept(*this);
-		}
-	}
-
-	void PrintASTPass::visit(ast::LogicalParameterPack const& logical_parameter_pack) {
-		print_line("logical parameter pack");
-		{
-			auto block = create_block();
-			for (auto&& param : logical_parameter_pack.params()) {
+			for (auto&& param : function_decl.params()) {
 				param->accept(*this);
 			}
+			function_decl.return_type().accept(*this);
+			function_decl.body().accept(*this);
 		}
 	}
 
-	void PrintASTPass::visit(ast::Node const& node) {
-		print_line("node");
-		std::ignore = node;
+	void PrintASTPass::visit(ast::IfStmnt & if_stmnt) {
+		print_line("if stmnt");
+		{
+			auto block = create_block();
+			if_stmnt.condition().accept(*this);
+			if_stmnt.then_stmnt().accept(*this);
+			if_stmnt.else_stmnt().accept(*this);
+		}
 	}
 
-	void PrintASTPass::visit(ast::NothingExpression const& nothing_expression) {
-		print_line("nothing expression");
-		std::ignore = nothing_expression;
+	void PrintASTPass::visit(ast::IndexExpr & index_expr) {
+		print_line("index expr");
+		{
+			auto block = create_block();
+			index_expr.expr().accept(*this);
+			for (auto&& index : index_expr.indices()) {
+				index->accept(*this);
+			}
+		}
 	}
 
-	void PrintASTPass::visit(ast::NothingType const& nothing_type) {
+	void PrintASTPass::visit(ast::IntegerExpr & integer_expr) {
+		print_line("integer expr: " + std::to_string(integer_expr.value()));
+	}
+
+	void PrintASTPass::visit(ast::ParamDecl & param_decl) {
+		print_line("param decl: " + param_decl.name());
+		{
+			auto block = create_block();
+			param_decl.type().accept(*this);
+		}
+	}
+
+	void PrintASTPass::visit(ast::NothingExpr & nothing_expr) {
+		print_line("nothing expr");
+		std::ignore = nothing_expr;
+	}
+
+	void PrintASTPass::visit(ast::NothingType & nothing_type) {
 		print_line("nothing type");
 		std::ignore = nothing_type;
 	}
 
-	void PrintASTPass::visit(ast::PostfixExpression const& postfix_expression) {
-		print_line("postfix expression");
-		{
-			auto block = create_block();
-			postfix_expression.expr().accept(*this);
-		}
+	void PrintASTPass::visit(ast::BuiltinBoolType & builtin_bool_type) {
+		print_line("builtin int type");
+		std::ignore = builtin_bool_type;
 	}
 
-	void PrintASTPass::visit(ast::PrimitiveTypeBool const& primitive_type_bool) {
-		print_line("primitive type bool");
-		std::ignore = primitive_type_bool;
+	void PrintASTPass::visit(ast::BuiltinCharType & builtin_char_type) {
+		print_line("builtin char type");
+		std::ignore = builtin_char_type;
 	}
 
-	void PrintASTPass::visit(ast::PrimitiveTypeChar const& primitive_type_char) {
-		print_line("primitive type char");
-		std::ignore = primitive_type_char;
-	}
-
-	void PrintASTPass::visit(ast::PrimitiveTypeFloat const& primitive_type_float) {
-		print_line("primitive type float");
+	void PrintASTPass::visit(ast::BuiltinFloatType & builtin_float_type) {
+		print_line("builtin float type");
 		// TODO print float width
-		std::ignore = primitive_type_float;
+		std::ignore = builtin_float_type;
 	}
 
-	void PrintASTPass::visit(ast::PrimitiveTypeInt const& primitive_type_int) {
-		print_line("primitive type int");
+	void PrintASTPass::visit(ast::BuiltinIntType & builtin_int_type) {
+		print_line("builtin int type");
 		// TODO print int width and signed flag
-		std::ignore = primitive_type_int;
+		std::ignore = builtin_int_type;
 	}
 
-	void PrintASTPass::visit(ast::ReturnStatement const& return_statement) {
-		print_line("return statement");
+	void PrintASTPass::visit(ast::ReturnStmnt & return_stmnt) {
+		print_line("return stmnt");
 		{
 			auto block = create_block();
-			return_statement.expr().accept(*this);
+			return_stmnt.expr().accept(*this);
 		}
 	}
 
-	void PrintASTPass::visit(ast::Statement const& statement) {
-		print_line("statement");
-		std::ignore = statement;
+	void PrintASTPass::visit(ast::Stmnt & stmnt) {
+		print_line("stmnt");
+		std::ignore = stmnt;
 	}
 
-	void PrintASTPass::visit(ast::StatementList const& statement_list) {
-		print_line("statement list");
-		// TODO implement if required
-		std::ignore = statement_list;
+	void PrintASTPass::visit(ast::StringExpr & string_expr) {
+		print_line("string expr: " + string_expr.value());
 	}
 
-	void PrintASTPass::visit(ast::StringLiteral const& string_literal) {
-		print_line("string literal: " + string_literal.value());
-	}
-
-	void PrintASTPass::visit(ast::TypeSpecifier const& type_specifier) {
-		print_line("type specifier");
+	void PrintASTPass::visit(ast::Type & type_specifier) {
+		print_line("type");
 		std::ignore = type_specifier;
 	}
 
-	void PrintASTPass::visit(ast::UnaryExpression const& unary_expression) {
-		print_line("unary expression"); // TODO print operator
+	void PrintASTPass::visit(ast::UnaryExpr & unary_expr) {
+		print_line("unary expr"); // TODO print operator
 		{
 			auto block = create_block();
-			unary_expression.expr().accept(*this);
+			unary_expr.expr().accept(*this);
 		}
 	}
 
-	void PrintASTPass::visit(ast::VariableDeclarationStatement const& variable_declaration_statement) {
-		print_line("variable declaration statement: " + variable_declaration_statement.name());
+	void PrintASTPass::visit(ast::VarDecl & var_decl) {
+		print_line("var decl: " + var_decl.name());
 		{
 			auto block = create_block();
-			variable_declaration_statement.specified_type().accept(*this);
-			variable_declaration_statement.expr().accept(*this);
+			var_decl.type().accept(*this);
+			var_decl.expr().accept(*this);
 		}
 	}
 
-	void PrintASTPass::visit(ast::VariableExpression const& variable_expression) {
-		print_line("variable expression: " + variable_expression.name());
+	void PrintASTPass::visit(ast::VarExpr & var_expr) {
+		print_line("var expr: " + var_expr.name());
 	}
 
-	void PrintASTPass::visit(ast::WhileStatement const& while_statement) {
-		print_line("while statement");
+	void PrintASTPass::visit(ast::WhileStmnt & while_stmnt) {
+		print_line("while stmnt");
 		{
 			auto block = create_block();
-			while_statement.condition().accept(*this);
-			while_statement.body().accept(*this);
+			while_stmnt.condition().accept(*this);
+			while_stmnt.body().accept(*this);
 		}
 	}
 

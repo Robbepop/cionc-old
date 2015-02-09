@@ -1,15 +1,17 @@
-#ifndef CION_AST_BOOLEAN_EXPR_HEADER
-#define CION_AST_BOOLEAN_EXPR_HEADER
+#ifndef CION_AST_STRING_EXPR_HEADER
+#define CION_AST_STRING_EXPR_HEADER
 
 #include "ast/expr.hpp"
 
+#include <string>
+
 namespace cion {
 namespace ast {
-	class BooleanExpr : public Expr {
+	class StringExpr : public Expr {
 	public:
-		using storage_type = bool;
+		using storage_type = std::string;
 
-		BooleanExpr(storage_type value);
+		StringExpr(storage_type value);
 
 		storage_type & value();
 		storage_type const& value() const;
@@ -22,4 +24,4 @@ namespace ast {
 } // namespace ast
 } // namespace cion
 
-#endif // CION_AST_BOOLEAN_EXPR_HEADER
+#endif // CION_AST_STRING_EXPR_HEADER

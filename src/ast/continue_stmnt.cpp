@@ -1,9 +1,9 @@
-#include "ast/nothing_type.hpp"
+#include "ast/continue_stmnt.hpp"
 
 namespace cion {
 namespace ast {
 
-	void NothingType::accept(CompilerPass & pass) {
+	void ContinueStmnt::accept(CompilerPass & pass) {
 		pass.visit(*this);
 	}
 

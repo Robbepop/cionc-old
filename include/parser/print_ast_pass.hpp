@@ -3,44 +3,36 @@
 
 #include "parser/compiler_pass.hpp"
 
-#include "ast/assignment_expression.hpp"
-#include "ast/binary_expression.hpp"
+#include "ast/binary_assign_expr.hpp"
+#include "ast/binary_expr.hpp"
 #include "ast/boolean_expr.hpp"
-#include "ast/break_statement.hpp"
-#include "ast/call_expression.hpp"
-#include "ast/char_literal.hpp"
-#include "ast/compilation_unit.hpp"
-#include "ast/compound_statement.hpp"
-#include "ast/conditional_expression.hpp"
-#include "ast/continue_statement.hpp"
-#include "ast/empty_statement.hpp"
+#include "ast/break_stmnt.hpp"
+#include "ast/call_expr.hpp"
+#include "ast/char_expr.hpp"
+#include "ast/compilation_unit_decl.hpp"
+#include "ast/compound_stmnt.hpp"
+#include "ast/conditional_expr.hpp"
+#include "ast/continue_stmnt.hpp"
+#include "ast/empty_stmnt.hpp"
 #include "ast/expr.hpp"
-#include "ast/expression_list.hpp"
-#include "ast/expression_statement.hpp"
-#include "ast/float_literal.hpp"
-#include "ast/function_definition_statement.hpp"
-#include "ast/if_statement.hpp"
-#include "ast/index_expression.hpp"
-#include "ast/integer_literal.hpp"
-#include "ast/logical_parameter.hpp"
-#include "ast/logical_parameter_pack.hpp"
-#include "ast/node.hpp"
-#include "ast/nothing_expression.hpp"
+#include "ast/expr_stmnt.hpp"
+#include "ast/float_expr.hpp"
+#include "ast/function_decl.hpp"
+#include "ast/if_stmnt.hpp"
+#include "ast/index_expr.hpp"
+#include "ast/integer_expr.hpp"
+#include "ast/param_decl.hpp"
+#include "ast/nothing_expr.hpp"
 #include "ast/nothing_type.hpp"
-#include "ast/postfix_expression.hpp"
-#include "ast/primitive_type_bool.hpp"
-#include "ast/primitive_type_char.hpp"
-#include "ast/primitive_type_float.hpp"
-#include "ast/primitive_type_int.hpp"
-#include "ast/return_statement.hpp"
-#include "ast/statement.hpp"
-#include "ast/statement_list.hpp"
-#include "ast/string_literal.hpp"
-#include "ast/type_specifier.hpp"
-#include "ast/unary_expression.hpp"
-#include "ast/variable_declaration_statement.hpp"
-#include "ast/variable_expression.hpp"
-#include "ast/while_statement.hpp"
+#include "ast/builtin_type.hpp"
+#include "ast/return_stmnt.hpp"
+#include "ast/stmnt.hpp"
+#include "ast/string_expr.hpp"
+#include "ast/type.hpp"
+#include "ast/unary_expr.hpp"
+#include "ast/var_decl.hpp"
+#include "ast/var_expr.hpp"
+#include "ast/while_stmnt.hpp"
 
 #include <iostream>
 
@@ -66,44 +58,47 @@ namespace cion {
 		void print_line(std::string const& s);
 		void print(std::string const& s);
 
-		void visit(ast::AssignmentExpression const&) override;
-		void visit(ast::BinaryExpression const&) override;
-		void visit(ast::BooleanExpr const&) override;
-		void visit(ast::BreakStatement const&) override;
-		void visit(ast::CallExpression const&) override;
-		void visit(ast::CharLiteral const&) override;
-		void visit(ast::CompilationUnit const&) override;
-		void visit(ast::CompoundStatement const&) override;
-		void visit(ast::ConditionalExpression const&) override;
-		void visit(ast::ContinueStatement const&) override;
-		void visit(ast::EmptyStatement const&) override;
-		void visit(ast::Expression const&) override;
-		void visit(ast::ExpressionList const&) override;
-		void visit(ast::ExpressionStatement const&) override;
-		void visit(ast::FloatLiteral const&) override;
-		void visit(ast::FunctionDefinitionStatement const&) override;
-		void visit(ast::IfStatement const&) override;
-		void visit(ast::IndexExpression const&) override;
-		void visit(ast::IntegerLiteral const&) override;
-		void visit(ast::LogicalParameter const&) override;
-		void visit(ast::LogicalParameterPack const&) override;
-		void visit(ast::Node const&) override;
-		void visit(ast::NothingExpression const&) override;
-		void visit(ast::NothingType const&) override;
-		void visit(ast::PostfixExpression const&) override;
-		void visit(ast::PrimitiveTypeBool const&) override;
-		void visit(ast::PrimitiveTypeChar const&) override;
-		void visit(ast::PrimitiveTypeFloat const&) override;
-		void visit(ast::PrimitiveTypeInt const&) override;
-		void visit(ast::ReturnStatement const&) override;
-		void visit(ast::Statement const&) override;
-		void visit(ast::StatementList const&) override;
-		void visit(ast::StringLiteral const&) override;
-		void visit(ast::TypeSpecifier const&) override;
-		void visit(ast::UnaryExpression const&) override;
-		void visit(ast::VariableDeclarationStatement const&) override;
-		void visit(ast::VariableExpression const&) override;
-		void visit(ast::WhileStatement const&) override;
+		// Statements
+		void visit(ast::Stmnt &) override;
+		void visit(ast::CompoundStmnt &) override;
+		void visit(ast::EmptyStmnt &) override;
+		void visit(ast::ExprStmnt &) override;
+		void visit(ast::IfStmnt &) override;
+		void visit(ast::WhileStmnt &) override;
+		void visit(ast::BreakStmnt &) override;
+		void visit(ast::ContinueStmnt &) override;
+		void visit(ast::ReturnStmnt &) override;
+
+		// Declarations
+		void visit(ast::Decl &) override;
+		void visit(ast::CompilationUnitDecl &) override;
+		void visit(ast::ParamDecl &) override;
+		void visit(ast::FunctionDecl &) override;
+		void visit(ast::VarDecl &) override;
+
+		// Expressions
+		void visit(ast::Expr &) override;
+		void visit(ast::ConditionalExpr &) override;
+		void visit(ast::BinaryExpr &) override;
+		void visit(ast::BinaryAssignExpr &) override;
+		void visit(ast::BooleanExpr &) override;
+		void visit(ast::CallExpr &) override;
+		void visit(ast::CharExpr &) override;
+		void visit(ast::FloatExpr &) override;
+		void visit(ast::IndexExpr &) override;
+		void visit(ast::IntegerExpr &) override;
+		void visit(ast::NothingExpr &) override;
+		void visit(ast::StringExpr &) override;
+		void visit(ast::UnaryExpr &) override;
+		void visit(ast::VarExpr &) override;
+
+		// Types
+		void visit(ast::Type &) override;
+		void visit(ast::NothingType &) override;
+		void visit(ast::BuiltinBoolType &) override;
+		void visit(ast::BuiltinCharType &) override;
+		void visit(ast::BuiltinFloatType &) override;
+		void visit(ast::BuiltinIntType &) override;
 
 	private:
 		std::ostream & m_os;

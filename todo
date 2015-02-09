@@ -2,16 +2,19 @@ ToDo list for Cion Compiler
 
 - put source files in associated folders as their include header files
 - add error token type and output it in the lexer whenever an error appeared
-	- make lexer output Tokens with start- and end SourceLocation (adapt Tokens for this change)
+- make lexer output Tokens with start- and end SourceLocation (adapt Tokens for this change)
 	- make existing code use the new ErrorHandler in order to output
 	  and handle errors and warning while lexing or parsing
+	- add DeclStmnt AST node to make it possible again to have declarations as statements.
+	- add type component with getter and setter methods to all Expr nodes.
 	- add Identifier AST component with a reference to a string and to its entry within the SymbolTable
 	- add a TokenStorageManager to store all processed tokens. AST nodes should reference to their tokens.
 	- add startLocation() and endLocation() method to all AST nodes.
 	- add new Node subclasses Type and Declaration and adapt existing AST subclasses to them.
 	- add SourceLocation to all AST nodes for all important locations (e.g. start, end) within an node
-	- add type information to all AST expression nodes
+	- add more specific binary, unary and assign nodes to the AST inherited from AssignExpr, BinaryExpr or UnaryExpr.
 	- implement a fully working symbol table for Cion Compiler
+	- use forward declarations instead of includes when smart pointers are used.
 	- remove ast/node as root AST node class type. (no root type afterwards)
 	- remove ast/expression_list class and adapt classees depending on it to use vectors of expression instead since expression_lists are no expressions in Cion.
 	- create semantic check passes:

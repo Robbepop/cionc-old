@@ -5,28 +5,23 @@
 #include "error/lexer_exception.hpp"
 #include "error/parser_exception.hpp"
 
-#include "ast/statement.hpp"
-#include "ast/primitive_type_bool.hpp"
-#include "ast/primitive_type_char.hpp"
-#include "ast/primitive_type_int.hpp"
-#include "ast/primitive_type_float.hpp"
-#include "ast/variable_declaration_statement.hpp"
+#include "ast/stmnt.hpp"
+#include "ast/builtin_type.hpp"
+#include "ast/var_decl.hpp"
 #include "ast/boolean_expr.hpp"
-#include "ast/char_literal.hpp"
-#include "ast/string_literal.hpp"
-#include "ast/integer_literal.hpp"
-#include "ast/float_literal.hpp"
-#include "ast/variable_expression.hpp"
-#include "ast/assignment_expression.hpp"
-#include "ast/conditional_expression.hpp"
-#include "ast/binary_expression.hpp"
-#include "ast/unary_expression.hpp"
-#include "ast/postfix_expression.hpp"
-#include "ast/index_expression.hpp"
-#include "ast/call_expression.hpp"
-#include "ast/nothing_expression.hpp"
+#include "ast/char_expr.hpp"
+#include "ast/string_expr.hpp"
+#include "ast/integer_expr.hpp"
+#include "ast/float_expr.hpp"
+#include "ast/var_expr.hpp"
+#include "ast/binary_assign_expr.hpp"
+#include "ast/conditional_expr.hpp"
+#include "ast/binary_expr.hpp"
+#include "ast/unary_expr.hpp"
+#include "ast/index_expr.hpp"
+#include "ast/call_expr.hpp"
+#include "ast/nothing_expr.hpp"
 #include "ast/nothing_type.hpp"
-
 
 #include <chrono>
 
@@ -107,312 +102,423 @@ namespace cion {
 //// Recursive Descendent Parsing Functions
 //////////////////////////////////////////////////////////////////////////////////////////
 
+	bool CionParser::is_binary_op(TokenType const& tt) {
+		auto const& ctts = CionTokenTypes::get_instance();
+		return
+			tt == ctts.op_pipe_pipe ||
+			tt == ctts.op_and_and ||
+			tt == ctts.op_pipe ||
+			tt == ctts.op_caret ||
+			tt == ctts.op_and ||
+			tt == ctts.op_equals_equals ||
+			tt == ctts.op_not_equals ||
+			tt == ctts.op_less_than ||
+			tt == ctts.op_greater_than ||
+			tt == ctts.op_less_equals ||
+			tt == ctts.op_greater_equals ||
+			tt == ctts.op_plus ||
+			tt == ctts.op_minus ||
+			tt == ctts.op_star ||
+			tt == ctts.op_slash ||
+			tt == ctts.op_percent ||
+			tt == ctts.op_left_left ||
+			tt == ctts.op_right_right
+			? true : false;
+	}
+
+	bool CionParser::is_assign_op(TokenType const& tt) {
+		auto const& ctts = CionTokenTypes::get_instance();
+		return
+			tt == ctts.op_equals ||
+			tt == ctts.op_plus_equals ||
+			tt == ctts.op_minus_equals ||
+			tt == ctts.op_star_equals ||
+			tt == ctts.op_slash_equals ||
+			tt == ctts.op_percent_equals ||
+			tt == ctts.op_pipe_equals ||
+			tt == ctts.op_pipe_pipe_equals ||
+			tt == ctts.op_caret_equals ||
+			tt == ctts.op_and_equals ||
+			tt == ctts.op_and_and_equals ||
+			tt == ctts.op_left_left_equals ||
+			tt == ctts.op_right_right_equals
+			? true : false;
+	}
+
+	bool CionParser::is_unary_op(TokenType const& tt) {
+		auto const& ctts = CionTokenTypes::get_instance();
+		return
+			tt == ctts.op_tilde ||
+			tt == ctts.op_exclam_mark ||
+			tt == ctts.op_pipe ||
+			tt == ctts.op_minus ||
+			tt == ctts.op_plus_plus ||
+			tt == ctts.op_minus_minus
+			? true : false;
+	}
+
 //////////////////////////////////////////////////////////////////////////////////////////
 //// Parsing functions for expressions and expression lists.
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	std::unique_ptr<ast::ExpressionList> CionParser::parse_expression_list() {
+	std::vector<std::unique_ptr<ast::Expr>> CionParser::parse_argument_list() {
 		std::vector<std::unique_ptr<ast::Expr>> expressions;
 
-		expressions.push_back(parse_expression());
+		expressions.push_back(parse_expr());
 
 		while (optional(ctts.op_comma)) {
-			expressions.push_back(parse_expression());
+			expressions.push_back(parse_expr());
 		}
 
-		return std::make_unique<ast::ExpressionList>(std::move(expressions));
+		return expressions;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_expression() {
-		return parse_assignment_expression();
+	std::unique_ptr<ast::Expr> CionParser::parse_expr() {
+		return parse_assignment_expr();
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_assignment_expression() {
-		auto lhs = parse_conditional_expression();
+	std::unique_ptr<ast::Expr> CionParser::parse_assignment_expr() {
+		auto lhs = parse_conditional_expr();
 
-		using assignment = ast::AssignmentExpression;
+		if        (optional(ctts.op_equals)) {
+			DEBUG_STDERR("parsed: AssignExpr\n");
+			return {std::make_unique<ast::AssignExpr>(
+				std::move(lhs), parse_assignment_expr())};
 
-		auto tt = current_token().get_type();
-		if (assignment::is_operator(tt)) {
-			auto op = assignment::get_operator(tt);
-			next_token(); // consume assignment operator
-			return {std::make_unique<assignment>(
-				op, std::move(lhs), parse_expression())};
+		} else if (optional(ctts.op_plus_equals)) {
+			DEBUG_STDERR("parsed: AddAssignExpr\n");
+			return {std::make_unique<ast::AddAssignExpr>(
+				std::move(lhs), parse_assignment_expr())};
+
+		} else if (optional(ctts.op_minus_equals)) {
+			DEBUG_STDERR("parsed: SubtractAssignExpr\n");
+			return {std::make_unique<ast::SubtractAssignExpr>(
+				std::move(lhs), parse_assignment_expr())};
+
+		} else if (optional(ctts.op_star_equals)) {
+			DEBUG_STDERR("parsed: MultiplyAssignExpr\n");
+			return {std::make_unique<ast::MultiplyAssignExpr>(
+				std::move(lhs), parse_assignment_expr())};
+
+		} else if (optional(ctts.op_slash_equals)) {
+			DEBUG_STDERR("parsed: DivideAssignExpr\n");
+			return {std::make_unique<ast::DivideAssignExpr>(
+				std::move(lhs), parse_assignment_expr())};
+
+		} else if (optional(ctts.op_percent_equals)) {
+			DEBUG_STDERR("parsed: ModuloAssignExpr\n");
+			return {std::make_unique<ast::ModuloAssignExpr>(
+				std::move(lhs), parse_assignment_expr())};
+
+		} else if (optional(ctts.op_pipe_equals)) {
+			DEBUG_STDERR("parsed: BitOrAssignExpr\n");
+			return {std::make_unique<ast::BitOrAssignExpr>(
+				std::move(lhs), parse_assignment_expr())};
+
+		} else if (optional(ctts.op_pipe_pipe_equals)) {
+			DEBUG_STDERR("parsed: LogicalOrAssignExpr\n");
+			return {std::make_unique<ast::LogicalOrAssignExpr>(
+				std::move(lhs), parse_assignment_expr())};
+
+		} else if (optional(ctts.op_caret_equals)) {
+			DEBUG_STDERR("parsed: BitXorAssignExpr\n");
+			return {std::make_unique<ast::BitXorAssignExpr>(
+				std::move(lhs), parse_assignment_expr())};
+
+		} else if (optional(ctts.op_and_equals)) {
+			DEBUG_STDERR("parsed: BitAndAssignExpr\n");
+			return {std::make_unique<ast::BitAndAssignExpr>(
+				std::move(lhs), parse_assignment_expr())};
+
+		} else if (optional(ctts.op_and_and_equals)) {
+			DEBUG_STDERR("parsed: LogicalAndAssignExpr\n");
+			return {std::make_unique<ast::LogicalAndAssignExpr>(
+				std::move(lhs), parse_assignment_expr())};
+
+		} else if (optional(ctts.op_left_left_equals)) {
+			DEBUG_STDERR("parsed: ShiftLeftAssignExpr\n");
+			return {std::make_unique<ast::ShiftLeftAssignExpr>(
+				std::move(lhs), parse_assignment_expr())};
+
+		} else if (optional(ctts.op_right_right_equals)) {
+			DEBUG_STDERR("parsed: ShiftRightAssignExpr\n");
+			return {std::make_unique<ast::ShiftRightAssignExpr>(
+				std::move(lhs), parse_assignment_expr())};
 		}
 
-		DEBUG_STDERR("parsed: assignment_expression\n");
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_conditional_expression() {
-		auto condition = parse_logical_or_expression();
+	std::unique_ptr<ast::Expr> CionParser::parse_conditional_expr() {
+		auto condition = parse_logical_or_expr();
 
 		if (optional(ctts.op_question_mark)) {
-			auto then_expr = parse_expression();
+			DEBUG_STDERR("parsed: ConditionalExpr\n");
+
+			auto then_expr = parse_expr();
 
 			expect(ctts.op_colon);
 
-			auto else_expr = parse_expression();
+			auto else_expr = parse_expr();
 
-			return {std::make_unique<ast::ConditionalExpression>(
+			return {std::make_unique<ast::ConditionalExpr>(
 				std::move(condition), std::move(then_expr), std::move(else_expr))};
 		}
 
-		DEBUG_STDERR("parsed: conditional_expression\n");
 		return condition;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_logical_or_expression() {
-		auto lhs = parse_logical_and_expression();
-
-		using op = ast::BinaryExpression::Operator;
+	std::unique_ptr<ast::Expr> CionParser::parse_logical_or_expr() {
+		auto lhs = parse_logical_and_expr();
 
 		while (optional(ctts.op_pipe_pipe)) {
-			auto rhs = parse_logical_and_expression();
-			lhs = {std::make_unique<ast::BinaryExpression>(
-				op::logical_or, std::move(lhs), std::move(rhs))};
+			DEBUG_STDERR("parsed: LogicalOrExpr\n");
+			auto rhs = parse_logical_and_expr();
+			lhs = {std::make_unique<ast::LogicalOrExpr>(
+				std::move(lhs), std::move(rhs))};
 		}
 
-		DEBUG_STDERR("parsed: logical_or_expression\n");
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_logical_and_expression() {
-		auto lhs = parse_inclusive_or_expression();
+	std::unique_ptr<ast::Expr> CionParser::parse_logical_and_expr() {
+		auto lhs = parse_bit_or_expr();
 
-		using op = ast::BinaryExpression::Operator;
-
-		while (optional(ctts.op_ampersand_ampersand)) {
-			auto rhs = parse_inclusive_or_expression();
-			lhs = {std::make_unique<ast::BinaryExpression>(
-				op::logical_and, std::move(lhs), std::move(rhs))};
+		while (optional(ctts.op_and_and)) {
+			DEBUG_STDERR("parsed: LogicalAndExpr\n");
+			auto rhs = parse_bit_or_expr();
+			lhs = {std::make_unique<ast::LogicalAndExpr>(
+				std::move(lhs), std::move(rhs))};
 		}
 
-		DEBUG_STDERR("parsed: logical_and_expression\n");
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_inclusive_or_expression() {
-		auto lhs = parse_exclusive_or_expression();
-
-		using op = ast::BinaryExpression::Operator;
+	std::unique_ptr<ast::Expr> CionParser::parse_bit_or_expr() {
+		auto lhs = parse_bit_xor_expr();
 
 		while (optional(ctts.op_pipe)) {
-			auto rhs = parse_exclusive_or_expression();
-			lhs = {std::make_unique<ast::BinaryExpression>(
-				op::inclusive_or, std::move(lhs), std::move(rhs))};
+			DEBUG_STDERR("parsed: BitOrExpr\n");
+			auto rhs = parse_bit_xor_expr();
+			lhs = {std::make_unique<ast::BitOrExpr>(
+				std::move(lhs), std::move(rhs))};
 		}
 
-		DEBUG_STDERR("parsed: inclusive_or_expression\n");
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_exclusive_or_expression() {
-		auto lhs = parse_bitwise_and_expression();
-
-		using op = ast::BinaryExpression::Operator;
+	std::unique_ptr<ast::Expr> CionParser::parse_bit_xor_expr() {
+		auto lhs = parse_bit_and_expr();
 
 		while (optional(ctts.op_caret)) {
-			auto rhs = parse_bitwise_and_expression();
-			lhs = {std::make_unique<ast::BinaryExpression>(
-				op::exclusive_or, std::move(lhs), std::move(rhs))};
+			DEBUG_STDERR("parsed: BitXorExpr\n");
+			auto rhs = parse_bit_and_expr();
+			lhs = {std::make_unique<ast::BitXorExpr>(
+				std::move(lhs), std::move(rhs))};
 		}
 
-		DEBUG_STDERR("parsed: exclusive_or_expression\n");
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_bitwise_and_expression() {
-		auto lhs = parse_equality_expression();
+	std::unique_ptr<ast::Expr> CionParser::parse_bit_and_expr() {
+		auto lhs = parse_equality_expr();
 
-		using op = ast::BinaryExpression::Operator;
-
-		while (optional(ctts.op_ampersand)) {
-			auto rhs = parse_equality_expression();
-			lhs = {std::make_unique<ast::BinaryExpression>(
-				op::bitwise_and, std::move(lhs), std::move(rhs))};
+		while (optional(ctts.op_and)) {
+			DEBUG_STDERR("parsed: BitAndExpr\n");
+			auto rhs = parse_equality_expr();
+			lhs = {std::make_unique<ast::BitAndExpr>(
+				std::move(lhs), std::move(rhs))};
 		}
 
-		DEBUG_STDERR("parsed: bitwise_and_expression\n");
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_equality_expression() {
-		auto lhs = parse_relational_expression();
-
-		using op = ast::BinaryExpression::Operator;
+	std::unique_ptr<ast::Expr> CionParser::parse_equality_expr() {
+		auto lhs = parse_relational_expr();
 
 		while (true) {
 			if        (optional(ctts.op_equals_equals)) {
-				auto rhs = parse_relational_expression();
-				lhs = {std::make_unique<ast::BinaryExpression>(
-					op::equality, std::move(lhs), std::move(rhs))};
+				DEBUG_STDERR("parsed: EqualityExpr\n");
+				auto rhs = parse_relational_expr();
+				lhs = {std::make_unique<ast::EqualityExpr>(
+					std::move(lhs), std::move(rhs))};
 
 			} else if (optional(ctts.op_not_equals)) {
-				auto rhs = parse_relational_expression();
-				lhs = {std::make_unique<ast::BinaryExpression>(
-					op::inequality, std::move(lhs), std::move(rhs))};
+				DEBUG_STDERR("parsed: InequalityExpr\n");
+				auto rhs = parse_relational_expr();
+				lhs = {std::make_unique<ast::InequalityExpr>(
+					std::move(lhs), std::move(rhs))};
 
 			} else break;
 		}
 
-		DEBUG_STDERR("parsed: equality_expression\n");
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_relational_expression() {
-		auto lhs = parse_bitshift_expression();
-
-		using op = ast::BinaryExpression::Operator;
+	std::unique_ptr<ast::Expr> CionParser::parse_relational_expr() {
+		auto lhs = parse_bitshift_expr();
 
 		while (true) {
 			if        (optional(ctts.op_less_than)) {
-				auto rhs = parse_bitshift_expression();
-				lhs = {std::make_unique<ast::BinaryExpression>(
-					op::less_than, std::move(lhs), std::move(rhs))};
+				DEBUG_STDERR("parsed: LessThanExpr\n");
+				auto rhs = parse_bitshift_expr();
+				lhs = {std::make_unique<ast::LessThanExpr>(
+					std::move(lhs), std::move(rhs))};
 
 			} else if (optional(ctts.op_less_equals)) {
-				auto rhs = parse_bitshift_expression();
-				lhs = {std::make_unique<ast::BinaryExpression>(
-					op::less_equals, std::move(lhs), std::move(rhs))};
+				DEBUG_STDERR("parsed: LessEqualsExpr\n");
+				auto rhs = parse_bitshift_expr();
+				lhs = {std::make_unique<ast::LessEqualsExpr>(
+					std::move(lhs), std::move(rhs))};
 
 			} else if (optional(ctts.op_greater_than)) {
-				auto rhs = parse_bitshift_expression();
-				lhs = {std::make_unique<ast::BinaryExpression>(
-					op::greater_than, std::move(lhs), std::move(rhs))};
+				DEBUG_STDERR("parsed: GreaterThanExpr\n");
+				auto rhs = parse_bitshift_expr();
+				lhs = {std::make_unique<ast::GreaterThanExpr>(
+					std::move(lhs), std::move(rhs))};
 
 			} else if (optional(ctts.op_greater_equals)) {
-				auto rhs = parse_bitshift_expression();
-				lhs = {std::make_unique<ast::BinaryExpression>(
-					op::greater_equals, std::move(lhs), std::move(rhs))};
+				DEBUG_STDERR("parsed: GreaterEqualsExpr\n");
+				auto rhs = parse_bitshift_expr();
+				lhs = {std::make_unique<ast::GreaterEqualsExpr>(
+					std::move(lhs), std::move(rhs))};
 
 			} else break;
 		}
 
-		DEBUG_STDERR("parsed: relational_expression\n");
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_bitshift_expression() {
-		auto lhs = parse_additive_expression();
-
-		using op = ast::BinaryExpression::Operator;
+	std::unique_ptr<ast::Expr> CionParser::parse_bitshift_expr() {
+		auto lhs = parse_additive_expr();
 
 		while (true) {
 			if        (optional(ctts.op_left_left)) {
-				auto rhs = parse_additive_expression();
-				lhs = {std::make_unique<ast::BinaryExpression>(
-					op::shift_left, std::move(lhs), std::move(rhs))};
+				DEBUG_STDERR("parsed: ShiftLeftExpr\n");
+				auto rhs = parse_additive_expr();
+				lhs = {std::make_unique<ast::ShiftLeftExpr>(
+					std::move(lhs), std::move(rhs))};
 
 			} else if (optional(ctts.op_right_right)) {
-				auto rhs = parse_additive_expression();
-				lhs = {std::make_unique<ast::BinaryExpression>(
-					op::shift_right, std::move(lhs), std::move(rhs))};
+				DEBUG_STDERR("parsed: ShiftRightExpr\n");
+				auto rhs = parse_additive_expr();
+				lhs = {std::make_unique<ast::ShiftRightExpr>(
+					std::move(lhs), std::move(rhs))};
 
 			} else break;
 		}
 
-		DEBUG_STDERR("parsed: bitshift_expression\n");
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_additive_expression() {
-		auto lhs = parse_multiplicative_expression();
-
-		using op = ast::BinaryExpression::Operator;
+	std::unique_ptr<ast::Expr> CionParser::parse_additive_expr() {
+		auto lhs = parse_multiplicative_expr();
 
 		while (true) {
 			if        (optional(ctts.op_plus)) {
-				auto rhs = parse_multiplicative_expression();
-				lhs = {std::make_unique<ast::BinaryExpression>(
-					op::plus, std::move(lhs), std::move(rhs))};
+				DEBUG_STDERR("parsed: AddExpr\n");
+				auto rhs = parse_multiplicative_expr();
+				lhs = {std::make_unique<ast::AddExpr>(
+					std::move(lhs), std::move(rhs))};
 
 			} else if (optional(ctts.op_minus)) {
-				auto rhs = parse_multiplicative_expression();
-				lhs = {std::make_unique<ast::BinaryExpression>(
-					op::minus, std::move(lhs), std::move(rhs))};
+				DEBUG_STDERR("parsed: SubtractExpr\n");
+				auto rhs = parse_multiplicative_expr();
+				lhs = {std::make_unique<ast::SubtractExpr>(
+					std::move(lhs), std::move(rhs))};
 
 			} else break;
 		}
 
-		DEBUG_STDERR("parsed: additive_expression\n");
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_multiplicative_expression() {
-		auto lhs = parse_unary_expression();
-
-		using op = ast::BinaryExpression::Operator;
+	std::unique_ptr<ast::Expr> CionParser::parse_multiplicative_expr() {
+		auto lhs = parse_unary_expr();
 
 		while (true) {
 			if        (optional(ctts.op_star)) {
-				auto rhs = parse_unary_expression();
-				lhs = {std::make_unique<ast::BinaryExpression>(
-					op::multiplication, std::move(lhs), std::move(rhs))};
+				DEBUG_STDERR("parsed: MultiplyExpr\n");
+				auto rhs = parse_unary_expr();
+				lhs = {std::make_unique<ast::MultiplyExpr>(
+					std::move(lhs), std::move(rhs))};
 
 			} else if (optional(ctts.op_slash)) {
-				auto rhs = parse_unary_expression();
-				lhs = {std::make_unique<ast::BinaryExpression>(
-					op::division, std::move(lhs), std::move(rhs))};
+				DEBUG_STDERR("parsed: DivideExpr\n");
+				auto rhs = parse_unary_expr();
+				lhs = {std::make_unique<ast::DivideExpr>(
+					std::move(lhs), std::move(rhs))};
 
 			} else if (optional(ctts.op_percent)) {
-				auto rhs = parse_unary_expression();
-				lhs = {std::make_unique<ast::BinaryExpression>(
-					op::modulo, std::move(lhs), std::move(rhs))};
+				DEBUG_STDERR("parsed: ModuloExpr\n");
+				auto rhs = parse_unary_expr();
+				lhs = {std::make_unique<ast::ModuloExpr>(
+					std::move(lhs), std::move(rhs))};
 
 			} else break;
 		}
 
-		DEBUG_STDERR("parsed: multiplicative_expression\n");
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_unary_expression() {
-		using unary = ast::UnaryExpression;
+	std::unique_ptr<ast::Expr> CionParser::parse_unary_expr() {
+		if        (optional(ctts.op_tilde)) {
+			DEBUG_STDERR("parsed: BitNegateExpr");
+			return {std::make_unique<ast::BitNegateExpr>(parse_unary_expr())};
 
-		if (unary::is_operator(current_token().get_type())) {
-			DEBUG_STDERR("parsed: unary_expression\n");
-			auto op = unary::get_operator(current_token().get_type());
-			next_token(); // consume unary operator
-			return {std::make_unique<unary>(op, parse_unary_expression())};
+		} else if (optional(ctts.op_exclam_mark)) {
+			DEBUG_STDERR("parsed: LogicalNegateExpr");
+			return {std::make_unique<ast::LogicalNegateExpr>(parse_unary_expr())};
+
+		} else if (optional(ctts.op_plus)) {
+			DEBUG_STDERR("parsed: PlusExpr");
+			return {std::make_unique<ast::PlusExpr>(parse_unary_expr())};
+
+		} else if (optional(ctts.op_minus)) {
+			DEBUG_STDERR("parsed: MinusExpr");
+			return {std::make_unique<ast::MinusExpr>(parse_unary_expr())};
+
+		} else if (optional(ctts.op_plus_plus)) {
+			DEBUG_STDERR("parsed: IncrementExpr");
+			return {std::make_unique<ast::IncrementExpr>(parse_unary_expr())};
+
+		} else if (optional(ctts.op_minus_minus)) {
+			DEBUG_STDERR("parsed: DecrementExpr");
+			return {std::make_unique<ast::DecrementExpr>(parse_unary_expr())};
 		}
 
-		return parse_postfix_expression();
+		return parse_postfix_expr();
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_postfix_expression() {
-		auto lhs = parse_primary_expression();
+	std::unique_ptr<ast::Expr> CionParser::parse_postfix_expr() {
+		auto lhs = parse_primary_expr();
 
 		while (true) {
 			if        (optional(ctts.opening_brack)) {
-				DEBUG_STDERR("parsed: index_expression\n");
-				auto index = parse_expression_list();
+				DEBUG_STDERR("parsed: IndexExpr\n");
+				auto indices = parse_argument_list();
 				expect(ctts.closing_brack);
-				lhs = {std::make_unique<ast::IndexExpression>(
-					std::move(lhs), std::move(index))};
+				lhs = {std::make_unique<ast::IndexExpr>(
+					std::move(lhs), std::move(indices))};
 
 			} else if (optional(ctts.opening_paren)) {
-				DEBUG_STDERR("parsed: call_expression\n");
+				DEBUG_STDERR("parsed: CallExpr\n");
 				if (optional(ctts.closing_paren)) {
-					lhs = {std::make_unique<ast::CallExpression>(std::move(lhs))};
+					lhs = {std::make_unique<ast::CallExpr>(std::move(lhs))};
 				} else {
-					auto args = parse_expression_list();
+					auto args = parse_argument_list();
 					expect(ctts.closing_paren);
-					lhs = {std::make_unique<ast::CallExpression>(
+					lhs = {std::make_unique<ast::CallExpr>(
 						std::move(lhs), std::move(args))};
 				}
 
 			} else if (optional(ctts.op_plus_plus)) {
-				DEBUG_STDERR("parsed: post_increment_expression\n");
-				using op = ast::PostfixExpression::Operator;
-				lhs = {std::make_unique<ast::PostfixExpression>(
-					op::increment, std::move(lhs))};
+				DEBUG_STDERR("parsed: PostIncrementExpr\n");
+				lhs = {std::make_unique<ast::PostIncrementExpr>(std::move(lhs))};
 
 			} else if (optional(ctts.op_minus_minus)) {
-				DEBUG_STDERR("parsed: post_decrement_expression\n");
-				using op = ast::PostfixExpression::Operator;
-				lhs = {std::make_unique<ast::PostfixExpression>(
-					op::decrement, std::move(lhs))};
+				DEBUG_STDERR("parsed: PostDecrementExpr\n");
+				lhs = {std::make_unique<ast::PostDecrementExpr>(std::move(lhs))};
 
 			} else break;
 		}
@@ -420,13 +526,13 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_primary_expression() {
+	std::unique_ptr<ast::Expr> CionParser::parse_primary_expr() {
 		const auto tt = current_token().get_type();
 
 		// parse parenthesed expressions: '(' expr ')'
 		if        (optional(ctts.opening_paren)) {
 			DEBUG_STDERR("parsed: braced expression\n");
-			auto expr = parse_expression();
+			auto expr = parse_expr();
 			expect(ctts.closing_paren);
 			return expr;
 
@@ -439,33 +545,33 @@ namespace cion {
 		// parse character literals: 'x'
 		} else if (optional(ctts.lit_char)) {
 			DEBUG_STDERR("parsed: char_literal\n");
-			return std::make_unique<ast::CharLiteral>(
+			return std::make_unique<ast::CharExpr>(
 				previous_token().get_char());
 
 		// parse string literals: "foo"
 		} else if (optional(ctts.lit_string)) {
 			DEBUG_STDERR("parsed: string_literal\n");
-			return std::make_unique<ast::StringLiteral>(
+			return std::make_unique<ast::StringExpr>(
 				previous_token().get_string());
 
 		// parse integral literals: 42
 		} else if (optional(ctts.lit_integral)) {
 			DEBUG_STDERR("parsed: integer_literal\n");
-			return std::make_unique<ast::IntegerLiteral>(
+			return std::make_unique<ast::IntegerExpr>(
 				previous_token().get_integral());
 
 		// parse number literals: 13.37
 		} else if (optional(ctts.lit_number)) {
 			DEBUG_STDERR("parsed: float_literal\n");
-			return std::make_unique<ast::FloatLiteral>(
+			return std::make_unique<ast::FloatExpr>(
 				previous_token().get_number());
 
 		// parse simple names: foo
 		} else if (tt == ctts.identifier) {
-			DEBUG_STDERR("parsed: variable_expression\n");
+			DEBUG_STDERR("parsed: variable_expr\n");
 			auto name = current_token().get_string();
 			next_token(); // consume identifier
-			return std::make_unique<ast::VariableExpression>(name);
+			return std::make_unique<ast::VarExpr>(name);
 		}
 
 		throw parser_exception(
@@ -478,8 +584,8 @@ namespace cion {
 //// Parsing functions for custom and primitive types.
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	std::unique_ptr<ast::PrimitiveTypeInt> CionParser::parse_primitive_type_int() {
-		using ptiw = ast::PrimitiveTypeInt::Width;
+	std::unique_ptr<ast::BuiltinIntType> CionParser::parse_builtin_int_type() {
+		using ptiw = ast::BuiltinIntType::Width;
 		const auto tt = current_token().get_type();
 		const auto bit_width =
 			  tt == ctts.type_int   || tt == ctts.type_uint   ? ptiw::unspecified
@@ -498,11 +604,11 @@ namespace cion {
 			|| tt == ctts.type_int32
 			|| tt == ctts.type_int64 ? true : false;
 		next_token(); // consume this int type token
-		return std::make_unique<ast::PrimitiveTypeInt>(is_signed, bit_width);
+		return std::make_unique<ast::BuiltinIntType>(is_signed, bit_width);
 	}
 
-	std::unique_ptr<ast::PrimitiveTypeFloat> CionParser::parse_primitive_type_float() {
-		using ptiw = ast::PrimitiveTypeFloat::Width;
+	std::unique_ptr<ast::BuiltinFloatType> CionParser::parse_builtin_float_type() {
+		using ptiw = ast::BuiltinFloatType::Width;
 		const auto tt = current_token().get_type();
 		const auto bit_width =
 			  tt == ctts.type_float   ? ptiw::unspecified
@@ -514,19 +620,21 @@ namespace cion {
 				current_token().get_source_location(),
 				"invalid bit width specifier of float type\n");
 		next_token(); // consume this float type token
-		return std::make_unique<ast::PrimitiveTypeFloat>(bit_width);
+		return std::make_unique<ast::BuiltinFloatType>(bit_width);
 	}
 
-	std::unique_ptr<ast::TypeSpecifier> CionParser::parse_type_specifier() {
+	std::unique_ptr<ast::Type> CionParser::parse_type() {
 		const auto tt = current_token().get_type();
 		if        (tt == ctts.type_bool) {
 			next_token();
-			DEBUG_STDERR("parsed: primitive_type_bool\n");
-			return std::make_unique<ast::PrimitiveTypeBool>();
+			DEBUG_STDERR("parsed: BuiltinBoolType\n");
+			return std::make_unique<ast::BuiltinBoolType>();
+
 		} else if (tt == ctts.type_char) {
 			next_token();
-			DEBUG_STDERR("parsed: primitive_type_char\n");
-			return std::make_unique<ast::PrimitiveTypeChar>();
+			DEBUG_STDERR("parsed: BuiltinCharType\n");
+			return std::make_unique<ast::BuiltinCharType>();
+
 		} else if (tt == ctts.type_int
 		        || tt == ctts.type_int8
 		        || tt == ctts.type_int16
@@ -537,14 +645,15 @@ namespace cion {
 		        || tt == ctts.type_uint16
 		        || tt == ctts.type_uint32
 		        || tt == ctts.type_uint64) {
-			DEBUG_STDERR("parsed: primitive_type_int\n");
-			return parse_primitive_type_int();
+			DEBUG_STDERR("parsed: BuiltinIntType\n");
+			return parse_builtin_int_type();
+
 		} else if (tt == ctts.type_float
 				|| tt == ctts.type_float16
 				|| tt == ctts.type_float32
 				|| tt == ctts.type_float64) {
-			DEBUG_STDERR("parsed: primitive_type_float\n");
-			return parse_primitive_type_float();
+			DEBUG_STDERR("parsed: BuiltinFloatType\n");
+			return parse_builtin_float_type();
 		}
 
 		throw parser_exception(
@@ -557,84 +666,84 @@ namespace cion {
 //// Parse top level statements.
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	std::unique_ptr<ast::VariableDeclarationStatement> CionParser::parse_variable_declaration() {
+	std::unique_ptr<ast::VarDecl> CionParser::parse_var_decl() {
 		expect(ctts.cmd_var);
 
 		auto var_name = expect(ctts.identifier).get_string();
 
-		std::unique_ptr<ast::TypeSpecifier> type;
+		std::unique_ptr<ast::Type> type;
 		std::unique_ptr<ast::Expr> expr;
 
 		if (optional(ctts.op_colon)) {
-			type = parse_type_specifier();
+			type = parse_type();
 
 			expr = optional(ctts.op_equals)
-				? parse_expression()
-				: std::unique_ptr<ast::Expr>{std::make_unique<ast::NothingExpression>()};
+				? parse_expr()
+				: std::unique_ptr<ast::Expr>{std::make_unique<ast::NothingExpr>()};
 
 		} else {
-			type = std::unique_ptr<ast::TypeSpecifier>{
+			type = std::unique_ptr<ast::Type>{
 				std::make_unique<ast::NothingType>()};
 			expect(ctts.op_equals);
-			expr = parse_expression();
+			expr = parse_expr();
 		}
 
 		expect(ctts.op_semi_colon);
 
-		DEBUG_STDERR("parsed: variable_declaration_statement\n");
-		return std::make_unique<ast::VariableDeclarationStatement>(
+		DEBUG_STDERR("parsed: VarDecl\n");
+		return std::make_unique<ast::VarDecl>(
 			var_name, std::move(type), std::move(expr));
 	}
 
-	std::unique_ptr<ast::LogicalParameter> CionParser::parse_logical_parameter() {
+	std::unique_ptr<ast::ParamDecl> CionParser::parse_param_decl() {
 		auto param_name = expect(ctts.identifier).get_string();
 
 		expect(ctts.op_colon);
 
-		auto param_type = parse_type_specifier();
+		auto param_type = parse_type();
 
-		DEBUG_STDERR("parsed: logical_parameter\n");
-		return std::make_unique<ast::LogicalParameter>(param_name, std::move(param_type));
+		DEBUG_STDERR("parsed: ParamDecl\n");
+		return std::make_unique<ast::ParamDecl>(param_name, std::move(param_type));
 	}
 
-	std::unique_ptr<ast::LogicalParameterPack> CionParser::parse_logical_parameter_pack() {
-		std::vector<std::unique_ptr<ast::LogicalParameter>> args;
+	std::vector<std::unique_ptr<ast::ParamDecl>> CionParser::parse_param_decl_list() {
+		std::vector<std::unique_ptr<ast::ParamDecl>> params;
 
 		if (current_token().get_type() == ctts.identifier
 				&& peek_token().get_type() == ctts.op_colon) {
-			args.push_back(parse_logical_parameter());
+			params.push_back(parse_param_decl());
 
 			while (optional(ctts.op_comma)) {
-				args.push_back(parse_logical_parameter());
+				params.push_back(parse_param_decl());
 			}
 		}
 
-		DEBUG_STDERR("parsed: logical_parameter_pack\n");
-		return std::make_unique<ast::LogicalParameterPack>(std::move(args));
+		DEBUG_STDERR("parsed: ParamDeclList\n");
+		return params;
 	}
 
-	std::unique_ptr<ast::CompoundStatement> CionParser::parse_compound_statement() {
+	std::unique_ptr<ast::CompoundStmnt> CionParser::parse_compound_stmnt() {
 		expect(ctts.opening_brace);
 
-		std::vector<std::unique_ptr<ast::Statement>> statements;
+		std::vector<std::unique_ptr<ast::Stmnt>> statements;
 		while (current_token().get_type() != ctts.closing_brace) {
-			statements.push_back(parse_statement());
+			statements.push_back(parse_stmnt());
 		}
 
 		expect(ctts.closing_brace);
 
-		DEBUG_STDERR("parsed: compound_statement\n");
-		return std::make_unique<ast::CompoundStatement>(std::move(statements));
+		DEBUG_STDERR("parsed: CompoundStmnt\n");
+		return std::make_unique<ast::CompoundStmnt>(std::move(statements));
 	}
 
-	std::unique_ptr<ast::FunctionDefinitionStatement> CionParser::parse_function_definition() {
+	std::unique_ptr<ast::FunctionDecl> CionParser::parse_function_decl() {
 		expect(ctts.cmd_function);
 
 		auto function_name = expect(ctts.identifier).get_string();
 
 		expect(ctts.opening_paren);
 
-		auto logical_parameter_pack = parse_logical_parameter_pack();
+		auto params = parse_param_decl_list();
 
 		expect(ctts.closing_paren);
 
@@ -645,31 +754,31 @@ namespace cion {
 		}
 
 		auto return_type = (return_type_required)
-			? parse_type_specifier()
-			: std::unique_ptr<ast::TypeSpecifier>{std::make_unique<ast::NothingType>()};
+			? parse_type()
+			: std::unique_ptr<ast::Type>{std::make_unique<ast::NothingType>()};
 
-		auto function_body = parse_compound_statement();
+		auto function_body = parse_compound_stmnt();
 
-		DEBUG_STDERR("parsed: function_definition\n");
-		return std::make_unique<ast::FunctionDefinitionStatement>(
+		DEBUG_STDERR("parsed: FunctionDecl\n");
+		return std::make_unique<ast::FunctionDecl>(
 			function_name,
-			std::move(logical_parameter_pack),
+			std::move(params),
 			std::move(return_type),
 			std::move(function_body));
 	}
 
-	std::unique_ptr<ast::Statement> CionParser::parse_top_level_statement() {
-		DEBUG_STDERR("parsed: top_level_statement\n");
+	std::unique_ptr<ast::Decl> CionParser::parse_top_level_decl() {
+		DEBUG_STDERR("parsed: TopLevelDecl\n");
 
 		const auto tt = current_token().get_type();
 
 		// Global Variable Declaration
 		if        (tt == ctts.cmd_var) {
-			return parse_variable_declaration();
+			return parse_var_decl();
 
 		// Free Function Declaration
 		} else if (tt == ctts.cmd_function) {
-			return parse_function_definition();
+			return parse_function_decl();
 		}
 
 		throw parser_exception(
@@ -678,102 +787,102 @@ namespace cion {
 			"expected top-level statement\n");
 	}
 
-	std::unique_ptr<ast::CompilationUnit> CionParser::parse_compilation_unit() {
-		std::vector<std::unique_ptr<ast::Statement>> top_level_statements;
+	std::unique_ptr<ast::CompilationUnitDecl> CionParser::parse_compilation_unit_decl() {
+		std::vector<std::unique_ptr<ast::Decl>> top_level_decls;
 		while (current_token().get_type() != TokenType::eof) {
-			top_level_statements.push_back(parse_top_level_statement());
+			top_level_decls.push_back(parse_top_level_decl());
 			DEBUG_STDERR("\n");
 		}
-		DEBUG_STDERR("parsed: compilation_unit\n");
-		return std::make_unique<ast::CompilationUnit>(std::move(top_level_statements));
+		DEBUG_STDERR("parsed: CompilationUnitDecl\n");
+		return std::make_unique<ast::CompilationUnitDecl>(std::move(top_level_decls));
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //// Parse normal statements.
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	std::unique_ptr<ast::WhileStatement> CionParser::parse_while_statement() {
+	std::unique_ptr<ast::WhileStmnt> CionParser::parse_while_stmnt() {
 		expect(ctts.cmd_while);
 
-		auto condition = parse_expression();
+		auto condition = parse_expr();
 
-		auto body = parse_compound_statement();
+		auto body = parse_compound_stmnt();
 
-		return std::make_unique<ast::WhileStatement>(
+		return std::make_unique<ast::WhileStmnt>(
 			std::move(condition), std::move(body));
 	}
 
-	std::unique_ptr<ast::IfStatement> CionParser::parse_if_statement() {
+	std::unique_ptr<ast::IfStmnt> CionParser::parse_if_stmnt() {
 		expect(ctts.cmd_if);
 
-		auto condition = parse_expression();
+		auto condition = parse_expr();
 
-		auto then_stmnt = parse_compound_statement();
+		auto then_stmnt = parse_compound_stmnt();
 
 		if (optional(ctts.cmd_else)) {
-			using stmnt = std::unique_ptr<ast::Statement>;
+			using stmnt = std::unique_ptr<ast::Stmnt>;
 			auto else_stmnt = (current_token().get_type() == ctts.cmd_if)
-				? stmnt{parse_if_statement()}
-				: stmnt{parse_compound_statement()};
-			return std::make_unique<ast::IfStatement>(
+				? stmnt{parse_if_stmnt()}
+				: stmnt{parse_compound_stmnt()};
+			return std::make_unique<ast::IfStmnt>(
 				std::move(condition), std::move(then_stmnt), std::move(else_stmnt));
 		}
 
-		return std::make_unique<ast::IfStatement>(
+		return std::make_unique<ast::IfStmnt>(
 			std::move(condition), std::move(then_stmnt));
 	}
 
-	std::unique_ptr<ast::ReturnStatement> CionParser::parse_return_statement() {
+	std::unique_ptr<ast::ReturnStmnt> CionParser::parse_return_stmnt() {
 		expect(ctts.cmd_return);
 		auto return_expr = current_token().get_type() != ctts.op_semi_colon
-			? parse_expression()
-			: std::unique_ptr<ast::Expr>{std::make_unique<ast::NothingExpression>()};
+			? parse_expr()
+			: std::unique_ptr<ast::Expr>{std::make_unique<ast::NothingExpr>()};
 		expect(ctts.op_semi_colon);
-		return std::make_unique<ast::ReturnStatement>(std::move(return_expr));
+		return std::make_unique<ast::ReturnStmnt>(std::move(return_expr));
 	}
 
-	std::unique_ptr<ast::BreakStatement> CionParser::parse_break_statement() {
+	std::unique_ptr<ast::BreakStmnt> CionParser::parse_break_stmnt() {
 		expect(ctts.cmd_break);
-		return std::make_unique<ast::BreakStatement>();
+		return std::make_unique<ast::BreakStmnt>();
 	}
 
-	std::unique_ptr<ast::ContinueStatement> CionParser::parse_continue_statement() {
+	std::unique_ptr<ast::ContinueStmnt> CionParser::parse_continue_stmnt() {
 		expect(ctts.cmd_continue);
-		return std::make_unique<ast::ContinueStatement>();
+		return std::make_unique<ast::ContinueStmnt>();
 	}
 
-	std::unique_ptr<ast::ExpressionStatement> CionParser::parse_expression_statement() {
-		auto expr = parse_expression();
+	std::unique_ptr<ast::ExprStmnt> CionParser::parse_expr_stmnt() {
+		auto expr = parse_expr();
 		expect(ctts.op_semi_colon);
-		return std::make_unique<ast::ExpressionStatement>(std::move(expr));
+		return std::make_unique<ast::ExprStmnt>(std::move(expr));
 	}
 
-	std::unique_ptr<ast::Statement> CionParser::parse_statement() {
-		using stmnt = std::unique_ptr<ast::Statement>;
+	std::unique_ptr<ast::Stmnt> CionParser::parse_stmnt() {
+		using stmnt = std::unique_ptr<ast::Stmnt>;
 
 		const auto tt = current_token().get_type();
 
 		return
-			tt == ctts.cmd_var       ? stmnt{parse_variable_declaration()}:
-			tt == ctts.cmd_function  ? stmnt{parse_function_definition()}:
-			tt == ctts.cmd_while     ? stmnt{parse_while_statement()}:
-			tt == ctts.cmd_if        ? stmnt{parse_if_statement()}:
-			tt == ctts.cmd_return    ? stmnt{parse_return_statement()}:
-			tt == ctts.cmd_break     ? stmnt{parse_break_statement()}:
-			tt == ctts.cmd_continue  ? stmnt{parse_continue_statement()}:
-			tt == ctts.opening_brace ? stmnt{parse_compound_statement()}:
-			                           stmnt{parse_expression_statement()};
+			//tt == ctts.cmd_var       ? stmnt{parse_var_decl()}: // DeclStmnt missing
+			//tt == ctts.cmd_function  ? stmnt{parse_function_decl()}: // DeclStmnt missing
+			tt == ctts.cmd_while     ? stmnt{parse_while_stmnt()}:
+			tt == ctts.cmd_if        ? stmnt{parse_if_stmnt()}:
+			tt == ctts.cmd_return    ? stmnt{parse_return_stmnt()}:
+			tt == ctts.cmd_break     ? stmnt{parse_break_stmnt()}:
+			tt == ctts.cmd_continue  ? stmnt{parse_continue_stmnt()}:
+			tt == ctts.opening_brace ? stmnt{parse_compound_stmnt()}:
+			                           stmnt{parse_expr_stmnt()};
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //// Public Parsing Interface Function
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	std::unique_ptr<ast::CompilationUnit> CionParser::parse() {
+	std::unique_ptr<ast::CompilationUnitDecl> CionParser::parse() {
 		DEBUG_STDERR("parser init\n");
 		try {
 			next_token();
-			return parse_compilation_unit();
+			return parse_compilation_unit_decl();
 		} catch (lexer_exception const& e) {
 			std::cerr << "lexer exception thrown: " << e.message() << "\n";
 		} catch (parser_exception const& e) {

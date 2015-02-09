@@ -61,12 +61,12 @@ namespace cion {
 
 			// Operators
 			op_plus, op_minus, op_star, op_slash, op_percent,
-			op_pipe, op_ampersand, op_caret, op_tilde, op_left_left, op_right_right,
-			op_pipe_pipe, op_ampersand_ampersand,
+			op_pipe, op_and, op_caret, op_tilde, op_left_left, op_right_right,
+			op_pipe_pipe, op_and_and,
 			op_less_than, op_less_equals, op_greater_than, op_greater_equals,
 			op_equals_equals, op_not_equals,
 			op_equals, op_plus_equals, op_minus_equals, op_star_equals, op_slash_equals, op_percent_equals,
-			op_tilde_equals, op_ampersand_equals, op_pipe_equals, op_caret_equals,
+			op_tilde_equals, op_and_equals, op_and_and_equals, op_pipe_equals, op_pipe_pipe_equals, op_caret_equals,
 			op_left_left_equals, op_right_right_equals,
 			op_plus_plus, op_minus_minus,
 			op_exclam_mark, op_question_mark,

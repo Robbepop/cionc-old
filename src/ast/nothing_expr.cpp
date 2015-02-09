@@ -1,9 +1,9 @@
-#include "ast/nothing_type.hpp"
+#include "ast/nothing_expr.hpp"
 
 namespace cion {
 namespace ast {
 
-	void NothingType::accept(CompilerPass & pass) {
+	void NothingExpr::accept(CompilerPass & pass) {
 		pass.visit(*this);
 	}
 
