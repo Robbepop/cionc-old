@@ -20,6 +20,7 @@
 #include "ast/if_stmnt.hpp"
 #include "ast/while_stmnt.hpp"
 #include "ast/expr_stmnt.hpp"
+#include "ast/decl_stmnt.hpp"
 
 #include <memory>
 #include <queue>
@@ -39,6 +40,10 @@ namespace cion {
 		bool is_binary_op(TokenType const& tt);
 		bool is_assign_op(TokenType const& tt);
 		bool is_unary_op(TokenType const& tt);
+
+		bool is_start_of_builtin_int_type(TokenType const& tt) const;
+		bool is_start_of_builtin_float_type(TokenType const& tt) const;
+		bool is_start_of_decl_stmnt(TokenType const& tt) const;
 
 		std::vector<std::unique_ptr<ast::Expr>>      parse_argument_list();
 		std::vector<std::unique_ptr<ast::ParamDecl>> parse_param_decl_list();
@@ -76,6 +81,7 @@ namespace cion {
 		std::unique_ptr<ast::BreakStmnt>             parse_break_stmnt();
 		std::unique_ptr<ast::ContinueStmnt>          parse_continue_stmnt();
 		std::unique_ptr<ast::ExprStmnt>              parse_expr_stmnt();
+		std::unique_ptr<ast::DeclStmnt>              parse_decl_stmnt();
 
 		std::unique_ptr<ast::Decl>                   parse_top_level_decl();
 		std::unique_ptr<ast::CompilationUnitDecl>    parse_compilation_unit_decl();

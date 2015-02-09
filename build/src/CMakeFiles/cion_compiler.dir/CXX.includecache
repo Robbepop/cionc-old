@@ -74,6 +74,14 @@ cassert
 ast/continue_stmnt.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/ast/continue_stmnt.hpp
 
+/home/robbepop/coding/c++/projects/cion/src/ast/decl_stmnt.cpp
+ast/decl_stmnt.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/ast/decl_stmnt.hpp
+utility
+-
+cassert
+-
+
 /home/robbepop/coding/c++/projects/cion/src/ast/empty_stmnt.cpp
 ast/empty_stmnt.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/ast/empty_stmnt.hpp

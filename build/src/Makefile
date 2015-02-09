@@ -380,6 +380,30 @@ ast/continue_stmnt.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/continue_stmnt.cpp.s
 .PHONY : ast/continue_stmnt.cpp.s
 
+ast/decl_stmnt.o: ast/decl_stmnt.cpp.o
+.PHONY : ast/decl_stmnt.o
+
+# target to build an object file
+ast/decl_stmnt.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o
+.PHONY : ast/decl_stmnt.cpp.o
+
+ast/decl_stmnt.i: ast/decl_stmnt.cpp.i
+.PHONY : ast/decl_stmnt.i
+
+# target to preprocess a source file
+ast/decl_stmnt.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.i
+.PHONY : ast/decl_stmnt.cpp.i
+
+ast/decl_stmnt.s: ast/decl_stmnt.cpp.s
+.PHONY : ast/decl_stmnt.s
+
+# target to generate assembly for a file
+ast/decl_stmnt.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.s
+.PHONY : ast/decl_stmnt.cpp.s
+
 ast/empty_stmnt.o: ast/empty_stmnt.cpp.o
 .PHONY : ast/empty_stmnt.o
 
@@ -1430,6 +1454,9 @@ help:
 	@echo "... ast/continue_stmnt.o"
 	@echo "... ast/continue_stmnt.i"
 	@echo "... ast/continue_stmnt.s"
+	@echo "... ast/decl_stmnt.o"
+	@echo "... ast/decl_stmnt.i"
+	@echo "... ast/decl_stmnt.s"
 	@echo "... ast/empty_stmnt.o"
 	@echo "... ast/empty_stmnt.i"
 	@echo "... ast/empty_stmnt.s"

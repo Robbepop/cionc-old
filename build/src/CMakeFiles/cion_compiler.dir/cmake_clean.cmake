@@ -26,6 +26,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/cion_compiler.dir/ast/var_decl.cpp.o"
   "CMakeFiles/cion_compiler.dir/ast/float_expr.cpp.o"
   "CMakeFiles/cion_compiler.dir/ast/unary_expr.cpp.o"
+  "CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o"
   "CMakeFiles/cion_compiler.dir/ast/binary_assign_expr.cpp.o"
   "CMakeFiles/cion_compiler.dir/error/debug_info_type.cpp.o"
   "CMakeFiles/cion_compiler.dir/error/error_handler.cpp.o"

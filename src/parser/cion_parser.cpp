@@ -584,9 +584,25 @@ namespace cion {
 //// Parsing functions for custom and primitive types.
 //////////////////////////////////////////////////////////////////////////////////////////
 
+	bool CionParser::is_start_of_builtin_int_type(TokenType const& tt) const {
+		return
+			tt == ctts.type_int ||
+			tt == ctts.type_int8 ||
+			tt == ctts.type_int16 ||
+			tt == ctts.type_int32 ||
+			tt == ctts.type_int64 ||
+			tt == ctts.type_uint ||
+			tt == ctts.type_uint8 ||
+			tt == ctts.type_uint16 ||
+			tt == ctts.type_uint32 ||
+			tt == ctts.type_uint64
+			? true : false;
+	}
+
 	std::unique_ptr<ast::BuiltinIntType> CionParser::parse_builtin_int_type() {
 		using ptiw = ast::BuiltinIntType::Width;
 		const auto tt = current_token().get_type();
+		assert(is_start_of_builtin_int_type(tt));
 		const auto bit_width =
 			  tt == ctts.type_int   || tt == ctts.type_uint   ? ptiw::unspecified
 			: tt == ctts.type_int8  || tt == ctts.type_uint8  ? ptiw::one_byte
@@ -607,9 +623,19 @@ namespace cion {
 		return std::make_unique<ast::BuiltinIntType>(is_signed, bit_width);
 	}
 
+	bool CionParser::is_start_of_builtin_float_type(TokenType const& tt) const {
+		return
+			tt == ctts.type_float ||
+			tt == ctts.type_float16 ||
+			tt == ctts.type_float32 ||
+			tt == ctts.type_float64
+			? true : false;
+	}
+
 	std::unique_ptr<ast::BuiltinFloatType> CionParser::parse_builtin_float_type() {
 		using ptiw = ast::BuiltinFloatType::Width;
 		const auto tt = current_token().get_type();
+		assert(is_start_of_builtin_float_type(tt));
 		const auto bit_width =
 			  tt == ctts.type_float   ? ptiw::unspecified
 			: tt == ctts.type_float16 ? ptiw::two_bytes
@@ -635,23 +661,11 @@ namespace cion {
 			DEBUG_STDERR("parsed: BuiltinCharType\n");
 			return std::make_unique<ast::BuiltinCharType>();
 
-		} else if (tt == ctts.type_int
-		        || tt == ctts.type_int8
-		        || tt == ctts.type_int16
-		        || tt == ctts.type_int32
-		        || tt == ctts.type_int64
-		        || tt == ctts.type_uint
-		        || tt == ctts.type_uint8
-		        || tt == ctts.type_uint16
-		        || tt == ctts.type_uint32
-		        || tt == ctts.type_uint64) {
+		} else if (is_start_of_builtin_int_type(tt)) {
 			DEBUG_STDERR("parsed: BuiltinIntType\n");
 			return parse_builtin_int_type();
 
-		} else if (tt == ctts.type_float
-				|| tt == ctts.type_float16
-				|| tt == ctts.type_float32
-				|| tt == ctts.type_float64) {
+		} else if (is_start_of_builtin_float_type(tt)) {
 			DEBUG_STDERR("parsed: BuiltinFloatType\n");
 			return parse_builtin_float_type();
 		}
@@ -857,21 +871,34 @@ namespace cion {
 		return std::make_unique<ast::ExprStmnt>(std::move(expr));
 	}
 
+	bool CionParser::is_start_of_decl_stmnt(TokenType const& tt) const {
+		return
+			tt == ctts.cmd_var ||
+			tt == ctts.cmd_function
+			? true : false;
+	}
+
+	std::unique_ptr<ast::DeclStmnt> CionParser::parse_decl_stmnt() {
+		const auto tt = current_token().get_type();
+		assert(is_start_of_decl_stmnt(tt));
+		using decl = std::unique_ptr<ast::Decl>;
+		return std::make_unique<ast::DeclStmnt>(
+			tt == ctts.cmd_var ? decl{parse_var_decl()} : decl{parse_function_decl()}
+		);
+	}
+
 	std::unique_ptr<ast::Stmnt> CionParser::parse_stmnt() {
 		using stmnt = std::unique_ptr<ast::Stmnt>;
-
 		const auto tt = current_token().get_type();
-
 		return
-			//tt == ctts.cmd_var       ? stmnt{parse_var_decl()}: // DeclStmnt missing
-			//tt == ctts.cmd_function  ? stmnt{parse_function_decl()}: // DeclStmnt missing
-			tt == ctts.cmd_while     ? stmnt{parse_while_stmnt()}:
-			tt == ctts.cmd_if        ? stmnt{parse_if_stmnt()}:
-			tt == ctts.cmd_return    ? stmnt{parse_return_stmnt()}:
-			tt == ctts.cmd_break     ? stmnt{parse_break_stmnt()}:
-			tt == ctts.cmd_continue  ? stmnt{parse_continue_stmnt()}:
-			tt == ctts.opening_brace ? stmnt{parse_compound_stmnt()}:
-			                           stmnt{parse_expr_stmnt()};
+			tt == ctts.cmd_while       ? stmnt{parse_while_stmnt()}:
+			tt == ctts.cmd_if          ? stmnt{parse_if_stmnt()}:
+			tt == ctts.cmd_return      ? stmnt{parse_return_stmnt()}:
+			tt == ctts.cmd_break       ? stmnt{parse_break_stmnt()}:
+			tt == ctts.cmd_continue    ? stmnt{parse_continue_stmnt()}:
+			tt == ctts.opening_brace   ? stmnt{parse_compound_stmnt()}:
+			is_start_of_decl_stmnt(tt) ? stmnt{parse_decl_stmnt()}:
+			                             stmnt{parse_expr_stmnt()};
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////

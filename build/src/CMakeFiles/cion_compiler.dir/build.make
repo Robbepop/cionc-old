@@ -670,9 +670,32 @@ src/CMakeFiles/cion_compiler.dir/ast/unary_expr.cpp.o.provides: src/CMakeFiles/c
 
 src/CMakeFiles/cion_compiler.dir/ast/unary_expr.cpp.o.provides.build: src/CMakeFiles/cion_compiler.dir/ast/unary_expr.cpp.o
 
+src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
+src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o: ../src/ast/decl_stmnt.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_28)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o"
+	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/ast/decl_stmnt.cpp
+
+src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.i"
+	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robbepop/coding/c++/projects/cion/src/ast/decl_stmnt.cpp > CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.i
+
+src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.s"
+	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robbepop/coding/c++/projects/cion/src/ast/decl_stmnt.cpp -o CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.s
+
+src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o.requires:
+.PHONY : src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o.requires
+
+src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o.provides: src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o.provides.build
+.PHONY : src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o.provides
+
+src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o.provides.build: src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o
+
 src/CMakeFiles/cion_compiler.dir/ast/binary_assign_expr.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/ast/binary_assign_expr.cpp.o: ../src/ast/binary_assign_expr.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_28)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_29)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/ast/binary_assign_expr.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/ast/binary_assign_expr.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/ast/binary_assign_expr.cpp
 
@@ -695,7 +718,7 @@ src/CMakeFiles/cion_compiler.dir/ast/binary_assign_expr.cpp.o.provides.build: sr
 
 src/CMakeFiles/cion_compiler.dir/error/debug_info_type.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/error/debug_info_type.cpp.o: ../src/error/debug_info_type.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_29)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_30)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/error/debug_info_type.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/error/debug_info_type.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/error/debug_info_type.cpp
 
@@ -718,7 +741,7 @@ src/CMakeFiles/cion_compiler.dir/error/debug_info_type.cpp.o.provides.build: src
 
 src/CMakeFiles/cion_compiler.dir/error/error_handler.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/error/error_handler.cpp.o: ../src/error/error_handler.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_30)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_31)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/error/error_handler.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/error/error_handler.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/error/error_handler.cpp
 
@@ -741,7 +764,7 @@ src/CMakeFiles/cion_compiler.dir/error/error_handler.cpp.o.provides.build: src/C
 
 src/CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.o: ../src/error/lexer_error.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_31)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_32)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/error/lexer_error.cpp
 
@@ -764,7 +787,7 @@ src/CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.o.provides.build: src/CMa
 
 src/CMakeFiles/cion_compiler.dir/error/warning_type.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/error/warning_type.cpp.o: ../src/error/warning_type.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_32)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_33)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/error/warning_type.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/error/warning_type.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/error/warning_type.cpp
 
@@ -787,7 +810,7 @@ src/CMakeFiles/cion_compiler.dir/error/warning_type.cpp.o.provides.build: src/CM
 
 src/CMakeFiles/cion_compiler.dir/error/cion_exception.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/error/cion_exception.cpp.o: ../src/error/cion_exception.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_33)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_34)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/error/cion_exception.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/error/cion_exception.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/error/cion_exception.cpp
 
@@ -810,7 +833,7 @@ src/CMakeFiles/cion_compiler.dir/error/cion_exception.cpp.o.provides.build: src/
 
 src/CMakeFiles/cion_compiler.dir/error/cion_error_handler.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/error/cion_error_handler.cpp.o: ../src/error/cion_error_handler.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_34)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_35)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/error/cion_error_handler.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/error/cion_error_handler.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/error/cion_error_handler.cpp
 
@@ -833,7 +856,7 @@ src/CMakeFiles/cion_compiler.dir/error/cion_error_handler.cpp.o.provides.build: 
 
 src/CMakeFiles/cion_compiler.dir/error/error_type.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/error/error_type.cpp.o: ../src/error/error_type.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_35)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_36)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/error/error_type.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/error/error_type.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/error/error_type.cpp
 
@@ -856,7 +879,7 @@ src/CMakeFiles/cion_compiler.dir/error/error_type.cpp.o.provides.build: src/CMak
 
 src/CMakeFiles/cion_compiler.dir/error/source_location.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/error/source_location.cpp.o: ../src/error/source_location.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_36)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_37)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/error/source_location.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/error/source_location.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/error/source_location.cpp
 
@@ -879,7 +902,7 @@ src/CMakeFiles/cion_compiler.dir/error/source_location.cpp.o.provides.build: src
 
 src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.o: ../src/error/parser_error.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_37)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_38)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/error/parser_error.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/error/parser_error.cpp
 
@@ -902,7 +925,7 @@ src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.o.provides.build: src/CM
 
 src/CMakeFiles/cion_compiler.dir/error/cion_warning_types.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/error/cion_warning_types.cpp.o: ../src/error/cion_warning_types.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_38)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_39)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/error/cion_warning_types.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/error/cion_warning_types.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/error/cion_warning_types.cpp
 
@@ -925,7 +948,7 @@ src/CMakeFiles/cion_compiler.dir/error/cion_warning_types.cpp.o.provides.build: 
 
 src/CMakeFiles/cion_compiler.dir/error/cion_error_types.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/error/cion_error_types.cpp.o: ../src/error/cion_error_types.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_39)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_40)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/error/cion_error_types.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/error/cion_error_types.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/error/cion_error_types.cpp
 
@@ -948,7 +971,7 @@ src/CMakeFiles/cion_compiler.dir/error/cion_error_types.cpp.o.provides.build: sr
 
 src/CMakeFiles/cion_compiler.dir/lexer/lexer.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/lexer/lexer.cpp.o: ../src/lexer/lexer.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_40)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_41)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/lexer/lexer.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/lexer/lexer.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/lexer/lexer.cpp
 
@@ -971,7 +994,7 @@ src/CMakeFiles/cion_compiler.dir/lexer/lexer.cpp.o.provides.build: src/CMakeFile
 
 src/CMakeFiles/cion_compiler.dir/lexer/lexer_filter.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/lexer/lexer_filter.cpp.o: ../src/lexer/lexer_filter.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_41)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_42)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/lexer/lexer_filter.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/lexer/lexer_filter.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/lexer/lexer_filter.cpp
 
@@ -994,7 +1017,7 @@ src/CMakeFiles/cion_compiler.dir/lexer/lexer_filter.cpp.o.provides.build: src/CM
 
 src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o: ../src/parser/print_ast_pass.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_42)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_43)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/parser/print_ast_pass.cpp
 
@@ -1017,7 +1040,7 @@ src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o.provides.build: src
 
 src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o: ../src/parser/compiler_pass.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_43)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_44)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/parser/compiler_pass.cpp
 
@@ -1040,7 +1063,7 @@ src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o.provides.build: src/
 
 src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o: ../src/parser/cion_parser.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_44)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_45)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp
 
@@ -1063,7 +1086,7 @@ src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o.provides.build: src/CM
 
 src/CMakeFiles/cion_compiler.dir/token/token_fabric.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/token/token_fabric.cpp.o: ../src/token/token_fabric.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_45)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_46)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/token/token_fabric.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/token/token_fabric.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/token/token_fabric.cpp
 
@@ -1086,7 +1109,7 @@ src/CMakeFiles/cion_compiler.dir/token/token_fabric.cpp.o.provides.build: src/CM
 
 src/CMakeFiles/cion_compiler.dir/token/number_token.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/token/number_token.cpp.o: ../src/token/number_token.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_46)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_47)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/token/number_token.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/token/number_token.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/token/number_token.cpp
 
@@ -1109,7 +1132,7 @@ src/CMakeFiles/cion_compiler.dir/token/number_token.cpp.o.provides.build: src/CM
 
 src/CMakeFiles/cion_compiler.dir/token/char_token.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/token/char_token.cpp.o: ../src/token/char_token.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_47)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_48)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/token/char_token.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/token/char_token.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/token/char_token.cpp
 
@@ -1132,7 +1155,7 @@ src/CMakeFiles/cion_compiler.dir/token/char_token.cpp.o.provides.build: src/CMak
 
 src/CMakeFiles/cion_compiler.dir/token/integral_token.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/token/integral_token.cpp.o: ../src/token/integral_token.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_48)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_49)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/token/integral_token.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/token/integral_token.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/token/integral_token.cpp
 
@@ -1155,7 +1178,7 @@ src/CMakeFiles/cion_compiler.dir/token/integral_token.cpp.o.provides.build: src/
 
 src/CMakeFiles/cion_compiler.dir/token/bool_token.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/token/bool_token.cpp.o: ../src/token/bool_token.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_49)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_50)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/token/bool_token.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/token/bool_token.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/token/bool_token.cpp
 
@@ -1178,7 +1201,7 @@ src/CMakeFiles/cion_compiler.dir/token/bool_token.cpp.o.provides.build: src/CMak
 
 src/CMakeFiles/cion_compiler.dir/token/string_token.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/token/string_token.cpp.o: ../src/token/string_token.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_50)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_51)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/token/string_token.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/token/string_token.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/token/string_token.cpp
 
@@ -1201,7 +1224,7 @@ src/CMakeFiles/cion_compiler.dir/token/string_token.cpp.o.provides.build: src/CM
 
 src/CMakeFiles/cion_compiler.dir/token/token.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/token/token.cpp.o: ../src/token/token.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_51)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_52)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/token/token.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/token/token.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/token/token.cpp
 
@@ -1224,7 +1247,7 @@ src/CMakeFiles/cion_compiler.dir/token/token.cpp.o.provides.build: src/CMakeFile
 
 src/CMakeFiles/cion_compiler.dir/token/cion_token_types.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/token/cion_token_types.cpp.o: ../src/token/cion_token_types.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_52)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_53)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/token/cion_token_types.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/token/cion_token_types.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/token/cion_token_types.cpp
 
@@ -1247,7 +1270,7 @@ src/CMakeFiles/cion_compiler.dir/token/cion_token_types.cpp.o.provides.build: sr
 
 src/CMakeFiles/cion_compiler.dir/token/token_type.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/token/token_type.cpp.o: ../src/token/token_type.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_53)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_54)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/token/token_type.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/token/token_type.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/token/token_type.cpp
 
@@ -1297,6 +1320,7 @@ cion_compiler_OBJECTS = \
 "CMakeFiles/cion_compiler.dir/ast/var_decl.cpp.o" \
 "CMakeFiles/cion_compiler.dir/ast/float_expr.cpp.o" \
 "CMakeFiles/cion_compiler.dir/ast/unary_expr.cpp.o" \
+"CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o" \
 "CMakeFiles/cion_compiler.dir/ast/binary_assign_expr.cpp.o" \
 "CMakeFiles/cion_compiler.dir/error/debug_info_type.cpp.o" \
 "CMakeFiles/cion_compiler.dir/error/error_handler.cpp.o" \
@@ -1354,6 +1378,7 @@ src/cion_compiler: src/CMakeFiles/cion_compiler.dir/ast/compilation_unit_decl.cp
 src/cion_compiler: src/CMakeFiles/cion_compiler.dir/ast/var_decl.cpp.o
 src/cion_compiler: src/CMakeFiles/cion_compiler.dir/ast/float_expr.cpp.o
 src/cion_compiler: src/CMakeFiles/cion_compiler.dir/ast/unary_expr.cpp.o
+src/cion_compiler: src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o
 src/cion_compiler: src/CMakeFiles/cion_compiler.dir/ast/binary_assign_expr.cpp.o
 src/cion_compiler: src/CMakeFiles/cion_compiler.dir/error/debug_info_type.cpp.o
 src/cion_compiler: src/CMakeFiles/cion_compiler.dir/error/error_handler.cpp.o
@@ -1417,6 +1442,7 @@ src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/ast/
 src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/ast/var_decl.cpp.o.requires
 src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/ast/float_expr.cpp.o.requires
 src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/ast/unary_expr.cpp.o.requires
+src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o.requires
 src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/ast/binary_assign_expr.cpp.o.requires
 src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/error/debug_info_type.cpp.o.requires
 src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/error/error_handler.cpp.o.requires

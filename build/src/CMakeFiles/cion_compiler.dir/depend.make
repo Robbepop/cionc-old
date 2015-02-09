@@ -23,6 +23,8 @@ src/CMakeFiles/cion_compiler.dir/ast/conditional_expr.cpp.o: ../src/ast/conditio
 
 src/CMakeFiles/cion_compiler.dir/ast/continue_stmnt.cpp.o: ../src/ast/continue_stmnt.cpp
 
+src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o: ../src/ast/decl_stmnt.cpp
+
 src/CMakeFiles/cion_compiler.dir/ast/empty_stmnt.cpp.o: ../src/ast/empty_stmnt.cpp
 
 src/CMakeFiles/cion_compiler.dir/ast/expr_stmnt.cpp.o: ../src/ast/expr_stmnt.cpp
