@@ -91,6 +91,8 @@ src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o: ../src/parser/compi
 
 src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o: ../src/parser/print_ast_pass.cpp
 
+src/CMakeFiles/cion_compiler.dir/parser/recursive_traverser.cpp.o: ../src/parser/recursive_traverser.cpp
+
 src/CMakeFiles/cion_compiler.dir/token/bool_token.cpp.o: ../src/token/bool_token.cpp
 
 src/CMakeFiles/cion_compiler.dir/token/char_token.cpp.o: ../src/token/char_token.cpp

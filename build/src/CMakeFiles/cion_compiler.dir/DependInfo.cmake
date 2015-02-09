@@ -49,6 +49,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp" "/home/robbepop/coding/c++/projects/cion/build/src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o"
   "/home/robbepop/coding/c++/projects/cion/src/parser/compiler_pass.cpp" "/home/robbepop/coding/c++/projects/cion/build/src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o"
   "/home/robbepop/coding/c++/projects/cion/src/parser/print_ast_pass.cpp" "/home/robbepop/coding/c++/projects/cion/build/src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o"
+  "/home/robbepop/coding/c++/projects/cion/src/parser/recursive_traverser.cpp" "/home/robbepop/coding/c++/projects/cion/build/src/CMakeFiles/cion_compiler.dir/parser/recursive_traverser.cpp.o"
   "/home/robbepop/coding/c++/projects/cion/src/token/bool_token.cpp" "/home/robbepop/coding/c++/projects/cion/build/src/CMakeFiles/cion_compiler.dir/token/bool_token.cpp.o"
   "/home/robbepop/coding/c++/projects/cion/src/token/char_token.cpp" "/home/robbepop/coding/c++/projects/cion/build/src/CMakeFiles/cion_compiler.dir/token/char_token.cpp.o"
   "/home/robbepop/coding/c++/projects/cion/src/token/cion_token_types.cpp" "/home/robbepop/coding/c++/projects/cion/build/src/CMakeFiles/cion_compiler.dir/token/cion_token_types.cpp.o"

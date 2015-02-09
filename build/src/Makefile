@@ -1196,6 +1196,30 @@ parser/print_ast_pass.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.s
 .PHONY : parser/print_ast_pass.cpp.s
 
+parser/recursive_traverser.o: parser/recursive_traverser.cpp.o
+.PHONY : parser/recursive_traverser.o
+
+# target to build an object file
+parser/recursive_traverser.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/recursive_traverser.cpp.o
+.PHONY : parser/recursive_traverser.cpp.o
+
+parser/recursive_traverser.i: parser/recursive_traverser.cpp.i
+.PHONY : parser/recursive_traverser.i
+
+# target to preprocess a source file
+parser/recursive_traverser.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/recursive_traverser.cpp.i
+.PHONY : parser/recursive_traverser.cpp.i
+
+parser/recursive_traverser.s: parser/recursive_traverser.cpp.s
+.PHONY : parser/recursive_traverser.s
+
+# target to generate assembly for a file
+parser/recursive_traverser.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/recursive_traverser.cpp.s
+.PHONY : parser/recursive_traverser.cpp.s
+
 token/bool_token.o: token/bool_token.cpp.o
 .PHONY : token/bool_token.o
 
@@ -1556,6 +1580,9 @@ help:
 	@echo "... parser/print_ast_pass.o"
 	@echo "... parser/print_ast_pass.i"
 	@echo "... parser/print_ast_pass.s"
+	@echo "... parser/recursive_traverser.o"
+	@echo "... parser/recursive_traverser.i"
+	@echo "... parser/recursive_traverser.s"
 	@echo "... token/bool_token.o"
 	@echo "... token/bool_token.i"
 	@echo "... token/bool_token.s"

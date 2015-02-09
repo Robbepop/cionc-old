@@ -44,6 +44,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o"
   "CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o"
   "CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o"
+  "CMakeFiles/cion_compiler.dir/parser/recursive_traverser.cpp.o"
   "CMakeFiles/cion_compiler.dir/token/token_fabric.cpp.o"
   "CMakeFiles/cion_compiler.dir/token/number_token.cpp.o"
   "CMakeFiles/cion_compiler.dir/token/char_token.cpp.o"
