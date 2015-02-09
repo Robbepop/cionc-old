@@ -103,7 +103,6 @@ namespace cion {
 //////////////////////////////////////////////////////////////////////////////////////////
 
 	bool CionParser::is_binary_op(TokenType const& tt) {
-		auto const& ctts = CionTokenTypes::get_instance();
 		return
 			tt == ctts.op_pipe_pipe ||
 			tt == ctts.op_and_and ||
@@ -127,7 +126,6 @@ namespace cion {
 	}
 
 	bool CionParser::is_assign_op(TokenType const& tt) {
-		auto const& ctts = CionTokenTypes::get_instance();
 		return
 			tt == ctts.op_equals ||
 			tt == ctts.op_plus_equals ||
@@ -146,7 +144,6 @@ namespace cion {
 	}
 
 	bool CionParser::is_unary_op(TokenType const& tt) {
-		auto const& ctts = CionTokenTypes::get_instance();
 		return
 			tt == ctts.op_tilde ||
 			tt == ctts.op_exclam_mark ||

@@ -5,7 +5,7 @@ ToDo list for Cion Compiler
 - make lexer output Tokens with start- and end SourceLocation (adapt Tokens for this change)
 	- make existing code use the new ErrorHandler in order to output
 	  and handle errors and warning while lexing or parsing
-	- add DeclStmnt AST node to make it possible again to have declarations as statements.
+- add DeclStmnt AST node to make it possible again to have declarations as statements.
 	- add type component with getter and setter methods to all Expr nodes.
 	- add Identifier AST component with a reference to a string and to its entry within the SymbolTable
 	- add a TokenStorageManager to store all processed tokens. AST nodes should reference to their tokens.
@@ -325,3 +325,63 @@ StateModifier :=
 	| readonly
 	| static
 	| steady
+
+
+
+
+CompilerPass <abstract>
+=======================
+	+ visit(*)
+-----------------------
+Note: This is the base class for all CompilerPasses.
+It defines its visit methods to call up in the inheritance
+hierarchie of the AST up to the top nodes. This is the
+default behaviour of all inheriting CompilerPasses.
+
+
+RecursiveTraverser : CompilerPass
+=================================
+	+ visit(*)
+	# traverse(*)
+---------------------------------
+	- CompilerPass pass
+---------------------------------
+Note: The RecursiveTraverser is capable of fully traversing
+the Cion AST. It calls the passed visitor on a node before
+it traverses the node.
+
+
+PrePostTraverser : RecursiveTraverser
+=====================================
+	+ visit(*) override
+-------------------------------------
+	- CompilerPass pre, post
+-------------------------------------
+Note: This is a specialized version of the RecursiveTraverser.
+It basically does the same but also features a call to a second
+CompilerPass which is called after a node has been traversed.
+This might be important for some CompilerPasses to clean up
+or reset things.
+
+
+CompoundPass : CompilerPass
+===========================
+	+ visit(*)
+---------------------------
+	- CompilerPass[] passes
+---------------------------
+Note: This CompilerPass is capable to compounding several
+CompilerPasses together which can be executed at the same time
+in parallel which might increase the performance of compilation
+for some devices with many cores.
+
+
+CustomPass : CompilerPass
+=========================
+	+ visit(*)
+	? otherMethods(?)
+-------------------------
+	? otherMembers
+-------------------------
+Note: This represents a custom CompilerPass which encapsulates
+a specific functionality and work on the AST.
