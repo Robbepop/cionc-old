@@ -1,4 +1,4 @@
-#include "error/cion_exception.hpp"
+#include "cion/error/cion_exception.hpp"
 
 #include <sstream>
 

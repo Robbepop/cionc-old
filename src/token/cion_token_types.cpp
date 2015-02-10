@@ -1,5 +1,5 @@
-#include "token/cion_token_types.hpp"
-#include "token/token_type.hpp"
+#include "cion/token/cion_token_types.hpp"
+#include "cion/token/token_type.hpp"
 
 #include <memory>
 #include <utility>

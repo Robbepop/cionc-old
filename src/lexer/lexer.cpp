@@ -1,7 +1,7 @@
-#include "lexer/lexer.hpp"
-#include "token/token_fabric.hpp"
-#include "error/cion_error_types.hpp"
-#include "error/lexer_exception.hpp"
+#include "cion/lexer/lexer.hpp"
+#include "cion/token/token_fabric.hpp"
+#include "cion/error/cion_error_types.hpp"
+#include "cion/error/lexer_exception.hpp"
 
 #include <exception>
 #include <memory>

@@ -1,7 +1,7 @@
-#include "parser/pre_post_traverser.hpp"
-#include "parser/i_pre_post_compiler_pass.hpp"
+#include "cion/parser/pre_post_traverser.hpp"
+#include "cion/parser/i_pre_post_compiler_pass.hpp"
 
-#include "ast/all.hpp"
+#include "cion/ast/all.hpp"
 
 namespace cion {
 

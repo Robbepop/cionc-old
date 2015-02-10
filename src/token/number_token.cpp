@@ -1,4 +1,4 @@
-#include "token/number_token.hpp"
+#include "cion/token/number_token.hpp"
 
 #include <stdexcept>
 #include <iostream>

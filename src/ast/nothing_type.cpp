@@ -1,4 +1,4 @@
-#include "ast/nothing_type.hpp"
+#include "cion/ast/nothing_type.hpp"
 
 namespace cion {
 namespace ast {

@@ -1,4 +1,4 @@
-#include "error/lexer_error.hpp"
+#include "cion/error/lexer_error.hpp"
 
 #include <sstream>
 

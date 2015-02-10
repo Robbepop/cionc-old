@@ -1,4 +1,4 @@
-#include "ast/param_decl.hpp"
+#include "cion/ast/param_decl.hpp"
 
 #include <utility>
 #include <cassert>

@@ -1,4 +1,4 @@
-#include "token/bool_token.hpp"
+#include "cion/token/bool_token.hpp"
 
 namespace cion {
 	BoolToken::BoolToken(

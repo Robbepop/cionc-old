@@ -7,10 +7,8 @@
 #IncludeRegexTransform: 
 
 /home/robbepop/coding/c++/projects/cion/src/ast/binary_assign_expr.cpp
-ast/binary_assign_expr.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/binary_assign_expr.hpp
-cion_token_types.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/cion_token_types.hpp
+cion/ast/binary_assign_expr.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/binary_assign_expr.hpp
 cassert
 -
 stdexcept
@@ -19,96 +17,96 @@ utility
 -
 
 /home/robbepop/coding/c++/projects/cion/src/ast/binary_expr.cpp
-ast/binary_expr.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/binary_expr.hpp
-cion_token_types.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/cion_token_types.hpp
+cion/ast/binary_expr.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/binary_expr.hpp
 stdexcept
 -
 utility
 -
+cassert
+-
 
 /home/robbepop/coding/c++/projects/cion/src/ast/boolean_expr.cpp
-ast/boolean_expr.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/boolean_expr.hpp
+cion/ast/boolean_expr.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/boolean_expr.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/ast/break_stmnt.cpp
-ast/break_stmnt.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/break_stmnt.hpp
+cion/ast/break_stmnt.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/break_stmnt.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/ast/builtin_type.cpp
-ast/builtin_type.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/builtin_type.hpp
+cion/ast/builtin_type.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/builtin_type.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/ast/call_expr.cpp
-ast/call_expr.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/call_expr.hpp
+cion/ast/call_expr.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/call_expr.hpp
 cassert
 -
 
 /home/robbepop/coding/c++/projects/cion/src/ast/char_expr.cpp
-ast/char_expr.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/char_expr.hpp
+cion/ast/char_expr.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/char_expr.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/ast/compilation_unit_decl.cpp
-ast/compilation_unit_decl.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/compilation_unit_decl.hpp
+cion/ast/compilation_unit_decl.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/compilation_unit_decl.hpp
 utility
 -
 
 /home/robbepop/coding/c++/projects/cion/src/ast/compound_stmnt.cpp
-ast/compound_stmnt.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/compound_stmnt.hpp
+cion/ast/compound_stmnt.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/compound_stmnt.hpp
 utility
 -
 
 /home/robbepop/coding/c++/projects/cion/src/ast/conditional_expr.cpp
-conditional_expr.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/conditional_expr.hpp
+cion/ast/conditional_expr.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/conditional_expr.hpp
 utility
 -
 cassert
 -
 
 /home/robbepop/coding/c++/projects/cion/src/ast/continue_stmnt.cpp
-ast/continue_stmnt.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/continue_stmnt.hpp
+cion/ast/continue_stmnt.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/continue_stmnt.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/ast/decl_stmnt.cpp
-ast/decl_stmnt.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/decl_stmnt.hpp
+cion/ast/decl_stmnt.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/decl_stmnt.hpp
 utility
 -
 cassert
 -
 
 /home/robbepop/coding/c++/projects/cion/src/ast/empty_stmnt.cpp
-ast/empty_stmnt.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/empty_stmnt.hpp
+cion/ast/empty_stmnt.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/empty_stmnt.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/ast/expr_stmnt.cpp
-ast/expr_stmnt.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/expr_stmnt.hpp
+cion/ast/expr_stmnt.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/expr_stmnt.hpp
 utility
 -
 cassert
 -
 
 /home/robbepop/coding/c++/projects/cion/src/ast/float_expr.cpp
-ast/float_expr.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/float_expr.hpp
+cion/ast/float_expr.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/float_expr.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/ast/function_decl.cpp
-ast/function_decl.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/function_decl.hpp
+cion/ast/function_decl.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/function_decl.hpp
 utility
 -
 cassert
 -
 
 /home/robbepop/coding/c++/projects/cion/src/ast/if_stmnt.cpp
-ast/if_stmnt.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/if_stmnt.hpp
+cion/ast/if_stmnt.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/if_stmnt.hpp
 utility
 -
 cassert
@@ -117,50 +115,48 @@ memory
 -
 
 /home/robbepop/coding/c++/projects/cion/src/ast/index_expr.cpp
-ast/index_expr.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/index_expr.hpp
+cion/ast/index_expr.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/index_expr.hpp
 cassert
 -
 
 /home/robbepop/coding/c++/projects/cion/src/ast/integer_expr.cpp
-ast/integer_expr.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/integer_expr.hpp
+cion/ast/integer_expr.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/integer_expr.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/ast/nothing_expr.cpp
-ast/nothing_expr.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/nothing_expr.hpp
+cion/ast/nothing_expr.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/nothing_expr.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/ast/nothing_type.cpp
-ast/nothing_type.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/nothing_type.hpp
+cion/ast/nothing_type.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/nothing_type.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/ast/param_decl.cpp
-ast/param_decl.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/param_decl.hpp
+cion/ast/param_decl.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/param_decl.hpp
 utility
 -
 cassert
 -
 
 /home/robbepop/coding/c++/projects/cion/src/ast/return_stmnt.cpp
-ast/return_stmnt.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/return_stmnt.hpp
-ast/nothing_expr.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/nothing_expr.hpp
+cion/ast/return_stmnt.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/return_stmnt.hpp
+cion/ast/nothing_expr.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/nothing_expr.hpp
 utility
 -
 cassert
 -
 
 /home/robbepop/coding/c++/projects/cion/src/ast/string_expr.cpp
-ast/string_expr.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/string_expr.hpp
+cion/ast/string_expr.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/string_expr.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/ast/unary_expr.cpp
-ast/unary_expr.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/unary_expr.hpp
-cion_token_types.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/cion_token_types.hpp
+cion/ast/unary_expr.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/unary_expr.hpp
 stdexcept
 -
 utility
@@ -169,8 +165,8 @@ cassert
 -
 
 /home/robbepop/coding/c++/projects/cion/src/ast/var_decl.cpp
-ast/var_decl.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/var_decl.hpp
+cion/ast/var_decl.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/var_decl.hpp
 utility
 -
 cassert
@@ -179,84 +175,84 @@ iostream
 -
 
 /home/robbepop/coding/c++/projects/cion/src/ast/var_expr.cpp
-ast/var_expr.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/var_expr.hpp
+cion/ast/var_expr.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/var_expr.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/ast/while_stmnt.cpp
-ast/while_stmnt.hpp
-/home/robbepop/coding/c++/projects/cion/src/ast/ast/while_stmnt.hpp
+cion/ast/while_stmnt.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/while_stmnt.hpp
 utility
 -
 cassert
 -
 
 /home/robbepop/coding/c++/projects/cion/src/error/cion_error_handler.cpp
-error/cion_error_handler.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/error/cion_error_handler.hpp
+cion/error/cion_error_handler.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/cion/error/cion_error_handler.hpp
 iostream
 -
 tuple
 -
 
 /home/robbepop/coding/c++/projects/cion/src/error/cion_error_types.cpp
-error/cion_error_types.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/error/cion_error_types.hpp
+cion/error/cion_error_types.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/cion/error/cion_error_types.hpp
 utility
 -
 
 /home/robbepop/coding/c++/projects/cion/src/error/cion_exception.cpp
-error/cion_exception.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/error/cion_exception.hpp
+cion/error/cion_exception.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/cion/error/cion_exception.hpp
 sstream
 -
 
 /home/robbepop/coding/c++/projects/cion/src/error/cion_warning_types.cpp
-error/cion_warning_types.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/error/cion_warning_types.hpp
+cion/error/cion_warning_types.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/cion/error/cion_warning_types.hpp
 utility
 -
 
 /home/robbepop/coding/c++/projects/cion/src/error/debug_info_type.cpp
-error/debug_info_type.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/error/debug_info_type.hpp
+cion/error/debug_info_type.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/cion/error/debug_info_type.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/error/error_handler.cpp
-error/error_handler.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/error/error_handler.hpp
+cion/error/error_handler.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/cion/error/error_handler.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/error/error_type.cpp
-error/error_type.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/error/error_type.hpp
+cion/error/error_type.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/cion/error/error_type.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/error/lexer_error.cpp
-error/lexer_error.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/error/lexer_error.hpp
+cion/error/lexer_error.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/cion/error/lexer_error.hpp
 sstream
 -
 
 /home/robbepop/coding/c++/projects/cion/src/error/parser_error.cpp
-error/parser_error.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/error/parser_error.hpp
+cion/error/parser_error.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/cion/error/parser_error.hpp
 sstream
 -
 
 /home/robbepop/coding/c++/projects/cion/src/error/source_location.cpp
-error/source_location.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/error/source_location.hpp
+cion/error/source_location.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/cion/error/source_location.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/error/warning_type.cpp
-error/warning_type.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/error/warning_type.hpp
+cion/error/warning_type.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/cion/error/warning_type.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/lexer/lexer.cpp
-lexer/lexer.hpp
-/home/robbepop/coding/c++/projects/cion/src/lexer/lexer/lexer.hpp
-token/token_fabric.hpp
-/home/robbepop/coding/c++/projects/cion/src/lexer/token/token_fabric.hpp
-error/cion_error_types.hpp
-/home/robbepop/coding/c++/projects/cion/src/lexer/error/cion_error_types.hpp
-error/lexer_exception.hpp
-/home/robbepop/coding/c++/projects/cion/src/lexer/error/lexer_exception.hpp
+cion/lexer/lexer.hpp
+/home/robbepop/coding/c++/projects/cion/src/lexer/cion/lexer/lexer.hpp
+cion/token/token_fabric.hpp
+/home/robbepop/coding/c++/projects/cion/src/lexer/cion/token/token_fabric.hpp
+cion/error/cion_error_types.hpp
+/home/robbepop/coding/c++/projects/cion/src/lexer/cion/error/cion_error_types.hpp
+cion/error/lexer_exception.hpp
+/home/robbepop/coding/c++/projects/cion/src/lexer/cion/error/lexer_exception.hpp
 exception
 -
 memory
@@ -267,28 +263,28 @@ iostream
 -
 
 /home/robbepop/coding/c++/projects/cion/src/lexer/lexer_filter.cpp
-lexer/lexer_filter.hpp
-/home/robbepop/coding/c++/projects/cion/src/lexer/lexer/lexer_filter.hpp
+cion/lexer/lexer_filter.hpp
+/home/robbepop/coding/c++/projects/cion/src/lexer/cion/lexer/lexer_filter.hpp
 algorithm
 -
 
 /home/robbepop/coding/c++/projects/cion/src/main.cpp
-lexer/lexer.hpp
-/home/robbepop/coding/c++/projects/cion/src/lexer/lexer.hpp
-lexer/lexer_filter.hpp
-/home/robbepop/coding/c++/projects/cion/src/lexer/lexer_filter.hpp
-lexer/token_stream.hpp
-/home/robbepop/coding/c++/projects/cion/src/lexer/token_stream.hpp
-parser/cion_parser.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.hpp
-token/cion_token_types.hpp
-/home/robbepop/coding/c++/projects/cion/src/token/cion_token_types.hpp
-error/cion_error_handler.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/cion_error_handler.hpp
-parser/print_ast_pass.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/print_ast_pass.hpp
-parser/write_ast_pass.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/write_ast_pass.hpp
+cion/lexer/lexer.hpp
+/home/robbepop/coding/c++/projects/cion/src/cion/lexer/lexer.hpp
+cion/lexer/lexer_filter.hpp
+/home/robbepop/coding/c++/projects/cion/src/cion/lexer/lexer_filter.hpp
+cion/lexer/token_stream.hpp
+/home/robbepop/coding/c++/projects/cion/src/cion/lexer/token_stream.hpp
+cion/parser/cion_parser.hpp
+/home/robbepop/coding/c++/projects/cion/src/cion/parser/cion_parser.hpp
+cion/token/cion_token_types.hpp
+/home/robbepop/coding/c++/projects/cion/src/cion/token/cion_token_types.hpp
+cion/error/cion_error_handler.hpp
+/home/robbepop/coding/c++/projects/cion/src/cion/error/cion_error_handler.hpp
+cion/parser/print_ast_pass.hpp
+/home/robbepop/coding/c++/projects/cion/src/cion/parser/print_ast_pass.hpp
+cion/parser/write_ast_pass.hpp
+/home/robbepop/coding/c++/projects/cion/src/cion/parser/write_ast_pass.hpp
 iostream
 -
 fstream
@@ -303,40 +299,40 @@ iostream
 -
 
 /home/robbepop/coding/c++/projects/cion/src/parser/basic_ast_visitor.cpp
-parser/basic_ast_visitor.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/parser/basic_ast_visitor.hpp
-ast/all.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/ast/all.hpp
+cion/parser/basic_ast_visitor.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/cion/parser/basic_ast_visitor.hpp
+cion/ast/all.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/cion/ast/all.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp
-parser/cion_parser.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/parser/cion_parser.hpp
-token/cion_token_types.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/token/cion_token_types.hpp
-error/error_handler.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/error/error_handler.hpp
-error/lexer_exception.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/error/lexer_exception.hpp
-error/parser_exception.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/error/parser_exception.hpp
-ast/all.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/ast/all.hpp
+cion/parser/cion_parser.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/cion/parser/cion_parser.hpp
+cion/token/cion_token_types.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/cion/token/cion_token_types.hpp
+cion/error/error_handler.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/cion/error/error_handler.hpp
+cion/error/lexer_exception.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/cion/error/lexer_exception.hpp
+cion/error/parser_exception.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/cion/error/parser_exception.hpp
+cion/ast/all.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/cion/ast/all.hpp
 chrono
 -
 iostream
 -
 
 /home/robbepop/coding/c++/projects/cion/src/parser/pre_post_traverser.cpp
-parser/pre_post_traverser.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/parser/pre_post_traverser.hpp
-parser/i_pre_post_compiler_pass.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/parser/i_pre_post_compiler_pass.hpp
-ast/all.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/ast/all.hpp
+cion/parser/pre_post_traverser.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/cion/parser/pre_post_traverser.hpp
+cion/parser/i_pre_post_compiler_pass.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/cion/parser/i_pre_post_compiler_pass.hpp
+cion/ast/all.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/cion/ast/all.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/parser/print_ast_pass.cpp
-parser/print_ast_pass.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/parser/print_ast_pass.hpp
+cion/parser/print_ast_pass.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/cion/parser/print_ast_pass.hpp
 algorithm
 -
 limits
@@ -345,32 +341,32 @@ sstream
 -
 
 /home/robbepop/coding/c++/projects/cion/src/parser/recursive_traverser.cpp
-parser/recursive_traverser.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/parser/recursive_traverser.hpp
-ast/all.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/ast/all.hpp
+cion/parser/recursive_traverser.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/cion/parser/recursive_traverser.hpp
+cion/ast/all.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/cion/ast/all.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/parser/write_ast_pass.cpp
-parser/write_ast_pass.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/parser/write_ast_pass.hpp
+cion/parser/write_ast_pass.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/cion/parser/write_ast_pass.hpp
 sstream
 -
 
 /home/robbepop/coding/c++/projects/cion/src/token/bool_token.cpp
-token/bool_token.hpp
-/home/robbepop/coding/c++/projects/cion/src/token/token/bool_token.hpp
+cion/token/bool_token.hpp
+/home/robbepop/coding/c++/projects/cion/src/token/cion/token/bool_token.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/token/char_token.cpp
-token/char_token.hpp
-/home/robbepop/coding/c++/projects/cion/src/token/token/char_token.hpp
+cion/token/char_token.hpp
+/home/robbepop/coding/c++/projects/cion/src/token/cion/token/char_token.hpp
 iostream
 -
 
 /home/robbepop/coding/c++/projects/cion/src/token/cion_token_types.cpp
-token/cion_token_types.hpp
-/home/robbepop/coding/c++/projects/cion/src/token/token/cion_token_types.hpp
-token/token_type.hpp
-/home/robbepop/coding/c++/projects/cion/src/token/token/token_type.hpp
+cion/token/cion_token_types.hpp
+/home/robbepop/coding/c++/projects/cion/src/token/cion/token/cion_token_types.hpp
+cion/token/token_type.hpp
+/home/robbepop/coding/c++/projects/cion/src/token/cion/token/token_type.hpp
 memory
 -
 utility
@@ -379,36 +375,36 @@ iostream
 -
 
 /home/robbepop/coding/c++/projects/cion/src/token/integral_token.cpp
-token/integral_token.hpp
-/home/robbepop/coding/c++/projects/cion/src/token/token/integral_token.hpp
+cion/token/integral_token.hpp
+/home/robbepop/coding/c++/projects/cion/src/token/cion/token/integral_token.hpp
 stdexcept
 -
 iostream
 -
 
 /home/robbepop/coding/c++/projects/cion/src/token/number_token.cpp
-token/number_token.hpp
-/home/robbepop/coding/c++/projects/cion/src/token/token/number_token.hpp
+cion/token/number_token.hpp
+/home/robbepop/coding/c++/projects/cion/src/token/cion/token/number_token.hpp
 stdexcept
 -
 iostream
 -
 
 /home/robbepop/coding/c++/projects/cion/src/token/string_token.cpp
-token/string_token.hpp
-/home/robbepop/coding/c++/projects/cion/src/token/token/string_token.hpp
+cion/token/string_token.hpp
+/home/robbepop/coding/c++/projects/cion/src/token/cion/token/string_token.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/token/token.cpp
-token/token.hpp
-/home/robbepop/coding/c++/projects/cion/src/token/token/token.hpp
+cion/token/token.hpp
+/home/robbepop/coding/c++/projects/cion/src/token/cion/token/token.hpp
 limits
 -
 stdexcept
 -
 
 /home/robbepop/coding/c++/projects/cion/src/token/token_fabric.cpp
-token/token_fabric.hpp
-/home/robbepop/coding/c++/projects/cion/src/token/token/token_fabric.hpp
+cion/token/token_fabric.hpp
+/home/robbepop/coding/c++/projects/cion/src/token/cion/token/token_fabric.hpp
 memory
 -
 stdexcept
@@ -417,6 +413,6 @@ iostream
 -
 
 /home/robbepop/coding/c++/projects/cion/src/token/token_type.cpp
-token/token_type.hpp
-/home/robbepop/coding/c++/projects/cion/src/token/token/token_type.hpp
+cion/token/token_type.hpp
+/home/robbepop/coding/c++/projects/cion/src/token/cion/token/token_type.hpp
 

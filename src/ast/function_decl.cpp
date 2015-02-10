@@ -1,4 +1,4 @@
-#include "ast/function_decl.hpp"
+#include "cion/ast/function_decl.hpp"
 
 #include <utility>
 #include <cassert>

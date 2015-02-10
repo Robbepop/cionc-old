@@ -1,4 +1,4 @@
-#include "token/token_type.hpp"
+#include "cion/token/token_type.hpp"
 
 namespace cion {
 	const TokenType TokenType::undefined = {"undefined"};

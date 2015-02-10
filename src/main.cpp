@@ -1,13 +1,13 @@
-#include "lexer/lexer.hpp"
-#include "lexer/lexer_filter.hpp"
-#include "lexer/token_stream.hpp"
-#include "parser/cion_parser.hpp"
-#include "token/cion_token_types.hpp"
+#include "cion/lexer/lexer.hpp"
+#include "cion/lexer/lexer_filter.hpp"
+#include "cion/lexer/token_stream.hpp"
+#include "cion/parser/cion_parser.hpp"
+#include "cion/token/cion_token_types.hpp"
 
-#include "error/cion_error_handler.hpp"
+#include "cion/error/cion_error_handler.hpp"
 
-#include "parser/print_ast_pass.hpp"
-#include "parser/write_ast_pass.hpp"
+#include "cion/parser/print_ast_pass.hpp"
+#include "cion/parser/write_ast_pass.hpp"
 
 #include <iostream>
 #include <fstream>

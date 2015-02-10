@@ -1,6 +1,6 @@
-#include "parser/basic_ast_visitor.hpp"
+#include "cion/parser/basic_ast_visitor.hpp"
 
-#include "ast/all.hpp"
+#include "cion/ast/all.hpp"
 
 namespace cion {
 

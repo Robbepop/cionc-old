@@ -1,6 +1,6 @@
-#include "parser/recursive_traverser.hpp"
+#include "cion/parser/recursive_traverser.hpp"
 
-#include "ast/all.hpp"
+#include "cion/ast/all.hpp"
 
 namespace cion {
 

@@ -1,11 +1,11 @@
-#include "parser/cion_parser.hpp"
+#include "cion/parser/cion_parser.hpp"
 
-#include "token/cion_token_types.hpp"
-#include "error/error_handler.hpp"
-#include "error/lexer_exception.hpp"
-#include "error/parser_exception.hpp"
+#include "cion/token/cion_token_types.hpp"
+#include "cion/error/error_handler.hpp"
+#include "cion/error/lexer_exception.hpp"
+#include "cion/error/parser_exception.hpp"
 
-#include "ast/all.hpp"
+#include "cion/ast/all.hpp"
 
 #include <chrono>
 
