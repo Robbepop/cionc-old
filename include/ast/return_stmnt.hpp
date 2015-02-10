@@ -18,7 +18,7 @@ namespace ast {
 		Expr & expr();
 		Expr const& expr() const;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 
 	private:
 		std::unique_ptr<Expr> m_expr;

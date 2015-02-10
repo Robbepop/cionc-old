@@ -16,98 +16,98 @@ namespace ast {
 
 		virtual BinaryExpr::Kind kind() const = 0;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class AssignExpr : public BinaryAssignExpr {
 	public:
 		using BinaryAssignExpr::BinaryAssignExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class AddAssignExpr : public BinaryAssignExpr {
 	public:
 		using BinaryAssignExpr::BinaryAssignExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class SubtractAssignExpr : public BinaryAssignExpr {
 	public:
 		using BinaryAssignExpr::BinaryAssignExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class MultiplyAssignExpr : public BinaryAssignExpr {
 	public:
 		using BinaryAssignExpr::BinaryAssignExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class DivideAssignExpr : public BinaryAssignExpr {
 	public:
 		using BinaryAssignExpr::BinaryAssignExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class ModuloAssignExpr : public BinaryAssignExpr {
 	public:
 		using BinaryAssignExpr::BinaryAssignExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class LogicalOrAssignExpr : public BinaryAssignExpr {
 	public:
 		using BinaryAssignExpr::BinaryAssignExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class LogicalAndAssignExpr : public BinaryAssignExpr {
 	public:
 		using BinaryAssignExpr::BinaryAssignExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class BitOrAssignExpr : public BinaryAssignExpr {
 	public:
 		using BinaryAssignExpr::BinaryAssignExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class BitXorAssignExpr : public BinaryAssignExpr {
 	public:
 		using BinaryAssignExpr::BinaryAssignExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class BitAndAssignExpr : public BinaryAssignExpr {
 	public:
 		using BinaryAssignExpr::BinaryAssignExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class ShiftLeftAssignExpr : public BinaryAssignExpr {
 	public:
 		using BinaryAssignExpr::BinaryAssignExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class ShiftRightAssignExpr : public BinaryAssignExpr {
 	public:
 		using BinaryAssignExpr::BinaryAssignExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 } // namespace ast
 } // namespace cion

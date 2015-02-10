@@ -32,7 +32,7 @@ namespace ast {
 		return *m_type;
 	}
 
-	void ParamDecl::accept(CompilerPass & pass) {
+	void ParamDecl::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

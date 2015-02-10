@@ -19,7 +19,7 @@ namespace ast {
 		return m_statements;
 	}
 
-	void CompoundStmnt::accept(CompilerPass & pass) {
+	void CompoundStmnt::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

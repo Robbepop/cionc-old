@@ -47,7 +47,7 @@ namespace ast {
 		return *m_else_stmnt;
 	}
 
-	void IfStmnt::accept(CompilerPass & pass) {
+	void IfStmnt::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

@@ -15,7 +15,7 @@ namespace ast {
 		return m_name;
 	}
 
-	void VarExpr::accept(CompilerPass & pass) {
+	void VarExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

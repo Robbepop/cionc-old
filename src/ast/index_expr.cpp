@@ -31,7 +31,7 @@ namespace ast {
 		return m_indices;
 	}
 
-	void IndexExpr::accept(CompilerPass & pass) {
+	void IndexExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

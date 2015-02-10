@@ -27,7 +27,7 @@ namespace ast {
 		Stmnt & else_stmnt();
 		Stmnt const& else_stmnt() const;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 
 	private:
 		std::unique_ptr<Expr> m_condition;

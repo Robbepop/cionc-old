@@ -14,7 +14,7 @@ namespace ast {
 /// BinaryAssignExpr
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	void BinaryAssignExpr::accept(CompilerPass & pass) {
+	void BinaryAssignExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -26,7 +26,7 @@ namespace ast {
 		return BinaryExpr::Kind::assign;
 	}
 
-	void AssignExpr::accept(CompilerPass & pass) {
+	void AssignExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -38,7 +38,7 @@ namespace ast {
 		return BinaryExpr::Kind::add_assign;
 	}
 
-	void AddAssignExpr::accept(CompilerPass & pass) {
+	void AddAssignExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -50,7 +50,7 @@ namespace ast {
 		return BinaryExpr::Kind::subtract_assign;
 	}
 
-	void SubtractAssignExpr::accept(CompilerPass & pass) {
+	void SubtractAssignExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -62,7 +62,7 @@ namespace ast {
 		return BinaryExpr::Kind::multiply_assign;
 	}
 
-	void MultiplyAssignExpr::accept(CompilerPass & pass) {
+	void MultiplyAssignExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -74,7 +74,7 @@ namespace ast {
 		return BinaryExpr::Kind::divide_assign;
 	}
 
-	void DivideAssignExpr::accept(CompilerPass & pass) {
+	void DivideAssignExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -86,7 +86,7 @@ namespace ast {
 		return BinaryExpr::Kind::modulo_assign;
 	}
 
-	void ModuloAssignExpr::accept(CompilerPass & pass) {
+	void ModuloAssignExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -98,7 +98,7 @@ namespace ast {
 		return BinaryExpr::Kind::logical_or_assign;
 	}
 
-	void LogicalOrAssignExpr::accept(CompilerPass & pass) {
+	void LogicalOrAssignExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -110,7 +110,7 @@ namespace ast {
 		return BinaryExpr::Kind::logical_and_assign;
 	}
 
-	void LogicalAndAssignExpr::accept(CompilerPass & pass) {
+	void LogicalAndAssignExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -122,7 +122,7 @@ namespace ast {
 		return BinaryExpr::Kind::bit_or_assign;
 	}
 
-	void BitOrAssignExpr::accept(CompilerPass & pass) {
+	void BitOrAssignExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -134,7 +134,7 @@ namespace ast {
 		return BinaryExpr::Kind::bit_xor_assign;
 	}
 
-	void BitXorAssignExpr::accept(CompilerPass & pass) {
+	void BitXorAssignExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -146,7 +146,7 @@ namespace ast {
 		return BinaryExpr::Kind::bit_and_assign;
 	}
 
-	void BitAndAssignExpr::accept(CompilerPass & pass) {
+	void BitAndAssignExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -158,7 +158,7 @@ namespace ast {
 		return BinaryExpr::Kind::shift_left_assign;
 	}
 
-	void ShiftLeftAssignExpr::accept(CompilerPass & pass) {
+	void ShiftLeftAssignExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -170,7 +170,7 @@ namespace ast {
 		return BinaryExpr::Kind::shift_right_assign;
 	}
 
-	void ShiftRightAssignExpr::accept(CompilerPass & pass) {
+	void ShiftRightAssignExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

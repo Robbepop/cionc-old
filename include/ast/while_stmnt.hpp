@@ -22,7 +22,7 @@ namespace ast {
 		CompoundStmnt & body();
 		CompoundStmnt const& body() const;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 
 	private:
 		std::unique_ptr<Expr> m_condition;

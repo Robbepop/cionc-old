@@ -9,7 +9,7 @@ namespace ast {
 	public:
 		NothingExpr() = default;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 } // namespace ast
 } // namespace cion

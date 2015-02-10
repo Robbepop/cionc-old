@@ -7,6 +7,7 @@
 #include "error/cion_error_handler.hpp"
 
 #include "parser/print_ast_pass.hpp"
+#include "parser/write_ast_pass.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -63,13 +64,22 @@ int main() {
 	auto end = std::chrono::steady_clock::now();
 	auto diff = end - start;
 
-	const auto req_time = std::chrono::duration<double, std::milli>(diff).count();
+	auto req_time = std::chrono::duration<double, std::milli>(diff).count();
 	DEBUG_STDERR("\ttime required = " << req_time << " ms\n");
 
 	DEBUG_STDERR("\nPrinting generated AST ...\n\n");
 
-	auto printer = cion::PrintASTPass{};
-	printer.visit(*root);
+	start = std::chrono::steady_clock::now();
+
+	//auto printer = cion::PrintASTPass{};
+	//printer.visit(*root);
+	cion::WriteASTPass::execute(std::cout, *root);
+
+	end = std::chrono::steady_clock::now();
+	diff = end - start;
+
+	req_time = std::chrono::duration<double, std::milli>(diff).count();
+	DEBUG_STDERR("\ttime required to print AST = " << req_time << " ms\n");
 
 	return 0;
 }

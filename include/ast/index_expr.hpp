@@ -21,7 +21,7 @@ namespace ast {
 		std::vector<std::unique_ptr<Expr>> & indices();
 		std::vector<std::unique_ptr<Expr>> const& indices() const;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 
 	private:
 		std::unique_ptr<Expr> m_expr;

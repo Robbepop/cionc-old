@@ -3,7 +3,7 @@
 namespace cion {
 namespace ast {
 
-	void ContinueStmnt::accept(CompilerPass & pass) {
+	void ContinueStmnt::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

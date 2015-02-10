@@ -34,7 +34,7 @@ namespace ast {
 		return *m_body;
 	}
 
-	void WhileStmnt::accept(CompilerPass & pass) {
+	void WhileStmnt::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

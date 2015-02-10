@@ -16,7 +16,7 @@ namespace ast {
 		std::vector<std::unique_ptr<Decl>> & decls();
 		std::vector<std::unique_ptr<Decl>> const& decls() const;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 
 	private:
 		std::vector<std::unique_ptr<Decl>> m_decls;

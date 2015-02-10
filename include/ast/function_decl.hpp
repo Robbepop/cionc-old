@@ -31,7 +31,7 @@ namespace ast {
 		CompoundStmnt & body();
 		CompoundStmnt const& body() const;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 
 	private:
 		std::string m_name;

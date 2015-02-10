@@ -3,7 +3,7 @@
 namespace cion {
 namespace ast {
 
-	void BreakStmnt::accept(CompilerPass & pass) {
+	void BreakStmnt::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

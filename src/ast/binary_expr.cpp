@@ -40,7 +40,7 @@ namespace ast {
 		return *m_rhs.get();
 	}
 
-	void BinaryExpr::accept(CompilerPass & pass) {
+	void BinaryExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -52,7 +52,7 @@ namespace ast {
 		return BinaryExpr::Kind::logical_or;
 	}
 
-	void LogicalOrExpr::accept(CompilerPass & pass) {
+	void LogicalOrExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -64,7 +64,7 @@ namespace ast {
 		return BinaryExpr::Kind::logical_and;
 	}
 
-	void LogicalAndExpr::accept(CompilerPass & pass) {
+	void LogicalAndExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -76,7 +76,7 @@ namespace ast {
 		return BinaryExpr::Kind::bit_or;
 	}
 
-	void BitOrExpr::accept(CompilerPass & pass) {
+	void BitOrExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -88,7 +88,7 @@ namespace ast {
 		return BinaryExpr::Kind::bit_xor;
 	}
 
-	void BitXorExpr::accept(CompilerPass & pass) {
+	void BitXorExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -100,7 +100,7 @@ namespace ast {
 		return BinaryExpr::Kind::bit_and;
 	}
 
-	void BitAndExpr::accept(CompilerPass & pass) {
+	void BitAndExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -112,7 +112,7 @@ namespace ast {
 		return BinaryExpr::Kind::add;
 	}
 
-	void AddExpr::accept(CompilerPass & pass) {
+	void AddExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -124,7 +124,7 @@ namespace ast {
 		return BinaryExpr::Kind::subtract;
 	}
 
-	void SubtractExpr::accept(CompilerPass & pass) {
+	void SubtractExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -136,7 +136,7 @@ namespace ast {
 		return BinaryExpr::Kind::multiply;
 	}
 
-	void MultiplyExpr::accept(CompilerPass & pass) {
+	void MultiplyExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -148,7 +148,7 @@ namespace ast {
 		return BinaryExpr::Kind::divide;
 	}
 
-	void DivideExpr::accept(CompilerPass & pass) {
+	void DivideExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -160,7 +160,7 @@ namespace ast {
 		return BinaryExpr::Kind::modulo;
 	}
 
-	void ModuloExpr::accept(CompilerPass & pass) {
+	void ModuloExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -172,7 +172,7 @@ namespace ast {
 		return BinaryExpr::Kind::shift_left;
 	}
 
-	void ShiftLeftExpr::accept(CompilerPass & pass) {
+	void ShiftLeftExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -184,7 +184,7 @@ namespace ast {
 		return BinaryExpr::Kind::shift_right;
 	}
 
-	void ShiftRightExpr::accept(CompilerPass & pass) {
+	void ShiftRightExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -196,7 +196,7 @@ namespace ast {
 		return BinaryExpr::Kind::equality;
 	}
 
-	void EqualityExpr::accept(CompilerPass & pass) {
+	void EqualityExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -208,7 +208,7 @@ namespace ast {
 		return BinaryExpr::Kind::inequality;
 	}
 
-	void InequalityExpr::accept(CompilerPass & pass) {
+	void InequalityExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -220,7 +220,7 @@ namespace ast {
 		return BinaryExpr::Kind::less_than;
 	}
 
-	void LessThanExpr::accept(CompilerPass & pass) {
+	void LessThanExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -232,7 +232,7 @@ namespace ast {
 		return BinaryExpr::Kind::less_equals;
 	}
 
-	void LessEqualsExpr::accept(CompilerPass & pass) {
+	void LessEqualsExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -244,7 +244,7 @@ namespace ast {
 		return BinaryExpr::Kind::greater_than;
 	}
 
-	void GreaterThanExpr::accept(CompilerPass & pass) {
+	void GreaterThanExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -256,7 +256,7 @@ namespace ast {
 		return BinaryExpr::Kind::greater_equals;
 	}
 
-	void GreaterEqualsExpr::accept(CompilerPass & pass) {
+	void GreaterEqualsExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

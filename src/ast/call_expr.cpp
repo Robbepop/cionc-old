@@ -31,7 +31,7 @@ namespace ast {
 		return m_args;
 	}
 
-	void CallExpr::accept(CompilerPass & pass) {
+	void CallExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

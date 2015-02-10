@@ -17,7 +17,7 @@ namespace ast {
 		std::vector<std::unique_ptr<Stmnt>> & statements();
 		std::vector<std::unique_ptr<Stmnt>> const& statements() const;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 
 	private:
 		std::vector<std::unique_ptr<Stmnt>> m_statements;

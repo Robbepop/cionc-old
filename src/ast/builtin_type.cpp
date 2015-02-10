@@ -7,7 +7,7 @@ namespace ast {
 /// BuiltinType
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	void BuiltinType::accept(CompilerPass & pass) {
+	void BuiltinType::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -15,7 +15,7 @@ namespace ast {
 /// BuiltinBoolType
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	void BuiltinBoolType::accept(CompilerPass & pass) {
+	void BuiltinBoolType::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -23,7 +23,7 @@ namespace ast {
 /// BuiltinCharType
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	void BuiltinCharType::accept(CompilerPass & pass) {
+	void BuiltinCharType::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -55,7 +55,7 @@ namespace ast {
 		return m_width;
 	}
 
-	void BuiltinIntType::accept(CompilerPass & pass) {
+	void BuiltinIntType::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -77,7 +77,7 @@ namespace ast {
 		return m_width;
 	}
 
-	void BuiltinFloatType::accept(CompilerPass & pass) {
+	void BuiltinFloatType::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

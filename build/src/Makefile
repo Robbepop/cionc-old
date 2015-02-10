@@ -1124,6 +1124,30 @@ main.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+parser/basic_ast_visitor.o: parser/basic_ast_visitor.cpp.o
+.PHONY : parser/basic_ast_visitor.o
+
+# target to build an object file
+parser/basic_ast_visitor.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.o
+.PHONY : parser/basic_ast_visitor.cpp.o
+
+parser/basic_ast_visitor.i: parser/basic_ast_visitor.cpp.i
+.PHONY : parser/basic_ast_visitor.i
+
+# target to preprocess a source file
+parser/basic_ast_visitor.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.i
+.PHONY : parser/basic_ast_visitor.cpp.i
+
+parser/basic_ast_visitor.s: parser/basic_ast_visitor.cpp.s
+.PHONY : parser/basic_ast_visitor.s
+
+# target to generate assembly for a file
+parser/basic_ast_visitor.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.s
+.PHONY : parser/basic_ast_visitor.cpp.s
+
 parser/cion_parser.o: parser/cion_parser.cpp.o
 .PHONY : parser/cion_parser.o
 
@@ -1148,29 +1172,29 @@ parser/cion_parser.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.s
 .PHONY : parser/cion_parser.cpp.s
 
-parser/compiler_pass.o: parser/compiler_pass.cpp.o
-.PHONY : parser/compiler_pass.o
+parser/pre_post_traverser.o: parser/pre_post_traverser.cpp.o
+.PHONY : parser/pre_post_traverser.o
 
 # target to build an object file
-parser/compiler_pass.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o
-.PHONY : parser/compiler_pass.cpp.o
+parser/pre_post_traverser.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o
+.PHONY : parser/pre_post_traverser.cpp.o
 
-parser/compiler_pass.i: parser/compiler_pass.cpp.i
-.PHONY : parser/compiler_pass.i
+parser/pre_post_traverser.i: parser/pre_post_traverser.cpp.i
+.PHONY : parser/pre_post_traverser.i
 
 # target to preprocess a source file
-parser/compiler_pass.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.i
-.PHONY : parser/compiler_pass.cpp.i
+parser/pre_post_traverser.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.i
+.PHONY : parser/pre_post_traverser.cpp.i
 
-parser/compiler_pass.s: parser/compiler_pass.cpp.s
-.PHONY : parser/compiler_pass.s
+parser/pre_post_traverser.s: parser/pre_post_traverser.cpp.s
+.PHONY : parser/pre_post_traverser.s
 
 # target to generate assembly for a file
-parser/compiler_pass.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.s
-.PHONY : parser/compiler_pass.cpp.s
+parser/pre_post_traverser.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.s
+.PHONY : parser/pre_post_traverser.cpp.s
 
 parser/print_ast_pass.o: parser/print_ast_pass.cpp.o
 .PHONY : parser/print_ast_pass.o
@@ -1219,6 +1243,30 @@ parser/recursive_traverser.s: parser/recursive_traverser.cpp.s
 parser/recursive_traverser.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/recursive_traverser.cpp.s
 .PHONY : parser/recursive_traverser.cpp.s
+
+parser/write_ast_pass.o: parser/write_ast_pass.cpp.o
+.PHONY : parser/write_ast_pass.o
+
+# target to build an object file
+parser/write_ast_pass.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.o
+.PHONY : parser/write_ast_pass.cpp.o
+
+parser/write_ast_pass.i: parser/write_ast_pass.cpp.i
+.PHONY : parser/write_ast_pass.i
+
+# target to preprocess a source file
+parser/write_ast_pass.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.i
+.PHONY : parser/write_ast_pass.cpp.i
+
+parser/write_ast_pass.s: parser/write_ast_pass.cpp.s
+.PHONY : parser/write_ast_pass.s
+
+# target to generate assembly for a file
+parser/write_ast_pass.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.s
+.PHONY : parser/write_ast_pass.cpp.s
 
 token/bool_token.o: token/bool_token.cpp.o
 .PHONY : token/bool_token.o
@@ -1571,18 +1619,24 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... parser/basic_ast_visitor.o"
+	@echo "... parser/basic_ast_visitor.i"
+	@echo "... parser/basic_ast_visitor.s"
 	@echo "... parser/cion_parser.o"
 	@echo "... parser/cion_parser.i"
 	@echo "... parser/cion_parser.s"
-	@echo "... parser/compiler_pass.o"
-	@echo "... parser/compiler_pass.i"
-	@echo "... parser/compiler_pass.s"
+	@echo "... parser/pre_post_traverser.o"
+	@echo "... parser/pre_post_traverser.i"
+	@echo "... parser/pre_post_traverser.s"
 	@echo "... parser/print_ast_pass.o"
 	@echo "... parser/print_ast_pass.i"
 	@echo "... parser/print_ast_pass.s"
 	@echo "... parser/recursive_traverser.o"
 	@echo "... parser/recursive_traverser.i"
 	@echo "... parser/recursive_traverser.s"
+	@echo "... parser/write_ast_pass.o"
+	@echo "... parser/write_ast_pass.i"
+	@echo "... parser/write_ast_pass.s"
 	@echo "... token/bool_token.o"
 	@echo "... token/bool_token.i"
 	@echo "... token/bool_token.s"

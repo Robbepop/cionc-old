@@ -1,43 +1,13 @@
 #ifndef CION_PARSER_PRINT_AST_PASS_HEADER
 #define CION_PARSER_PRINT_AST_PASS_HEADER
 
-#include "parser/compiler_pass.hpp"
-
-#include "ast/binary_assign_expr.hpp"
-#include "ast/binary_expr.hpp"
-#include "ast/boolean_expr.hpp"
-#include "ast/break_stmnt.hpp"
-#include "ast/call_expr.hpp"
-#include "ast/char_expr.hpp"
-#include "ast/compilation_unit_decl.hpp"
-#include "ast/compound_stmnt.hpp"
-#include "ast/conditional_expr.hpp"
-#include "ast/continue_stmnt.hpp"
-#include "ast/empty_stmnt.hpp"
-#include "ast/expr.hpp"
-#include "ast/expr_stmnt.hpp"
-#include "ast/float_expr.hpp"
-#include "ast/function_decl.hpp"
-#include "ast/if_stmnt.hpp"
-#include "ast/index_expr.hpp"
-#include "ast/integer_expr.hpp"
-#include "ast/param_decl.hpp"
-#include "ast/nothing_expr.hpp"
-#include "ast/nothing_type.hpp"
-#include "ast/builtin_type.hpp"
-#include "ast/return_stmnt.hpp"
-#include "ast/stmnt.hpp"
-#include "ast/string_expr.hpp"
-#include "ast/type.hpp"
-#include "ast/unary_expr.hpp"
-#include "ast/var_decl.hpp"
-#include "ast/var_expr.hpp"
-#include "ast/while_stmnt.hpp"
+#include "parser/basic_ast_visitor.hpp"
+#include "ast/all.hpp"
 
 #include <iostream>
 
 namespace cion {
-	class PrintASTPass final : public CompilerPass {
+	class PrintASTPass final : public BasicASTVisitor {
 	public:
 		struct PrintBlock final {
 		public:

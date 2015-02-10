@@ -16,7 +16,7 @@ namespace ast {
 		Decl & decl();
 		Decl const& decl() const;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 
 	private:
 		std::unique_ptr<Decl> m_decl;

@@ -22,7 +22,7 @@ namespace ast {
 		return *m_expr;
 	}
 
-	void ExprStmnt::accept(CompilerPass & pass) {
+	void ExprStmnt::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

@@ -55,7 +55,7 @@ namespace ast {
 		return *m_expr;
 	}
 
-	void VarDecl::accept(CompilerPass & pass) {
+	void VarDecl::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

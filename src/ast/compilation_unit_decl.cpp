@@ -19,7 +19,7 @@ namespace ast {
 		return m_decls;
 	}
 
-	void CompilationUnitDecl::accept(CompilerPass & pass) {
+	void CompilationUnitDecl::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

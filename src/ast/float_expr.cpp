@@ -15,7 +15,7 @@ namespace ast {
 		return m_value;
 	}
 
-	void FloatExpr::accept(CompilerPass & pass) {
+	void FloatExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

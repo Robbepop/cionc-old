@@ -15,7 +15,7 @@ namespace ast {
 		return m_value;
 	}
 
-	void IntegerExpr::accept(CompilerPass & pass) {
+	void IntegerExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

@@ -4,30 +4,96 @@
 #include "lexer/lexer.hpp"
 #include "token/cion_token_types.hpp"
 
-#include "ast/stmnt.hpp"
-#include "ast/expr.hpp"
-#include "ast/type.hpp"
-#include "ast/builtin_type.hpp"
-#include "ast/var_decl.hpp"
-#include "ast/param_decl.hpp"
-#include "ast/function_decl.hpp"
-#include "ast/compilation_unit_decl.hpp"
-
-#include "ast/compound_stmnt.hpp"
-#include "ast/break_stmnt.hpp"
-#include "ast/continue_stmnt.hpp"
-#include "ast/return_stmnt.hpp"
-#include "ast/if_stmnt.hpp"
-#include "ast/while_stmnt.hpp"
-#include "ast/expr_stmnt.hpp"
-#include "ast/decl_stmnt.hpp"
-
 #include <memory>
 #include <queue>
 
 #include <chrono>
 
 namespace cion {
+	namespace ast {
+		class BinaryAssignExpr;
+		class AssignExpr;
+		class AddAssignExpr;
+		class SubtractAssignExpr;
+		class MultiplyAssignExpr;
+		class DivideAssignExpr;
+		class ModuloAssignExpr;
+		class LogicalOrAssignExpr;
+		class LogicalAndAssignExpr;
+		class BitOrAssignExpr;
+		class BitXorAssignExpr;
+		class BitAndAssignExpr;
+		class ShiftLeftAssignExpr;
+		class ShiftRightAssignExpr;
+
+		class BinaryExpr;
+		class LogicalOrExpr;
+		class LogicalAndExpr;
+		class BitOrExpr;
+		class BitXorExpr;
+		class BitAndExpr;
+		class AddExpr;
+		class SubtractExpr;
+		class MultiplyExpr;
+		class DivideExpr;
+		class ModuloExpr;
+		class ShiftLeftExpr;
+		class ShiftRightExpr;
+		class EqualityExpr;
+		class InequalityExpr;
+		class LessThanExpr;
+		class LessEqualsExpr;
+		class GreaterThanExpr;
+		class GreaterEqualsExpr;
+
+		class BooleanExpr;
+		class BreakStmnt;
+		class CallExpr;
+		class CharExpr;
+		class CompilationUnitDecl;
+		class CompoundStmnt;
+		class ConditionalExpr;
+		class ContinueStmnt;
+		class Decl;
+		class DeclStmnt;
+		class EmptyStmnt;
+		class Expr;
+		class ExprStmnt;
+		class FloatExpr;
+		class FunctionDecl;
+		class IfStmnt;
+		class IndexExpr;
+		class IntegerExpr;
+		class ParamDecl;
+		class NothingExpr;
+		class NothingType;
+
+		class BuiltinType;
+		class BuiltinBoolType;
+		class BuiltinCharType;
+		class BuiltinFloatType;
+		class BuiltinIntType;
+
+		class ReturnStmnt;
+		class Stmnt;
+		class StringExpr;
+		class Type;
+
+		class UnaryExpr;
+		class BitNegateExpr;
+		class LogicalNegateExpr;
+		class PlusExpr;
+		class MinusExpr;
+		class IncrementExpr;
+		class DecrementExpr;
+		class PostIncrementExpr;
+		class PostDecrementExpr;
+
+		class VarDecl;
+		class VarExpr;
+		class WhileStmnt;
+	} // namespace ast
+
 	class CionParser final {
 	private:
 		Token const& previous_token() const;

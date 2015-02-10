@@ -54,7 +54,7 @@ namespace ast {
 		return *m_body;
 	}
 
-	void FunctionDecl::accept(CompilerPass & pass) {
+	void FunctionDecl::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

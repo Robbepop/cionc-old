@@ -61,7 +61,7 @@ namespace ast {
 		Expr & rhs();
 		Expr const& rhs() const;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 
 	private:
 		std::unique_ptr<Expr> m_lhs;
@@ -72,109 +72,109 @@ namespace ast {
 	public:
 		using BinaryExpr::BinaryExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class LogicalAndExpr : public BinaryExpr {
 		using BinaryExpr::BinaryExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class BitOrExpr : public BinaryExpr {
 		using BinaryExpr::BinaryExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class BitXorExpr : public BinaryExpr {
 		using BinaryExpr::BinaryExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class BitAndExpr : public BinaryExpr {
 		using BinaryExpr::BinaryExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class AddExpr : public BinaryExpr {
 		using BinaryExpr::BinaryExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class SubtractExpr : public BinaryExpr {
 		using BinaryExpr::BinaryExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class MultiplyExpr : public BinaryExpr {
 		using BinaryExpr::BinaryExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class DivideExpr : public BinaryExpr {
 		using BinaryExpr::BinaryExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class ModuloExpr : public BinaryExpr {
 		using BinaryExpr::BinaryExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class ShiftLeftExpr : public BinaryExpr {
 		using BinaryExpr::BinaryExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class ShiftRightExpr : public BinaryExpr {
 		using BinaryExpr::BinaryExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class EqualityExpr : public BinaryExpr {
 		using BinaryExpr::BinaryExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class InequalityExpr : public BinaryExpr {
 		using BinaryExpr::BinaryExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class LessThanExpr : public BinaryExpr {
 		using BinaryExpr::BinaryExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class LessEqualsExpr : public BinaryExpr {
 		using BinaryExpr::BinaryExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class GreaterThanExpr : public BinaryExpr {
 		using BinaryExpr::BinaryExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class GreaterEqualsExpr : public BinaryExpr {
 		using BinaryExpr::BinaryExpr;
 		virtual BinaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 } // namespace ast
 } // namespace cion

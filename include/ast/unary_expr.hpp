@@ -30,7 +30,7 @@ namespace ast {
 
 		virtual Kind kind() const = 0;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 
 	private:
 		std::unique_ptr<Expr> m_expr;
@@ -40,56 +40,56 @@ namespace ast {
 	public:
 		using UnaryExpr::UnaryExpr;
 		virtual UnaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class LogicalNegateExpr : public UnaryExpr {
 	public:
 		using UnaryExpr::UnaryExpr;
 		virtual UnaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class PlusExpr : public UnaryExpr {
 	public:
 		using UnaryExpr::UnaryExpr;
 		virtual UnaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class MinusExpr : public UnaryExpr {
 	public:
 		using UnaryExpr::UnaryExpr;
 		virtual UnaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class IncrementExpr : public UnaryExpr {
 	public:
 		using UnaryExpr::UnaryExpr;
 		virtual UnaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class DecrementExpr : public UnaryExpr {
 	public:
 		using UnaryExpr::UnaryExpr;
 		virtual UnaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class PostIncrementExpr : public UnaryExpr {
 	public:
 		using UnaryExpr::UnaryExpr;
 		virtual UnaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class PostDecrementExpr : public UnaryExpr {
 	public:
 		using UnaryExpr::UnaryExpr;
 		virtual UnaryExpr::Kind kind() const override;
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 } // namespace ast
 } // namespace cion

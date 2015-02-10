@@ -46,7 +46,7 @@ namespace ast {
 		return *m_else_expression;
 	}
 
-	void ConditionalExpr::accept(CompilerPass & pass) {
+	void ConditionalExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

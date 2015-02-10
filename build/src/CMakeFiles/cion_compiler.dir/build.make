@@ -1015,9 +1015,32 @@ src/CMakeFiles/cion_compiler.dir/lexer/lexer_filter.cpp.o.provides: src/CMakeFil
 
 src/CMakeFiles/cion_compiler.dir/lexer/lexer_filter.cpp.o.provides.build: src/CMakeFiles/cion_compiler.dir/lexer/lexer_filter.cpp.o
 
+src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
+src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o: ../src/parser/pre_post_traverser.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_43)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o"
+	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/parser/pre_post_traverser.cpp
+
+src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.i"
+	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robbepop/coding/c++/projects/cion/src/parser/pre_post_traverser.cpp > CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.i
+
+src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.s"
+	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robbepop/coding/c++/projects/cion/src/parser/pre_post_traverser.cpp -o CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.s
+
+src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o.requires:
+.PHONY : src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o.requires
+
+src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o.provides: src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o.provides.build
+.PHONY : src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o.provides
+
+src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o.provides.build: src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o
+
 src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o: ../src/parser/print_ast_pass.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_43)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_44)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/parser/print_ast_pass.cpp
 
@@ -1038,32 +1061,32 @@ src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o.provides: src/CMake
 
 src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o.provides.build: src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o
 
-src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
-src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o: ../src/parser/compiler_pass.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_44)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o"
-	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/parser/compiler_pass.cpp
+src/CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
+src/CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.o: ../src/parser/write_ast_pass.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_45)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.o"
+	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/parser/write_ast_pass.cpp
 
-src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.i"
-	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robbepop/coding/c++/projects/cion/src/parser/compiler_pass.cpp > CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.i
+src/CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.i"
+	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robbepop/coding/c++/projects/cion/src/parser/write_ast_pass.cpp > CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.i
 
-src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.s"
-	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robbepop/coding/c++/projects/cion/src/parser/compiler_pass.cpp -o CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.s
+src/CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.s"
+	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robbepop/coding/c++/projects/cion/src/parser/write_ast_pass.cpp -o CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.s
 
-src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o.requires:
-.PHONY : src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o.requires
+src/CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.o.requires:
+.PHONY : src/CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.o.requires
 
-src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o.provides: src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o.requires
-	$(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o.provides.build
-.PHONY : src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o.provides
+src/CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.o.provides: src/CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.o.provides.build
+.PHONY : src/CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.o.provides
 
-src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o.provides.build: src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o
+src/CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.o.provides.build: src/CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.o
 
 src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o: ../src/parser/cion_parser.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_45)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_46)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp
 
@@ -1084,9 +1107,32 @@ src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o.provides: src/CMakeFil
 
 src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o.provides.build: src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o
 
+src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
+src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.o: ../src/parser/basic_ast_visitor.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_47)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.o"
+	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/parser/basic_ast_visitor.cpp
+
+src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.i"
+	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robbepop/coding/c++/projects/cion/src/parser/basic_ast_visitor.cpp > CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.i
+
+src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.s"
+	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robbepop/coding/c++/projects/cion/src/parser/basic_ast_visitor.cpp -o CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.s
+
+src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.o.requires:
+.PHONY : src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.o.requires
+
+src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.o.provides: src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.o.provides.build
+.PHONY : src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.o.provides
+
+src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.o.provides.build: src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.o
+
 src/CMakeFiles/cion_compiler.dir/parser/recursive_traverser.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/parser/recursive_traverser.cpp.o: ../src/parser/recursive_traverser.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_46)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_48)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/parser/recursive_traverser.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/parser/recursive_traverser.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/parser/recursive_traverser.cpp
 
@@ -1109,7 +1155,7 @@ src/CMakeFiles/cion_compiler.dir/parser/recursive_traverser.cpp.o.provides.build
 
 src/CMakeFiles/cion_compiler.dir/token/token_fabric.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/token/token_fabric.cpp.o: ../src/token/token_fabric.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_47)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_49)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/token/token_fabric.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/token/token_fabric.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/token/token_fabric.cpp
 
@@ -1132,7 +1178,7 @@ src/CMakeFiles/cion_compiler.dir/token/token_fabric.cpp.o.provides.build: src/CM
 
 src/CMakeFiles/cion_compiler.dir/token/number_token.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/token/number_token.cpp.o: ../src/token/number_token.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_48)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_50)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/token/number_token.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/token/number_token.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/token/number_token.cpp
 
@@ -1155,7 +1201,7 @@ src/CMakeFiles/cion_compiler.dir/token/number_token.cpp.o.provides.build: src/CM
 
 src/CMakeFiles/cion_compiler.dir/token/char_token.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/token/char_token.cpp.o: ../src/token/char_token.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_49)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_51)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/token/char_token.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/token/char_token.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/token/char_token.cpp
 
@@ -1178,7 +1224,7 @@ src/CMakeFiles/cion_compiler.dir/token/char_token.cpp.o.provides.build: src/CMak
 
 src/CMakeFiles/cion_compiler.dir/token/integral_token.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/token/integral_token.cpp.o: ../src/token/integral_token.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_50)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_52)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/token/integral_token.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/token/integral_token.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/token/integral_token.cpp
 
@@ -1201,7 +1247,7 @@ src/CMakeFiles/cion_compiler.dir/token/integral_token.cpp.o.provides.build: src/
 
 src/CMakeFiles/cion_compiler.dir/token/bool_token.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/token/bool_token.cpp.o: ../src/token/bool_token.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_51)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_53)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/token/bool_token.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/token/bool_token.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/token/bool_token.cpp
 
@@ -1224,7 +1270,7 @@ src/CMakeFiles/cion_compiler.dir/token/bool_token.cpp.o.provides.build: src/CMak
 
 src/CMakeFiles/cion_compiler.dir/token/string_token.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/token/string_token.cpp.o: ../src/token/string_token.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_52)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_54)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/token/string_token.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/token/string_token.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/token/string_token.cpp
 
@@ -1247,7 +1293,7 @@ src/CMakeFiles/cion_compiler.dir/token/string_token.cpp.o.provides.build: src/CM
 
 src/CMakeFiles/cion_compiler.dir/token/token.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/token/token.cpp.o: ../src/token/token.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_53)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_55)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/token/token.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/token/token.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/token/token.cpp
 
@@ -1270,7 +1316,7 @@ src/CMakeFiles/cion_compiler.dir/token/token.cpp.o.provides.build: src/CMakeFile
 
 src/CMakeFiles/cion_compiler.dir/token/cion_token_types.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/token/cion_token_types.cpp.o: ../src/token/cion_token_types.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_54)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_56)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/token/cion_token_types.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/token/cion_token_types.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/token/cion_token_types.cpp
 
@@ -1293,7 +1339,7 @@ src/CMakeFiles/cion_compiler.dir/token/cion_token_types.cpp.o.provides.build: sr
 
 src/CMakeFiles/cion_compiler.dir/token/token_type.cpp.o: src/CMakeFiles/cion_compiler.dir/flags.make
 src/CMakeFiles/cion_compiler.dir/token/token_type.cpp.o: ../src/token/token_type.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_55)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robbepop/coding/c++/projects/cion/build/CMakeFiles $(CMAKE_PROGRESS_57)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/cion_compiler.dir/token/token_type.cpp.o"
 	cd /home/robbepop/coding/c++/projects/cion/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cion_compiler.dir/token/token_type.cpp.o -c /home/robbepop/coding/c++/projects/cion/src/token/token_type.cpp
 
@@ -1358,9 +1404,11 @@ cion_compiler_OBJECTS = \
 "CMakeFiles/cion_compiler.dir/error/cion_error_types.cpp.o" \
 "CMakeFiles/cion_compiler.dir/lexer/lexer.cpp.o" \
 "CMakeFiles/cion_compiler.dir/lexer/lexer_filter.cpp.o" \
+"CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o" \
 "CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o" \
-"CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o" \
+"CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.o" \
 "CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o" \
+"CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.o" \
 "CMakeFiles/cion_compiler.dir/parser/recursive_traverser.cpp.o" \
 "CMakeFiles/cion_compiler.dir/token/token_fabric.cpp.o" \
 "CMakeFiles/cion_compiler.dir/token/number_token.cpp.o" \
@@ -1417,9 +1465,11 @@ src/cion_compiler: src/CMakeFiles/cion_compiler.dir/error/cion_warning_types.cpp
 src/cion_compiler: src/CMakeFiles/cion_compiler.dir/error/cion_error_types.cpp.o
 src/cion_compiler: src/CMakeFiles/cion_compiler.dir/lexer/lexer.cpp.o
 src/cion_compiler: src/CMakeFiles/cion_compiler.dir/lexer/lexer_filter.cpp.o
+src/cion_compiler: src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o
 src/cion_compiler: src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o
-src/cion_compiler: src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o
+src/cion_compiler: src/CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.o
 src/cion_compiler: src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o
+src/cion_compiler: src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.o
 src/cion_compiler: src/CMakeFiles/cion_compiler.dir/parser/recursive_traverser.cpp.o
 src/cion_compiler: src/CMakeFiles/cion_compiler.dir/token/token_fabric.cpp.o
 src/cion_compiler: src/CMakeFiles/cion_compiler.dir/token/number_token.cpp.o
@@ -1482,9 +1532,11 @@ src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/erro
 src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/error/cion_error_types.cpp.o.requires
 src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/lexer/lexer.cpp.o.requires
 src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/lexer/lexer_filter.cpp.o.requires
+src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o.requires
 src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o.requires
-src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/parser/compiler_pass.cpp.o.requires
+src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/parser/write_ast_pass.cpp.o.requires
 src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o.requires
+src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.o.requires
 src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/parser/recursive_traverser.cpp.o.requires
 src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/token/token_fabric.cpp.o.requires
 src/CMakeFiles/cion_compiler.dir/requires: src/CMakeFiles/cion_compiler.dir/token/number_token.cpp.o.requires

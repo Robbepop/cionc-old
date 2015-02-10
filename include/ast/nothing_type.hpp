@@ -10,7 +10,7 @@ namespace ast {
 	public:
 		NothingType() = default;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 } // namespace ast

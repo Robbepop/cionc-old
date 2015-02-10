@@ -14,7 +14,7 @@ namespace ast {
 		storage_type & value();
 		storage_type const& value() const;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 
 	private:
 		storage_type m_value;

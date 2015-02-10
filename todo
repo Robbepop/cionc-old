@@ -5,6 +5,7 @@ ToDo list for Cion Compiler
 - make lexer output Tokens with start- and end SourceLocation (adapt Tokens for this change)
 	- make existing code use the new ErrorHandler in order to output
 	  and handle errors and warning while lexing or parsing
+- make all include files part of a cion directory.
 - add DeclStmnt AST node to make it possible again to have declarations as statements.
 	- add type component with getter and setter methods to all Expr nodes.
 	- add Identifier AST component with a reference to a string and to its entry within the SymbolTable

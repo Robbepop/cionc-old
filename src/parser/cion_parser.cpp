@@ -5,23 +5,7 @@
 #include "error/lexer_exception.hpp"
 #include "error/parser_exception.hpp"
 
-#include "ast/stmnt.hpp"
-#include "ast/builtin_type.hpp"
-#include "ast/var_decl.hpp"
-#include "ast/boolean_expr.hpp"
-#include "ast/char_expr.hpp"
-#include "ast/string_expr.hpp"
-#include "ast/integer_expr.hpp"
-#include "ast/float_expr.hpp"
-#include "ast/var_expr.hpp"
-#include "ast/binary_assign_expr.hpp"
-#include "ast/conditional_expr.hpp"
-#include "ast/binary_expr.hpp"
-#include "ast/unary_expr.hpp"
-#include "ast/index_expr.hpp"
-#include "ast/call_expr.hpp"
-#include "ast/nothing_expr.hpp"
-#include "ast/nothing_type.hpp"
+#include "ast/all.hpp"
 
 #include <chrono>
 

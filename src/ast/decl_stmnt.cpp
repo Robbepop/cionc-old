@@ -22,7 +22,7 @@ namespace ast {
 		return *m_decl;
 	}
 
-	void DeclStmnt::accept(CompilerPass & pass) {
+	void DeclStmnt::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

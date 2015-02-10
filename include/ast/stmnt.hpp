@@ -1,15 +1,15 @@
 #ifndef CION_AST_STMNT_HEADER
 #define CION_AST_STMNT_HEADER
 
-#include "compiler_pass.hpp"
+#include "parser/i_ast_visitor.hpp"
 
 namespace cion {
-	class CompilerPass;
+	class IASTVisitor;
 
 namespace ast {
 	class Stmnt {
 	public:
-		virtual void accept(CompilerPass & pass) = 0;
+		virtual void accept(IASTVisitor & pass) = 0;
 	};
 } // namespace ast
 } // namespace cion

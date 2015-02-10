@@ -15,7 +15,7 @@ namespace ast {
 		return m_value;
 	}
 
-	void CharExpr::accept(CompilerPass & pass) {
+	void CharExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

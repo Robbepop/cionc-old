@@ -29,7 +29,7 @@ namespace ast {
 		return *m_expr;
 	}
 
-	void UnaryExpr::accept(CompilerPass & pass) {
+	void UnaryExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -41,7 +41,7 @@ namespace ast {
 		return UnaryExpr::Kind::bit_negate;
 	}
 
-	void BitNegateExpr::accept(CompilerPass & pass) {
+	void BitNegateExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -53,7 +53,7 @@ namespace ast {
 		return UnaryExpr::Kind::logical_negate;
 	}
 
-	void LogicalNegateExpr::accept(CompilerPass & pass) {
+	void LogicalNegateExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -65,7 +65,7 @@ namespace ast {
 		return UnaryExpr::Kind::plus;
 	}
 
-	void PlusExpr::accept(CompilerPass & pass) {
+	void PlusExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -77,7 +77,7 @@ namespace ast {
 		return UnaryExpr::Kind::minus;
 	}
 
-	void MinusExpr::accept(CompilerPass & pass) {
+	void MinusExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -89,7 +89,7 @@ namespace ast {
 		return UnaryExpr::Kind::increment;
 	}
 
-	void IncrementExpr::accept(CompilerPass & pass) {
+	void IncrementExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -101,7 +101,7 @@ namespace ast {
 		return UnaryExpr::Kind::decrement;
 	}
 
-	void DecrementExpr::accept(CompilerPass & pass) {
+	void DecrementExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -113,7 +113,7 @@ namespace ast {
 		return UnaryExpr::Kind::post_increment;
 	}
 
-	void PostIncrementExpr::accept(CompilerPass & pass) {
+	void PostIncrementExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 
@@ -125,7 +125,7 @@ namespace ast {
 		return UnaryExpr::Kind::post_decrement;
 	}
 
-	void PostDecrementExpr::accept(CompilerPass & pass) {
+	void PostDecrementExpr::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

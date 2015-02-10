@@ -3,7 +3,7 @@
 namespace cion {
 namespace ast {
 
-	void NothingType::accept(CompilerPass & pass) {
+	void NothingType::accept(IASTVisitor & pass) {
 		pass.visit(*this);
 	}
 

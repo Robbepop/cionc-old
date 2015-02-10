@@ -10,21 +10,21 @@ namespace ast {
 
 	class BuiltinType : public Type {
 	public:
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class BuiltinBoolType : public BuiltinType {
 	public:
 		BuiltinBoolType() = default;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class BuiltinCharType : public BuiltinType {
 	public:
 		BuiltinCharType() = default;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 	};
 
 	class BuiltinIntType : public BuiltinType {
@@ -45,7 +45,7 @@ namespace ast {
 		Width & width();
 		Width const& width() const;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 
 	private:
 		bool m_signed;
@@ -66,7 +66,7 @@ namespace ast {
 		Width & width();
 		Width const& width() const;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 
 	private:
 		Width m_width;

@@ -21,7 +21,7 @@ namespace ast {
 		std::vector<std::unique_ptr<Expr>> & args();
 		std::vector<std::unique_ptr<Expr>> const& args() const;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 
 	private:
 		std::unique_ptr<Expr> m_callee;

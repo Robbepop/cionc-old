@@ -15,7 +15,7 @@ namespace ast {
 		std::string & name();
 		std::string const& name() const;
 
-		virtual void accept(CompilerPass & pass) override;
+		virtual void accept(IASTVisitor & pass) override;
 
 	private:
 		std::string m_name;
