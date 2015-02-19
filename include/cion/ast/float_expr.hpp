@@ -2,6 +2,7 @@
 #define CION_AST_FLOAT_EXPR_HEADER
 
 #include "cion/ast/expr.hpp"
+#include "cion/ast/builtin_type.hpp"
 
 namespace cion {
 namespace ast {
@@ -9,7 +10,8 @@ namespace ast {
 	public:
 		using storage_type = double;
 
-		FloatExpr(storage_type value);
+		FloatExpr(storage_type p_value);
+		FloatExpr(storage_type p_value, BuiltinFloatType::Width p_width);
 
 		storage_type & value();
 		storage_type const& value() const;

@@ -13,10 +13,10 @@ namespace cion {
 	void BasicASTVisitor::visit(ast::EmptyStmnt & s) {
 		visit(static_cast<ast::Stmnt &>(s)); }
 
-	void BasicASTVisitor::visit(ast::ExprStmnt & s) {
+	void BasicASTVisitor::visit(ast::DeclStmnt & s) {
 		visit(static_cast<ast::Stmnt &>(s)); }
 
-	void BasicASTVisitor::visit(ast::DeclStmnt & s) {
+	void BasicASTVisitor::visit(ast::ExprStmnt & s) {
 		visit(static_cast<ast::Stmnt &>(s)); }
 
 	void BasicASTVisitor::visit(ast::IfStmnt & s) {

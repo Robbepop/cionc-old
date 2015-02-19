@@ -3,21 +3,29 @@ ToDo list for Cion Compiler
 - put source files in associated folders as their include header files
 - add error token type and output it in the lexer whenever an error appeared
 - make lexer output Tokens with start- and end SourceLocation (adapt Tokens for this change)
-	- make existing code use the new ErrorHandler in order to output
-	  and handle errors and warning while lexing or parsing
+- add more specific binary, unary and assign nodes to the AST inherited from AssignExpr, BinaryExpr or UnaryExpr.
 - make all include files part of a cion directory.
 - add DeclStmnt AST node to make it possible again to have declarations as statements.
-	- add type component with getter and setter methods to all Expr nodes.
+- add type component with getter and setter methods to all Expr nodes.
+- add new Node subclasses Type and Declaration and adapt existing AST subclasses to them.
+- remove ast/node as root AST node class type. (no root type afterwards)
+- remove ast/expression_list class and adapt classees depending on it to use vectors of expression instead since expression_lists are no expressions in Cion.
+- add DeclStmnt AST node to ASTVisitor.
+- add order and equality operator overloading for SourceLocation.
+	- make existing code use the new ErrorHandler in order to output
+	  and handle errors and warning while lexing or parsing
+	- add a new type node AutoDeduceType to indicate that the expression has to be deduced before it is valid.
 	- add Identifier AST component with a reference to a string and to its entry within the SymbolTable
 	- add a TokenStorageManager to store all processed tokens. AST nodes should reference to their tokens.
 	- add startLocation() and endLocation() method to all AST nodes.
-- add new Node subclasses Type and Declaration and adapt existing AST subclasses to them.
 	- add SourceLocation to all AST nodes for all important locations (e.g. start, end) within an node
-- add more specific binary, unary and assign nodes to the AST inherited from AssignExpr, BinaryExpr or UnaryExpr.
+	- rewrite Scanner (Lexer) as its current implementation has huge problems with long structured tokens.
 	- implement a fully working symbol table for Cion Compiler
 	- use forward declarations instead of includes when smart pointers are used.
-- remove ast/node as root AST node class type. (no root type afterwards)
-- remove ast/expression_list class and adapt classees depending on it to use vectors of expression instead since expression_lists are no expressions in Cion.
+	- provide literal enhancements for int and float literals to also express literals of
+      type uint and all types with specified bit-size. adapt changes to make IntToken and FloatToken
+      take new layout into consideration.
+	- extend the parser to make it possible to parse ref, ptr and [x]-array combined type defines.
 	- create semantic check passes:
 		1. fill SymbolTable
 		2. check declared before defined
@@ -386,3 +394,98 @@ CustomPass : CompilerPass
 -------------------------
 Note: This represents a custom CompilerPass which encapsulates
 a specific functionality and work on the AST.
+
+
+
+Enhancing int and float literals to express their types more explicitely
+========================================================================
+
+C++ Type | C++ <cstdint>     || Cion          | Cion Type
+---------|-------------------||---------------|-----------
+int      | 1337              || 1337, 1337i   | int
+int8_t   | N/A               || 1337i8        | int8
+int16_t  | N/A               || 1337i16       | int16
+int32_t  | 1337              || 1337i32       | int32
+int64_t  | 1337L             || 1337i64       | int64
+uint     | 1337u             || 1337u         | uint
+uint8_t  | N/A               || 1337u8        | uint8
+uint16_t | N/A               || 1337u16       | uint16
+uint32_t | 1337u             || 1337u32       | uint32
+uint64_t | 1337U             || 1337u64       | uint64
+float    | 1.337f            || 1.337, 1.337f | float
+half (?) | N/A               || 1.337f16      | float16
+float    | 1.337f            || 1.337f32      | float32
+double   | 1.337, 1.337d     || 1.337f64      | float64
+N/A      | N/A               || 1.337f128     | float128
+
+
+=================================
+=================================
+Integer Byte Darstellungspräfixe:
+=================================
+
+0d | {} => Dezimal
+0b      => Binär
+0o      => Oktal
+0x      => Sedezimal
+
+Beispiele 1:
+==========
+0d42 | 42 => Dezimal
+0b1001101 => Binär
+0o7012492 => Oktal
+0xF0A912D => Sedezimal
+
+oder:
+=====
+
+
+#d | {} => Dezimal
+#b      => Binär
+#o      => Oktal
+#x      => Sedezimal
+
+Beispiele 2:
+==========
+#d42 | 42 => Dezimal
+#b1001101 => Binär
+#o7012492 => Oktal
+#xF0A912D => Sedezimal
+
+
+Complete Integer:
+=================
+Regex: {|0b|0o|0x}integer{|i{|8|16|32|64}|u{|8|16|32|64}}
+Integer: {[0-9A-F_]}+
+Usable Regex:
+	Decimal:   (0d)?[0-9_]+(i(8|16|32|64)?|u(8|16|32|64)?)
+	Binary:    (0b)[0-1_]+(i(8|16|32|64)?|u(8|16|32|64)?)
+	Octal:     (0o)[0-7_]+(i(8|16|32|64)?|u(8|16|32|64)?)
+	Sedezimal: (0x)[0-9A-F_]+(i(8|16|32|64)?|u(8|16|32|64)?)
+
+Complete Float:
+===============
+
+
+=================================
+=================================
+
+
+With separators between digits:
+===============================
+
+Binary Integers:
+0b1111_0101_0011_1100_0110
+0b1111'0101'0011'1100'0110
+
+
+
+
+
+
+
+
+
+
+
+

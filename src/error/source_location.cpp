@@ -23,4 +23,34 @@ namespace cion {
 		return m_col;
 	}
 
+	bool SourceLocation::operator< (SourceLocation const& rhs) const {
+		if (line() < rhs.line()) {
+			return true;
+		}
+		if (line() == rhs.line() && col() < rhs.col()) {
+			return true;
+		}
+		return false;
+	}
+
+	bool SourceLocation::operator> (SourceLocation const& rhs) const {
+		return rhs < *this;
+	}
+
+	bool SourceLocation::operator<=(SourceLocation const& rhs) const {
+		return !(*this > rhs);
+	}
+
+	bool SourceLocation::operator>=(SourceLocation const& rhs) const {
+		return !(*this < rhs);
+	}
+
+	bool SourceLocation::operator==(SourceLocation const& rhs) const {
+		return line() == rhs.line() && col() == rhs.col();
+	}
+
+	bool SourceLocation::operator!=(SourceLocation const& rhs) const {
+		return !(*this == rhs);
+	}
+
 } // namespace cion

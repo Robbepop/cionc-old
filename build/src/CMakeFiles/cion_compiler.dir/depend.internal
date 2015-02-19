@@ -27,6 +27,8 @@ src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/ast/decl_stmnt.cpp
 src/CMakeFiles/cion_compiler.dir/ast/empty_stmnt.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/ast/empty_stmnt.cpp
+src/CMakeFiles/cion_compiler.dir/ast/expr.cpp.o
+ /home/robbepop/coding/c++/projects/cion/src/ast/expr.cpp
 src/CMakeFiles/cion_compiler.dir/ast/expr_stmnt.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/ast/expr_stmnt.cpp
 src/CMakeFiles/cion_compiler.dir/ast/float_expr.cpp.o
@@ -79,6 +81,8 @@ src/CMakeFiles/cion_compiler.dir/error/source_location.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/error/source_location.cpp
 src/CMakeFiles/cion_compiler.dir/error/warning_type.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/error/warning_type.cpp
+src/CMakeFiles/cion_compiler.dir/lexer/cion_lexer.cpp.o
+ /home/robbepop/coding/c++/projects/cion/src/lexer/cion_lexer.cpp
 src/CMakeFiles/cion_compiler.dir/lexer/lexer.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/lexer/lexer.cpp
 src/CMakeFiles/cion_compiler.dir/lexer/lexer_filter.cpp.o

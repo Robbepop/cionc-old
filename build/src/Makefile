@@ -428,6 +428,30 @@ ast/empty_stmnt.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/empty_stmnt.cpp.s
 .PHONY : ast/empty_stmnt.cpp.s
 
+ast/expr.o: ast/expr.cpp.o
+.PHONY : ast/expr.o
+
+# target to build an object file
+ast/expr.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/expr.cpp.o
+.PHONY : ast/expr.cpp.o
+
+ast/expr.i: ast/expr.cpp.i
+.PHONY : ast/expr.i
+
+# target to preprocess a source file
+ast/expr.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/expr.cpp.i
+.PHONY : ast/expr.cpp.i
+
+ast/expr.s: ast/expr.cpp.s
+.PHONY : ast/expr.s
+
+# target to generate assembly for a file
+ast/expr.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/expr.cpp.s
+.PHONY : ast/expr.cpp.s
+
 ast/expr_stmnt.o: ast/expr_stmnt.cpp.o
 .PHONY : ast/expr_stmnt.o
 
@@ -1052,6 +1076,30 @@ error/warning_type.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/warning_type.cpp.s
 .PHONY : error/warning_type.cpp.s
 
+lexer/cion_lexer.o: lexer/cion_lexer.cpp.o
+.PHONY : lexer/cion_lexer.o
+
+# target to build an object file
+lexer/cion_lexer.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/lexer/cion_lexer.cpp.o
+.PHONY : lexer/cion_lexer.cpp.o
+
+lexer/cion_lexer.i: lexer/cion_lexer.cpp.i
+.PHONY : lexer/cion_lexer.i
+
+# target to preprocess a source file
+lexer/cion_lexer.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/lexer/cion_lexer.cpp.i
+.PHONY : lexer/cion_lexer.cpp.i
+
+lexer/cion_lexer.s: lexer/cion_lexer.cpp.s
+.PHONY : lexer/cion_lexer.s
+
+# target to generate assembly for a file
+lexer/cion_lexer.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/lexer/cion_lexer.cpp.s
+.PHONY : lexer/cion_lexer.cpp.s
+
 lexer/lexer.o: lexer/lexer.cpp.o
 .PHONY : lexer/lexer.o
 
@@ -1532,6 +1580,9 @@ help:
 	@echo "... ast/empty_stmnt.o"
 	@echo "... ast/empty_stmnt.i"
 	@echo "... ast/empty_stmnt.s"
+	@echo "... ast/expr.o"
+	@echo "... ast/expr.i"
+	@echo "... ast/expr.s"
 	@echo "... ast/expr_stmnt.o"
 	@echo "... ast/expr_stmnt.i"
 	@echo "... ast/expr_stmnt.s"
@@ -1610,6 +1661,9 @@ help:
 	@echo "... error/warning_type.o"
 	@echo "... error/warning_type.i"
 	@echo "... error/warning_type.s"
+	@echo "... lexer/cion_lexer.o"
+	@echo "... lexer/cion_lexer.i"
+	@echo "... lexer/cion_lexer.s"
 	@echo "... lexer/lexer.o"
 	@echo "... lexer/lexer.i"
 	@echo "... lexer/lexer.s"

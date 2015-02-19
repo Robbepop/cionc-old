@@ -1,9 +1,11 @@
 #include "cion/ast/char_expr.hpp"
+#include "cion/ast/builtin_type.hpp"
 
 namespace cion {
 namespace ast {
 
 	CharExpr::CharExpr(CharExpr::storage_type value) :
+		Expr{std::unique_ptr<Type>{std::make_unique<BuiltinCharType>()}},
 		m_value{value}
 	{}
 

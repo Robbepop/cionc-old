@@ -1,21 +1,30 @@
 var my_global_integer   = 50;
-var my_global_fun_call  = bar(foo, 'c', 50, .1234, false, "baz");
+var my_global_fun_call  = bar$(foo, 'c', 50, 0.1234, false, "baz");
 var my_global_fun_call2 = baz();
-var my_global_number    = .1234;
+var my_global_number    = 0.1234;
 var my_global_boolean   = false;
 var my_global_character = 'i';
 var my_global_string    = "Hello, World!";
 
 var my_global_custom_01 : uint = 5;
 var my_global_custom_02 : bool = 0 + 5 - 10; // error
-var my_auto_ref_01 = my_global_custom_01;
+var my_auto_ref_01 §= my_global_custom_01;
 var my_auto_ref_01 = my_global_custom_01;
 var my_auto_ptr_01 = my_global_custom_02;
 
 function min(lhs : int64, rhs : int64) -> int64 {
 	// some stuff
+	++i;
 	//-- - i ;
 }
+
+/*
+function testA(a : T, b : V) -> var {}
+// auto testA(T a, V b) {}
+
+FUNCTION TESTB(A : T, B : V) -> VAL {}
+// CONST AUTO TESTB(T A, V B) {}
+*/
 
 function main(paramA : int, paramB : bool) {
 	// some stuff
@@ -73,4 +82,23 @@ function while_loop_test() {
 	while my_condition_func(foo) {
 		do_something_within_this_while_loop();
 	}
+}
+
+function roflcopter() {
+	ich_bin() = total_cool();
+	habe_ich++;
+	var bereits = erwaehnt[x] + dass[x*y] - ich[x*y*z];
+	var eigentlich : uint = 50;
+	//unglaublich = function(int a, int b) -> int { return 5; };
+	return gut_aussehe ? true : false;
+}
+
+function recursive_copy_01() {
+	dies_ist_ein_scope();
+	{
+		var hier_kann_ich = true;
+		var neue_variablen = anlegen;
+		und_sie_werden_automatisch[10] = beim_scope_ende(vom_stack_geloescht[so_dass[10]]);
+	}
+	var so_dass_ich_sie_hier_nicht = benutzen_kann ? stimmt_so : jo;
 }

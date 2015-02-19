@@ -27,6 +27,8 @@ src/CMakeFiles/cion_compiler.dir/ast/decl_stmnt.cpp.o: ../src/ast/decl_stmnt.cpp
 
 src/CMakeFiles/cion_compiler.dir/ast/empty_stmnt.cpp.o: ../src/ast/empty_stmnt.cpp
 
+src/CMakeFiles/cion_compiler.dir/ast/expr.cpp.o: ../src/ast/expr.cpp
+
 src/CMakeFiles/cion_compiler.dir/ast/expr_stmnt.cpp.o: ../src/ast/expr_stmnt.cpp
 
 src/CMakeFiles/cion_compiler.dir/ast/float_expr.cpp.o: ../src/ast/float_expr.cpp
@@ -78,6 +80,8 @@ src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.o: ../src/error/parser_e
 src/CMakeFiles/cion_compiler.dir/error/source_location.cpp.o: ../src/error/source_location.cpp
 
 src/CMakeFiles/cion_compiler.dir/error/warning_type.cpp.o: ../src/error/warning_type.cpp
+
+src/CMakeFiles/cion_compiler.dir/lexer/cion_lexer.cpp.o: ../src/lexer/cion_lexer.cpp
 
 src/CMakeFiles/cion_compiler.dir/lexer/lexer.cpp.o: ../src/lexer/lexer.cpp
 

@@ -14,6 +14,14 @@ namespace cion {
 
 		SourceLocation & operator=(SourceLocation const& rhs) = default;
 
+		bool operator< (SourceLocation const& rhs) const;
+		bool operator> (SourceLocation const& rhs) const;
+		bool operator<=(SourceLocation const& rhs) const;
+		bool operator>=(SourceLocation const& rhs) const;
+
+		bool operator==(SourceLocation const& rhs) const;
+		bool operator!=(SourceLocation const& rhs) const;
+
 		loc_type const& line() const;
 		loc_type const& col() const;
 

@@ -29,6 +29,8 @@ cassert
 /home/robbepop/coding/c++/projects/cion/src/ast/boolean_expr.cpp
 cion/ast/boolean_expr.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/boolean_expr.hpp
+cion/ast/builtin_type.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/builtin_type.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/ast/break_stmnt.cpp
 cion/ast/break_stmnt.hpp
@@ -47,6 +49,8 @@ cassert
 /home/robbepop/coding/c++/projects/cion/src/ast/char_expr.cpp
 cion/ast/char_expr.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/char_expr.hpp
+cion/ast/builtin_type.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/builtin_type.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/ast/compilation_unit_decl.cpp
 cion/ast/compilation_unit_decl.hpp
@@ -83,6 +87,12 @@ cassert
 /home/robbepop/coding/c++/projects/cion/src/ast/empty_stmnt.cpp
 cion/ast/empty_stmnt.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/empty_stmnt.hpp
+
+/home/robbepop/coding/c++/projects/cion/src/ast/expr.cpp
+cion/ast/expr.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/expr.hpp
+cion/ast/nothing_type.hpp
+/home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/nothing_type.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/ast/expr_stmnt.cpp
 cion/ast/expr_stmnt.hpp
@@ -244,6 +254,24 @@ cion/error/source_location.hpp
 cion/error/warning_type.hpp
 /home/robbepop/coding/c++/projects/cion/src/error/cion/error/warning_type.hpp
 
+/home/robbepop/coding/c++/projects/cion/src/lexer/cion_lexer.cpp
+cion/lexer/cion_lexer.hpp
+/home/robbepop/coding/c++/projects/cion/src/lexer/cion/lexer/cion_lexer.hpp
+cion/token/cion_token_types.hpp
+/home/robbepop/coding/c++/projects/cion/src/lexer/cion/token/cion_token_types.hpp
+cion/token/token_fabric.hpp
+/home/robbepop/coding/c++/projects/cion/src/lexer/cion/token/token_fabric.hpp
+cassert
+-
+cstdint
+-
+iostream
+-
+string
+-
+algorithm
+-
+
 /home/robbepop/coding/c++/projects/cion/src/lexer/lexer.cpp
 cion/lexer/lexer.hpp
 /home/robbepop/coding/c++/projects/cion/src/lexer/cion/lexer/lexer.hpp
@@ -267,10 +295,14 @@ cion/lexer/lexer_filter.hpp
 /home/robbepop/coding/c++/projects/cion/src/lexer/cion/lexer/lexer_filter.hpp
 algorithm
 -
+iostream
+-
 
 /home/robbepop/coding/c++/projects/cion/src/main.cpp
 cion/lexer/lexer.hpp
 /home/robbepop/coding/c++/projects/cion/src/cion/lexer/lexer.hpp
+cion/lexer/cion_lexer.hpp
+/home/robbepop/coding/c++/projects/cion/src/cion/lexer/cion_lexer.hpp
 cion/lexer/lexer_filter.hpp
 /home/robbepop/coding/c++/projects/cion/src/cion/lexer/lexer_filter.hpp
 cion/lexer/token_stream.hpp

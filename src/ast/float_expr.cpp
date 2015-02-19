@@ -3,8 +3,18 @@
 namespace cion {
 namespace ast {
 
-	FloatExpr::FloatExpr(FloatExpr::storage_type value) :
-		m_value{value}
+	FloatExpr::FloatExpr(
+		FloatExpr::storage_type p_value,
+		BuiltinFloatType::Width p_width
+	):
+		Expr{std::unique_ptr<Type>{std::make_unique<BuiltinFloatType>(p_width)}},
+		m_value{p_value}
+	{}
+
+	FloatExpr::FloatExpr(
+		FloatExpr::storage_type p_value
+	):
+		FloatExpr{p_value, BuiltinFloatType::Width::unspecified}
 	{}
 
 	FloatExpr::storage_type & FloatExpr::value() {

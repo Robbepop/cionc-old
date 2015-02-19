@@ -32,6 +32,11 @@ namespace cion {
 		traverse_empty_stmnt(s);
 	}
 
+	void RecursiveTraverser::visit(ast::DeclStmnt & s) {
+		m_pass.visit(s);
+		traverse_decl_stmnt(s);
+	}
+
 	void RecursiveTraverser::visit(ast::ExprStmnt & s) {
 		m_pass.visit(s);
 		traverse_expr_stmnt(s);
@@ -413,6 +418,10 @@ namespace cion {
 	}
 
 	void RecursiveTraverser::traverse_empty_stmnt(ast::EmptyStmnt &) {}
+
+	void RecursiveTraverser::traverse_decl_stmnt(ast::DeclStmnt & s) {
+		s.decl().accept(*this);
+	}
 
 	void RecursiveTraverser::traverse_expr_stmnt(ast::ExprStmnt & s) {
 		s.expr().accept(*this);

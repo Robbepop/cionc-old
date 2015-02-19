@@ -1,4 +1,5 @@
 #include "cion/lexer/lexer.hpp"
+#include "cion/lexer/cion_lexer.hpp"
 #include "cion/lexer/lexer_filter.hpp"
 #include "cion/lexer/token_stream.hpp"
 #include "cion/parser/cion_parser.hpp"
@@ -47,7 +48,8 @@ int main() {
 
 	DEBUG_STDERR("Initializing lexer ...\n");
 
-	auto lexer = cion::Lexer(f, ctts.get_all(), error_handler);
+	//auto lexer = cion::Lexer(f, ctts.get_all(), error_handler);
+	auto lexer = cion::CionLexer(f, error_handler);
 
 	DEBUG_STDERR("Initializing lexer filter ...\n");
 
@@ -56,6 +58,7 @@ int main() {
 	DEBUG_STDERR("Initializing parser ...\n");
 
 	auto parser = cion::CionParser(lexer_filter, error_handler);
+	//auto parser = cion::CionParser(cion_lexer, error_handler);
 
 	DEBUG_STDERR("\nParsing " << file_name << " ...\n");
 

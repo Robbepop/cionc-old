@@ -1,9 +1,11 @@
 #include "cion/ast/boolean_expr.hpp"
+#include "cion/ast/builtin_type.hpp"
 
 namespace cion {
 namespace ast {
 
 	BooleanExpr::BooleanExpr(BooleanExpr::storage_type value) :
+		Expr{std::unique_ptr<Type>{std::make_unique<BuiltinBoolType>()}},
 		m_value{value}
 	{}
 

@@ -2,8 +2,10 @@
 
 #include <algorithm>
 
+#include <iostream>
+
 namespace cion {
-	LexerFilter::LexerFilter(Lexer & input, std::vector<TokenType> const& invalid_tokens) :
+	LexerFilter::LexerFilter(TokenStream & input, std::vector<TokenType> const& invalid_tokens) :
 		m_input{input},
 		m_invalid_tokens{invalid_tokens}
 	{
@@ -18,6 +20,7 @@ namespace cion {
 	std::unique_ptr<Token> LexerFilter::next_token() {
 		auto token = m_input.next_token();
 		while (!is_valid(token->get_type())) {
+			std::cout << "LexerFilter::next_token() - invalid!\n";
 			token = m_input.next_token();
 		}
 		return token;

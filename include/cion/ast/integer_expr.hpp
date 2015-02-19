@@ -2,6 +2,7 @@
 #define CION_AST_INTEGER_EXPR_HEADER
 
 #include "cion/ast/expr.hpp"
+#include "cion/ast/builtin_type.hpp"
 
 #include <cstdint>
 
@@ -11,7 +12,10 @@ namespace ast {
 	public:
 		using storage_type = int64_t;
 
-		IntegerExpr(storage_type value);
+		IntegerExpr(storage_type p_value, bool p_signed, BuiltinIntType::Width p_width);
+		IntegerExpr(storage_type p_value, BuiltinIntType::Width p_width);
+		IntegerExpr(storage_type p_value, bool p_signed);
+		explicit IntegerExpr(storage_type p_value);
 
 		storage_type & value();
 		storage_type const& value() const;

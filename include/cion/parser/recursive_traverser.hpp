@@ -18,6 +18,7 @@ namespace cion {
 		virtual void visit(ast::Stmnt &) override;
 		virtual void visit(ast::CompoundStmnt &) override;
 		virtual void visit(ast::EmptyStmnt &) override;
+		virtual void visit(ast::DeclStmnt &) override;
 		virtual void visit(ast::ExprStmnt &) override;
 		virtual void visit(ast::IfStmnt &) override;
 		virtual void visit(ast::WhileStmnt &) override;
@@ -111,6 +112,7 @@ namespace cion {
 		virtual void traverse_stmnt(ast::Stmnt &);
 		virtual void traverse_compound_stmnt(ast::CompoundStmnt &);
 		virtual void traverse_empty_stmnt(ast::EmptyStmnt &);
+		virtual void traverse_decl_stmnt(ast::DeclStmnt &);
 		virtual void traverse_expr_stmnt(ast::ExprStmnt &);
 		virtual void traverse_if_stmnt(ast::IfStmnt &);
 		virtual void traverse_while_stmnt(ast::WhileStmnt &);

@@ -12,12 +12,12 @@ namespace cion {
 		bool is_valid(TokenType token_type);
 
 	public:
-		LexerFilter(Lexer & input, std::vector<TokenType> const& invalid_tokens);
+		LexerFilter(TokenStream & input, std::vector<TokenType> const& invalid_tokens);
 
 		std::unique_ptr<Token> next_token() override;
 
 	private:
-		Lexer & m_input;
+		TokenStream & m_input;
 		std::vector<TokenType> m_invalid_tokens;
 	};
 }
