@@ -21,6 +21,9 @@ namespace cion {
 	CionErrorTypes::CionErrorTypes():
 		m_errors{},
 		unknown_token_type{init_error({"unknown token type"})},
+		broken_char_literal{init_error({"broken character literal"})},
+		broken_string_literal{init_error({"broken string literal"})},
+		broken_number_literal{init_error({"broken number literal"})},
 		expected_token_type_failure{init_error({"unexpected token type"})}
 	{}
 

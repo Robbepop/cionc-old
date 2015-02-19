@@ -19,8 +19,9 @@ namespace cion {
 
 	std::unique_ptr<Token> LexerFilter::next_token() {
 		auto token = m_input.next_token();
-		while (!is_valid(token->get_type())) {
-			std::cout << "LexerFilter::next_token() - invalid!\n";
+		//while (!is_valid(token->get_type())) {
+		while (token->get_type() == TokenType::error) {
+			//std::cout << "LexerFilter::next_token() - invalid!\n";
 			token = m_input.next_token();
 		}
 		return token;

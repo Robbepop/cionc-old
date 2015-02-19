@@ -29,6 +29,9 @@ namespace cion {
 	public:
 		ErrorType const
 			unknown_token_type,
+			broken_char_literal,
+			broken_string_literal,
+			broken_number_literal,
 			expected_token_type_failure;
 	};
 

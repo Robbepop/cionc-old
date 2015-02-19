@@ -1,14 +1,14 @@
 var my_global_integer   = 50;
-var my_global_fun_call  = bar$(foo, 'c', 50, 0.1234, false, "baz");
+var my_global_fun_call  = bar(foo, 'c', 50, 0.1234, false, "baz");
 var my_global_fun_call2 = baz();
-var my_global_number    = 0.1234;
+var my_global_number    = 0.1234e-1;
 var my_global_boolean   = false;
 var my_global_character = 'i';
 var my_global_string    = "Hello, World!";
 
 var my_global_custom_01 : uint = 5;
 var my_global_custom_02 : bool = 0 + 5 - 10; // error
-var my_auto_ref_01 §= my_global_custom_01;
+var my_auto_ref_01 = my_global_custom_01;
 var my_auto_ref_01 = my_global_custom_01;
 var my_auto_ptr_01 = my_global_custom_02;
 

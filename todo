@@ -12,7 +12,7 @@ ToDo list for Cion Compiler
 - remove ast/expression_list class and adapt classees depending on it to use vectors of expression instead since expression_lists are no expressions in Cion.
 - add DeclStmnt AST node to ASTVisitor.
 - add order and equality operator overloading for SourceLocation.
-	- make existing code use the new ErrorHandler in order to output
+	- make existing code use the ErrorHandler in order to output
 	  and handle errors and warning while lexing or parsing
 	- add a new type node AutoDeduceType to indicate that the expression has to be deduced before it is valid.
 	- add Identifier AST component with a reference to a string and to its entry within the SymbolTable
@@ -26,6 +26,8 @@ ToDo list for Cion Compiler
       type uint and all types with specified bit-size. adapt changes to make IntToken and FloatToken
       take new layout into consideration.
 	- extend the parser to make it possible to parse ref, ptr and [x]-array combined type defines.
+	- improve ASTVisitor inheritance hierarchie to make it possible to improve the ASTWritePass so
+	  that it only requires one function for every AST node which is less error prone.
 	- create semantic check passes:
 		1. fill SymbolTable
 		2. check declared before defined
@@ -481,10 +483,17 @@ Binary Integers:
 
 
 
+Important Regexes:
 
+whitespace: "\\s+"
+line_comment: "//[^\\r\\n]*(\\r?\\n)?"
+comment: "/\\*([^*]|[\\r\\n]|(\\*+([^*/]|[\\r\\n])))*\\*+/"
 
-
-
+identifier: "[_a-zA-Z]\\w*"
+integer_literal: "0|([1-9]\\d*)"
+float_literal: "(((0|([1-9](\\d)*))\\.(\\d)*|\\.(\\d)+)([eE][+-]?(\\d)+)?)|((0|([1-9](\\d)*))([eE][+-]?(\\d)+))"
+char_literal: "'[^']+'"
+string_literal: "\\\"([^\"\\\\]|\\\\.)*\\\""
 
 
 

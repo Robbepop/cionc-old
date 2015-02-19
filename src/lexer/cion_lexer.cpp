@@ -1,5 +1,6 @@
 #include "cion/lexer/cion_lexer.hpp"
 #include "cion/token/cion_token_types.hpp"
+#include "cion/error/cion_error_types.hpp"
 #include "cion/token/token_fabric.hpp"
 
 #include <cassert>
@@ -23,7 +24,8 @@ namespace cion {
 		m_cur_end_loc{std::addressof(m_end_loc_0)},
 		m_prv_end_loc{std::addressof(m_end_loc_1)},
 		m_cur_char{'\0'},
-		ctts{CionTokenTypes::get_instance()}
+		ctts{CionTokenTypes::get_instance()},
+		errors{CionErrorTypes::get_instance()}
 	{
 		next_char();
 		add_keyword("var", ctts.cmd_var);
@@ -162,6 +164,34 @@ namespace cion {
 	std::unique_ptr<Token> CionLexer::make_token_next(TokenType const& p_tt) {
 		next_char();
 		return make_token(p_tt);
+	}
+
+	std::unique_ptr<Token> CionLexer::make_error(
+		ErrorType p_error_type,
+		std::string const& p_message
+	) {
+		m_error_handler.error(p_error_type, m_start_loc, p_message);
+		return make_token(TokenType::error);
+	}
+
+	std::unique_ptr<Token> CionLexer::make_error(
+		ErrorType p_error_type
+	) {
+		return make_error(p_error_type, valid_buffer());
+	}
+
+	std::unique_ptr<Token> CionLexer::make_error_next(
+		ErrorType p_error_type,
+		std::string const& p_message
+	) {
+		next_char();
+		return make_error(p_error_type, p_message);
+	}
+
+	std::unique_ptr<Token> CionLexer::make_error_next(
+		ErrorType p_error_type
+	) {
+		return make_error_next(p_error_type, valid_buffer());
 	}
 
 	std::unique_ptr<Token> CionLexer::next_token() {
@@ -326,7 +356,7 @@ namespace cion {
 					return scan_number();
 				}
 		}
-		return make_token_next(TokenType::error);
+		return make_error_next(errors.unknown_token_type);
 	}
 
 	std::unique_ptr<Token> CionLexer::scan_line_comment() {
@@ -365,7 +395,7 @@ namespace cion {
 		if (cur_char() == '\'') {
 			return make_token_next(ctts.lit_char);
 		}
-		return make_token(TokenType::error);
+		return make_error(errors.broken_char_literal);
 	}
 
 	std::unique_ptr<Token> CionLexer::scan_string() {
@@ -377,7 +407,7 @@ namespace cion {
 		if (cur_char() == '\"') {
 			return make_token_next(ctts.lit_string);
 		}
-		return make_token(TokenType::error);
+		return make_error(errors.broken_string_literal);
 	}
 
 	std::unique_ptr<Token> CionLexer::scan_number() {
@@ -400,7 +430,9 @@ namespace cion {
 			if (cur_char() == '.') {
 				return scan_float(false);
 			} else if (is_digit()) {
-				return make_token(TokenType::error);
+				return make_error(
+					errors.broken_number_literal,
+					"no digits may follow a '0' number literal");
 			} else {
 				return make_token(ctts.lit_integral);
 			}
@@ -415,21 +447,28 @@ namespace cion {
 			next_char(); ++count_digits;
 		}
 		if (p_req_digits && count_digits == 0) {
-			return make_token(TokenType::error);
+			return make_error(
+				errors.broken_number_literal,
+				"since no digits are before the '.' there must be digits afterwards in a number literal.");
 		}
 		if (cur_char() == 'e') {
 			next_token();
 			if (cur_char() == '+' || cur_char() == '-') {
 				next_token();
 			} else {
-				return make_token(TokenType::error);
+				return make_error(
+					errors.broken_number_literal,
+					"explicit exponent must be followed by a +/- sign");
 			}
-			count_digits = 0;
-			while (is_digit()) {
-				next_char(); ++count_digits;
-			}
-			if (count_digits == 0) {
-				return make_token(TokenType::error);
+			if (is_non_zero_digit()) {
+				next_char();
+				while (is_digit()) {
+					next_char();
+				}
+			} else {
+				return make_error(
+					errors.broken_number_literal,
+					"explicit exponent must be followed by a valid number.");
 			}
 		}
 		return make_token(ctts.lit_number);

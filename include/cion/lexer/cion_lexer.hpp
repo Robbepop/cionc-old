@@ -14,6 +14,7 @@
 namespace cion {
 	class Token;
 	class CionTokenTypes;
+	class CionErrorTypes;
 
 	class CionLexer : public TokenStream {
 	public:
@@ -39,6 +40,10 @@ namespace cion {
 		SourceLocation & cur_end_loc();
 		SourceLocation & prv_end_loc();
 
+		/// This function is responsible to correctly update the line and column numbers
+		/// of the current read character of the input stream for debugging output
+		/// information enhancement. For every token, the start and end location
+		/// is computed and stored.
 		void update_loc();
 
 		/// Returns a valid buffer from the current character buffer
@@ -69,6 +74,14 @@ namespace cion {
 		/// for those tokens which are created by their last read character
 		/// as next_token() function has to be called with a filled pipeline.
 		std::unique_ptr<Token> make_token_next(TokenType const& p_tt);
+
+		std::unique_ptr<Token> make_error(
+			ErrorType p_error_type, std::string const& p_message);
+		std::unique_ptr<Token> make_error(ErrorType p_error_type);
+
+		std::unique_ptr<Token> make_error_next(
+			ErrorType p_error_type, std::string const& p_message);
+		std::unique_ptr<Token> make_error_next(ErrorType p_error_type);
 
 		/// This function will be called after a line comment has been detected
 		/// and will skip any character until it successfully reads a line break.
@@ -121,6 +134,7 @@ namespace cion {
 		SourceLocation * m_prv_end_loc;
 		char m_cur_char;
 		CionTokenTypes const& ctts;
+		CionErrorTypes const& errors;
 	};
 } // namespace cion
 

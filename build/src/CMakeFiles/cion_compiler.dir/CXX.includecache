@@ -259,6 +259,8 @@ cion/lexer/cion_lexer.hpp
 /home/robbepop/coding/c++/projects/cion/src/lexer/cion/lexer/cion_lexer.hpp
 cion/token/cion_token_types.hpp
 /home/robbepop/coding/c++/projects/cion/src/lexer/cion/token/cion_token_types.hpp
+cion/error/cion_error_types.hpp
+/home/robbepop/coding/c++/projects/cion/src/lexer/cion/error/cion_error_types.hpp
 cion/token/token_fabric.hpp
 /home/robbepop/coding/c++/projects/cion/src/lexer/cion/token/token_fabric.hpp
 cassert
