@@ -3,6 +3,14 @@
 #include <memory>
 #include <stdexcept>
 
+#include "cion/token/token.hpp"
+#include "cion/token/bool_token.hpp"
+#include "cion/token/char_token.hpp"
+#include "cion/token/integer_token.hpp"
+#include "cion/token/float_token.hpp"
+#include "cion/token/string_token.hpp"
+#include "cion/error/source_location.hpp"
+
 //#define DEBUG
 #ifdef DEBUG
 #include <iostream>
@@ -21,28 +29,28 @@ namespace cion {
 		SourceLocation const& end_loc,
 		std::string const& value
 	) {
-		using tts = TokenTypeStore;
-		switch (token_type.get_store_type())
+		using tts = TokenType::Storage;
+		switch (token_type.storage())
 		{
 			case tts::empty:
 				DEBUG_STDERR("token_fabric: create empty_token()\n");
 				return std::make_unique<Token>(
 					token_type, start_loc, end_loc);
-			case tts::boolean_t:
+			case tts::bool_t:
 				DEBUG_STDERR("token_fabric: create boolean_token()\n");
 				return {std::make_unique<BoolToken>(
 						token_type, start_loc, end_loc, value)};
-			case tts::character_t:
+			case tts::char_t:
 				DEBUG_STDERR("token_fabric: create char_token()\n");
 				return {std::make_unique<CharToken>(
 						token_type, start_loc, end_loc, value)};
-			case tts::integral_t:
+			case tts::integer_t:
 				DEBUG_STDERR("token_fabric: create integral_token()\n");
-				return {std::make_unique<IntegralToken>(
+				return {std::make_unique<IntegerToken>(
 						token_type, start_loc, end_loc, value)};
-			case tts::number_t:
+			case tts::float_t:
 				DEBUG_STDERR("token_fabric: create number_token()\n");
-				return {std::make_unique<NumberToken>(
+				return {std::make_unique<FloatToken>(
 						token_type, start_loc, end_loc, value)};
 			case tts::string_t:
 				DEBUG_STDERR("token_fabric: create string_token()\n");

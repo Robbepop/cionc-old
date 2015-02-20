@@ -1,4 +1,6 @@
 #include "cion/ast/var_decl.hpp"
+#include "cion/ast/expr.hpp"
+#include "cion/ast/type.hpp"
 
 #include <utility>
 #include <cassert>

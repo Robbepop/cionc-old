@@ -8,17 +8,13 @@
 
 namespace cion {
 	class LexerFilter : public TokenStream {
-	private:
-		bool is_valid(TokenType token_type);
-
 	public:
-		LexerFilter(TokenStream & input, std::vector<TokenType> const& invalid_tokens);
+		explicit LexerFilter(TokenStream & input);
 
 		std::unique_ptr<Token> next_token() override;
 
 	private:
 		TokenStream & m_input;
-		std::vector<TokenType> m_invalid_tokens;
 	};
 }
 

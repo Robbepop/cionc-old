@@ -2,21 +2,25 @@
 #define CION_AST_IF_STMNT_HEADER
 
 #include "cion/ast/stmnt.hpp"
-#include "cion/ast/compound_stmnt.hpp"
-#include "cion/ast/empty_stmnt.hpp"
-#include "cion/ast/expr.hpp"
 
 #include <memory>
 
 namespace cion {
 namespace ast {
+	class CompoundStmnt;
+	class EmptyStmnt;
+	class Expr;
 
 	class IfStmnt : public Stmnt {
 	public:
 		IfStmnt(
-			std::unique_ptr<Expr> condition,
-			std::unique_ptr<CompoundStmnt> then_stmnt,
-			std::unique_ptr<Stmnt> else_stmnt = {std::make_unique<EmptyStmnt>()});
+			std::unique_ptr<Expr> p_condition,
+			std::unique_ptr<CompoundStmnt> p_then_stmnt,
+			std::unique_ptr<Stmnt> p_else_stmnt);
+
+		IfStmnt(
+			std::unique_ptr<Expr> p_condition,
+			std::unique_ptr<CompoundStmnt> p_then_stmnt);
 
 		Expr & condition();
 		Expr const& condition() const;

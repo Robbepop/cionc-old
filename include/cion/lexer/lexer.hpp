@@ -1,101 +1,141 @@
 #ifndef CION_LEXER_HEADER
 #define CION_LEXER_HEADER
 
-#include "cion/token/token.hpp"
 #include "cion/lexer/token_stream.hpp"
+#include "cion/token/token_type.hpp"
 #include "cion/error/error_handler.hpp"
 #include "cion/error/source_location.hpp"
 
-#include <boost/regex.hpp>
-
-#include <iostream>
-#include <deque>
-#include <type_traits>
-#include <cstdint>
+#include <string>
+#include <unordered_map>
+#include <memory>
+#include <iosfwd>
 
 namespace cion {
+	class Token;
+	class TokenTypes;
+	class ErrorTypes;
+
 	class Lexer : public TokenStream {
 	public:
-		Lexer(
-			std::istream & inputstream,
-			std::vector<TokenType> const& token_types,
-			ErrorHandler const& error_handler);
+		Lexer(std::istream & p_input, ErrorHandler & p_error_handler);
 
 		std::unique_ptr<Token> next_token() override;
 
 	private:
-		struct IterationData {
-		public:
-			IterationData() = default;
+		void add_keyword(std::string const& p_key, TokenType const& p_tt);
 
-			bool buffers_empty() const;
-			void clear_buffers();
-			std::vector<TokenType> & get_partial_matches();
-			std::vector<TokenType> & get_full_matches_greedy();
-			std::vector<TokenType> & get_full_matches_non_greedy();
-			SourceLocation const& get_source_location() const;
-			SourceLocation & get_source_location();
+		bool is_digit(char p_char) const;
+		bool is_non_zero_digit(char p_char) const;
+		bool is_alpha(char p_char) const;
+		bool is_alpha_num(char p_char) const;
+		bool is_keyword(std::string p_word) const;
 
-		private:
-			std::vector<TokenType> m_partial_matches;
-			std::vector<TokenType> m_full_matches_greedy;
-			std::vector<TokenType> m_full_matches_non_greedy;
-			SourceLocation m_source_location;
-		};
+		bool is_digit() const;
+		bool is_non_zero_digit() const;
+		bool is_alpha() const;
+		bool is_alpha_num() const;
+		bool is_keyword() const;
 
-		// Checks if all buffers are empty.
-		// This is only true if the first token is to be read in;
-		// OR if a new token is to be read in.
-		bool buffers_empty();
+		SourceLocation & cur_end_loc();
+		SourceLocation & prv_end_loc();
 
-		void check_match(TokenType const& token_type);
+		/// This function is responsible to correctly update the line and column numbers
+		/// of the current read character of the input stream for debugging output
+		/// information enhancement. For every token, the start and end location
+		/// is computed and stored.
+		void update_loc();
 
-		// If all buffers are empty then it checks all matchable
-		// token types if they partially match against the current buffer
-		// content, else it checks the current partial match buffer.
-		// If a token type's regex is partially matching against
-		// the current buffers content it is further checked if it
-		// even fully matches the content. If it does then it is put
-		// in the current full match buffer, else in the
-		// current partially match buffer.
-		void check_matches();
+		/// Returns a valid buffer from the current character buffer
+		/// which is exactly the character buffer but its last character.
+		std::string valid_buffer() const;
 
-		// Swaps buffers so that the current match buffers are
-		// the last match buffers and empties the now-current match
-		// buffers so that they can be filled in again without
-		// the old token types from the last round.
-		void swap_buffers();
+		/// Getter for the current character.
+		char cur_char() const;
 
-		// Clears all match buffers since a completely new token
-		// type is to be read in and operated on.
-		void clear_buffers();
+		/// This function reads in the next character from
+		/// the input stream. It also fills the character buffer
+		/// and adjusts the current end location.
+		char next_char();
 
-		// Clears only the current buffers.
-		// This operation is required after every swap buffers operation.
-		void clear_cur_buffers();
+		/// This is a specialized version of the next_char() function
+		/// which basically does the same but won't put the read
+		/// input into the buffer as this function is only called
+		/// when any input is ignore such as in comments.
+		char next_char_ignore();
 
-		// Updates the line and column numbers after every iteration.
-		void update_lc_numbers();
+		/// Creates a token via the token fabric and the given token type.
+		/// This will also update and reset the current character buffer to
+		/// its last character and will return the newly created token.
+		std::unique_ptr<Token> make_token(TokenType const& p_tt);
 
-		// Updates the line and column numbers after a step back has been taken.
-		void step_back();
+		/// Besides calling the make_token function this will call
+		/// next_token() beforehand which makes it useful as a helper function
+		/// for those tokens which are created by their last read character
+		/// as next_token() function has to be called with a filled pipeline.
+		std::unique_ptr<Token> make_token_next(TokenType const& p_tt);
 
-		// Return an error token on an invalid input sequence and
-		// execute the associated error handler to handle this error.
-		std::unique_ptr<Token> make_error_token(ErrorType type, SourceLocation const& start_loc);
+		std::unique_ptr<Token> make_error(
+			ErrorType p_error_type, std::string const& p_message);
+		std::unique_ptr<Token> make_error(ErrorType p_error_type);
+
+		std::unique_ptr<Token> make_error_next(
+			ErrorType p_error_type, std::string const& p_message);
+		std::unique_ptr<Token> make_error_next(ErrorType p_error_type);
+
+		/// This function will be called after a line comment has been detected
+		/// and will skip any character until it successfully reads a line break.
+		std::unique_ptr<Token> scan_line_comment();
+
+		/// This function will be called after a multi-line comment has been detected
+		/// and will skip any character until it successfully reads its end.
+		std::unique_ptr<Token> scan_comment();
+
+		/// This function will be called after a character literal start (') has been
+		/// detected and will read any character (but line breaks) until it successfully
+		/// reads its ending character. (')
+		std::unique_ptr<Token> scan_char();
+
+		/// This function will be called after a string literal start (") has been
+		/// detected and will read any character (but line breaks) until it successfully
+		/// reads its ending character. (")
+		std::unique_ptr<Token> scan_string();
+
+		/// This function will be called whenever a digit [0-9] is read as this indicates
+		/// the starting point for any number token in Cion. The function will
+		/// delegate to the scan_float function whenever it detects that its read
+		/// number is in fact a float literal.
+		std::unique_ptr<Token> scan_number();
+
+		/// This function will be called whenever a float literal has been detected
+		/// and represents the detection of a float literal after a dot has been read.
+		/// p_req_digits indicates whether it is a requirement for this function to read
+		/// at least a single digit after the dot.
+		std::unique_ptr<Token> scan_float(bool p_req_digits);
+
+		/// This function will be called whenever an identifier could have been detected.
+		/// It iteratively scans the input for a generic identifier and checks the
+		/// resulting buffer if it is a keyword. Returns either identifier tokens or
+		/// any keyword token.
+		std::unique_ptr<Token> scan_identifier();
+
+//////////////////////////////////////////////////////////////////////////////////////////
+/////// Member Variables
+//////////////////////////////////////////////////////////////////////////////////////////
 
 		std::istream & m_input;
+		ErrorHandler & m_error_handler;
 		std::string m_buffer;
-		char m_cur_symbol;
-		IterationData m_it_data[2];
-		IterationData *m_cur, *m_last;
-
-		// A vector filled with token types which this lexer should check to
-		// match against the given input stream.
-		std::vector<TokenType> m_matchable_tokens;
-
-		ErrorHandler const& m_error_handler;
+		std::unordered_map<std::string, TokenType> m_keywords;
+		SourceLocation m_start_loc;
+		SourceLocation m_end_loc_0;
+		SourceLocation m_end_loc_1;
+		SourceLocation * m_cur_end_loc;
+		SourceLocation * m_prv_end_loc;
+		char m_cur_char;
+		TokenTypes const& ctts;
+		ErrorTypes const& errors;
 	};
-}
+} // namespace cion
 
 #endif // CION_LEXER_HEADER

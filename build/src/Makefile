@@ -812,54 +812,6 @@ ast/while_stmnt.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/ast/while_stmnt.cpp.s
 .PHONY : ast/while_stmnt.cpp.s
 
-error/cion_error_handler.o: error/cion_error_handler.cpp.o
-.PHONY : error/cion_error_handler.o
-
-# target to build an object file
-error/cion_error_handler.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_error_handler.cpp.o
-.PHONY : error/cion_error_handler.cpp.o
-
-error/cion_error_handler.i: error/cion_error_handler.cpp.i
-.PHONY : error/cion_error_handler.i
-
-# target to preprocess a source file
-error/cion_error_handler.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_error_handler.cpp.i
-.PHONY : error/cion_error_handler.cpp.i
-
-error/cion_error_handler.s: error/cion_error_handler.cpp.s
-.PHONY : error/cion_error_handler.s
-
-# target to generate assembly for a file
-error/cion_error_handler.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_error_handler.cpp.s
-.PHONY : error/cion_error_handler.cpp.s
-
-error/cion_error_types.o: error/cion_error_types.cpp.o
-.PHONY : error/cion_error_types.o
-
-# target to build an object file
-error/cion_error_types.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_error_types.cpp.o
-.PHONY : error/cion_error_types.cpp.o
-
-error/cion_error_types.i: error/cion_error_types.cpp.i
-.PHONY : error/cion_error_types.i
-
-# target to preprocess a source file
-error/cion_error_types.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_error_types.cpp.i
-.PHONY : error/cion_error_types.cpp.i
-
-error/cion_error_types.s: error/cion_error_types.cpp.s
-.PHONY : error/cion_error_types.s
-
-# target to generate assembly for a file
-error/cion_error_types.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_error_types.cpp.s
-.PHONY : error/cion_error_types.cpp.s
-
 error/cion_exception.o: error/cion_exception.cpp.o
 .PHONY : error/cion_exception.o
 
@@ -980,6 +932,30 @@ error/error_type.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/error_type.cpp.s
 .PHONY : error/error_type.cpp.s
 
+error/error_types.o: error/error_types.cpp.o
+.PHONY : error/error_types.o
+
+# target to build an object file
+error/error_types.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/error_types.cpp.o
+.PHONY : error/error_types.cpp.o
+
+error/error_types.i: error/error_types.cpp.i
+.PHONY : error/error_types.i
+
+# target to preprocess a source file
+error/error_types.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/error_types.cpp.i
+.PHONY : error/error_types.cpp.i
+
+error/error_types.s: error/error_types.cpp.s
+.PHONY : error/error_types.s
+
+# target to generate assembly for a file
+error/error_types.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/error_types.cpp.s
+.PHONY : error/error_types.cpp.s
+
 error/lexer_error.o: error/lexer_error.cpp.o
 .PHONY : error/lexer_error.o
 
@@ -1075,30 +1051,6 @@ error/warning_type.s: error/warning_type.cpp.s
 error/warning_type.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/warning_type.cpp.s
 .PHONY : error/warning_type.cpp.s
-
-lexer/cion_lexer.o: lexer/cion_lexer.cpp.o
-.PHONY : lexer/cion_lexer.o
-
-# target to build an object file
-lexer/cion_lexer.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/lexer/cion_lexer.cpp.o
-.PHONY : lexer/cion_lexer.cpp.o
-
-lexer/cion_lexer.i: lexer/cion_lexer.cpp.i
-.PHONY : lexer/cion_lexer.i
-
-# target to preprocess a source file
-lexer/cion_lexer.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/lexer/cion_lexer.cpp.i
-.PHONY : lexer/cion_lexer.cpp.i
-
-lexer/cion_lexer.s: lexer/cion_lexer.cpp.s
-.PHONY : lexer/cion_lexer.s
-
-# target to generate assembly for a file
-lexer/cion_lexer.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/lexer/cion_lexer.cpp.s
-.PHONY : lexer/cion_lexer.cpp.s
 
 lexer/lexer.o: lexer/lexer.cpp.o
 .PHONY : lexer/lexer.o
@@ -1196,29 +1148,29 @@ parser/basic_ast_visitor.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.s
 .PHONY : parser/basic_ast_visitor.cpp.s
 
-parser/cion_parser.o: parser/cion_parser.cpp.o
-.PHONY : parser/cion_parser.o
+parser/parser.o: parser/parser.cpp.o
+.PHONY : parser/parser.o
 
 # target to build an object file
-parser/cion_parser.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o
-.PHONY : parser/cion_parser.cpp.o
+parser/parser.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/parser.cpp.o
+.PHONY : parser/parser.cpp.o
 
-parser/cion_parser.i: parser/cion_parser.cpp.i
-.PHONY : parser/cion_parser.i
+parser/parser.i: parser/parser.cpp.i
+.PHONY : parser/parser.i
 
 # target to preprocess a source file
-parser/cion_parser.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.i
-.PHONY : parser/cion_parser.cpp.i
+parser/parser.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/parser.cpp.i
+.PHONY : parser/parser.cpp.i
 
-parser/cion_parser.s: parser/cion_parser.cpp.s
-.PHONY : parser/cion_parser.s
+parser/parser.s: parser/parser.cpp.s
+.PHONY : parser/parser.s
 
 # target to generate assembly for a file
-parser/cion_parser.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.s
-.PHONY : parser/cion_parser.cpp.s
+parser/parser.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/parser.cpp.s
+.PHONY : parser/parser.cpp.s
 
 parser/pre_post_traverser.o: parser/pre_post_traverser.cpp.o
 .PHONY : parser/pre_post_traverser.o
@@ -1364,77 +1316,53 @@ token/char_token.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/char_token.cpp.s
 .PHONY : token/char_token.cpp.s
 
-token/cion_token_types.o: token/cion_token_types.cpp.o
-.PHONY : token/cion_token_types.o
+token/float_token.o: token/float_token.cpp.o
+.PHONY : token/float_token.o
 
 # target to build an object file
-token/cion_token_types.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/cion_token_types.cpp.o
-.PHONY : token/cion_token_types.cpp.o
+token/float_token.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/float_token.cpp.o
+.PHONY : token/float_token.cpp.o
 
-token/cion_token_types.i: token/cion_token_types.cpp.i
-.PHONY : token/cion_token_types.i
+token/float_token.i: token/float_token.cpp.i
+.PHONY : token/float_token.i
 
 # target to preprocess a source file
-token/cion_token_types.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/cion_token_types.cpp.i
-.PHONY : token/cion_token_types.cpp.i
+token/float_token.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/float_token.cpp.i
+.PHONY : token/float_token.cpp.i
 
-token/cion_token_types.s: token/cion_token_types.cpp.s
-.PHONY : token/cion_token_types.s
+token/float_token.s: token/float_token.cpp.s
+.PHONY : token/float_token.s
 
 # target to generate assembly for a file
-token/cion_token_types.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/cion_token_types.cpp.s
-.PHONY : token/cion_token_types.cpp.s
+token/float_token.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/float_token.cpp.s
+.PHONY : token/float_token.cpp.s
 
-token/integral_token.o: token/integral_token.cpp.o
-.PHONY : token/integral_token.o
+token/integer_token.o: token/integer_token.cpp.o
+.PHONY : token/integer_token.o
 
 # target to build an object file
-token/integral_token.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/integral_token.cpp.o
-.PHONY : token/integral_token.cpp.o
+token/integer_token.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/integer_token.cpp.o
+.PHONY : token/integer_token.cpp.o
 
-token/integral_token.i: token/integral_token.cpp.i
-.PHONY : token/integral_token.i
-
-# target to preprocess a source file
-token/integral_token.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/integral_token.cpp.i
-.PHONY : token/integral_token.cpp.i
-
-token/integral_token.s: token/integral_token.cpp.s
-.PHONY : token/integral_token.s
-
-# target to generate assembly for a file
-token/integral_token.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/integral_token.cpp.s
-.PHONY : token/integral_token.cpp.s
-
-token/number_token.o: token/number_token.cpp.o
-.PHONY : token/number_token.o
-
-# target to build an object file
-token/number_token.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/number_token.cpp.o
-.PHONY : token/number_token.cpp.o
-
-token/number_token.i: token/number_token.cpp.i
-.PHONY : token/number_token.i
+token/integer_token.i: token/integer_token.cpp.i
+.PHONY : token/integer_token.i
 
 # target to preprocess a source file
-token/number_token.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/number_token.cpp.i
-.PHONY : token/number_token.cpp.i
+token/integer_token.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/integer_token.cpp.i
+.PHONY : token/integer_token.cpp.i
 
-token/number_token.s: token/number_token.cpp.s
-.PHONY : token/number_token.s
+token/integer_token.s: token/integer_token.cpp.s
+.PHONY : token/integer_token.s
 
 # target to generate assembly for a file
-token/number_token.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/number_token.cpp.s
-.PHONY : token/number_token.cpp.s
+token/integer_token.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/integer_token.cpp.s
+.PHONY : token/integer_token.cpp.s
 
 token/string_token.o: token/string_token.cpp.o
 .PHONY : token/string_token.o
@@ -1532,6 +1460,30 @@ token/token_type.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/token_type.cpp.s
 .PHONY : token/token_type.cpp.s
 
+token/token_types.o: token/token_types.cpp.o
+.PHONY : token/token_types.o
+
+# target to build an object file
+token/token_types.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/token_types.cpp.o
+.PHONY : token/token_types.cpp.o
+
+token/token_types.i: token/token_types.cpp.i
+.PHONY : token/token_types.i
+
+# target to preprocess a source file
+token/token_types.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/token_types.cpp.i
+.PHONY : token/token_types.cpp.i
+
+token/token_types.s: token/token_types.cpp.s
+.PHONY : token/token_types.s
+
+# target to generate assembly for a file
+token/token_types.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/token/token_types.cpp.s
+.PHONY : token/token_types.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1628,12 +1580,6 @@ help:
 	@echo "... ast/while_stmnt.o"
 	@echo "... ast/while_stmnt.i"
 	@echo "... ast/while_stmnt.s"
-	@echo "... error/cion_error_handler.o"
-	@echo "... error/cion_error_handler.i"
-	@echo "... error/cion_error_handler.s"
-	@echo "... error/cion_error_types.o"
-	@echo "... error/cion_error_types.i"
-	@echo "... error/cion_error_types.s"
 	@echo "... error/cion_exception.o"
 	@echo "... error/cion_exception.i"
 	@echo "... error/cion_exception.s"
@@ -1649,6 +1595,9 @@ help:
 	@echo "... error/error_type.o"
 	@echo "... error/error_type.i"
 	@echo "... error/error_type.s"
+	@echo "... error/error_types.o"
+	@echo "... error/error_types.i"
+	@echo "... error/error_types.s"
 	@echo "... error/lexer_error.o"
 	@echo "... error/lexer_error.i"
 	@echo "... error/lexer_error.s"
@@ -1661,9 +1610,6 @@ help:
 	@echo "... error/warning_type.o"
 	@echo "... error/warning_type.i"
 	@echo "... error/warning_type.s"
-	@echo "... lexer/cion_lexer.o"
-	@echo "... lexer/cion_lexer.i"
-	@echo "... lexer/cion_lexer.s"
 	@echo "... lexer/lexer.o"
 	@echo "... lexer/lexer.i"
 	@echo "... lexer/lexer.s"
@@ -1676,9 +1622,9 @@ help:
 	@echo "... parser/basic_ast_visitor.o"
 	@echo "... parser/basic_ast_visitor.i"
 	@echo "... parser/basic_ast_visitor.s"
-	@echo "... parser/cion_parser.o"
-	@echo "... parser/cion_parser.i"
-	@echo "... parser/cion_parser.s"
+	@echo "... parser/parser.o"
+	@echo "... parser/parser.i"
+	@echo "... parser/parser.s"
 	@echo "... parser/pre_post_traverser.o"
 	@echo "... parser/pre_post_traverser.i"
 	@echo "... parser/pre_post_traverser.s"
@@ -1697,15 +1643,12 @@ help:
 	@echo "... token/char_token.o"
 	@echo "... token/char_token.i"
 	@echo "... token/char_token.s"
-	@echo "... token/cion_token_types.o"
-	@echo "... token/cion_token_types.i"
-	@echo "... token/cion_token_types.s"
-	@echo "... token/integral_token.o"
-	@echo "... token/integral_token.i"
-	@echo "... token/integral_token.s"
-	@echo "... token/number_token.o"
-	@echo "... token/number_token.i"
-	@echo "... token/number_token.s"
+	@echo "... token/float_token.o"
+	@echo "... token/float_token.i"
+	@echo "... token/float_token.s"
+	@echo "... token/integer_token.o"
+	@echo "... token/integer_token.i"
+	@echo "... token/integer_token.s"
 	@echo "... token/string_token.o"
 	@echo "... token/string_token.i"
 	@echo "... token/string_token.s"
@@ -1718,6 +1661,9 @@ help:
 	@echo "... token/token_type.o"
 	@echo "... token/token_type.i"
 	@echo "... token/token_type.s"
+	@echo "... token/token_types.o"
+	@echo "... token/token_types.i"
+	@echo "... token/token_types.s"
 .PHONY : help
 
 

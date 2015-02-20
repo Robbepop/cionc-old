@@ -1,6 +1,6 @@
-#include "cion/parser/cion_parser.hpp"
+#include "cion/parser/parser.hpp"
 
-#include "cion/token/cion_token_types.hpp"
+#include "cion/token/token_types.hpp"
 #include "cion/error/error_handler.hpp"
 #include "cion/error/lexer_exception.hpp"
 #include "cion/error/parser_exception.hpp"
@@ -8,6 +8,7 @@
 #include "cion/ast/all.hpp"
 
 #include <chrono>
+#include <cassert>
 
 //#define DEBUG
 #ifdef DEBUG
@@ -26,12 +27,12 @@ namespace cion {
 //// Constructor
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	CionParser::CionParser(
+	Parser::Parser(
 		TokenStream & token_stream,
 		ErrorHandler const& error_handler
 	) :
 		m_token_stream{token_stream},
-		ctts{CionTokenTypes::get_instance()},
+		ctts{TokenTypes::instance()},
 		m_error_handler{error_handler}
 	{}
 
@@ -39,15 +40,15 @@ namespace cion {
 //// Helper Functions
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	Token const& CionParser::previous_token() const {
+	Token const& Parser::previous_token() const {
 		return *m_previous_token;
 	}
 
-	Token const& CionParser::current_token() const {
+	Token const& Parser::current_token() const {
 		return *m_current_token;
 	}
 
-	Token const& CionParser::next_token() {
+	Token const& Parser::next_token() {
 		m_previous_token = std::move(m_current_token);
 		if (m_peeked_tokens.empty()) {
 			m_current_token = m_token_stream.next_token();
@@ -58,23 +59,23 @@ namespace cion {
 		return *m_current_token;
 	}
 
-	Token const& CionParser::peek_token() {
+	Token const& Parser::peek_token() {
 		m_peeked_tokens.push(m_token_stream.next_token());
 		return *(m_peeked_tokens.back());
 	}
 
-	Token const& CionParser::expect(TokenType const& token_type) {
+	Token const& Parser::expect(TokenType const& token_type) {
 		if (current_token().get_type() != token_type) {
 			throw parser_exception(
 				m_error_handler.file_name(),
 				current_token().get_source_location(),
-				"expected token type: " + token_type.get_name() + "\n");
+				"expected token type: " + token_type.name() + "\n");
 		}
 		next_token(); // consume token with the expected type
 		return previous_token();
 	}
 
-	bool CionParser::optional(TokenType const& token_type) {
+	bool Parser::optional(TokenType const& token_type) {
 		if (current_token().get_type() == token_type) {
 			next_token(); // consume the optional token
 			return true;
@@ -86,7 +87,7 @@ namespace cion {
 //// Recursive Descendent Parsing Functions
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	bool CionParser::is_binary_op(TokenType const& tt) {
+	bool Parser::is_binary_op(TokenType const& tt) {
 		return
 			tt == ctts.op_pipe_pipe ||
 			tt == ctts.op_and_and ||
@@ -109,7 +110,7 @@ namespace cion {
 			? true : false;
 	}
 
-	bool CionParser::is_assign_op(TokenType const& tt) {
+	bool Parser::is_assign_op(TokenType const& tt) {
 		return
 			tt == ctts.op_equals ||
 			tt == ctts.op_plus_equals ||
@@ -127,7 +128,7 @@ namespace cion {
 			? true : false;
 	}
 
-	bool CionParser::is_unary_op(TokenType const& tt) {
+	bool Parser::is_unary_op(TokenType const& tt) {
 		return
 			tt == ctts.op_tilde ||
 			tt == ctts.op_exclam_mark ||
@@ -142,7 +143,7 @@ namespace cion {
 //// Parsing functions for expressions and expression lists.
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	std::vector<std::unique_ptr<ast::Expr>> CionParser::parse_argument_list() {
+	std::vector<std::unique_ptr<ast::Expr>> Parser::parse_argument_list() {
 		std::vector<std::unique_ptr<ast::Expr>> expressions;
 
 		expressions.push_back(parse_expr());
@@ -154,11 +155,11 @@ namespace cion {
 		return expressions;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_expr() {
+	std::unique_ptr<ast::Expr> Parser::parse_expr() {
 		return parse_assignment_expr();
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_assignment_expr() {
+	std::unique_ptr<ast::Expr> Parser::parse_assignment_expr() {
 		auto lhs = parse_conditional_expr();
 
 		if        (optional(ctts.op_equals)) {
@@ -230,7 +231,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_conditional_expr() {
+	std::unique_ptr<ast::Expr> Parser::parse_conditional_expr() {
 		auto condition = parse_logical_or_expr();
 
 		if (optional(ctts.op_question_mark)) {
@@ -249,7 +250,7 @@ namespace cion {
 		return condition;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_logical_or_expr() {
+	std::unique_ptr<ast::Expr> Parser::parse_logical_or_expr() {
 		auto lhs = parse_logical_and_expr();
 
 		while (optional(ctts.op_pipe_pipe)) {
@@ -262,7 +263,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_logical_and_expr() {
+	std::unique_ptr<ast::Expr> Parser::parse_logical_and_expr() {
 		auto lhs = parse_bit_or_expr();
 
 		while (optional(ctts.op_and_and)) {
@@ -275,7 +276,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_bit_or_expr() {
+	std::unique_ptr<ast::Expr> Parser::parse_bit_or_expr() {
 		auto lhs = parse_bit_xor_expr();
 
 		while (optional(ctts.op_pipe)) {
@@ -288,7 +289,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_bit_xor_expr() {
+	std::unique_ptr<ast::Expr> Parser::parse_bit_xor_expr() {
 		auto lhs = parse_bit_and_expr();
 
 		while (optional(ctts.op_caret)) {
@@ -301,7 +302,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_bit_and_expr() {
+	std::unique_ptr<ast::Expr> Parser::parse_bit_and_expr() {
 		auto lhs = parse_equality_expr();
 
 		while (optional(ctts.op_and)) {
@@ -314,7 +315,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_equality_expr() {
+	std::unique_ptr<ast::Expr> Parser::parse_equality_expr() {
 		auto lhs = parse_relational_expr();
 
 		while (true) {
@@ -336,7 +337,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_relational_expr() {
+	std::unique_ptr<ast::Expr> Parser::parse_relational_expr() {
 		auto lhs = parse_bitshift_expr();
 
 		while (true) {
@@ -370,7 +371,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_bitshift_expr() {
+	std::unique_ptr<ast::Expr> Parser::parse_bitshift_expr() {
 		auto lhs = parse_additive_expr();
 
 		while (true) {
@@ -392,7 +393,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_additive_expr() {
+	std::unique_ptr<ast::Expr> Parser::parse_additive_expr() {
 		auto lhs = parse_multiplicative_expr();
 
 		while (true) {
@@ -414,7 +415,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_multiplicative_expr() {
+	std::unique_ptr<ast::Expr> Parser::parse_multiplicative_expr() {
 		auto lhs = parse_unary_expr();
 
 		while (true) {
@@ -442,7 +443,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_unary_expr() {
+	std::unique_ptr<ast::Expr> Parser::parse_unary_expr() {
 		if        (optional(ctts.op_tilde)) {
 			DEBUG_STDERR("parsed: BitNegateExpr");
 			return {std::make_unique<ast::BitNegateExpr>(parse_unary_expr())};
@@ -471,7 +472,7 @@ namespace cion {
 		return parse_postfix_expr();
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_postfix_expr() {
+	std::unique_ptr<ast::Expr> Parser::parse_postfix_expr() {
 		auto lhs = parse_primary_expr();
 
 		while (true) {
@@ -507,7 +508,7 @@ namespace cion {
 		return lhs;
 	}
 
-	std::unique_ptr<ast::Expr> CionParser::parse_primary_expr() {
+	std::unique_ptr<ast::Expr> Parser::parse_primary_expr() {
 		const auto tt = current_token().get_type();
 
 		// parse parenthesed expressions: '(' expr ')'
@@ -565,7 +566,7 @@ namespace cion {
 //// Parsing functions for custom and primitive types.
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	bool CionParser::is_start_of_builtin_int_type(TokenType const& tt) const {
+	bool Parser::is_start_of_builtin_int_type(TokenType const& tt) const {
 		return
 			tt == ctts.type_int ||
 			tt == ctts.type_int8 ||
@@ -580,7 +581,7 @@ namespace cion {
 			? true : false;
 	}
 
-	std::unique_ptr<ast::BuiltinIntType> CionParser::parse_builtin_int_type() {
+	std::unique_ptr<ast::BuiltinIntType> Parser::parse_builtin_int_type() {
 		using ptiw = ast::BuiltinIntType::Width;
 		const auto tt = current_token().get_type();
 		assert(is_start_of_builtin_int_type(tt));
@@ -604,7 +605,7 @@ namespace cion {
 		return std::make_unique<ast::BuiltinIntType>(is_signed, bit_width);
 	}
 
-	bool CionParser::is_start_of_builtin_float_type(TokenType const& tt) const {
+	bool Parser::is_start_of_builtin_float_type(TokenType const& tt) const {
 		return
 			tt == ctts.type_float ||
 			tt == ctts.type_float16 ||
@@ -613,7 +614,7 @@ namespace cion {
 			? true : false;
 	}
 
-	std::unique_ptr<ast::BuiltinFloatType> CionParser::parse_builtin_float_type() {
+	std::unique_ptr<ast::BuiltinFloatType> Parser::parse_builtin_float_type() {
 		using ptiw = ast::BuiltinFloatType::Width;
 		const auto tt = current_token().get_type();
 		assert(is_start_of_builtin_float_type(tt));
@@ -630,7 +631,7 @@ namespace cion {
 		return std::make_unique<ast::BuiltinFloatType>(bit_width);
 	}
 
-	std::unique_ptr<ast::Type> CionParser::parse_type() {
+	std::unique_ptr<ast::Type> Parser::parse_type() {
 		const auto tt = current_token().get_type();
 		if        (tt == ctts.type_bool) {
 			next_token();
@@ -661,7 +662,7 @@ namespace cion {
 //// Parse top level statements.
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	std::unique_ptr<ast::VarDecl> CionParser::parse_var_decl() {
+	std::unique_ptr<ast::VarDecl> Parser::parse_var_decl() {
 		expect(ctts.cmd_var);
 
 		auto var_name = expect(ctts.identifier).get_string();
@@ -690,7 +691,7 @@ namespace cion {
 			var_name, std::move(type), std::move(expr));
 	}
 
-	std::unique_ptr<ast::ParamDecl> CionParser::parse_param_decl() {
+	std::unique_ptr<ast::ParamDecl> Parser::parse_param_decl() {
 		auto param_name = expect(ctts.identifier).get_string();
 
 		expect(ctts.op_colon);
@@ -701,7 +702,7 @@ namespace cion {
 		return std::make_unique<ast::ParamDecl>(param_name, std::move(param_type));
 	}
 
-	std::vector<std::unique_ptr<ast::ParamDecl>> CionParser::parse_param_decl_list() {
+	std::vector<std::unique_ptr<ast::ParamDecl>> Parser::parse_param_decl_list() {
 		std::vector<std::unique_ptr<ast::ParamDecl>> params;
 
 		if (current_token().get_type() == ctts.identifier
@@ -717,7 +718,7 @@ namespace cion {
 		return params;
 	}
 
-	std::unique_ptr<ast::CompoundStmnt> CionParser::parse_compound_stmnt() {
+	std::unique_ptr<ast::CompoundStmnt> Parser::parse_compound_stmnt() {
 		expect(ctts.opening_brace);
 
 		std::vector<std::unique_ptr<ast::Stmnt>> statements;
@@ -731,7 +732,7 @@ namespace cion {
 		return std::make_unique<ast::CompoundStmnt>(std::move(statements));
 	}
 
-	std::unique_ptr<ast::FunctionDecl> CionParser::parse_function_decl() {
+	std::unique_ptr<ast::FunctionDecl> Parser::parse_function_decl() {
 		expect(ctts.cmd_function);
 
 		auto function_name = expect(ctts.identifier).get_string();
@@ -762,7 +763,7 @@ namespace cion {
 			std::move(function_body));
 	}
 
-	std::unique_ptr<ast::Decl> CionParser::parse_top_level_decl() {
+	std::unique_ptr<ast::Decl> Parser::parse_top_level_decl() {
 		DEBUG_STDERR("parsed: TopLevelDecl\n");
 
 		const auto tt = current_token().get_type();
@@ -782,7 +783,7 @@ namespace cion {
 			"expected top-level statement\n");
 	}
 
-	std::unique_ptr<ast::CompilationUnitDecl> CionParser::parse_compilation_unit_decl() {
+	std::unique_ptr<ast::CompilationUnitDecl> Parser::parse_compilation_unit_decl() {
 		std::vector<std::unique_ptr<ast::Decl>> top_level_decls;
 		while (current_token().get_type() != TokenType::eof) {
 			top_level_decls.push_back(parse_top_level_decl());
@@ -796,7 +797,7 @@ namespace cion {
 //// Parse normal statements.
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	std::unique_ptr<ast::WhileStmnt> CionParser::parse_while_stmnt() {
+	std::unique_ptr<ast::WhileStmnt> Parser::parse_while_stmnt() {
 		expect(ctts.cmd_while);
 
 		auto condition = parse_expr();
@@ -807,7 +808,7 @@ namespace cion {
 			std::move(condition), std::move(body));
 	}
 
-	std::unique_ptr<ast::IfStmnt> CionParser::parse_if_stmnt() {
+	std::unique_ptr<ast::IfStmnt> Parser::parse_if_stmnt() {
 		expect(ctts.cmd_if);
 
 		auto condition = parse_expr();
@@ -827,7 +828,7 @@ namespace cion {
 			std::move(condition), std::move(then_stmnt));
 	}
 
-	std::unique_ptr<ast::ReturnStmnt> CionParser::parse_return_stmnt() {
+	std::unique_ptr<ast::ReturnStmnt> Parser::parse_return_stmnt() {
 		expect(ctts.cmd_return);
 		auto return_expr = current_token().get_type() != ctts.op_semi_colon
 			? parse_expr()
@@ -836,30 +837,30 @@ namespace cion {
 		return std::make_unique<ast::ReturnStmnt>(std::move(return_expr));
 	}
 
-	std::unique_ptr<ast::BreakStmnt> CionParser::parse_break_stmnt() {
+	std::unique_ptr<ast::BreakStmnt> Parser::parse_break_stmnt() {
 		expect(ctts.cmd_break);
 		return std::make_unique<ast::BreakStmnt>();
 	}
 
-	std::unique_ptr<ast::ContinueStmnt> CionParser::parse_continue_stmnt() {
+	std::unique_ptr<ast::ContinueStmnt> Parser::parse_continue_stmnt() {
 		expect(ctts.cmd_continue);
 		return std::make_unique<ast::ContinueStmnt>();
 	}
 
-	std::unique_ptr<ast::ExprStmnt> CionParser::parse_expr_stmnt() {
+	std::unique_ptr<ast::ExprStmnt> Parser::parse_expr_stmnt() {
 		auto expr = parse_expr();
 		expect(ctts.op_semi_colon);
 		return std::make_unique<ast::ExprStmnt>(std::move(expr));
 	}
 
-	bool CionParser::is_start_of_decl_stmnt(TokenType const& tt) const {
+	bool Parser::is_start_of_decl_stmnt(TokenType const& tt) const {
 		return
 			tt == ctts.cmd_var ||
 			tt == ctts.cmd_function
 			? true : false;
 	}
 
-	std::unique_ptr<ast::DeclStmnt> CionParser::parse_decl_stmnt() {
+	std::unique_ptr<ast::DeclStmnt> Parser::parse_decl_stmnt() {
 		const auto tt = current_token().get_type();
 		assert(is_start_of_decl_stmnt(tt));
 		using decl = std::unique_ptr<ast::Decl>;
@@ -868,7 +869,7 @@ namespace cion {
 		);
 	}
 
-	std::unique_ptr<ast::Stmnt> CionParser::parse_stmnt() {
+	std::unique_ptr<ast::Stmnt> Parser::parse_stmnt() {
 		using stmnt = std::unique_ptr<ast::Stmnt>;
 		const auto tt = current_token().get_type();
 		return
@@ -886,15 +887,17 @@ namespace cion {
 //// Public Parsing Interface Function
 //////////////////////////////////////////////////////////////////////////////////////////
 
-	std::unique_ptr<ast::CompilationUnitDecl> CionParser::parse() {
+	std::unique_ptr<ast::CompilationUnitDecl> Parser::parse() {
 		DEBUG_STDERR("parser init\n");
 		try {
 			next_token();
 			return parse_compilation_unit_decl();
 		} catch (lexer_exception const& e) {
-			std::cerr << "lexer exception thrown: " << e.message() << "\n";
+			//std::cerr << "lexer exception thrown: " << e.message() << "\n";
+			DEBUG_STDERR("lexer exception thrown: " << e.message() << "\n");
 		} catch (parser_exception const& e) {
-			std::cerr << "parser exception thrown in " << e.message() << "\n";
+			DEBUG_STDERR("parser exception thrown in " << e.message() << "\n");
+			//std::cerr << "parser exception thrown in " << e.message() << "\n";
 		}
 		std::exit(EXIT_FAILURE);
 	}

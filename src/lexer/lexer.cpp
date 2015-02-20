@@ -1,296 +1,487 @@
 #include "cion/lexer/lexer.hpp"
+#include "cion/token/token_types.hpp"
+#include "cion/error/error_types.hpp"
 #include "cion/token/token_fabric.hpp"
-#include "cion/error/cion_error_types.hpp"
-#include "cion/error/lexer_exception.hpp"
 
-#include <exception>
-#include <memory>
 #include <cassert>
-
-#define DEBUG
-#ifdef DEBUG
+#include <cstdint>
 #include <iostream>
-#define DEBUG_STDOUT(x) (std::cout << x)
-#define DEBUG_STDERR(x) (std::cerr << x)
-#undef DEBUG
-#else
-#define DEBUG_STDOUT(x)
-#define DEBUG_STDERR(x)
-#endif
+#include <string>
+#include <algorithm>
 
 namespace cion {
-
-//////////////////////////////////////////////////////////////////////////////////////////
-/// LEXER CONSTRUCTORS
-//////////////////////////////////////////////////////////////////////////////////////////
-
 	Lexer::Lexer(
-		std::istream & inputstream,
-		std::vector<TokenType> const& matchable_tokens,
-		ErrorHandler const& error_handler
-	) :
-		m_input{inputstream},
-		m_matchable_tokens{matchable_tokens},
-		m_error_handler{error_handler}
+		std::istream & p_input,
+		ErrorHandler & p_error_handler
+	):
+		m_input{p_input},
+		m_error_handler{p_error_handler},
+		m_buffer{""},
+		m_keywords{},
+		m_start_loc{1,0},
+		m_end_loc_0{1,0},
+		m_end_loc_1{1,0},
+		m_cur_end_loc{std::addressof(m_end_loc_0)},
+		m_prv_end_loc{std::addressof(m_end_loc_1)},
+		m_cur_char{'\0'},
+		ctts{TokenTypes::instance()},
+		errors{ErrorTypes::instance()}
 	{
-		m_cur = std::addressof(m_it_data[0]);
-		m_last = std::addressof(m_it_data[1]);
+		next_char();
+		add_keyword("var", ctts.cmd_var);
+		add_keyword("function", ctts.cmd_function);
+
+		add_keyword("true", ctts.lit_bool);
+		add_keyword("false", ctts.lit_bool);
+
+		add_keyword("void", ctts.type_void);
+		add_keyword("bool", ctts.type_bool);
+		add_keyword("char", ctts.type_char);
+
+		add_keyword("int", ctts.type_int);
+		add_keyword("int8", ctts.type_int8);
+		add_keyword("int16", ctts.type_int16);
+		add_keyword("int32", ctts.type_int32);
+		add_keyword("int64", ctts.type_int64);
+		add_keyword("uint", ctts.type_uint);
+		add_keyword("uint8", ctts.type_uint8);
+		add_keyword("uint16", ctts.type_uint16);
+		add_keyword("uint32", ctts.type_uint32);
+		add_keyword("uint64", ctts.type_uint64);
+		add_keyword("float", ctts.type_float);
+		add_keyword("float16", ctts.type_float16);
+		add_keyword("float32", ctts.type_float32);
+		add_keyword("float64", ctts.type_float64);
+
+		add_keyword("if", ctts.cmd_if);
+		add_keyword("else", ctts.cmd_else);
+		add_keyword("while", ctts.cmd_while);
+
+		add_keyword("break", ctts.cmd_break);
+		add_keyword("continue", ctts.cmd_continue);
+		add_keyword("return", ctts.cmd_return);
 	}
 
-//////////////////////////////////////////////////////////////////////////////////////////
-/// LEXER ITERATION DATA METHODS
-//////////////////////////////////////////////////////////////////////////////////////////
-
-	bool Lexer::IterationData::buffers_empty() const {
-		return m_partial_matches.empty() && m_full_matches_greedy.empty() && m_full_matches_non_greedy.empty();
+	void Lexer::add_keyword(std::string const& p_key, TokenType const& p_tt) {
+		assert(m_keywords.insert({p_key, p_tt}).second);
 	}
 
-	std::vector<TokenType> & Lexer::IterationData::get_partial_matches() {
-		return m_partial_matches;
+	bool Lexer::is_digit(char p_char) const {
+		return p_char >= '0' && p_char <= '9';
 	}
 
-	std::vector<TokenType> & Lexer::IterationData::get_full_matches_greedy() {
-		return m_full_matches_greedy;
+	bool Lexer::is_digit() const {
+		return is_digit(cur_char());
 	}
 
-	std::vector<TokenType> & Lexer::IterationData::get_full_matches_non_greedy() {
-		return m_full_matches_non_greedy;
+	bool Lexer::is_non_zero_digit(char p_char) const {
+		return p_char >= '1' && p_char <= '9';
 	}
 
-	void Lexer::IterationData::clear_buffers() {
-		m_partial_matches.clear();
-		m_full_matches_greedy.clear();
-		m_full_matches_non_greedy.clear();
+	bool Lexer::is_non_zero_digit() const {
+		return is_non_zero_digit(cur_char());
 	}
 
-	SourceLocation const& Lexer::IterationData::get_source_location() const {
-		return m_source_location;
+	bool Lexer::is_alpha(char p_char) const {
+		return (p_char >= 'a' && p_char <= 'z')
+			|| (p_char >= 'A' && p_char <= 'Z')
+			|| (p_char == '_');
 	}
 
-	SourceLocation & Lexer::IterationData::get_source_location() {
-		return m_source_location;
+	bool Lexer::is_alpha() const {
+		return is_alpha(cur_char());
 	}
 
-//////////////////////////////////////////////////////////////////////////////////////////
-/// LEXER PRIVATE METHODS
-//////////////////////////////////////////////////////////////////////////////////////////
-
-	void Lexer::check_match(TokenType const& token_type) {
-		static boost::match_results<std::string::const_iterator> what;
-		if (boost::regex_match(m_buffer, what, token_type.get_regex(), boost::match_default | boost::match_partial)) {
-			if (what[0].matched) {
-				if (token_type.get_match_type() == TokenType::MatchType::greedy) {
-					//DEBUG_STDERR("\tcheck_match: " << token_type.get_name() << " (full, greedy)\n");
-					m_cur->get_full_matches_greedy().push_back(token_type);
-				} else {
-					//DEBUG_STDERR("\tcheck_match: " << token_type.get_name() << " (full, non-greedy)\n");
-					m_cur->get_full_matches_non_greedy().push_back(token_type);
-				}
-			} else {
-				//DEBUG_STDERR("\tcheck_match: " << token_type.get_name() << " (partial)\n");
-				m_cur->get_partial_matches().push_back(token_type);
-			}
-		}
+	bool Lexer::is_alpha_num(char p_char) const {
+		return is_alpha(p_char) || is_digit(p_char);
 	}
 
-	void Lexer::check_matches() {
-		//DEBUG_STDERR("check_matches: ");
-		if (buffers_empty()) {
-			//DEBUG_STDERR("check_matches: full check.");
-			for (auto&& token_type : m_matchable_tokens) {
-				check_match(token_type);
-			}
+	bool Lexer::is_alpha_num() const {
+		return is_alpha_num(cur_char());
+	}
+
+	bool Lexer::is_keyword(std::string p_word) const {
+		return m_keywords.find(p_word) != m_keywords.end();
+	}
+
+	bool Lexer::is_keyword() const {
+		return is_keyword(valid_buffer());
+	}
+
+	SourceLocation & Lexer::cur_end_loc() {
+		return *m_cur_end_loc;
+	}
+
+	SourceLocation & Lexer::prv_end_loc() {
+		return *m_prv_end_loc;
+	}
+
+	void Lexer::update_loc() {
+		std::swap(m_cur_end_loc, m_prv_end_loc);
+		if (cur_char() == '\n') {
+			cur_end_loc().col() = 0;
+			cur_end_loc().line() = prv_end_loc().line() + 1;
 		} else {
-			//DEBUG_STDERR("check_matches: only checked last buffers.");
-			for (auto&& token_type : m_last->get_partial_matches()) {
-				check_match(token_type);
-			}
-			for (auto&& token_type : m_last->get_full_matches_greedy()) {
-				//check_match(token_type);
-				if (boost::regex_match(m_buffer, token_type.get_regex())) {
-					//DEBUG_STDERR("\tcheck_match: " << token_type.get_name() << " (full, greedy)\n");
-					m_cur->get_full_matches_greedy().push_back(token_type);
-				}
-			}
+			cur_end_loc().col() = prv_end_loc().col() + 1;
+			cur_end_loc().line() = prv_end_loc().line();
 		}
 	}
 
-	bool Lexer::buffers_empty() {
-		return m_cur->buffers_empty() && m_last->buffers_empty();
+	char Lexer::next_char() {
+		m_input.get(m_cur_char);
+		m_buffer.push_back(cur_char());
+		update_loc();
+		return cur_char();
 	}
 
-	void Lexer::swap_buffers() {
-		//DEBUG_STDERR("swap_buffers: start\n");
-		std::swap(m_cur, m_last);
-		m_cur->get_source_location() = m_last->get_source_location();
-		//DEBUG_STDERR("swap_buffers: end\n");
+	char Lexer::next_char_ignore() {
+		m_input.get(m_cur_char);
+		update_loc();
+		return cur_char();
 	}
 
-	void Lexer::clear_cur_buffers() {
-		//DEBUG_STDERR("clear_cur_buffers: start\n");
-		m_cur->clear_buffers();
-		//DEBUG_STDERR("clear_cur_buffers: end\n");
+	std::string Lexer::valid_buffer() const {
+		return m_buffer.substr(0, m_buffer.length() - 1);
 	}
 
-	void Lexer::clear_buffers() {
-		//DEBUG_STDERR("clear_buffers: start\n");
-		m_buffer.clear();
-		m_cur->clear_buffers();
-		m_last->clear_buffers();
-		//DEBUG_STDERR("clear_buffers: end\n");
+	char Lexer::cur_char() const {
+		return m_cur_char;
 	}
 
-	void Lexer::update_lc_numbers() {
-		//DEBUG_STDERR("update_lc_numbers: start\n");
-		if (m_cur_symbol == '\n') {
-			m_cur->get_source_location().line() =
-				m_last->get_source_location().line() + 1;
-			m_cur->get_source_location().col() = 1;
-		} else {
-			m_cur->get_source_location().col() =
-				m_last->get_source_location().col() + 1;
-		}
-		//DEBUG_STDERR("update_lc_numbers: end\n);
+	std::unique_ptr<Token> Lexer::make_token(TokenType const& p_tt) {
+		auto token =
+			TokenFabric::make_token(p_tt, m_start_loc, cur_end_loc(), valid_buffer());
+
+		//std::cout << "make_token() = " << p_tt.get_name() << ", " << valid_buffer() <<
+		//	" (" << m_start_loc.line() << "," << m_start_loc.col() << ") -> " <<
+		//	"(" << prv_end_loc().line() << "," << prv_end_loc().col() << ")\n";
+
+		m_buffer = m_buffer.back();
+		return token;
 	}
 
-	void Lexer::step_back() {
-		m_input.unget();
-		m_cur->get_source_location() = m_last->get_source_location();
-		m_buffer.pop_back();
+	std::unique_ptr<Token> Lexer::make_token_next(TokenType const& p_tt) {
+		next_char();
+		return make_token(p_tt);
 	}
 
-	std::unique_ptr<Token> Lexer::make_error_token(
-		ErrorType type,
-		SourceLocation const& start_loc
+	std::unique_ptr<Token> Lexer::make_error(
+		ErrorType p_error_type,
+		std::string const& p_message
 	) {
-		const auto loc = m_cur->get_source_location();
-		m_error_handler.error(type, loc, m_buffer);
-		return TokenFabric::make_token(TokenType::error, start_loc, loc);
+		m_error_handler.error(p_error_type, m_start_loc, p_message);
+		return make_token(TokenType::error);
 	}
 
-//////////////////////////////////////////////////////////////////////////////////////////
-/// LEXER PUBLIC METHODS
-//////////////////////////////////////////////////////////////////////////////////////////
+	std::unique_ptr<Token> Lexer::make_error(
+		ErrorType p_error_type
+	) {
+		return make_error(p_error_type, valid_buffer());
+	}
+
+	std::unique_ptr<Token> Lexer::make_error_next(
+		ErrorType p_error_type,
+		std::string const& p_message
+	) {
+		next_char();
+		return make_error(p_error_type, p_message);
+	}
+
+	std::unique_ptr<Token> Lexer::make_error_next(
+		ErrorType p_error_type
+	) {
+		return make_error_next(p_error_type, valid_buffer());
+	}
 
 	std::unique_ptr<Token> Lexer::next_token() {
-		//assert(m_buffer.size() == 0);
-		//assert(m_cur->buffers_empty());
-		//assert(m_last->buffers_empty());
-
-		auto const& errors = CionErrorTypes::get_instance();
-		auto start_loc = SourceLocation{0, 0};
-		auto start_loc_initialized = false;
-
-		// return eof token if inputstream is empty.
+		m_start_loc = cur_end_loc();
 		if (m_input.eof()) {
-			DEBUG_STDERR("next_token: reached eof -> return eof token\n");
-			return TokenFabric::make_token(
-				TokenType::eof, start_loc, m_cur->get_source_location());
+			return make_token(TokenType::eof);
 		}
+		switch (cur_char()) {
+			// handle case for eof token
+			case -1: return make_token(TokenType::eof);
 
-		// empty all match buffers
-		clear_buffers();
+			// skip whitespace
+			case ' ':
+			case '\r':
+			case '\n':
+			case '\t':
+				m_buffer.pop_back();
+				next_char();
+				return next_token();
 
-		// read new characters from input stream and check them against
-		// the token type's regexes for partial and full match.
-		while (m_input.get(m_cur_symbol)) {
-			// update buffer, swap match buffers and clear current match buffers
-			m_buffer += m_cur_symbol;
-			swap_buffers();
-			clear_cur_buffers();
-			//DEBUG_STDERR("\tnext_token - buffer = \"" << m_buffer << "\"\n");
+			// parens, brackets and braces
+			case '(': return make_token_next(ctts.opening_paren);
+			case '[': return make_token_next(ctts.opening_brack);
+			case '{': return make_token_next(ctts.opening_brace);
+			case ')': return make_token_next(ctts.closing_paren);
+			case ']': return make_token_next(ctts.closing_brack);
+			case '}': return make_token_next(ctts.closing_brace);
 
-			// count line and column numbers
-			update_lc_numbers();
-			if (!start_loc_initialized) {
-				start_loc = m_cur->get_source_location();
-			}
+			// tokens which aren't a prefix of any other token type
+			case '?': return make_token_next(ctts.op_question_mark);
+			case ';': return make_token_next(ctts.op_semi_colon);
+			case ':': return make_token_next(ctts.op_colon); // no op_colon_colon !
+			case ',': return make_token_next(ctts.op_comma);
 
-			// check for matches with updated buffer
-			check_matches();
-
-			const auto count_partial = m_cur->get_partial_matches().size();
-			const auto count_greedy = m_cur->get_full_matches_greedy().size();
-			const auto count_non_greedy = m_cur->get_full_matches_non_greedy().size();
-
-			//DEBUG_STDERR("\tnext_token: count_partial = " << count_partial << "\n");
-			//DEBUG_STDERR("\tnext_token: count_greedy = " << count_greedy << "\n");
-			//DEBUG_STDERR("\tnext_token: count_non_greedy = " << count_non_greedy << "\n");
-
-			if (count_partial > 0 || count_greedy > 0) continue;
-
-			if (count_non_greedy == 1) {
-				return TokenFabric::make_token(
-					m_cur->get_full_matches_non_greedy()[0],
-					start_loc, m_cur->get_source_location(),
-					m_buffer);
-			}
-			if (count_non_greedy == 0) {
-				const auto count_last_greedy =
-					m_last->get_full_matches_greedy().size();
-				const auto count_last_non_greedy =
-					m_last->get_full_matches_non_greedy().size();
-				if (count_last_non_greedy == 1) {
-					step_back();
-					return TokenFabric::make_token(
-						m_last->get_full_matches_non_greedy()[0],
-						start_loc, m_last->get_source_location(),
-						m_buffer);
+			// operator + / ++ / +=
+			case '+':
+				switch (next_char()) {
+					case '+': return make_token_next(ctts.op_plus_plus);
+					case '=': return make_token_next(ctts.op_plus_equals);
+					default : return make_token(ctts.op_plus);
 				}
-				if (count_last_greedy == 1) {
-					step_back();
-					return TokenFabric::make_token(
-						m_last->get_full_matches_greedy()[0],
-						start_loc, m_last->get_source_location(),
-						m_buffer);
+
+			// operator - / -- / -= / ->
+			case '-':
+				switch (next_char()) {
+					case '-': return make_token_next(ctts.op_minus_minus);
+					case '=': return make_token_next(ctts.op_minus_equals);
+					case '>': return make_token_next(ctts.op_arrow);
+					default : return make_token(ctts.op_minus);
 				}
-				if (count_last_greedy == 0 || count_last_non_greedy == 0) {
-					DEBUG_STDERR("throw error_token_read since no matching token was found. (1)\n");
-					return make_error_token(errors.unknown_token_type, start_loc);
+
+			// operator * / *=
+			case '*':
+				switch (next_char()) {
+					case '=': return make_token_next(ctts.op_star_equals);
+					default : return make_token(ctts.op_star);
 				}
-				if (count_last_non_greedy >= 2) {
-					DEBUG_STDERR("throw ambigous_token_read since multiple same-priority matches were found. (1)\n");
-					throw lexer_exception(
-						m_error_handler.file_name(),
-						m_last->get_source_location(),
-						m_buffer);
+
+			// operator / and /= aswell as line-comment and multi-line comment
+			case '/':
+				switch (next_char()) {
+					case '=': return make_token_next(ctts.op_slash_equals);
+					case '/': return scan_line_comment();
+					case '*': return scan_comment();
+					default : return make_token(ctts.op_slash);
 				}
-			}
+
+			// operator % / %=
+			case '%':
+				switch (next_char()) {
+					case '=': return make_token_next(ctts.op_percent_equals);
+					default : return make_token(ctts.op_percent);
+				}
+
+			// operator ^ / ^=
+			case '^':
+				switch (next_char()) {
+					case '=': return make_token_next(ctts.op_caret_equals);
+					default : return make_token(ctts.op_caret);
+				}
+
+			// operator ~ / ~=
+			case '~':
+				switch (next_char()) {
+					case '=': return make_token_next(ctts.op_tilde_equals);
+					default : return make_token(ctts.op_tilde);
+				}
+
+			// operator ! / !=
+			case '!':
+				switch (next_char()) {
+					case '=': return make_token_next(ctts.op_not_equals);
+					default : return make_token(ctts.op_exclam_mark);
+				}
+
+			// operator = / ==
+			case '=':
+				switch (next_char()) {
+					case '=': return make_token_next(ctts.op_equals_equals);
+					default : return make_token(ctts.op_equals);
+				}
+
+			// operator & / &= / && / &&=
+			case '&':
+				switch (next_char()) {
+					case '=': return make_token_next(ctts.op_and_equals);
+					case '&':
+						switch (next_char()) {
+							case '=': return make_token_next(ctts.op_and_and_equals);
+							default : return make_token(ctts.op_and_and);
+						}
+					default : return make_token(ctts.op_and);
+				}
+
+			// operator | / |= / || / ||=
+			case '|':
+				switch (next_char()) {
+					case '=': return make_token_next(ctts.op_pipe_equals);
+					case '|':
+						switch (next_char()) {
+							case '=': return make_token_next(ctts.op_pipe_pipe_equals);
+							default : return make_token(ctts.op_pipe_pipe);
+						}
+					default : return make_token(ctts.op_pipe);
+				}
+
+			// operator < / <= / << / <<=
+			case '<':
+				switch (next_char()) {
+					case '=': return make_token_next(ctts.op_less_equals);
+					case '<':
+						switch (next_char()) {
+							case '=': return make_token_next(ctts.op_left_left_equals);
+							default : return make_token(ctts.op_left_left);
+						}
+					default : return make_token(ctts.op_less_than);
+				}
+
+			// operator > / >= / >> / >>=
+			case '>':
+				switch (next_char()) {
+					case '=': return make_token_next(ctts.op_greater_equals);
+					case '>':
+						switch (next_char()) {
+							case '=': return make_token_next(ctts.op_right_right_equals);
+							default : return make_token(ctts.op_right_right);
+						}
+					default : return make_token(ctts.op_greater_than);
+				}
+
+			// parse char literal
+			case '\'': return scan_char();
+
+			// parse string literal
+			case '\"': return scan_string();
+
+			// parse identifier or number
+			default:
+				if (is_alpha()) {
+					return scan_identifier();
+				} else if (is_digit()) {
+					return scan_number();
+				}
 		}
-
-		if (m_input.eof()) {
-			const auto count_partial = m_cur->get_partial_matches().size();
-			const auto count_greedy = m_cur->get_full_matches_greedy().size();
-			const auto count_non_greedy = m_cur->get_full_matches_non_greedy().size();
-			if (count_non_greedy == 1) {
-				return TokenFabric::make_token(
-					m_cur->get_full_matches_non_greedy()[0],
-					start_loc, m_cur->get_source_location(),
-					m_buffer);
-			}
-			if (count_greedy == 1) {
-				return TokenFabric::make_token(
-					m_cur->get_full_matches_greedy()[0],
-					start_loc, m_cur->get_source_location(),
-					m_buffer);
-			}
-			if (count_greedy >= 2 || count_non_greedy >= 2) {
-				DEBUG_STDERR("throw ambigous_token_read since multiple same-priority matches were found. (2)\n");
-				throw lexer_exception(
-					m_error_handler.file_name(),
-					m_cur->get_source_location(),
-					m_buffer);
-			}
-			if (count_partial > 0) {
-				DEBUG_STDERR("throw error_token_read since no matching token was found. (2)\n");
-				return make_error_token(errors.unknown_token_type, start_loc);
-			}
-			return TokenFabric::make_token(TokenType::eof, start_loc, m_cur->get_source_location());
-		}
-
-		// since no constraint has fit to any buffer set-up above
-		// it is safe to assume that the read token was errornous.
-		DEBUG_STDERR("throw error_token_read since no matching token was found. (3)\n");
-		return make_error_token(errors.unknown_token_type, start_loc);
+		return make_error_next(errors.unknown_token_type);
 	}
-}
+
+	std::unique_ptr<Token> Lexer::scan_line_comment() {
+		assert(cur_char() == '/');
+		next_char_ignore();
+		while (cur_char() != '\r' && cur_char() != '\n') {
+			next_char_ignore();
+		}
+		m_buffer.clear();
+		next_char();
+		return next_token();
+	}
+
+	std::unique_ptr<Token> Lexer::scan_comment() {
+		assert(cur_char() == '*');
+		next_char_ignore();
+		while (true) {
+			if (cur_char() == '*') {
+				if (next_char_ignore() == '/') {
+					m_buffer.clear();
+					next_char();
+					return next_token();
+				}
+			} else {
+				next_char_ignore();
+			}
+		}
+	}
+
+	std::unique_ptr<Token> Lexer::scan_char() {
+		assert(cur_char() == '\'');
+		next_char();
+		while (cur_char() != '\n' && cur_char() != '\r' && cur_char() != '\'') {
+			next_char();
+		}
+		if (cur_char() == '\'') {
+			return make_token_next(ctts.lit_char);
+		}
+		return make_error(errors.broken_char_literal);
+	}
+
+	std::unique_ptr<Token> Lexer::scan_string() {
+		assert(cur_char() == '\"');
+		next_char();
+		while (cur_char() != '\n' && cur_char() != '\r' && cur_char() != '\"') {
+			next_char();
+		}
+		if (cur_char() == '\"') {
+			return make_token_next(ctts.lit_string);
+		}
+		return make_error(errors.broken_string_literal);
+	}
+
+	std::unique_ptr<Token> Lexer::scan_number() {
+		assert(is_digit());
+
+		// number sequence begins with [1-9]
+		if (is_non_zero_digit()) {
+			while (is_digit()) {
+				next_char();
+			}
+			if (cur_char() == '.') {
+				return scan_float(false);
+			} else {
+				return make_token(ctts.lit_integral);
+			}
+
+		// number sequence begins with '0'
+		} else {
+			next_char();
+			if (cur_char() == '.') {
+				return scan_float(false);
+			} else if (is_digit()) {
+				return make_error(
+					errors.broken_number_literal,
+					"no digits may follow a '0' number literal");
+			} else {
+				return make_token(ctts.lit_integral);
+			}
+		}
+	}
+
+	std::unique_ptr<Token> Lexer::scan_float(bool p_req_digits) {
+		assert(cur_char() == '.');
+		next_char();
+		auto count_digits = uint32_t{0};
+		while (is_digit()) {
+			next_char(); ++count_digits;
+		}
+		if (p_req_digits && count_digits == 0) {
+			return make_error(
+				errors.broken_number_literal,
+				"since no digits are before the '.' there must be digits afterwards in a number literal.");
+		}
+		if (cur_char() == 'e') {
+			next_token();
+			if (cur_char() == '+' || cur_char() == '-') {
+				next_token();
+			} else {
+				return make_error(
+					errors.broken_number_literal,
+					"explicit exponent must be followed by a +/- sign");
+			}
+			if (is_non_zero_digit()) {
+				next_char();
+				while (is_digit()) {
+					next_char();
+				}
+			} else {
+				return make_error(
+					errors.broken_number_literal,
+					"explicit exponent must be followed by a valid number.");
+			}
+		}
+		return make_token(ctts.lit_number);
+	}
+
+	std::unique_ptr<Token> Lexer::scan_identifier() {
+		assert(is_alpha());
+		next_char();
+		while (is_alpha_num()) {
+			next_char();
+		}
+		if (is_keyword(valid_buffer())) {
+			return make_token(m_keywords.at(valid_buffer()));
+		}
+		return make_token(ctts.identifier);
+	}
+} // namespace cion

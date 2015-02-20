@@ -1,4 +1,6 @@
 #include "cion/ast/while_stmnt.hpp"
+#include "cion/ast/compound_stmnt.hpp"
+#include "cion/ast/expr.hpp"
 
 #include <utility>
 #include <cassert>

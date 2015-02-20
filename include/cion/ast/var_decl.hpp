@@ -2,14 +2,14 @@
 #define CION_AST_VAR_DECL_HEADER
 
 #include "cion/ast/decl.hpp"
-#include "cion/ast/expr.hpp"
-#include "cion/ast/type.hpp"
 
 #include <string>
 #include <memory>
 
 namespace cion {
 namespace ast {
+	class Expr;
+	class Type;
 
 	class VarDecl : public Decl {
 	public:

@@ -22,6 +22,7 @@ namespace cion {
 		std::string const& message() const noexcept;
 
 		virtual char const* what() const noexcept override;
+
 	private:
 		SourceLocation m_source_location;
 		std::string m_file_name;

@@ -1,29 +1,28 @@
 #ifndef CION_ERROR_HANDLER_HEADER
 #define CION_ERROR_HANDLER_HEADER
 
-#include "cion/error/error_type.hpp"
-#include "cion/error/warning_type.hpp"
-#include "cion/error/source_location.hpp"
-
 #include <string>
 
 namespace cion {
+	class ErrorType;
+	class WarningType;
+	class SourceLocation;
 
 	class ErrorHandler {
 	public:
-		ErrorHandler(std::string const& file_name);
+		ErrorHandler(std::string const& p_file_name);
 
 		std::string const& file_name() const;
 
-		virtual void error(
-			ErrorType const& type,
-			SourceLocation const& loc,
-			std::string const& message = "") const = 0;
+		void error(
+			ErrorType const& p_type,
+			SourceLocation const& p_loc,
+			std::string const& p_message = "") const;
 
-		virtual void warning(
-			WarningType const& type,
-			SourceLocation const& loc,
-			std::string const& message = "") const = 0;
+		void warning(
+			WarningType const& p_type,
+			SourceLocation const& p_loc,
+			std::string const& p_message = "") const;
 
 	private:
 		std::string m_file_name;

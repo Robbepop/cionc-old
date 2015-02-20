@@ -5,23 +5,13 @@
 #include <iostream>
 
 namespace cion {
-	LexerFilter::LexerFilter(TokenStream & input, std::vector<TokenType> const& invalid_tokens) :
-		m_input{input},
-		m_invalid_tokens{invalid_tokens}
-	{
-		m_invalid_tokens.push_back(TokenType::error);
-	}
-
-	bool LexerFilter::is_valid(TokenType token_type) {
-		const auto end = m_invalid_tokens.end();
-		return std::find(m_invalid_tokens.begin(), end, token_type) == end;
-	}
+	LexerFilter::LexerFilter(TokenStream & input) :
+		m_input{input}
+	{}
 
 	std::unique_ptr<Token> LexerFilter::next_token() {
 		auto token = m_input.next_token();
-		//while (!is_valid(token->get_type())) {
 		while (token->get_type() == TokenType::error) {
-			//std::cout << "LexerFilter::next_token() - invalid!\n";
 			token = m_input.next_token();
 		}
 		return token;

@@ -13,6 +13,10 @@ namespace ast {
 		m_expr{std::move(expr)}
 	{}
 
+	ReturnStmnt::ReturnStmnt():
+		ReturnStmnt{std::unique_ptr<Expr>{std::make_unique<NothingExpr>()}}
+	{}
+
 	Expr & ReturnStmnt::expr() {
 		assert(m_expr != nullptr);
 		return *m_expr;

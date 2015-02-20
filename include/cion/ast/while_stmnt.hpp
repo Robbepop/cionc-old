@@ -2,13 +2,13 @@
 #define CION_AST_WHILE_STMNT_HEADER
 
 #include "cion/ast/stmnt.hpp"
-#include "cion/ast/compound_stmnt.hpp"
-#include "cion/ast/expr.hpp"
 
 #include <memory>
 
 namespace cion {
 namespace ast {
+	class CompoundStmnt;
+	class Expr;
 
 	class WhileStmnt : public Stmnt {
 	public:

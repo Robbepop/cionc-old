@@ -1,38 +1,38 @@
-#ifndef CION_INTEGRAL_TOKEN_HEADER
-#define CION_INTEGRAL_TOKEN_HEADER
+#ifndef CION_INTEGER_TOKEN_HEADER
+#define CION_INTEGER_TOKEN_HEADER
 
 #include "cion/token/token.hpp"
 
 namespace cion {
-	class IntegralToken final : public Token {
+	class IntegerToken final : public Token {
 	public:
 		using value_type = int64_t;
 
-		// Creates a new instance of an IntegralToken which is
+		// Creates a new instance of an IntegerToken which is
 		// a more specialized form of a Token.
 		// Every CharToken stores an integral value.
 		// Can provide an optional token type specifier.
-		IntegralToken(
+		IntegerToken(
 			TokenType const& token_type,
 			SourceLocation const& start_loc,
 			SourceLocation const& end_loc,
 			value_type value);
 
-		IntegralToken(
+		IntegerToken(
 			TokenType const& token_type,
 			SourceLocation const& start_loc,
 			SourceLocation const& end_loc,
 			std::string value);
 
-		IntegralToken(IntegralToken const& token) = default;
-		IntegralToken(IntegralToken && token) = default;
+		IntegerToken(IntegerToken const& token) = default;
+		IntegerToken(IntegerToken && token) = default;
 
-		IntegralToken & operator=(IntegralToken const& rhs) = default;
+		IntegerToken & operator=(IntegerToken const& rhs) = default;
 
-		~IntegralToken() override = default;
+		~IntegerToken() override = default;
 
 		// Retrieves information about the integral stored in
-		// this IntegralToken. The stored integral within this instance
+		// this IntegerToken. The stored integral within this instance
 		// can't be mutated.
 		value_type get_integral() const override;
 

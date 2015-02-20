@@ -1,4 +1,7 @@
 #include "cion/ast/if_stmnt.hpp"
+#include "cion/ast/compound_stmnt.hpp"
+#include "cion/ast/empty_stmnt.hpp"
+#include "cion/ast/expr.hpp"
 
 #include <utility>
 #include <cassert>
@@ -8,13 +11,23 @@ namespace cion {
 namespace ast {
 
 	IfStmnt::IfStmnt(
-		std::unique_ptr<Expr> condition,
-		std::unique_ptr<CompoundStmnt> then_stmnt,
-		std::unique_ptr<Stmnt> else_stmnt
+		std::unique_ptr<Expr> p_condition,
+		std::unique_ptr<CompoundStmnt> p_then_stmnt,
+		std::unique_ptr<Stmnt> p_else_stmnt
 	):
-		m_condition{std::move(condition)},
-		m_then_stmnt{std::move(then_stmnt)},
-		m_else_stmnt{std::move(else_stmnt)}
+		m_condition{std::move(p_condition)},
+		m_then_stmnt{std::move(p_then_stmnt)},
+		m_else_stmnt{std::move(p_else_stmnt)}
+	{}
+
+	IfStmnt::IfStmnt(
+		std::unique_ptr<Expr> p_condition,
+		std::unique_ptr<CompoundStmnt> p_then_stmnt
+	):
+		IfStmnt{
+			std::move(p_condition),
+			std::move(p_then_stmnt),
+			std::unique_ptr<Stmnt>{std::make_unique<EmptyStmnt>()}}
 	{}
 
 	Expr & IfStmnt::condition() {

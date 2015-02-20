@@ -1,4 +1,5 @@
 #include "cion/ast/function_decl.hpp"
+#include "cion/ast/type.hpp"
 
 #include <utility>
 #include <cassert>
@@ -7,15 +8,15 @@ namespace cion {
 namespace ast {
 
 	FunctionDecl::FunctionDecl(
-		std::string const& name,
-		std::vector<std::unique_ptr<ParamDecl>> params,
-		std::unique_ptr<Type> return_type,
-		std::unique_ptr<CompoundStmnt> body
+		std::string const& p_name,
+		std::vector<std::unique_ptr<ParamDecl>> p_params,
+		std::unique_ptr<Type> p_return_type,
+		std::unique_ptr<CompoundStmnt> p_body
 	):
-		m_name{name},
-		m_params{std::move(params)},
-		m_return_type{std::move(return_type)},
-		m_body{std::move(body)}
+		m_name{p_name},
+		m_params{std::move(p_params)},
+		m_return_type{std::move(p_return_type)},
+		m_body{std::move(p_body)}
 	{}
 
 	std::string & FunctionDecl::name() {

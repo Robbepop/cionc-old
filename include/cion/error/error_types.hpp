@@ -1,5 +1,5 @@
-#ifndef CION_ERROR_CION_ERROR_TYPES_HEADER
-#define CION_ERROR_CION_ERROR_TYPES_HEADER
+#ifndef CION_ERROR_ERROR_TYPES_HEADER
+#define CION_ERROR_ERROR_TYPES_HEADER
 
 #include "cion/error/error_type.hpp"
 
@@ -8,19 +8,19 @@
 
 namespace cion {
 
-	class CionErrorTypes {
+	class ErrorTypes {
 	public:
-		static CionErrorTypes const& get_instance();
+		static ErrorTypes const& instance();
 
 		std::vector<ErrorType> get_errors() const;
 
 	private:
-		CionErrorTypes();
-		CionErrorTypes(CionErrorTypes const&) = delete;
-		CionErrorTypes(CionErrorTypes &&) = delete;
+		ErrorTypes();
+		ErrorTypes(ErrorTypes const&) = delete;
+		ErrorTypes(ErrorTypes &&) = delete;
 
-		CionErrorTypes & operator=(CionErrorTypes const&) = delete;
-		CionErrorTypes & operator=(CionErrorTypes &&) = delete;
+		ErrorTypes & operator=(ErrorTypes const&) = delete;
+		ErrorTypes & operator=(ErrorTypes &&) = delete;
 
 		ErrorType init_error(ErrorType error_type);
 

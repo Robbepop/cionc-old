@@ -59,10 +59,6 @@ src/CMakeFiles/cion_compiler.dir/ast/var_expr.cpp.o: ../src/ast/var_expr.cpp
 
 src/CMakeFiles/cion_compiler.dir/ast/while_stmnt.cpp.o: ../src/ast/while_stmnt.cpp
 
-src/CMakeFiles/cion_compiler.dir/error/cion_error_handler.cpp.o: ../src/error/cion_error_handler.cpp
-
-src/CMakeFiles/cion_compiler.dir/error/cion_error_types.cpp.o: ../src/error/cion_error_types.cpp
-
 src/CMakeFiles/cion_compiler.dir/error/cion_exception.cpp.o: ../src/error/cion_exception.cpp
 
 src/CMakeFiles/cion_compiler.dir/error/cion_warning_types.cpp.o: ../src/error/cion_warning_types.cpp
@@ -73,6 +69,8 @@ src/CMakeFiles/cion_compiler.dir/error/error_handler.cpp.o: ../src/error/error_h
 
 src/CMakeFiles/cion_compiler.dir/error/error_type.cpp.o: ../src/error/error_type.cpp
 
+src/CMakeFiles/cion_compiler.dir/error/error_types.cpp.o: ../src/error/error_types.cpp
+
 src/CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.o: ../src/error/lexer_error.cpp
 
 src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.o: ../src/error/parser_error.cpp
@@ -80,8 +78,6 @@ src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.o: ../src/error/parser_e
 src/CMakeFiles/cion_compiler.dir/error/source_location.cpp.o: ../src/error/source_location.cpp
 
 src/CMakeFiles/cion_compiler.dir/error/warning_type.cpp.o: ../src/error/warning_type.cpp
-
-src/CMakeFiles/cion_compiler.dir/lexer/cion_lexer.cpp.o: ../src/lexer/cion_lexer.cpp
 
 src/CMakeFiles/cion_compiler.dir/lexer/lexer.cpp.o: ../src/lexer/lexer.cpp
 
@@ -91,7 +87,7 @@ src/CMakeFiles/cion_compiler.dir/main.cpp.o: ../src/main.cpp
 
 src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.o: ../src/parser/basic_ast_visitor.cpp
 
-src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o: ../src/parser/cion_parser.cpp
+src/CMakeFiles/cion_compiler.dir/parser/parser.cpp.o: ../src/parser/parser.cpp
 
 src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o: ../src/parser/pre_post_traverser.cpp
 
@@ -105,11 +101,9 @@ src/CMakeFiles/cion_compiler.dir/token/bool_token.cpp.o: ../src/token/bool_token
 
 src/CMakeFiles/cion_compiler.dir/token/char_token.cpp.o: ../src/token/char_token.cpp
 
-src/CMakeFiles/cion_compiler.dir/token/cion_token_types.cpp.o: ../src/token/cion_token_types.cpp
+src/CMakeFiles/cion_compiler.dir/token/float_token.cpp.o: ../src/token/float_token.cpp
 
-src/CMakeFiles/cion_compiler.dir/token/integral_token.cpp.o: ../src/token/integral_token.cpp
-
-src/CMakeFiles/cion_compiler.dir/token/number_token.cpp.o: ../src/token/number_token.cpp
+src/CMakeFiles/cion_compiler.dir/token/integer_token.cpp.o: ../src/token/integer_token.cpp
 
 src/CMakeFiles/cion_compiler.dir/token/string_token.cpp.o: ../src/token/string_token.cpp
 
@@ -118,4 +112,6 @@ src/CMakeFiles/cion_compiler.dir/token/token.cpp.o: ../src/token/token.cpp
 src/CMakeFiles/cion_compiler.dir/token/token_fabric.cpp.o: ../src/token/token_fabric.cpp
 
 src/CMakeFiles/cion_compiler.dir/token/token_type.cpp.o: ../src/token/token_type.cpp
+
+src/CMakeFiles/cion_compiler.dir/token/token_types.cpp.o: ../src/token/token_types.cpp
 

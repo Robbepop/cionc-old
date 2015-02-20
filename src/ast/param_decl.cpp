@@ -1,4 +1,5 @@
 #include "cion/ast/param_decl.hpp"
+#include "cion/ast/type.hpp"
 
 #include <utility>
 #include <cassert>

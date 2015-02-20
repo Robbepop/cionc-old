@@ -4,8 +4,6 @@
 #include "cion/parser/i_ast_visitor.hpp"
 
 namespace cion {
-	class IASTVisitor;
-
 namespace ast {
 	class Type {
 	public:

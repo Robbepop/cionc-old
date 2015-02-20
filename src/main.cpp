@@ -1,11 +1,11 @@
 #include "cion/lexer/lexer.hpp"
-#include "cion/lexer/cion_lexer.hpp"
+#include "cion/lexer/lexer.hpp"
 #include "cion/lexer/lexer_filter.hpp"
 #include "cion/lexer/token_stream.hpp"
-#include "cion/parser/cion_parser.hpp"
-#include "cion/token/cion_token_types.hpp"
+#include "cion/parser/parser.hpp"
+#include "cion/token/token_types.hpp"
 
-#include "cion/error/cion_error_handler.hpp"
+#include "cion/error/error_handler.hpp"
 
 #include "cion/parser/print_ast_pass.hpp"
 #include "cion/parser/write_ast_pass.hpp"
@@ -33,31 +33,26 @@ int main() {
 
 	DEBUG_STDERR("Opening " << file_name << " ...\n");
 
-	std::fstream f;
-	f.open(file_name, std::ios::in);
+	std::fstream input;
+	input.open(file_name, std::ios::in);
 
 	DEBUG_STDERR("\n");
 
-	DEBUG_STDERR("Initializing cion token types ...\n");
-
-	auto& ctts = cion::CionTokenTypes::get_instance();
-
 	DEBUG_STDERR("Initializing error handler ...\n");
 
-	auto error_handler = cion::CionErrorHandler{file_name};
+	auto error_handler = cion::ErrorHandler{file_name};
 
 	DEBUG_STDERR("Initializing lexer ...\n");
 
-	//auto lexer = cion::Lexer(f, ctts.get_all(), error_handler);
-	auto lexer = cion::CionLexer(f, error_handler);
+	auto lexer = cion::Lexer(input, error_handler);
 
 	DEBUG_STDERR("Initializing lexer filter ...\n");
 
-	auto lexer_filter = cion::LexerFilter(lexer, ctts.get_skipped());
+	auto lexer_filter = cion::LexerFilter(lexer);
 
 	DEBUG_STDERR("Initializing parser ...\n");
 
-	auto parser = cion::CionParser(lexer_filter, error_handler);
+	auto parser = cion::Parser(lexer_filter, error_handler);
 	//auto parser = cion::CionParser(cion_lexer, error_handler);
 
 	DEBUG_STDERR("\nParsing " << file_name << " ...\n");

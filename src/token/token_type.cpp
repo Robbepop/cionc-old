@@ -1,75 +1,42 @@
 #include "cion/token/token_type.hpp"
 
 namespace cion {
-	const TokenType TokenType::undefined = {"undefined"};
 	const TokenType TokenType::error = {"error"};
 	const TokenType TokenType::eof = {"end of file (eof)"};
 
-	TokenType::Data::Data(
-		std::string const& name,
-		std::string const& regex,
-		TokenTypeStore store_type,
-		TokenType::MatchType match_type
+	TokenType::TokenType(
+		std::string const& p_name,
+		TokenType::Storage p_storage
 	):
-		m_name{name},
-		m_regex{boost::regex(regex, boost::regex_constants::optimize)},
-		m_store_type{store_type},
-		m_match_type{match_type}
+		m_name{p_name},
+		m_storage{p_storage},
+		m_id{make_id()}
 	{}
 
-	std::string const& TokenType::Data::get_name() const {
+	TokenType::TokenType(
+		std::string const& p_name
+	):
+		TokenType{p_name, TokenType::Storage::empty}
+	{}
+
+	uint16_t TokenType::make_id() {
+		static uint16_t c_current_id = 0;
+		return ++c_current_id;
+	}
+
+	std::string const& TokenType::name() const {
 		return m_name;
 	}
 
-	boost::regex const& TokenType::Data::get_regex() const {
-		return m_regex;
-	}
-
-	TokenType::MatchType TokenType::Data::get_match_type() const {
-		return m_match_type;
-	}
-
-	TokenTypeStore TokenType::Data::get_store_type() const {
-		return m_store_type;
-	}
-
-	TokenType::TokenType(
-		std::string const& name,
-		std::string const& regex,
-		TokenTypeStore store_type,
-		TokenType::MatchType match_type
-	):
-		m_data{
-			std::make_shared<TokenType::Data>(
-				name,
-				regex,
-				store_type,
-				match_type
-			)
-		}
-	{}
-
-	TokenType::MatchType TokenType::get_match_type() const {
-		return m_data->get_match_type();
-	}
-
-	std::string const& TokenType::get_name() const {
-		return m_data->get_name();
-	}
-
-	boost::regex const& TokenType::get_regex() const {
-		return m_data->get_regex();
-	}
-
-	TokenTypeStore TokenType::get_store_type() const {
-		return m_data->get_store_type();
+	TokenType::Storage TokenType::storage() const {
+		return m_storage;
 	}
 
 	bool TokenType::operator==(TokenType const& rhs) const {
-		return m_data == rhs.m_data;
+		return m_id == rhs.m_id;
 	}
 
 	bool TokenType::operator!=(TokenType const& rhs) const {
-		return m_data != rhs.m_data;
+		return m_id != rhs.m_id;
 	}
 } // namespace cion

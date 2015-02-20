@@ -59,10 +59,6 @@ src/CMakeFiles/cion_compiler.dir/ast/var_expr.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/ast/var_expr.cpp
 src/CMakeFiles/cion_compiler.dir/ast/while_stmnt.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/ast/while_stmnt.cpp
-src/CMakeFiles/cion_compiler.dir/error/cion_error_handler.cpp.o
- /home/robbepop/coding/c++/projects/cion/src/error/cion_error_handler.cpp
-src/CMakeFiles/cion_compiler.dir/error/cion_error_types.cpp.o
- /home/robbepop/coding/c++/projects/cion/src/error/cion_error_types.cpp
 src/CMakeFiles/cion_compiler.dir/error/cion_exception.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/error/cion_exception.cpp
 src/CMakeFiles/cion_compiler.dir/error/cion_warning_types.cpp.o
@@ -73,6 +69,8 @@ src/CMakeFiles/cion_compiler.dir/error/error_handler.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/error/error_handler.cpp
 src/CMakeFiles/cion_compiler.dir/error/error_type.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/error/error_type.cpp
+src/CMakeFiles/cion_compiler.dir/error/error_types.cpp.o
+ /home/robbepop/coding/c++/projects/cion/src/error/error_types.cpp
 src/CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/error/lexer_error.cpp
 src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.o
@@ -81,8 +79,6 @@ src/CMakeFiles/cion_compiler.dir/error/source_location.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/error/source_location.cpp
 src/CMakeFiles/cion_compiler.dir/error/warning_type.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/error/warning_type.cpp
-src/CMakeFiles/cion_compiler.dir/lexer/cion_lexer.cpp.o
- /home/robbepop/coding/c++/projects/cion/src/lexer/cion_lexer.cpp
 src/CMakeFiles/cion_compiler.dir/lexer/lexer.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/lexer/lexer.cpp
 src/CMakeFiles/cion_compiler.dir/lexer/lexer_filter.cpp.o
@@ -91,8 +87,8 @@ src/CMakeFiles/cion_compiler.dir/main.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/main.cpp
 src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/parser/basic_ast_visitor.cpp
-src/CMakeFiles/cion_compiler.dir/parser/cion_parser.cpp.o
- /home/robbepop/coding/c++/projects/cion/src/parser/cion_parser.cpp
+src/CMakeFiles/cion_compiler.dir/parser/parser.cpp.o
+ /home/robbepop/coding/c++/projects/cion/src/parser/parser.cpp
 src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/parser/pre_post_traverser.cpp
 src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o
@@ -105,12 +101,10 @@ src/CMakeFiles/cion_compiler.dir/token/bool_token.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/token/bool_token.cpp
 src/CMakeFiles/cion_compiler.dir/token/char_token.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/token/char_token.cpp
-src/CMakeFiles/cion_compiler.dir/token/cion_token_types.cpp.o
- /home/robbepop/coding/c++/projects/cion/src/token/cion_token_types.cpp
-src/CMakeFiles/cion_compiler.dir/token/integral_token.cpp.o
- /home/robbepop/coding/c++/projects/cion/src/token/integral_token.cpp
-src/CMakeFiles/cion_compiler.dir/token/number_token.cpp.o
- /home/robbepop/coding/c++/projects/cion/src/token/number_token.cpp
+src/CMakeFiles/cion_compiler.dir/token/float_token.cpp.o
+ /home/robbepop/coding/c++/projects/cion/src/token/float_token.cpp
+src/CMakeFiles/cion_compiler.dir/token/integer_token.cpp.o
+ /home/robbepop/coding/c++/projects/cion/src/token/integer_token.cpp
 src/CMakeFiles/cion_compiler.dir/token/string_token.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/token/string_token.cpp
 src/CMakeFiles/cion_compiler.dir/token/token.cpp.o
@@ -119,3 +113,5 @@ src/CMakeFiles/cion_compiler.dir/token/token_fabric.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/token/token_fabric.cpp
 src/CMakeFiles/cion_compiler.dir/token/token_type.cpp.o
  /home/robbepop/coding/c++/projects/cion/src/token/token_type.cpp
+src/CMakeFiles/cion_compiler.dir/token/token_types.cpp.o
+ /home/robbepop/coding/c++/projects/cion/src/token/token_types.cpp

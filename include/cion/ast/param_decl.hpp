@@ -2,18 +2,19 @@
 #define CION_AST_PARAM_DECL_HEADER
 
 #include "cion/ast/decl.hpp"
-#include "cion/ast/type.hpp"
 
 #include <string>
 #include <memory>
 
 namespace cion {
 namespace ast {
+	class Type;
+
 	class ParamDecl : public Decl {
 	public:
 		ParamDecl(
-			std::string const& name,
-			std::unique_ptr<Type> type);
+			std::string const& p_name,
+			std::unique_ptr<Type> p_type);
 
 		std::string & name();
 		std::string const& name() const;
