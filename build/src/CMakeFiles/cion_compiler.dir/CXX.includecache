@@ -293,8 +293,6 @@ cion/token/token_types.hpp
 /home/robbepop/coding/c++/projects/cion/src/cion/token/token_types.hpp
 cion/error/error_handler.hpp
 /home/robbepop/coding/c++/projects/cion/src/cion/error/error_handler.hpp
-cion/parser/print_ast_pass.hpp
-/home/robbepop/coding/c++/projects/cion/src/cion/parser/print_ast_pass.hpp
 cion/parser/write_ast_pass.hpp
 /home/robbepop/coding/c++/projects/cion/src/cion/parser/write_ast_pass.hpp
 iostream
@@ -316,6 +314,10 @@ cion/parser/basic_ast_visitor.hpp
 cion/ast/all.hpp
 /home/robbepop/coding/c++/projects/cion/src/parser/cion/ast/all.hpp
 
+/home/robbepop/coding/c++/projects/cion/src/parser/calling_traverser.cpp
+cion/parser/calling_traverser.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/cion/parser/calling_traverser.hpp
+
 /home/robbepop/coding/c++/projects/cion/src/parser/parser.cpp
 cion/parser/parser.hpp
 /home/robbepop/coding/c++/projects/cion/src/parser/cion/parser/parser.hpp
@@ -332,24 +334,6 @@ chrono
 cassert
 -
 iostream
--
-
-/home/robbepop/coding/c++/projects/cion/src/parser/pre_post_traverser.cpp
-cion/parser/pre_post_traverser.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/cion/parser/pre_post_traverser.hpp
-cion/parser/i_pre_post_compiler_pass.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/cion/parser/i_pre_post_compiler_pass.hpp
-cion/ast/all.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/cion/ast/all.hpp
-
-/home/robbepop/coding/c++/projects/cion/src/parser/print_ast_pass.cpp
-cion/parser/print_ast_pass.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/cion/parser/print_ast_pass.hpp
-algorithm
--
-limits
--
-sstream
 -
 
 /home/robbepop/coding/c++/projects/cion/src/parser/recursive_traverser.cpp

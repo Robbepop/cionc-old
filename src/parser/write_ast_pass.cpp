@@ -5,12 +5,28 @@
 namespace cion {
 
 //////////////////////////////////////////////////////////////////////////////////////////
-/// WriteASTPass Constructor & Methods
+/// WriteASTPass Block - for controlling the depth automatically
 //////////////////////////////////////////////////////////////////////////////////////////
 
+	WriteASTPass::Block::Block(WriteASTPass & p_writer):
+		m_writer{p_writer}
+	{
+		m_writer.inc_depth();
+	}
+
+	WriteASTPass::Block::~Block() {
+		m_writer.dec_depth();
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+/// WriteASTPass Constructor & Helper Methods
+//////////////////////////////////////////////////////////////////////////////////////////
+
+	WriteASTPass::Block WriteASTPass::create_block() {
+		return Block{*this};
+	}
+
 	WriteASTPass::WriteASTPass(std::ostream & os):
-		m_pre_pass{*this},
-		m_post_pass{*this},
 		m_os{os}
 	{}
 
@@ -24,8 +40,9 @@ namespace cion {
 		return ss.str();
 	}
 
-	void WriteASTPass::writeln(std::string const& s) {
+	WriteASTPass::Block WriteASTPass::writeln(std::string const& s) {
 		m_os << depth_str() << s << '\n';
+		return Block{*this};
 	}
 
 	void WriteASTPass::inc_depth() {
@@ -36,687 +53,390 @@ namespace cion {
 		--m_print_depth;
 	}
 
-	IASTVisitor & WriteASTPass::pre_pass() {
-		return m_pre_pass;
-	}
-
-	IASTVisitor & WriteASTPass::post_pass() {
-		return m_post_pass;
-	}
-
-	void WriteASTPass::execute(std::ostream & p_os, ast::CompilationUnitDecl & p_root) {
-		auto pass = WriteASTPass{p_os};
-		auto traverser = PrePostTraverser{pass};
-		traverser.visit(p_root);
+	void WriteASTPass::execute(
+		std::ostream & p_os,
+		ast::CompilationUnitDecl & p_root
+	) {
+		auto writer = WriteASTPass{p_os};
+		writer.visit(p_root);
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////
-/// WriteASTPass::PrePass Constructor & Methods
+/// WriteASTPass Constructor & Methods
 //////////////////////////////////////////////////////////////////////////////////////////
-
-	WriteASTPass::PrePass::PrePass(WriteASTPass & p_handler):
-		m_handler{p_handler}
-	{}
 
 	// Statements
-	void WriteASTPass::PrePass::visit(ast::Stmnt &) {
-		m_handler.writeln("Stmnt");
+	void WriteASTPass::visit(ast::Stmnt &) {
+		writeln("Stmnt");
 	}
 
-	void WriteASTPass::PrePass::visit(ast::CompoundStmnt &) {
-		m_handler.writeln("CompoundStmnt");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::CompoundStmnt & p_compound_stmnt) {
+		auto const block = writeln("CompoundStmnt");
+		traverse_compound_stmnt(p_compound_stmnt);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::EmptyStmnt &) {
-		m_handler.writeln("EmptyStmnt");
+	void WriteASTPass::visit(ast::EmptyStmnt &) {
+		writeln("EmptyStmnt");
 	}
 
-	void WriteASTPass::PrePass::visit(ast::ExprStmnt &) {
-		m_handler.writeln("ExprStmnt");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::ExprStmnt & p_expr_stmnt) {
+		auto const block = writeln("ExprStmnt");
+		traverse_expr_stmnt(p_expr_stmnt);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::DeclStmnt &) {
-		m_handler.writeln("DeclStmnt");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::DeclStmnt & p_decl_stmnt) {
+		auto const block = writeln("DeclStmnt");
+		traverse_decl_stmnt(p_decl_stmnt);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::IfStmnt &) {
-		m_handler.writeln("IfStmnt");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::IfStmnt & p_if_stmnt) {
+		auto const block = writeln("IfStmnt");
+		traverse_if_stmnt(p_if_stmnt);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::WhileStmnt &) {
-		m_handler.writeln("WhileStmnt");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::WhileStmnt & p_while_stmnt) {
+		auto const block = writeln("WhileStmnt");
+		traverse_while_stmnt(p_while_stmnt);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::BreakStmnt &) {
-		m_handler.writeln("BreakStmnt");
+	void WriteASTPass::visit(ast::BreakStmnt &) {
+		writeln("BreakStmnt");
 	}
 
-	void WriteASTPass::PrePass::visit(ast::ContinueStmnt &) {
-		m_handler.writeln("ContinueStmnt");
+	void WriteASTPass::visit(ast::ContinueStmnt &) {
+		writeln("ContinueStmnt");
 	}
 
-	void WriteASTPass::PrePass::visit(ast::ReturnStmnt &) {
-		m_handler.writeln("ReturnStmnt");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::ReturnStmnt & p_return_stmnt) {
+		auto const block = writeln("ReturnStmnt");
+		traverse_return_stmnt(p_return_stmnt);
 	}
 
 
 	// Declarations
-	void WriteASTPass::PrePass::visit(ast::Decl &) {
-		m_handler.writeln("Decl");
+	void WriteASTPass::visit(ast::Decl &) {
+		writeln("Decl");
 	}
 
-	void WriteASTPass::PrePass::visit(ast::CompilationUnitDecl &) {
-		m_handler.writeln("CompilationUnitDecl");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::CompilationUnitDecl & p_compilation_unit_decl) {
+		auto const block = writeln("CompilationUnitDecl");
+		traverse_compilation_unit_decl(p_compilation_unit_decl);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::ParamDecl & p_param_decl) {
-		m_handler.writeln("ParamDecl: " + p_param_decl.name());
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::ParamDecl & p_param_decl) {
+		auto const block = writeln("ParamDecl: " + p_param_decl.name());
+		traverse_param_decl(p_param_decl);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::FunctionDecl & p_function_decl) {
-		m_handler.writeln("FunctionDecl: " + p_function_decl.name());
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::FunctionDecl & p_function_decl) {
+		auto const block = writeln("FunctionDecl: " + p_function_decl.name());
+		traverse_function_decl(p_function_decl);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::VarDecl & p_var_decl) {
-		m_handler.writeln("VarDecl: " + p_var_decl.name());
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::VarDecl & p_var_decl) {
+		auto const block = writeln("VarDecl: " + p_var_decl.name());
+		traverse_var_decl(p_var_decl);
 	}
 
 
 	// Expressions
-	void WriteASTPass::PrePass::visit(ast::Expr &) {
-		m_handler.writeln("Expr");
+	void WriteASTPass::visit(ast::Expr &) {
+		writeln("Expr");
 	}
 
-	void WriteASTPass::PrePass::visit(ast::ConditionalExpr &) {
-		m_handler.writeln("ConditionalExpr");
-		m_handler.inc_depth();
-	}
-
-
-	void WriteASTPass::PrePass::visit(ast::BinaryExpr &) {
-		m_handler.writeln("BinaryExpr");
-		m_handler.inc_depth();
-	}
-
-	void WriteASTPass::PrePass::visit(ast::LogicalOrExpr &) {
-		m_handler.writeln("LogicalOrExpr");
-		m_handler.inc_depth();
-	}
-
-	void WriteASTPass::PrePass::visit(ast::LogicalAndExpr &) {
-		m_handler.writeln("LogicalAndExpr");
-		m_handler.inc_depth();
-	}
-
-	void WriteASTPass::PrePass::visit(ast::BitOrExpr &) {
-		m_handler.writeln("BitOrExpr");
-		m_handler.inc_depth();
-	}
-
-	void WriteASTPass::PrePass::visit(ast::BitXorExpr &) {
-		m_handler.writeln("BitXorExpr");
-		m_handler.inc_depth();
-	}
-
-	void WriteASTPass::PrePass::visit(ast::BitAndExpr &) {
-		m_handler.writeln("BitAndExpr");
-		m_handler.inc_depth();
-	}
-
-	void WriteASTPass::PrePass::visit(ast::AddExpr &) {
-		m_handler.writeln("AddExpr");
-		m_handler.inc_depth();
-	}
-
-	void WriteASTPass::PrePass::visit(ast::SubtractExpr &) {
-		m_handler.writeln("SubtractExpr");
-		m_handler.inc_depth();
-	}
-
-	void WriteASTPass::PrePass::visit(ast::MultiplyExpr &) {
-		m_handler.writeln("MultiplyExpr");
-		m_handler.inc_depth();
-	}
-
-	void WriteASTPass::PrePass::visit(ast::DivideExpr &) {
-		m_handler.writeln("DivideExpr");
-		m_handler.inc_depth();
-	}
-
-	void WriteASTPass::PrePass::visit(ast::ModuloExpr &) {
-		m_handler.writeln("ModuloExpr");
-		m_handler.inc_depth();
-	}
-
-	void WriteASTPass::PrePass::visit(ast::ShiftLeftExpr &) {
-		m_handler.writeln("ShiftLeftExpr");
-		m_handler.inc_depth();
-	}
-
-	void WriteASTPass::PrePass::visit(ast::ShiftRightExpr &) {
-		m_handler.writeln("ShiftRightExpr");
-		m_handler.inc_depth();
-	}
-
-	void WriteASTPass::PrePass::visit(ast::EqualityExpr &) {
-		m_handler.writeln("EqualityExpr");
-		m_handler.inc_depth();
-	}
-
-	void WriteASTPass::PrePass::visit(ast::InequalityExpr &) {
-		m_handler.writeln("InequalityExpr");
-		m_handler.inc_depth();
-	}
-
-	void WriteASTPass::PrePass::visit(ast::LessThanExpr &) {
-		m_handler.writeln("LessThanExpr");
-		m_handler.inc_depth();
-	}
-
-	void WriteASTPass::PrePass::visit(ast::LessEqualsExpr &) {
-		m_handler.writeln("LessEqualsExpr");
-		m_handler.inc_depth();
-	}
-
-	void WriteASTPass::PrePass::visit(ast::GreaterThanExpr &) {
-		m_handler.writeln("GreaterThanExpr");
-		m_handler.inc_depth();
-	}
-
-	void WriteASTPass::PrePass::visit(ast::GreaterEqualsExpr &) {
-		m_handler.writeln("GreaterEqualsExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::ConditionalExpr & p_conditional_expr) {
+		auto const block = writeln("ConditionalExpr");
+		traverse_conditional_expr(p_conditional_expr);
 	}
 
 
-	void WriteASTPass::PrePass::visit(ast::BinaryAssignExpr &) {
-		m_handler.writeln("BinaryAssignExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::BinaryExpr & p_binary_expr) {
+		auto const block = writeln("BinaryExpr");
+		traverse_binary_expr(p_binary_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::AssignExpr &) {
-		m_handler.writeln("AssignExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::LogicalOrExpr & p_logical_or_expr) {
+		auto const block = writeln("LogicalOrExpr");
+		traverse_logical_or_expr(p_logical_or_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::AddAssignExpr &) {
-		m_handler.writeln("AddAssignExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::LogicalAndExpr & p_logical_and_expr) {
+		auto const block = writeln("LogicalAndExpr");
+		traverse_logical_and_expr(p_logical_and_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::SubtractAssignExpr &) {
-		m_handler.writeln("SubtractAssignExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::BitOrExpr & p_bit_or_expr) {
+		auto const block = writeln("BitOrExpr");
+		traverse_bit_or_expr(p_bit_or_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::MultiplyAssignExpr &) {
-		m_handler.writeln("MultiplyAssignExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::BitXorExpr & p_bit_xor_expr) {
+		auto const block = writeln("BitXorExpr");
+		traverse_bit_xor_expr(p_bit_xor_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::DivideAssignExpr &) {
-		m_handler.writeln("DivideAssignExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::BitAndExpr & p_bit_and_expr) {
+		auto const block = writeln("BitAndExpr");
+		traverse_bit_and_expr(p_bit_and_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::ModuloAssignExpr &) {
-		m_handler.writeln("ModuloAssignExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::AddExpr & p_add_expr) {
+		auto const block = writeln("AddExpr");
+		traverse_add_expr(p_add_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::LogicalOrAssignExpr &) {
-		m_handler.writeln("LogicalOrAssignExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::SubtractExpr & p_subtract_expr) {
+		auto const block = writeln("SubtractExpr");
+		traverse_subtract_expr(p_subtract_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::LogicalAndAssignExpr &) {
-		m_handler.writeln("LogicalAndAssignExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::MultiplyExpr & p_multiply_expr) {
+		auto const block = writeln("MultiplyExpr");
+		traverse_multiply_expr(p_multiply_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::BitOrAssignExpr &) {
-		m_handler.writeln("BitOrAssignExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::DivideExpr & p_divide_expr) {
+		auto const block = writeln("DivideExpr");
+		traverse_divide_expr(p_divide_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::BitXorAssignExpr &) {
-		m_handler.writeln("BitXorAssignExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::ModuloExpr & p_modulo_expr) {
+		auto const block = writeln("ModuloExpr");
+		traverse_modulo_expr(p_modulo_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::BitAndAssignExpr &) {
-		m_handler.writeln("BitAndAssignExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::ShiftLeftExpr & p_shift_left_expr) {
+		auto const block = writeln("ShiftLeftExpr");
+		traverse_shift_left_expr(p_shift_left_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::ShiftLeftAssignExpr &) {
-		m_handler.writeln("ShiftLeftAssignExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::ShiftRightExpr & p_shift_right_expr) {
+		auto const block = writeln("ShiftRightExpr");
+		traverse_shift_right_expr(p_shift_right_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::ShiftRightAssignExpr &) {
-		m_handler.writeln("ShiftRightAssignExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::EqualityExpr & p_equality_expr) {
+		auto const block = writeln("EqualityExpr");
+		traverse_equality_expr(p_equality_expr);
+	}
+
+	void WriteASTPass::visit(ast::InequalityExpr & p_inequality_expr) {
+		auto const block = writeln("InequalityExpr");
+		traverse_inequality_expr(p_inequality_expr);
+	}
+
+	void WriteASTPass::visit(ast::LessThanExpr & p_less_than_expr) {
+		auto const block = writeln("LessThanExpr");
+		traverse_less_than_expr(p_less_than_expr);
+	}
+
+	void WriteASTPass::visit(ast::LessEqualsExpr & p_less_equals_expr) {
+		auto const block = writeln("LessEqualsExpr");
+		traverse_less_equals_expr(p_less_equals_expr);
+	}
+
+	void WriteASTPass::visit(ast::GreaterThanExpr & p_greater_than_expr) {
+		auto const block = writeln("GreaterThanExpr");
+		traverse_greater_than_expr(p_greater_than_expr);
+	}
+
+	void WriteASTPass::visit(ast::GreaterEqualsExpr & p_greater_equals_expr) {
+		auto const block = writeln("GreaterEqualsExpr");
+		traverse_greater_equals_expr(p_greater_equals_expr);
 	}
 
 
-	void WriteASTPass::PrePass::visit(ast::BooleanExpr & p_boolean_expr) {
+	void WriteASTPass::visit(ast::BinaryAssignExpr & p_binary_assign_expr) {
+		auto const block = writeln("BinaryAssignExpr");
+		traverse_binary_assign_expr(p_binary_assign_expr);
+	}
+
+	void WriteASTPass::visit(ast::AssignExpr & p_assign_expr) {
+		auto const block = writeln("AssignExpr");
+		traverse_assign_expr(p_assign_expr);
+	}
+
+	void WriteASTPass::visit(ast::AddAssignExpr & p_add_assign_expr) {
+		auto const block = writeln("AddAssignExpr");
+		traverse_add_assign_expr(p_add_assign_expr);
+	}
+
+	void WriteASTPass::visit(ast::SubtractAssignExpr & p_subtract_assign_expr) {
+		auto const block = writeln("SubtractAssignExpr");
+		traverse_subtract_assign_expr(p_subtract_assign_expr);
+	}
+
+	void WriteASTPass::visit(ast::MultiplyAssignExpr & p_multiply_assign_expr) {
+		auto const block = writeln("MultiplyAssignExpr");
+		traverse_multiply_assign_expr(p_multiply_assign_expr);
+	}
+
+	void WriteASTPass::visit(ast::DivideAssignExpr & p_divide_assign_expr) {
+		auto const block = writeln("DivideAssignExpr");
+		traverse_divide_assign_expr(p_divide_assign_expr);
+	}
+
+	void WriteASTPass::visit(ast::ModuloAssignExpr & p_modulo_assign_expr) {
+		auto const block = writeln("ModuloAssignExpr");
+		traverse_modulo_assign_expr(p_modulo_assign_expr);
+	}
+
+	void WriteASTPass::visit(ast::LogicalOrAssignExpr & p_logical_or_assign_expr) {
+		auto const block = writeln("LogicalOrAssignExpr");
+		traverse_logical_or_assign_expr(p_logical_or_assign_expr);
+	}
+
+	void WriteASTPass::visit(ast::LogicalAndAssignExpr & p_logical_and_assign_expr) {
+		auto const block = writeln("LogicalAndAssignExpr");
+		traverse_logical_and_assign_expr(p_logical_and_assign_expr);
+	}
+
+	void WriteASTPass::visit(ast::BitOrAssignExpr & p_bit_or_assign_expr) {
+		auto const block = writeln("BitOrAssignExpr");
+		traverse_bit_or_assign_expr(p_bit_or_assign_expr);
+	}
+
+	void WriteASTPass::visit(ast::BitXorAssignExpr & p_bit_xor_assign_expr) {
+		auto const block = writeln("BitXorAssignExpr");
+		traverse_bit_xor_assign_expr(p_bit_xor_assign_expr);
+	}
+
+	void WriteASTPass::visit(ast::BitAndAssignExpr & p_bit_and_assign_expr) {
+		auto const block = writeln("BitAndAssignExpr");
+		traverse_bit_and_assign_expr(p_bit_and_assign_expr);
+	}
+
+	void WriteASTPass::visit(ast::ShiftLeftAssignExpr & p_shift_left_assign_expr) {
+		auto const block = writeln("ShiftLeftAssignExpr");
+		traverse_shift_left_assign_expr(p_shift_left_assign_expr);
+	}
+
+	void WriteASTPass::visit(ast::ShiftRightAssignExpr & p_shift_right_assign_expr) {
+		auto const block = writeln("ShiftRightAssignExpr");
+		traverse_shift_right_assign_expr(p_shift_right_assign_expr);
+	}
+
+
+	void WriteASTPass::visit(ast::BooleanExpr & p_boolean_expr) {
 		using namespace std::string_literals;
-		m_handler.writeln("BooleanExpr: " + (p_boolean_expr.value() ? "true"s : "false"s));
-		m_handler.inc_depth();
+		auto const block = writeln("BooleanExpr: " + (p_boolean_expr.value() ? "true"s : "false"s));
+		traverse_boolean_expr(p_boolean_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::CallExpr &) {
-		m_handler.writeln("CallExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::CallExpr & p_call_expr) {
+		auto const block = writeln("CallExpr");
+		traverse_call_expr(p_call_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::CharExpr & p_char_expr) {
-		m_handler.writeln("CharExpr: " + p_char_expr.value());
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::CharExpr & p_char_expr) {
+		auto const block = writeln("CharExpr: " + p_char_expr.value());
+		traverse_char_expr(p_char_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::FloatExpr & p_float_expr) {
-		m_handler.writeln("FloatExpr: " + std::to_string(p_float_expr.value()));
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::FloatExpr & p_float_expr) {
+		auto const block = writeln("FloatExpr: " + std::to_string(p_float_expr.value()));
+		traverse_float_expr(p_float_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::IndexExpr &) {
-		m_handler.writeln("IndexExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::IndexExpr & p_index_expr) {
+		auto const block = writeln("IndexExpr");
+		traverse_index_expr(p_index_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::IntegerExpr & p_int_expr) {
-		m_handler.writeln("IntegerExpr: " + std::to_string(p_int_expr.value()));
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::IntegerExpr & p_integer_expr) {
+		auto const block = writeln("IntegerExpr: " + std::to_string(p_integer_expr.value()));
+		traverse_integer_expr(p_integer_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::NothingExpr &) {
-		m_handler.writeln("NothingExpr");
+	void WriteASTPass::visit(ast::NothingExpr &) {
+		writeln("NothingExpr");
 	}
 
-	void WriteASTPass::PrePass::visit(ast::StringExpr & p_string_expr) {
+	void WriteASTPass::visit(ast::StringExpr & p_string_expr) {
 		using namespace std::string_literals;
-		m_handler.writeln("StringExpr: "s + p_string_expr.value());
-		m_handler.inc_depth();
+		auto const block = writeln("StringExpr: "s + p_string_expr.value());
+		traverse_string_expr(p_string_expr);
 	}
 
 
-	void WriteASTPass::PrePass::visit(ast::UnaryExpr &) {
-		m_handler.writeln("UnaryExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::UnaryExpr & p_unary_expr) {
+		auto const block = writeln("UnaryExpr");
+		traverse_unary_expr(p_unary_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::BitNegateExpr &) {
-		m_handler.writeln("BitNegateExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::BitNegateExpr & p_bit_negate_expr) {
+		auto const block = writeln("BitNegateExpr");
+		traverse_bit_negate_expr(p_bit_negate_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::LogicalNegateExpr &) {
-		m_handler.writeln("LogicalNegateExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::LogicalNegateExpr & p_logical_negate_expr) {
+		auto const block = writeln("LogicalNegateExpr");
+		traverse_logical_negate_expr(p_logical_negate_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::PlusExpr &) {
-		m_handler.writeln("PlusExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::PlusExpr & p_plus_expr) {
+		auto const block = writeln("PlusExpr");
+		traverse_plus_expr(p_plus_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::MinusExpr &) {
-		m_handler.writeln("MinusExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::MinusExpr & p_minus_expr) {
+		auto const block = writeln("MinusExpr");
+		traverse_minus_expr(p_minus_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::IncrementExpr &) {
-		m_handler.writeln("IncrementExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::IncrementExpr & p_increment_expr) {
+		auto const block = writeln("IncrementExpr");
+		traverse_increment_expr(p_increment_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::DecrementExpr &) {
-		m_handler.writeln("DecrementExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::DecrementExpr & p_decrement_expr) {
+		auto const block = writeln("DecrementExpr");
+		traverse_decrement_expr(p_decrement_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::PostIncrementExpr &) {
-		m_handler.writeln("PostIncrementExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::PostIncrementExpr & p_post_increment_expr) {
+		auto const block = writeln("PostIncrementExpr");
+		traverse_post_increment_expr(p_post_increment_expr);
 	}
 
-	void WriteASTPass::PrePass::visit(ast::PostDecrementExpr &) {
-		m_handler.writeln("PostDecrementExpr");
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::PostDecrementExpr & p_post_decrement_expr) {
+		auto const block = writeln("PostDecrementExpr");
+		traverse_post_decrement_expr(p_post_decrement_expr);
 	}
 
 
-	void WriteASTPass::PrePass::visit(ast::VarExpr & p_var_expr) {
-		m_handler.writeln("VarExpr: " + p_var_expr.name());
-		m_handler.inc_depth();
+	void WriteASTPass::visit(ast::VarExpr & p_var_expr) {
+		auto const block = writeln("VarExpr: " + p_var_expr.name());
+		traverse_var_expr(p_var_expr);
 	}
 
 
 	// Types
-	void WriteASTPass::PrePass::visit(ast::Type &) {
-		m_handler.writeln("Type");
+	void WriteASTPass::visit(ast::Type &) {
+		writeln("Type");
 	}
 
-	void WriteASTPass::PrePass::visit(ast::NothingType &) {
-		m_handler.writeln("NothingType");
+	void WriteASTPass::visit(ast::NothingType &) {
+		writeln("NothingType");
 	}
 
-	void WriteASTPass::PrePass::visit(ast::BuiltinType &) {
-		m_handler.writeln("BuiltinType");
+	void WriteASTPass::visit(ast::BuiltinType &) {
+		writeln("BuiltinType");
 	}
 
-	void WriteASTPass::PrePass::visit(ast::BuiltinBoolType &) {
-		m_handler.writeln("BuiltinBoolType");
+	void WriteASTPass::visit(ast::BuiltinBoolType &) {
+		writeln("BuiltinBoolType");
 	}
 
-	void WriteASTPass::PrePass::visit(ast::BuiltinCharType &) {
-		m_handler.writeln("BuiltinCharType");
+	void WriteASTPass::visit(ast::BuiltinCharType &) {
+		writeln("BuiltinCharType");
 	}
 
-	void WriteASTPass::PrePass::visit(ast::BuiltinFloatType &) {
-		m_handler.writeln("BuiltinFloatType");
+	void WriteASTPass::visit(ast::BuiltinFloatType &) {
+		writeln("BuiltinFloatType");
 	}
 
-	void WriteASTPass::PrePass::visit(ast::BuiltinIntType &) {
-		m_handler.writeln("BuiltinIntType");
+	void WriteASTPass::visit(ast::BuiltinIntType &) {
+		writeln("BuiltinIntType");
 	}
-
-//////////////////////////////////////////////////////////////////////////////////////////
-/// WriteASTPass::PostPass Constructor & Methods
-//////////////////////////////////////////////////////////////////////////////////////////
-
-	WriteASTPass::PostPass::PostPass(WriteASTPass & p_handler):
-		m_handler{p_handler}
-	{}
-
-	// Statements
-	void WriteASTPass::PostPass::visit(ast::Stmnt &) {}
-
-	void WriteASTPass::PostPass::visit(ast::CompoundStmnt &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::EmptyStmnt &) {}
-
-	void WriteASTPass::PostPass::visit(ast::ExprStmnt &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::DeclStmnt &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::IfStmnt &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::WhileStmnt &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::BreakStmnt &) {}
-
-	void WriteASTPass::PostPass::visit(ast::ContinueStmnt &) {}
-
-	void WriteASTPass::PostPass::visit(ast::ReturnStmnt &) {
-		m_handler.dec_depth();
-	}
-
-
-	// Declarations
-	void WriteASTPass::PostPass::visit(ast::Decl &) {}
-
-	void WriteASTPass::PostPass::visit(ast::CompilationUnitDecl &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::ParamDecl &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::FunctionDecl &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::VarDecl &) {
-		m_handler.dec_depth();
-	}
-
-
-	// Expressions
-	void WriteASTPass::PostPass::visit(ast::Expr &) {}
-
-	void WriteASTPass::PostPass::visit(ast::ConditionalExpr &) {
-		m_handler.dec_depth();
-	}
-
-
-	void WriteASTPass::PostPass::visit(ast::BinaryExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::LogicalOrExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::LogicalAndExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::BitOrExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::BitXorExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::BitAndExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::AddExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::SubtractExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::MultiplyExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::DivideExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::ModuloExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::ShiftLeftExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::ShiftRightExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::EqualityExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::InequalityExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::LessThanExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::LessEqualsExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::GreaterThanExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::GreaterEqualsExpr &) {
-		m_handler.dec_depth();
-	}
-
-
-	void WriteASTPass::PostPass::visit(ast::BinaryAssignExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::AssignExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::AddAssignExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::SubtractAssignExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::MultiplyAssignExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::DivideAssignExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::ModuloAssignExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::LogicalOrAssignExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::LogicalAndAssignExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::BitOrAssignExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::BitXorAssignExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::BitAndAssignExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::ShiftLeftAssignExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::ShiftRightAssignExpr &) {
-		m_handler.dec_depth();
-	}
-
-
-	void WriteASTPass::PostPass::visit(ast::BooleanExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::CallExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::CharExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::FloatExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::IndexExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::IntegerExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::NothingExpr &) {}
-
-	void WriteASTPass::PostPass::visit(ast::StringExpr &) {
-		m_handler.dec_depth();
-	}
-
-
-	void WriteASTPass::PostPass::visit(ast::UnaryExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::BitNegateExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::LogicalNegateExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::PlusExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::MinusExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::IncrementExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::DecrementExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::PostIncrementExpr &) {
-		m_handler.dec_depth();
-	}
-
-	void WriteASTPass::PostPass::visit(ast::PostDecrementExpr &) {
-		m_handler.dec_depth();
-	}
-
-
-	void WriteASTPass::PostPass::visit(ast::VarExpr &) {
-		m_handler.dec_depth();
-	}
-
-
-	// Types
-	void WriteASTPass::PostPass::visit(ast::Type &) {}
-	void WriteASTPass::PostPass::visit(ast::NothingType &) {}
-	void WriteASTPass::PostPass::visit(ast::BuiltinType &) {}
-	void WriteASTPass::PostPass::visit(ast::BuiltinBoolType &) {}
-	void WriteASTPass::PostPass::visit(ast::BuiltinCharType &) {}
-	void WriteASTPass::PostPass::visit(ast::BuiltinFloatType &) {}
-	void WriteASTPass::PostPass::visit(ast::BuiltinIntType &) {}
-
 } // namespace cion

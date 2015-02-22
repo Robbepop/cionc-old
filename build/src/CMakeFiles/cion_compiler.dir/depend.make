@@ -79,11 +79,9 @@ src/CMakeFiles/cion_compiler.dir/main.cpp.o: ../src/main.cpp
 
 src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.o: ../src/parser/basic_ast_visitor.cpp
 
+src/CMakeFiles/cion_compiler.dir/parser/calling_traverser.cpp.o: ../src/parser/calling_traverser.cpp
+
 src/CMakeFiles/cion_compiler.dir/parser/parser.cpp.o: ../src/parser/parser.cpp
-
-src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o: ../src/parser/pre_post_traverser.cpp
-
-src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o: ../src/parser/print_ast_pass.cpp
 
 src/CMakeFiles/cion_compiler.dir/parser/recursive_traverser.cpp.o: ../src/parser/recursive_traverser.cpp
 

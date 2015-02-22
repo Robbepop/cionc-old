@@ -1052,6 +1052,30 @@ parser/basic_ast_visitor.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/basic_ast_visitor.cpp.s
 .PHONY : parser/basic_ast_visitor.cpp.s
 
+parser/calling_traverser.o: parser/calling_traverser.cpp.o
+.PHONY : parser/calling_traverser.o
+
+# target to build an object file
+parser/calling_traverser.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/calling_traverser.cpp.o
+.PHONY : parser/calling_traverser.cpp.o
+
+parser/calling_traverser.i: parser/calling_traverser.cpp.i
+.PHONY : parser/calling_traverser.i
+
+# target to preprocess a source file
+parser/calling_traverser.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/calling_traverser.cpp.i
+.PHONY : parser/calling_traverser.cpp.i
+
+parser/calling_traverser.s: parser/calling_traverser.cpp.s
+.PHONY : parser/calling_traverser.s
+
+# target to generate assembly for a file
+parser/calling_traverser.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/calling_traverser.cpp.s
+.PHONY : parser/calling_traverser.cpp.s
+
 parser/parser.o: parser/parser.cpp.o
 .PHONY : parser/parser.o
 
@@ -1075,54 +1099,6 @@ parser/parser.s: parser/parser.cpp.s
 parser/parser.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/parser.cpp.s
 .PHONY : parser/parser.cpp.s
-
-parser/pre_post_traverser.o: parser/pre_post_traverser.cpp.o
-.PHONY : parser/pre_post_traverser.o
-
-# target to build an object file
-parser/pre_post_traverser.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.o
-.PHONY : parser/pre_post_traverser.cpp.o
-
-parser/pre_post_traverser.i: parser/pre_post_traverser.cpp.i
-.PHONY : parser/pre_post_traverser.i
-
-# target to preprocess a source file
-parser/pre_post_traverser.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.i
-.PHONY : parser/pre_post_traverser.cpp.i
-
-parser/pre_post_traverser.s: parser/pre_post_traverser.cpp.s
-.PHONY : parser/pre_post_traverser.s
-
-# target to generate assembly for a file
-parser/pre_post_traverser.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/pre_post_traverser.cpp.s
-.PHONY : parser/pre_post_traverser.cpp.s
-
-parser/print_ast_pass.o: parser/print_ast_pass.cpp.o
-.PHONY : parser/print_ast_pass.o
-
-# target to build an object file
-parser/print_ast_pass.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.o
-.PHONY : parser/print_ast_pass.cpp.o
-
-parser/print_ast_pass.i: parser/print_ast_pass.cpp.i
-.PHONY : parser/print_ast_pass.i
-
-# target to preprocess a source file
-parser/print_ast_pass.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.i
-.PHONY : parser/print_ast_pass.cpp.i
-
-parser/print_ast_pass.s: parser/print_ast_pass.cpp.s
-.PHONY : parser/print_ast_pass.s
-
-# target to generate assembly for a file
-parser/print_ast_pass.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/parser/print_ast_pass.cpp.s
-.PHONY : parser/print_ast_pass.cpp.s
 
 parser/recursive_traverser.o: parser/recursive_traverser.cpp.o
 .PHONY : parser/recursive_traverser.o
@@ -1514,15 +1490,12 @@ help:
 	@echo "... parser/basic_ast_visitor.o"
 	@echo "... parser/basic_ast_visitor.i"
 	@echo "... parser/basic_ast_visitor.s"
+	@echo "... parser/calling_traverser.o"
+	@echo "... parser/calling_traverser.i"
+	@echo "... parser/calling_traverser.s"
 	@echo "... parser/parser.o"
 	@echo "... parser/parser.i"
 	@echo "... parser/parser.s"
-	@echo "... parser/pre_post_traverser.o"
-	@echo "... parser/pre_post_traverser.i"
-	@echo "... parser/pre_post_traverser.s"
-	@echo "... parser/print_ast_pass.o"
-	@echo "... parser/print_ast_pass.i"
-	@echo "... parser/print_ast_pass.s"
 	@echo "... parser/recursive_traverser.o"
 	@echo "... parser/recursive_traverser.i"
 	@echo "... parser/recursive_traverser.s"

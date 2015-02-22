@@ -1,21 +1,19 @@
-#ifndef CION_PRE_POST_TRAVERSER_HEADER
-#define CION_PRE_POST_TRAVERSER_HEADER
+#ifndef CION_PARSER_CALLING_TRAVERSER_HEADER
+#define CION_PARSER_CALLING_TRAVERSER_HEADER
 
 #include "cion/parser/recursive_traverser.hpp"
 
 namespace cion {
-	class IPrePostCompilerPass;
 
-	class PrePostTraverser : public RecursiveTraverser {
+	class CallingTraverser : public RecursiveTraverser {
 	public:
-		explicit PrePostTraverser(IASTVisitor & p_pass);
-		explicit PrePostTraverser(IPrePostCompilerPass & p_pre_post_pass);
-		PrePostTraverser(IASTVisitor & p_pre_pass, IASTVisitor & p_post_pass);
+		CallingTraverser(IASTVisitor & p_callee);
 
 		// Statements
 		virtual void visit(ast::Stmnt &) override;
 		virtual void visit(ast::CompoundStmnt &) override;
 		virtual void visit(ast::EmptyStmnt &) override;
+		virtual void visit(ast::DeclStmnt &) override;
 		virtual void visit(ast::ExprStmnt &) override;
 		virtual void visit(ast::IfStmnt &) override;
 		virtual void visit(ast::WhileStmnt &) override;
@@ -99,9 +97,12 @@ namespace cion {
 		virtual void visit(ast::BuiltinFloatType &) override;
 		virtual void visit(ast::BuiltinIntType &) override;
 
-	protected:
-		IASTVisitor & m_post_pass;
+//////////////////////////////////////////////////////////////////////////////////////////
+/////// Members
+//////////////////////////////////////////////////////////////////////////////////////////
+		IASTVisitor & m_callee;
 	};
+
 } // namespace cion
 
-#endif // CION_PREPOST_TRAVERSER_HEADER
+#endif // CION_PARSER_CALLING_TRAVERSER_HEADER

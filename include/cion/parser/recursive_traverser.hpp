@@ -7,8 +7,7 @@ namespace cion {
 
 	class RecursiveTraverser : public BasicASTVisitor {
 	public:
-
-		explicit RecursiveTraverser(IASTVisitor & p_pass);
+		RecursiveTraverser() = default;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 /////// Visit Methods
@@ -195,11 +194,6 @@ namespace cion {
 		virtual void traverse_builtin_char_type(ast::BuiltinCharType &);
 		virtual void traverse_builtin_float_type(ast::BuiltinFloatType &);
 		virtual void traverse_builtin_int_type(ast::BuiltinIntType &);
-
-//////////////////////////////////////////////////////////////////////////////////////////
-/////// Members
-//////////////////////////////////////////////////////////////////////////////////////////
-		IASTVisitor & m_pass;
 	};
 
 } // namespace cion
