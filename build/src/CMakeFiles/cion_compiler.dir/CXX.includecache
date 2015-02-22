@@ -220,16 +220,6 @@ cion/error/cion_exception.hpp
 sstream
 -
 
-/home/robbepop/coding/c++/projects/cion/src/error/cion_warning_types.cpp
-cion/error/warning_types.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/cion/error/warning_types.hpp
-utility
--
-
-/home/robbepop/coding/c++/projects/cion/src/error/debug_info_type.cpp
-cion/error/debug_info_type.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/cion/error/debug_info_type.hpp
-
 /home/robbepop/coding/c++/projects/cion/src/error/error_handler.cpp
 cion/error/error_handler.hpp
 /home/robbepop/coding/c++/projects/cion/src/error/cion/error/error_handler.hpp
@@ -240,35 +230,25 @@ iostream
 tuple
 -
 
-/home/robbepop/coding/c++/projects/cion/src/error/error_type.cpp
-cion/error/error_type.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/cion/error/error_type.hpp
-
 /home/robbepop/coding/c++/projects/cion/src/error/error_types.cpp
 cion/error/error_types.hpp
 /home/robbepop/coding/c++/projects/cion/src/error/cion/error/error_types.hpp
 utility
 -
 
-/home/robbepop/coding/c++/projects/cion/src/error/lexer_error.cpp
-cion/error/lexer_error.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/cion/error/lexer_error.hpp
-sstream
--
-
-/home/robbepop/coding/c++/projects/cion/src/error/parser_error.cpp
-cion/error/parser_error.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/cion/error/parser_error.hpp
-sstream
--
+/home/robbepop/coding/c++/projects/cion/src/error/report_type.cpp
+cion/error/report_type.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/cion/error/report_type.hpp
 
 /home/robbepop/coding/c++/projects/cion/src/error/source_location.cpp
 cion/error/source_location.hpp
 /home/robbepop/coding/c++/projects/cion/src/error/cion/error/source_location.hpp
 
-/home/robbepop/coding/c++/projects/cion/src/error/warning_type.cpp
-cion/error/warning_type.hpp
-/home/robbepop/coding/c++/projects/cion/src/error/cion/error/warning_type.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/warning_types.cpp
+cion/error/warning_types.hpp
+/home/robbepop/coding/c++/projects/cion/src/error/cion/error/warning_types.hpp
+utility
+-
 
 /home/robbepop/coding/c++/projects/cion/src/lexer/lexer.cpp
 cion/lexer/lexer.hpp
@@ -343,10 +323,8 @@ cion/token/token_types.hpp
 /home/robbepop/coding/c++/projects/cion/src/parser/cion/token/token_types.hpp
 cion/error/error_handler.hpp
 /home/robbepop/coding/c++/projects/cion/src/parser/cion/error/error_handler.hpp
-cion/error/lexer_exception.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/cion/error/lexer_exception.hpp
-cion/error/parser_exception.hpp
-/home/robbepop/coding/c++/projects/cion/src/parser/cion/error/parser_exception.hpp
+cion/error/cion_exception.hpp
+/home/robbepop/coding/c++/projects/cion/src/parser/cion/error/cion_exception.hpp
 cion/ast/all.hpp
 /home/robbepop/coding/c++/projects/cion/src/parser/cion/ast/all.hpp
 chrono

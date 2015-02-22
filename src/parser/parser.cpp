@@ -2,8 +2,7 @@
 
 #include "cion/token/token_types.hpp"
 #include "cion/error/error_handler.hpp"
-#include "cion/error/lexer_exception.hpp"
-#include "cion/error/parser_exception.hpp"
+#include "cion/error/cion_exception.hpp"
 
 #include "cion/ast/all.hpp"
 

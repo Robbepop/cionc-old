@@ -12,9 +12,9 @@ namespace cion {
 	class cion_exception : public std::runtime_error {
 	public:
 		cion_exception(
-			std::string const& file_name,
-			SourceLocation const& source_loc,
-			std::string const& message);
+			std::string const& p_file_name,
+			SourceLocation const& p_source_loc,
+			std::string const& p_message);
 
 		SourceLocation const& loc() const noexcept;
 
@@ -25,6 +25,14 @@ namespace cion {
 	private:
 		std::string m_file_name;
 		SourceLocation m_loc;
+	};
+
+	class lexer_exception final : public cion_exception {
+		using cion_exception::cion_exception;
+	};
+
+	class parser_exception final : public cion_exception {
+		using cion_exception::cion_exception;
 	};
 } // namespace
 

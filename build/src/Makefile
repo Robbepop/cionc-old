@@ -836,54 +836,6 @@ error/cion_exception.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_exception.cpp.s
 .PHONY : error/cion_exception.cpp.s
 
-error/cion_warning_types.o: error/cion_warning_types.cpp.o
-.PHONY : error/cion_warning_types.o
-
-# target to build an object file
-error/cion_warning_types.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_warning_types.cpp.o
-.PHONY : error/cion_warning_types.cpp.o
-
-error/cion_warning_types.i: error/cion_warning_types.cpp.i
-.PHONY : error/cion_warning_types.i
-
-# target to preprocess a source file
-error/cion_warning_types.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_warning_types.cpp.i
-.PHONY : error/cion_warning_types.cpp.i
-
-error/cion_warning_types.s: error/cion_warning_types.cpp.s
-.PHONY : error/cion_warning_types.s
-
-# target to generate assembly for a file
-error/cion_warning_types.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/cion_warning_types.cpp.s
-.PHONY : error/cion_warning_types.cpp.s
-
-error/debug_info_type.o: error/debug_info_type.cpp.o
-.PHONY : error/debug_info_type.o
-
-# target to build an object file
-error/debug_info_type.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/debug_info_type.cpp.o
-.PHONY : error/debug_info_type.cpp.o
-
-error/debug_info_type.i: error/debug_info_type.cpp.i
-.PHONY : error/debug_info_type.i
-
-# target to preprocess a source file
-error/debug_info_type.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/debug_info_type.cpp.i
-.PHONY : error/debug_info_type.cpp.i
-
-error/debug_info_type.s: error/debug_info_type.cpp.s
-.PHONY : error/debug_info_type.s
-
-# target to generate assembly for a file
-error/debug_info_type.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/debug_info_type.cpp.s
-.PHONY : error/debug_info_type.cpp.s
-
 error/error_handler.o: error/error_handler.cpp.o
 .PHONY : error/error_handler.o
 
@@ -907,30 +859,6 @@ error/error_handler.s: error/error_handler.cpp.s
 error/error_handler.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/error_handler.cpp.s
 .PHONY : error/error_handler.cpp.s
-
-error/error_type.o: error/error_type.cpp.o
-.PHONY : error/error_type.o
-
-# target to build an object file
-error/error_type.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/error_type.cpp.o
-.PHONY : error/error_type.cpp.o
-
-error/error_type.i: error/error_type.cpp.i
-.PHONY : error/error_type.i
-
-# target to preprocess a source file
-error/error_type.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/error_type.cpp.i
-.PHONY : error/error_type.cpp.i
-
-error/error_type.s: error/error_type.cpp.s
-.PHONY : error/error_type.s
-
-# target to generate assembly for a file
-error/error_type.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/error_type.cpp.s
-.PHONY : error/error_type.cpp.s
 
 error/error_types.o: error/error_types.cpp.o
 .PHONY : error/error_types.o
@@ -956,53 +884,29 @@ error/error_types.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/error_types.cpp.s
 .PHONY : error/error_types.cpp.s
 
-error/lexer_error.o: error/lexer_error.cpp.o
-.PHONY : error/lexer_error.o
+error/report_type.o: error/report_type.cpp.o
+.PHONY : error/report_type.o
 
 # target to build an object file
-error/lexer_error.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.o
-.PHONY : error/lexer_error.cpp.o
+error/report_type.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/report_type.cpp.o
+.PHONY : error/report_type.cpp.o
 
-error/lexer_error.i: error/lexer_error.cpp.i
-.PHONY : error/lexer_error.i
-
-# target to preprocess a source file
-error/lexer_error.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.i
-.PHONY : error/lexer_error.cpp.i
-
-error/lexer_error.s: error/lexer_error.cpp.s
-.PHONY : error/lexer_error.s
-
-# target to generate assembly for a file
-error/lexer_error.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.s
-.PHONY : error/lexer_error.cpp.s
-
-error/parser_error.o: error/parser_error.cpp.o
-.PHONY : error/parser_error.o
-
-# target to build an object file
-error/parser_error.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.o
-.PHONY : error/parser_error.cpp.o
-
-error/parser_error.i: error/parser_error.cpp.i
-.PHONY : error/parser_error.i
+error/report_type.i: error/report_type.cpp.i
+.PHONY : error/report_type.i
 
 # target to preprocess a source file
-error/parser_error.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.i
-.PHONY : error/parser_error.cpp.i
+error/report_type.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/report_type.cpp.i
+.PHONY : error/report_type.cpp.i
 
-error/parser_error.s: error/parser_error.cpp.s
-.PHONY : error/parser_error.s
+error/report_type.s: error/report_type.cpp.s
+.PHONY : error/report_type.s
 
 # target to generate assembly for a file
-error/parser_error.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.s
-.PHONY : error/parser_error.cpp.s
+error/report_type.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/report_type.cpp.s
+.PHONY : error/report_type.cpp.s
 
 error/source_location.o: error/source_location.cpp.o
 .PHONY : error/source_location.o
@@ -1028,29 +932,29 @@ error/source_location.cpp.s:
 	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/source_location.cpp.s
 .PHONY : error/source_location.cpp.s
 
-error/warning_type.o: error/warning_type.cpp.o
-.PHONY : error/warning_type.o
+error/warning_types.o: error/warning_types.cpp.o
+.PHONY : error/warning_types.o
 
 # target to build an object file
-error/warning_type.cpp.o:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/warning_type.cpp.o
-.PHONY : error/warning_type.cpp.o
+error/warning_types.cpp.o:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/warning_types.cpp.o
+.PHONY : error/warning_types.cpp.o
 
-error/warning_type.i: error/warning_type.cpp.i
-.PHONY : error/warning_type.i
+error/warning_types.i: error/warning_types.cpp.i
+.PHONY : error/warning_types.i
 
 # target to preprocess a source file
-error/warning_type.cpp.i:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/warning_type.cpp.i
-.PHONY : error/warning_type.cpp.i
+error/warning_types.cpp.i:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/warning_types.cpp.i
+.PHONY : error/warning_types.cpp.i
 
-error/warning_type.s: error/warning_type.cpp.s
-.PHONY : error/warning_type.s
+error/warning_types.s: error/warning_types.cpp.s
+.PHONY : error/warning_types.s
 
 # target to generate assembly for a file
-error/warning_type.cpp.s:
-	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/warning_type.cpp.s
-.PHONY : error/warning_type.cpp.s
+error/warning_types.cpp.s:
+	cd /home/robbepop/coding/c++/projects/cion/build && $(MAKE) -f src/CMakeFiles/cion_compiler.dir/build.make src/CMakeFiles/cion_compiler.dir/error/warning_types.cpp.s
+.PHONY : error/warning_types.cpp.s
 
 lexer/lexer.o: lexer/lexer.cpp.o
 .PHONY : lexer/lexer.o
@@ -1583,33 +1487,21 @@ help:
 	@echo "... error/cion_exception.o"
 	@echo "... error/cion_exception.i"
 	@echo "... error/cion_exception.s"
-	@echo "... error/cion_warning_types.o"
-	@echo "... error/cion_warning_types.i"
-	@echo "... error/cion_warning_types.s"
-	@echo "... error/debug_info_type.o"
-	@echo "... error/debug_info_type.i"
-	@echo "... error/debug_info_type.s"
 	@echo "... error/error_handler.o"
 	@echo "... error/error_handler.i"
 	@echo "... error/error_handler.s"
-	@echo "... error/error_type.o"
-	@echo "... error/error_type.i"
-	@echo "... error/error_type.s"
 	@echo "... error/error_types.o"
 	@echo "... error/error_types.i"
 	@echo "... error/error_types.s"
-	@echo "... error/lexer_error.o"
-	@echo "... error/lexer_error.i"
-	@echo "... error/lexer_error.s"
-	@echo "... error/parser_error.o"
-	@echo "... error/parser_error.i"
-	@echo "... error/parser_error.s"
+	@echo "... error/report_type.o"
+	@echo "... error/report_type.i"
+	@echo "... error/report_type.s"
 	@echo "... error/source_location.o"
 	@echo "... error/source_location.i"
 	@echo "... error/source_location.s"
-	@echo "... error/warning_type.o"
-	@echo "... error/warning_type.i"
-	@echo "... error/warning_type.s"
+	@echo "... error/warning_types.o"
+	@echo "... error/warning_types.i"
+	@echo "... error/warning_types.s"
 	@echo "... lexer/lexer.o"
 	@echo "... lexer/lexer.i"
 	@echo "... lexer/lexer.s"

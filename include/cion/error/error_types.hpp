@@ -1,7 +1,7 @@
 #ifndef CION_ERROR_ERROR_TYPES_HEADER
 #define CION_ERROR_ERROR_TYPES_HEADER
 
-#include "cion/error/error_type.hpp"
+#include "cion/error/report_type.hpp"
 
 #include <vector>
 #include <string>

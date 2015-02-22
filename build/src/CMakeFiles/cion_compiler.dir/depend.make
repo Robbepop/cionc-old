@@ -61,23 +61,15 @@ src/CMakeFiles/cion_compiler.dir/ast/while_stmnt.cpp.o: ../src/ast/while_stmnt.c
 
 src/CMakeFiles/cion_compiler.dir/error/cion_exception.cpp.o: ../src/error/cion_exception.cpp
 
-src/CMakeFiles/cion_compiler.dir/error/cion_warning_types.cpp.o: ../src/error/cion_warning_types.cpp
-
-src/CMakeFiles/cion_compiler.dir/error/debug_info_type.cpp.o: ../src/error/debug_info_type.cpp
-
 src/CMakeFiles/cion_compiler.dir/error/error_handler.cpp.o: ../src/error/error_handler.cpp
-
-src/CMakeFiles/cion_compiler.dir/error/error_type.cpp.o: ../src/error/error_type.cpp
 
 src/CMakeFiles/cion_compiler.dir/error/error_types.cpp.o: ../src/error/error_types.cpp
 
-src/CMakeFiles/cion_compiler.dir/error/lexer_error.cpp.o: ../src/error/lexer_error.cpp
-
-src/CMakeFiles/cion_compiler.dir/error/parser_error.cpp.o: ../src/error/parser_error.cpp
+src/CMakeFiles/cion_compiler.dir/error/report_type.cpp.o: ../src/error/report_type.cpp
 
 src/CMakeFiles/cion_compiler.dir/error/source_location.cpp.o: ../src/error/source_location.cpp
 
-src/CMakeFiles/cion_compiler.dir/error/warning_type.cpp.o: ../src/error/warning_type.cpp
+src/CMakeFiles/cion_compiler.dir/error/warning_types.cpp.o: ../src/error/warning_types.cpp
 
 src/CMakeFiles/cion_compiler.dir/lexer/lexer.cpp.o: ../src/lexer/lexer.cpp
 

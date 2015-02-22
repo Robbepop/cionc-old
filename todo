@@ -11,7 +11,9 @@ ToDo list for Cion Compiler
 - remove ast/node as root AST node class type. (no root type afterwards)
 - remove ast/expression_list class and adapt classees depending on it to use vectors of expression instead since expression_lists are no expressions in Cion.
 - add DeclStmnt AST node to ASTVisitor.
-- add order and equality operator overloading for SourceLocation.
+- add relational and equality operator overloading for SourceLocation.
+- rewrite Scanner (Lexer) as its current implementation has huge problems with long structured tokens.
+- RecursiveTraverser now traverses Expr's type.
 	- make existing code use the ErrorHandler in order to output
 	  and handle errors and warning while lexing or parsing
 	- add a new type node AutoDeduceType to indicate that the expression has to be deduced before it is valid.
@@ -19,7 +21,6 @@ ToDo list for Cion Compiler
 	- add a TokenStorageManager to store all processed tokens. AST nodes should reference to their tokens.
 	- add startLocation() and endLocation() method to all AST nodes.
 	- add SourceLocation to all AST nodes for all important locations (e.g. start, end) within an node
-	- rewrite Scanner (Lexer) as its current implementation has huge problems with long structured tokens.
 	- implement a fully working symbol table for Cion Compiler
 	- use forward declarations instead of includes when smart pointers are used.
 	- provide literal enhancements for int and float literals to also express literals of
@@ -28,6 +29,8 @@ ToDo list for Cion Compiler
 	- extend the parser to make it possible to parse ref, ptr and [x]-array combined type defines.
 	- improve ASTVisitor inheritance hierarchie to make it possible to improve the ASTWritePass so
 	  that it only requires one function for every AST node which is less error prone.
+	- add sizeof() method to all Type inherited AST nodes.
+	- add typeid() method to all Type inherited AST nodes.
 	- create semantic check passes:
 		1. fill SymbolTable
 		2. check declared before defined

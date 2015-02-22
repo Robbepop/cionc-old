@@ -475,9 +475,12 @@ namespace cion {
 
 
 	// Expressions
-	void RecursiveTraverser::traverse_expr(ast::Expr &) {}
+	void RecursiveTraverser::traverse_expr(ast::Expr & e) {
+		e.type().accept(*this);
+	}
 
 	void RecursiveTraverser::traverse_conditional_expr(ast::ConditionalExpr & e) {
+		traverse_expr(e);
 		e.condition().accept(*this);
 		e.then_expr().accept(*this);
 		e.else_expr().accept(*this);
@@ -485,6 +488,7 @@ namespace cion {
 
 
 	void RecursiveTraverser::traverse_binary_expr(ast::BinaryExpr & e) {
+		traverse_expr(e);
 		e.lhs().accept(*this);
 		e.rhs().accept(*this);
 	}
@@ -619,34 +623,49 @@ namespace cion {
 	}
 
 
-	void RecursiveTraverser::traverse_boolean_expr(ast::BooleanExpr &) {}
+	void RecursiveTraverser::traverse_boolean_expr(ast::BooleanExpr & e) {
+		traverse_expr(e);
+	}
 
 	void RecursiveTraverser::traverse_call_expr(ast::CallExpr & e) {
+		traverse_expr(e);
 		e.callee().accept(*this);
 		for (auto&& arg : e.args()) {
 			arg->accept(*this);
 		}
 	}
 
-	void RecursiveTraverser::traverse_char_expr(ast::CharExpr &) {}
+	void RecursiveTraverser::traverse_char_expr(ast::CharExpr & e) {
+		traverse_expr(e);
+	}
 
-	void RecursiveTraverser::traverse_float_expr(ast::FloatExpr &) {}
+	void RecursiveTraverser::traverse_float_expr(ast::FloatExpr & e) {
+		traverse_expr(e);
+	}
 
 	void RecursiveTraverser::traverse_index_expr(ast::IndexExpr & e) {
+		traverse_expr(e);
 		e.expr().accept(*this);
 		for (auto&& index : e.indices()) {
 			index->accept(*this);
 		}
 	}
 
-	void RecursiveTraverser::traverse_integer_expr(ast::IntegerExpr &) {}
+	void RecursiveTraverser::traverse_integer_expr(ast::IntegerExpr & e) {
+		traverse_expr(e);
+	}
 
-	void RecursiveTraverser::traverse_nothing_expr(ast::NothingExpr &) {}
+	void RecursiveTraverser::traverse_nothing_expr(ast::NothingExpr & e) {
+		traverse_expr(e);
+	}
 
-	void RecursiveTraverser::traverse_string_expr(ast::StringExpr &) {}
+	void RecursiveTraverser::traverse_string_expr(ast::StringExpr & e) {
+		traverse_expr(e);
+	}
 
 
 	void RecursiveTraverser::traverse_unary_expr(ast::UnaryExpr & e) {
+		traverse_expr(e);
 		e.expr().accept(*this);
 	}
 
@@ -683,7 +702,9 @@ namespace cion {
 	}
 
 
-	void RecursiveTraverser::traverse_var_expr(ast::VarExpr &) {}
+	void RecursiveTraverser::traverse_var_expr(ast::VarExpr & e) {
+		traverse_expr(e);
+	}
 
 
 	// Types
