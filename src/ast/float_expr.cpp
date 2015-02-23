@@ -5,16 +5,17 @@ namespace ast {
 
 	FloatExpr::FloatExpr(
 		FloatExpr::storage_type p_value,
-		BuiltinFloatType::Width p_width
+		FloatingType::Width p_width
 	):
-		Expr{std::unique_ptr<Type>{std::make_unique<BuiltinFloatType>(p_width)}},
+		Expr{FloatingTypeFabric::instance().make(p_width)},
+		//Expr{std::unique_ptr<Type>{std::make_unique<FloatingType>(p_width)}},
 		m_value{p_value}
 	{}
 
 	FloatExpr::FloatExpr(
 		FloatExpr::storage_type p_value
 	):
-		FloatExpr{p_value, BuiltinFloatType::Width::unspecified}
+		FloatExpr{p_value, FloatingType::Width::unspecified}
 	{}
 
 	FloatExpr::storage_type & FloatExpr::value() {

@@ -91,10 +91,10 @@ namespace cion {
 		virtual void visit(ast::Type &) override;
 		virtual void visit(ast::NothingType &) override;
 		virtual void visit(ast::BuiltinType &) override;
-		virtual void visit(ast::BuiltinBoolType &) override;
-		virtual void visit(ast::BuiltinCharType &) override;
-		virtual void visit(ast::BuiltinFloatType &) override;
-		virtual void visit(ast::BuiltinIntType &) override;
+		virtual void visit(ast::BoolType &) override;
+		virtual void visit(ast::CharType &) override;
+		virtual void visit(ast::FloatingType &) override;
+		virtual void visit(ast::IntegerType &) override;
 	};
 } // namespace cion
 

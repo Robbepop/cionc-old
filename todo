@@ -14,21 +14,28 @@ ToDo list for Cion Compiler
 - add relational and equality operator overloading for SourceLocation.
 - rewrite Scanner (Lexer) as its current implementation has huge problems with long structured tokens.
 - RecursiveTraverser now traverses Expr's type.
+- improve ASTVisitor inheritance hierarchie to make it possible to improve the ASTWritePass so
+  that it only requires one function for every AST node which is less error prone.
+- provide literal enhancements for int and float literals to also express literals of
+  type uint and all types with specified bit-size. adapt changes to make IntToken and FloatToken
+  take new layout into consideration.
+- add IntegerTypeFabric and FloatingTypeFabric in order to create a centralized creation
+  of all the new IntegerType and FloatingType types.
+- create a forward declaration collection for all AST nodes. (can be included by parser.hpp and i_ast_visitor.hpp)
 	- make existing code use the ErrorHandler in order to output
 	  and handle errors and warning while lexing or parsing
 	- add a new type node AutoDeduceType to indicate that the expression has to be deduced before it is valid.
+	- add a set_type method to all AST node types which offer a type() method to change type with semantic passes.
+	- create an IntegerExpr and FloatingExpr for all possible IntegerTypes and FloatingTypes
+	  to optimize memory consumption and to make it possible to save all possible values as
+	  int64_t does not capture all. the storage argumentation could be invalid due to alignment.
 	- add Identifier AST component with a reference to a string and to its entry within the SymbolTable
 	- add a TokenStorageManager to store all processed tokens. AST nodes should reference to their tokens.
 	- add startLocation() and endLocation() method to all AST nodes.
 	- add SourceLocation to all AST nodes for all important locations (e.g. start, end) within an node
 	- implement a fully working symbol table for Cion Compiler
 	- use forward declarations instead of includes when smart pointers are used.
-	- provide literal enhancements for int and float literals to also express literals of
-      type uint and all types with specified bit-size. adapt changes to make IntToken and FloatToken
-      take new layout into consideration.
 	- extend the parser to make it possible to parse ref, ptr and [x]-array combined type defines.
-	- improve ASTVisitor inheritance hierarchie to make it possible to improve the ASTWritePass so
-	  that it only requires one function for every AST node which is less error prone.
 	- add sizeof() method to all Type inherited AST nodes.
 	- add typeid() method to all Type inherited AST nodes.
 	- create semantic check passes:

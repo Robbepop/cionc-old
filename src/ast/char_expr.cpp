@@ -5,7 +5,7 @@ namespace cion {
 namespace ast {
 
 	CharExpr::CharExpr(CharExpr::storage_type value) :
-		Expr{std::unique_ptr<Type>{std::make_unique<BuiltinCharType>()}},
+		Expr{std::unique_ptr<Type>{std::make_unique<CharType>()}},
 		m_value{value}
 	{}
 

@@ -3,6 +3,7 @@
 
 #include "cion/lexer/lexer.hpp"
 #include "cion/token/token_types.hpp"
+#include "cion/ast/fw.hpp"
 
 #include <memory>
 #include <queue>
@@ -10,89 +11,6 @@
 #include <chrono>
 
 namespace cion {
-	namespace ast {
-		class BinaryAssignExpr;
-		class AssignExpr;
-		class AddAssignExpr;
-		class SubtractAssignExpr;
-		class MultiplyAssignExpr;
-		class DivideAssignExpr;
-		class ModuloAssignExpr;
-		class LogicalOrAssignExpr;
-		class LogicalAndAssignExpr;
-		class BitOrAssignExpr;
-		class BitXorAssignExpr;
-		class BitAndAssignExpr;
-		class ShiftLeftAssignExpr;
-		class ShiftRightAssignExpr;
-
-		class BinaryExpr;
-		class LogicalOrExpr;
-		class LogicalAndExpr;
-		class BitOrExpr;
-		class BitXorExpr;
-		class BitAndExpr;
-		class AddExpr;
-		class SubtractExpr;
-		class MultiplyExpr;
-		class DivideExpr;
-		class ModuloExpr;
-		class ShiftLeftExpr;
-		class ShiftRightExpr;
-		class EqualityExpr;
-		class InequalityExpr;
-		class LessThanExpr;
-		class LessEqualsExpr;
-		class GreaterThanExpr;
-		class GreaterEqualsExpr;
-
-		class BooleanExpr;
-		class BreakStmnt;
-		class CallExpr;
-		class CharExpr;
-		class CompilationUnitDecl;
-		class CompoundStmnt;
-		class ConditionalExpr;
-		class ContinueStmnt;
-		class Decl;
-		class DeclStmnt;
-		class EmptyStmnt;
-		class Expr;
-		class ExprStmnt;
-		class FloatExpr;
-		class FunctionDecl;
-		class IfStmnt;
-		class IndexExpr;
-		class IntegerExpr;
-		class ParamDecl;
-		class NothingExpr;
-		class NothingType;
-
-		class BuiltinType;
-		class BuiltinBoolType;
-		class BuiltinCharType;
-		class BuiltinFloatType;
-		class BuiltinIntType;
-
-		class ReturnStmnt;
-		class Stmnt;
-		class StringExpr;
-		class Type;
-
-		class UnaryExpr;
-		class BitNegateExpr;
-		class LogicalNegateExpr;
-		class PlusExpr;
-		class MinusExpr;
-		class IncrementExpr;
-		class DecrementExpr;
-		class PostIncrementExpr;
-		class PostDecrementExpr;
-
-		class VarDecl;
-		class VarExpr;
-		class WhileStmnt;
-	} // namespace ast
 
 	class Parser final {
 	private:
@@ -131,8 +49,8 @@ namespace cion {
 		std::unique_ptr<ast::Expr>                   parse_postfix_expr();
 		std::unique_ptr<ast::Expr>                   parse_primary_expr();
 
-		std::unique_ptr<ast::BuiltinIntType>         parse_builtin_int_type();
-		std::unique_ptr<ast::BuiltinFloatType>       parse_builtin_float_type();
+		std::unique_ptr<ast::IntegerType>            parse_builtin_int_type();
+		std::unique_ptr<ast::FloatingType>           parse_builtin_float_type();
 		std::unique_ptr<ast::Type>                   parse_type();
 
 		std::unique_ptr<ast::ParamDecl>              parse_param_decl();

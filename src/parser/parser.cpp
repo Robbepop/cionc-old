@@ -580,10 +580,10 @@ namespace cion {
 			? true : false;
 	}
 
-	std::unique_ptr<ast::BuiltinIntType> Parser::parse_builtin_int_type() {
-		using ptiw = ast::BuiltinIntType::Width;
+	std::unique_ptr<ast::IntegerType> Parser::parse_builtin_int_type() {
 		const auto tt = current_token().get_type();
 		assert(is_start_of_builtin_int_type(tt));
+		using ptiw = ast::IntegerType::Width;
 		const auto bit_width =
 			  tt == ctts.type_int   || tt == ctts.type_uint   ? ptiw::unspecified
 			: tt == ctts.type_int8  || tt == ctts.type_uint8  ? ptiw::one_byte
@@ -601,7 +601,8 @@ namespace cion {
 			|| tt == ctts.type_int32
 			|| tt == ctts.type_int64 ? true : false;
 		next_token(); // consume this int type token
-		return std::make_unique<ast::BuiltinIntType>(is_signed, bit_width);
+		//return std::make_unique<ast::BuiltinIntType>(is_signed, bit_width);
+		return ast::IntegerTypeFabric::instance().make(is_signed, bit_width);
 	}
 
 	bool Parser::is_start_of_builtin_float_type(TokenType const& tt) const {
@@ -613,8 +614,8 @@ namespace cion {
 			? true : false;
 	}
 
-	std::unique_ptr<ast::BuiltinFloatType> Parser::parse_builtin_float_type() {
-		using ptiw = ast::BuiltinFloatType::Width;
+	std::unique_ptr<ast::FloatingType> Parser::parse_builtin_float_type() {
+		using ptiw = ast::FloatingType::Width;
 		const auto tt = current_token().get_type();
 		assert(is_start_of_builtin_float_type(tt));
 		const auto bit_width =
@@ -627,7 +628,8 @@ namespace cion {
 				current_token().get_source_location(),
 				"invalid bit width specifier of float type\n");
 		next_token(); // consume this float type token
-		return std::make_unique<ast::BuiltinFloatType>(bit_width);
+		//return std::make_unique<ast::BuiltinFloatType>(bit_width);
+		return ast::FloatingTypeFabric::instance().make(bit_width);
 	}
 
 	std::unique_ptr<ast::Type> Parser::parse_type() {
@@ -635,12 +637,12 @@ namespace cion {
 		if        (tt == ctts.type_bool) {
 			next_token();
 			DEBUG_STDERR("parsed: BuiltinBoolType\n");
-			return std::make_unique<ast::BuiltinBoolType>();
+			return std::make_unique<ast::BoolType>();
 
 		} else if (tt == ctts.type_char) {
 			next_token();
 			DEBUG_STDERR("parsed: BuiltinCharType\n");
-			return std::make_unique<ast::BuiltinCharType>();
+			return std::make_unique<ast::CharType>();
 
 		} else if (is_start_of_builtin_int_type(tt)) {
 			DEBUG_STDERR("parsed: BuiltinIntType\n");

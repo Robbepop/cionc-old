@@ -12,8 +12,8 @@ namespace ast {
 	public:
 		using storage_type = int64_t;
 
-		IntegerExpr(storage_type p_value, bool p_signed, BuiltinIntType::Width p_width);
-		IntegerExpr(storage_type p_value, BuiltinIntType::Width p_width);
+		IntegerExpr(storage_type p_value, bool p_signed, IntegerType::Width p_width);
+		IntegerExpr(storage_type p_value, IntegerType::Width p_width);
 		IntegerExpr(storage_type p_value, bool p_signed);
 		explicit IntegerExpr(storage_type p_value);
 

@@ -39,7 +39,7 @@ int main() {
 
 	DEBUG_STDERR("Initializing error handler ...\n");
 
-	DEBUG_STDERR("sizeof(std::string) = " << sizeof(std::string) << '\n');
+	DEBUG_STDERR("sizeof(...) = " << sizeof(cion::ast::IntegerType) << '\n');
 
 	auto error_handler = cion::ErrorHandler{file_name};
 

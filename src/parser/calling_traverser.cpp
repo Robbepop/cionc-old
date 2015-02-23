@@ -381,24 +381,24 @@ namespace cion {
 		traverse_builtin_type(t);
 	}
 
-	void CallingTraverser::visit(ast::BuiltinBoolType & t) {
+	void CallingTraverser::visit(ast::BoolType & t) {
 		m_callee.visit(t);
-		traverse_builtin_bool_type(t);
+		traverse_bool_type(t);
 	}
 
-	void CallingTraverser::visit(ast::BuiltinCharType & t) {
+	void CallingTraverser::visit(ast::CharType & t) {
 		m_callee.visit(t);
-		traverse_builtin_char_type(t);
+		traverse_char_type(t);
 	}
 
-	void CallingTraverser::visit(ast::BuiltinFloatType & t) {
+	void CallingTraverser::visit(ast::FloatingType & t) {
 		m_callee.visit(t);
-		traverse_builtin_float_type(t);
+		traverse_floating_type(t);
 	}
 
-	void CallingTraverser::visit(ast::BuiltinIntType & t) {
+	void CallingTraverser::visit(ast::IntegerType & t) {
 		m_callee.visit(t);
-		traverse_builtin_int_type(t);
+		traverse_integer_type(t);
 	}
 
 } // namespace cion

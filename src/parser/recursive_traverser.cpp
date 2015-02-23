@@ -304,20 +304,20 @@ namespace cion {
 		traverse_builtin_type(t);
 	}
 
-	void RecursiveTraverser::visit(ast::BuiltinBoolType & t) {
-		traverse_builtin_bool_type(t);
+	void RecursiveTraverser::visit(ast::BoolType & t) {
+		traverse_bool_type(t);
 	}
 
-	void RecursiveTraverser::visit(ast::BuiltinCharType & t) {
-		traverse_builtin_char_type(t);
+	void RecursiveTraverser::visit(ast::CharType & t) {
+		traverse_char_type(t);
 	}
 
-	void RecursiveTraverser::visit(ast::BuiltinFloatType & t) {
-		traverse_builtin_float_type(t);
+	void RecursiveTraverser::visit(ast::FloatingType & t) {
+		traverse_floating_type(t);
 	}
 
-	void RecursiveTraverser::visit(ast::BuiltinIntType & t) {
-		traverse_builtin_int_type(t);
+	void RecursiveTraverser::visit(ast::IntegerType & t) {
+		traverse_integer_type(t);
 	}
 
 
@@ -631,13 +631,13 @@ namespace cion {
 
 	void RecursiveTraverser::traverse_builtin_type(ast::BuiltinType &) {}
 
-	void RecursiveTraverser::traverse_builtin_bool_type(ast::BuiltinBoolType &) {}
+	void RecursiveTraverser::traverse_bool_type(ast::BoolType &) {}
 
-	void RecursiveTraverser::traverse_builtin_char_type(ast::BuiltinCharType &) {}
+	void RecursiveTraverser::traverse_char_type(ast::CharType &) {}
 
-	void RecursiveTraverser::traverse_builtin_float_type(ast::BuiltinFloatType &) {}
+	void RecursiveTraverser::traverse_floating_type(ast::FloatingType &) {}
 
-	void RecursiveTraverser::traverse_builtin_int_type(ast::BuiltinIntType &) {}
+	void RecursiveTraverser::traverse_integer_type(ast::IntegerType &) {}
 
 
 } // namespace cion

@@ -96,10 +96,10 @@ namespace cion {
 		virtual void visit(ast::Type &) override;
 		virtual void visit(ast::NothingType &) override;
 		virtual void visit(ast::BuiltinType &) override;
-		virtual void visit(ast::BuiltinBoolType &) override;
-		virtual void visit(ast::BuiltinCharType &) override;
-		virtual void visit(ast::BuiltinFloatType &) override;
-		virtual void visit(ast::BuiltinIntType &) override;
+		virtual void visit(ast::BoolType &) override;
+		virtual void visit(ast::CharType &) override;
+		virtual void visit(ast::FloatingType &) override;
+		virtual void visit(ast::IntegerType &) override;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 /////// Traverse Methods
@@ -190,10 +190,10 @@ namespace cion {
 		virtual void traverse_type(ast::Type &);
 		virtual void traverse_nothing_type(ast::NothingType &);
 		virtual void traverse_builtin_type(ast::BuiltinType &);
-		virtual void traverse_builtin_bool_type(ast::BuiltinBoolType &);
-		virtual void traverse_builtin_char_type(ast::BuiltinCharType &);
-		virtual void traverse_builtin_float_type(ast::BuiltinFloatType &);
-		virtual void traverse_builtin_int_type(ast::BuiltinIntType &);
+		virtual void traverse_bool_type(ast::BoolType &);
+		virtual void traverse_char_type(ast::CharType &);
+		virtual void traverse_floating_type(ast::FloatingType &);
+		virtual void traverse_integer_type(ast::IntegerType &);
 	};
 
 } // namespace cion

@@ -5,7 +5,7 @@ namespace cion {
 namespace ast {
 
 	BooleanExpr::BooleanExpr(BooleanExpr::storage_type value) :
-		Expr{std::unique_ptr<Type>{std::make_unique<BuiltinBoolType>()}},
+		Expr{std::unique_ptr<Type>{std::make_unique<BoolType>()}},
 		m_value{value}
 	{}
 

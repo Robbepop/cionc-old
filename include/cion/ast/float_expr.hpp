@@ -11,7 +11,7 @@ namespace ast {
 		using storage_type = double;
 
 		FloatExpr(storage_type p_value);
-		FloatExpr(storage_type p_value, BuiltinFloatType::Width p_width);
+		FloatExpr(storage_type p_value, FloatingType::Width p_width);
 
 		storage_type & value();
 		storage_type const& value() const;

@@ -8,7 +8,7 @@ namespace cion {
 	void BasicASTVisitor::visit(ast::Stmnt &) {}
 
 	void BasicASTVisitor::visit(ast::CompoundStmnt & s) {
-		visit(dynamic_cast<ast::Stmnt &>(s)); }
+		visit(static_cast<ast::Stmnt &>(s)); }
 
 	void BasicASTVisitor::visit(ast::EmptyStmnt & s) {
 		visit(static_cast<ast::Stmnt &>(s)); }
@@ -226,16 +226,16 @@ namespace cion {
 	void BasicASTVisitor::visit(ast::BuiltinType & t) {
 		visit(static_cast<ast::Type &>(t)); }
 
-	void BasicASTVisitor::visit(ast::BuiltinBoolType & t) {
+	void BasicASTVisitor::visit(ast::BoolType & t) {
 		visit(static_cast<ast::BuiltinType &>(t)); }
 
-	void BasicASTVisitor::visit(ast::BuiltinCharType & t) {
+	void BasicASTVisitor::visit(ast::CharType & t) {
 		visit(static_cast<ast::BuiltinType &>(t)); }
 
-	void BasicASTVisitor::visit(ast::BuiltinFloatType & t) {
+	void BasicASTVisitor::visit(ast::FloatingType & t) {
 		visit(static_cast<ast::BuiltinType &>(t)); }
 
-	void BasicASTVisitor::visit(ast::BuiltinIntType & t) {
+	void BasicASTVisitor::visit(ast::IntegerType & t) {
 		visit(static_cast<ast::BuiltinType &>(t)); }
 
 

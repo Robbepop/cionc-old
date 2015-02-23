@@ -39,6 +39,10 @@ cion/ast/break_stmnt.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/builtin_type.cpp
 cion/ast/builtin_type.hpp
 /home/robbepop/coding/c++/projects/cion/src/ast/cion/ast/builtin_type.hpp
+cassert
+-
+stdexcept
+-
 
 /home/robbepop/coding/c++/projects/cion/src/ast/call_expr.cpp
 cion/ast/call_expr.hpp

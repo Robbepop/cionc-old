@@ -424,19 +424,19 @@ namespace cion {
 		writeln("BuiltinType");
 	}
 
-	void WriteASTPass::visit(ast::BuiltinBoolType &) {
-		writeln("BuiltinBoolType");
+	void WriteASTPass::visit(ast::BoolType &) {
+		writeln("BoolType");
 	}
 
-	void WriteASTPass::visit(ast::BuiltinCharType &) {
-		writeln("BuiltinCharType");
+	void WriteASTPass::visit(ast::CharType &) {
+		writeln("CharType");
 	}
 
-	void WriteASTPass::visit(ast::BuiltinFloatType &) {
-		writeln("BuiltinFloatType");
+	void WriteASTPass::visit(ast::FloatingType &) {
+		writeln("FloatingType");
 	}
 
-	void WriteASTPass::visit(ast::BuiltinIntType &) {
-		writeln("BuiltinIntType");
+	void WriteASTPass::visit(ast::IntegerType &) {
+		writeln("IntegerType");
 	}
 } // namespace cion

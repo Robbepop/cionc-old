@@ -1,90 +1,9 @@
 #ifndef CION_I_AST_VISITOR_HEADER
 #define CION_I_AST_VISITOR_HEADER
 
+#include "cion/ast/fw.hpp"
+
 namespace cion {
-	namespace ast {
-		class BinaryAssignExpr;
-		class AssignExpr;
-		class AddAssignExpr;
-		class SubtractAssignExpr;
-		class MultiplyAssignExpr;
-		class DivideAssignExpr;
-		class ModuloAssignExpr;
-		class LogicalOrAssignExpr;
-		class LogicalAndAssignExpr;
-		class BitOrAssignExpr;
-		class BitXorAssignExpr;
-		class BitAndAssignExpr;
-		class ShiftLeftAssignExpr;
-		class ShiftRightAssignExpr;
-
-		class BinaryExpr;
-		class LogicalOrExpr;
-		class LogicalAndExpr;
-		class BitOrExpr;
-		class BitXorExpr;
-		class BitAndExpr;
-		class AddExpr;
-		class SubtractExpr;
-		class MultiplyExpr;
-		class DivideExpr;
-		class ModuloExpr;
-		class ShiftLeftExpr;
-		class ShiftRightExpr;
-		class EqualityExpr;
-		class InequalityExpr;
-		class LessThanExpr;
-		class LessEqualsExpr;
-		class GreaterThanExpr;
-		class GreaterEqualsExpr;
-
-		class BooleanExpr;
-		class BreakStmnt;
-		class CallExpr;
-		class CharExpr;
-		class CompilationUnitDecl;
-		class CompoundStmnt;
-		class ConditionalExpr;
-		class ContinueStmnt;
-		class Decl;
-		class DeclStmnt;
-		class EmptyStmnt;
-		class Expr;
-		class ExprStmnt;
-		class FloatExpr;
-		class FunctionDecl;
-		class IfStmnt;
-		class IndexExpr;
-		class IntegerExpr;
-		class ParamDecl;
-		class NothingExpr;
-		class NothingType;
-
-		class BuiltinType;
-		class BuiltinBoolType;
-		class BuiltinCharType;
-		class BuiltinFloatType;
-		class BuiltinIntType;
-
-		class ReturnStmnt;
-		class Stmnt;
-		class StringExpr;
-		class Type;
-
-		class UnaryExpr;
-		class BitNegateExpr;
-		class LogicalNegateExpr;
-		class PlusExpr;
-		class MinusExpr;
-		class IncrementExpr;
-		class DecrementExpr;
-		class PostIncrementExpr;
-		class PostDecrementExpr;
-
-		class VarDecl;
-		class VarExpr;
-		class WhileStmnt;
-	} // namespace ast
 
 	class IASTVisitor {
 	public:
@@ -171,10 +90,10 @@ namespace cion {
 		virtual void visit(ast::Type &) = 0;
 		virtual void visit(ast::NothingType &) = 0;
 		virtual void visit(ast::BuiltinType &) = 0;
-		virtual void visit(ast::BuiltinBoolType &) = 0;
-		virtual void visit(ast::BuiltinCharType &) = 0;
-		virtual void visit(ast::BuiltinFloatType &) = 0;
-		virtual void visit(ast::BuiltinIntType &) = 0;
+		virtual void visit(ast::BoolType &) = 0;
+		virtual void visit(ast::CharType &) = 0;
+		virtual void visit(ast::FloatingType &) = 0;
+		virtual void visit(ast::IntegerType &) = 0;
 	};
 
 } // namespace
