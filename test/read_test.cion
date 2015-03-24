@@ -1,0 +1,5 @@
+import std.io;
+
+function main() {
+	writeln(std.core.read() ~ '\n');
+}

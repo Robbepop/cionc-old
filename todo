@@ -16,9 +16,9 @@ ToDo list for Cion Compiler
 - RecursiveTraverser now traverses Expr's type.
 - improve ASTVisitor inheritance hierarchie to make it possible to improve the ASTWritePass so
   that it only requires one function for every AST node which is less error prone.
-- provide literal enhancements for int and float literals to also express literals of
-  type uint and all types with specified bit-size. adapt changes to make IntToken and FloatToken
-  take new layout into consideration.
+- create an IntegerExpr and FloatingExpr for all possible IntegerTypes and FloatingTypes
+  to optimize memory consumption and to make it possible to save all possible values as
+  int64_t does not capture all. the storage argumentation could be invalid due to alignment.
 - add IntegerTypeFabric and FloatingTypeFabric in order to create a centralized creation
   of all the new IntegerType and FloatingType types.
 - create a forward declaration collection for all AST nodes. (can be included by parser.hpp and i_ast_visitor.hpp)
@@ -26,9 +26,9 @@ ToDo list for Cion Compiler
 	  and handle errors and warning while lexing or parsing
 	- add a new type node AutoDeduceType to indicate that the expression has to be deduced before it is valid.
 	- add a set_type method to all AST node types which offer a type() method to change type with semantic passes.
-	- create an IntegerExpr and FloatingExpr for all possible IntegerTypes and FloatingTypes
-	  to optimize memory consumption and to make it possible to save all possible values as
-	  int64_t does not capture all. the storage argumentation could be invalid due to alignment.
+	- provide literal enhancements for int and float literals to also express literals of
+	  type uint and all types with specified bit-size. adapt changes to make IntToken and FloatToken
+	  take new layout into consideration.
 	- add Identifier AST component with a reference to a string and to its entry within the SymbolTable
 	- add a TokenStorageManager to store all processed tokens. AST nodes should reference to their tokens.
 	- add startLocation() and endLocation() method to all AST nodes.

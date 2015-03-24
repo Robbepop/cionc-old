@@ -63,10 +63,17 @@ namespace cion {
 	}
 
 	void Lexer::add_keyword(std::string const& p_key, TokenType const& p_tt) {
-		assert(m_keywords.insert({p_key, p_tt}).second);
+		// pre-conditions to identify given keyword as such
+		assert(p_key.size() >= 1);
+		assert(is_alpha(p_key[0]));
+		assert(std::all_of(p_key.cbegin(), p_key.cend(), [](auto c) { return is_alpha_num(c); }));
+		// try to insert given keyword
+		auto const insertion_result = m_keywords.insert({p_key, p_tt});
+		// post-condition to check wether the given keyword was already stored
+		assert(insertion_result.second);
 	}
 
-	bool Lexer::is_digit(char p_char) const {
+	bool Lexer::is_digit(char p_char) {
 		return p_char >= '0' && p_char <= '9';
 	}
 
@@ -74,7 +81,7 @@ namespace cion {
 		return is_digit(cur_char());
 	}
 
-	bool Lexer::is_non_zero_digit(char p_char) const {
+	bool Lexer::is_non_zero_digit(char p_char) {
 		return p_char >= '1' && p_char <= '9';
 	}
 
@@ -82,7 +89,7 @@ namespace cion {
 		return is_non_zero_digit(cur_char());
 	}
 
-	bool Lexer::is_alpha(char p_char) const {
+	bool Lexer::is_alpha(char p_char) {
 		return (p_char >= 'a' && p_char <= 'z')
 			|| (p_char >= 'A' && p_char <= 'Z')
 			|| (p_char == '_');
@@ -92,7 +99,7 @@ namespace cion {
 		return is_alpha(cur_char());
 	}
 
-	bool Lexer::is_alpha_num(char p_char) const {
+	bool Lexer::is_alpha_num(char p_char) {
 		return is_alpha(p_char) || is_digit(p_char);
 	}
 
@@ -361,7 +368,7 @@ namespace cion {
 	std::unique_ptr<Token> Lexer::scan_line_comment() {
 		assert(cur_char() == '/');
 		next_char_ignore();
-		while (cur_char() != '\r' && cur_char() != '\n') {
+		while (/*cur_char() != '\r' &&*/ cur_char() != '\n') {
 			next_char_ignore();
 		}
 		m_buffer.clear();
@@ -475,13 +482,10 @@ namespace cion {
 
 	std::unique_ptr<Token> Lexer::scan_identifier() {
 		assert(is_alpha());
-		next_char();
-		while (is_alpha_num()) {
+		do {
 			next_char();
-		}
-		if (is_keyword(valid_buffer())) {
-			return make_token(m_keywords.at(valid_buffer()));
-		}
-		return make_token(ctts.identifier);
+		} while (is_alpha_num());
+		return is_keyword(valid_buffer()) ?
+			make_token(m_keywords.at(valid_buffer())) : make_token(ctts.identifier);
 	}
 } // namespace cion

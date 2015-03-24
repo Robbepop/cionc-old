@@ -18,17 +18,17 @@ namespace cion {
 
 	class Lexer : public TokenStream {
 	public:
-		Lexer(std::istream & p_input, ErrorHandler & p_error_handler);
+		explicit Lexer(std::istream & p_input, ErrorHandler & p_error_handler);
 
 		std::unique_ptr<Token> next_token() override;
 
 	private:
 		void add_keyword(std::string const& p_key, TokenType const& p_tt);
 
-		bool is_digit(char p_char) const;
-		bool is_non_zero_digit(char p_char) const;
-		bool is_alpha(char p_char) const;
-		bool is_alpha_num(char p_char) const;
+		static bool is_digit(char p_char);
+		static bool is_non_zero_digit(char p_char);
+		static bool is_alpha(char p_char);
+		static bool is_alpha_num(char p_char);
 		bool is_keyword(std::string p_word) const;
 
 		bool is_digit() const;

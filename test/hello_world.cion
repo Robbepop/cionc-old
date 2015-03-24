@@ -1,0 +1,22 @@
+import std.io;
+
+function main() {
+	std.io.writeln("Hello, World!\n");
+	var i = 5;             // type :: mutable int
+	val j = i;             // type :: int
+	val p = addressof i;   // type :: ptr<mutable int>
+	val p = addressof make_const(i);
+	                       // type :: ptr<int>
+	var p = addressof i;   // type :: mutable ptr<mutable int>
+	ref r = i;             // type :: ref<mutable int>
+	ref r = make_const(i); // type :: ref<int>
+
+	var i = 5;             // type :: int
+	val j = i;             // type :: const int
+	val p = addressof i;   // type :: const ptr<int>
+	val p = addressof make_const(i);
+	                       // type :: const ptr<const int>
+	var p = addressof i;   // type :: ptr<int>
+	ref r = i;             // type :: ref<int>
+	ref r = make_const(i); // type :: ref<const int>
+}
